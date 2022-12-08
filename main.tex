@@ -1,0 +1,24 @@
+% !TeX TS-program = pdflatex
+% !BIB TS-program = biber
+% !TeX root = main.tex
+\documentclass{ut-thesis}
+\input{meta}
+\input{config}
+\begin{document}
+  \frontmatter
+    \input{front/main}
+  \mainmatter
+    \input{intro/main}
+    \input{sr/main}
+    \input{model/main}
+    \input{foi/main}
+    \input{art/main}
+    \input{conc/main}
+  \appendix
+    \input{sr/app/main}
+    \input{model/app/main}
+    \input{foi/app/main}
+    \input{art/app/main}
+  \backmatter
+  \printbibliography[heading=bibintoc]
+\end{document}
