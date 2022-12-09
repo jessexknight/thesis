@@ -1,0 +1,99 @@
+\section{Model Structure}\label{model.str}
+The model aims to capture heterosexual HIV transmission among the Swazi population aged 15--49.
+The model stratifies the modelled population along four dimensions:
+two sexes~($s$), four activity groups~($i$), six HIV states~($h$), and five cascade states~($c$),
+summarized in Table~\ref{tab:model.dims} and Figure~\ref{fig:model}.
+In total, $2 \times 4 \times (1 + 5 \times 5) = 208$ states are modelled.
+Two additional ``dimensions'' help organize:
+four partnership types ($p$), and two types of sex acts ($a$).
+\begin{table}
+  \centering
+  \caption{Overview of model dimensions and stratifications}
+  \label{tab:model.dims}
+  \input{model/tab.dims}
+\end{table}
+\par
+Sexual activity groups were defined to reflect
+persistent differences in HIV incidence and prevalence
+\cite{SDHS2006,Bicego2013,Justman2016,SHIMS2}
+--- reflecting acquisition and/or onward transmission risk ---
+as well as common stratifications in the available data,
+and epidemiologically relevant sub-populations.
+The lowest sexual activity group ($i=1$) comprises
+individuals who had 0-1 sexual partners in the past 12 months (p12m),
+but did not engage in sex work.
+The medium activity group ($i=2$) similarly comprises
+individuals who had 2+ sexual partners in p12m
+but did not engage in formal sex work.
+The highest two activity groups among women ($i=3,4$) comprise
+lower and higher risk FSW (see \sref{model.par.fsw} for more details), and
+the highest two activity groups among men ($i=3,4$) likewise comprise
+lower and higher risk clients of FSW.
+\par
+Four types of sexual partnerships are modelled,
+with different levels of condom use and expected durations:
+% TODO: finalize durations
+long-term/spousal partnerships ($p=1$, lowest condom use, 12--25 years \cite{??}); % Morris2009a
+short-term partnerships ($p=2$, medium condom use, 1--6 months \cite{??}); % Johnson2006,Morris2009a
+one-off new/occasional sex work partnerships ($p=3$, highest condom use, 1 sex act);
+and regular sex work partnerships ($p=4$, medium condom use, 2--24 months [assumed]).
+Figure~\ref{fig:model-risk} illustrates
+the modelled activity groups and possible partnership types between them.
+\begin{figure}
+  \begin{subfigure}{\linewidth}
+    \includegraphics[scale=.8]{model-risk}
+    \caption{Activity groups and partnership types}
+    \label{fig:model-risk}
+  \end{subfigure}
+  \begin{subfigure}{\linewidth}
+    \includegraphics[scale=.8]{model-hiv}
+    \caption{HIV states}
+    \label{fig:model-hiv}
+  \end{subfigure}
+  \begin{subfigure}{\linewidth}
+    \includegraphics[scale=.8]{model-cascade}
+    \caption{ART cascade states}
+    \label{fig:model-cascade}
+  \end{subfigure}
+  \caption{Model structure and transitions}
+  \label{fig:model}
+  \floatfoot{
+    Low: lowest activity; Med: medium activity;
+    LR/HR: lower/higher risk; FSW: female sex workers; Clients: of FSW;
+    CD4: CD4+ T-cell count per mm\tsup{3};
+    Not shown: turnover amongst activity groups in (\subref{fig:model-risk}).}
+\end{figure}
+\par
+HIV infection is stratified into
+acute-HIV and stages defined by CD4 count (Figure~\ref{fig:model-hiv})
+to reflect changes in mortality~\cite{Mangal2017},
+historical ART eligibility~\cite{EswUNGASS2010,MaxART2018},
+and, with CD4 as a proxy for viral load, infectiousness~\cite{Boily2009}.
+The modelled ART cascade (Figure~\ref{fig:model-cascade})
+includes the major steps associated with the ``90-90-90'' targets,
+plus a generic ``unlinked'' state reflecting any combination of
+treatment failure, discontinuation, or loss to follow-up.
+%===================================================================================================
+\subsection{Initialization \& Solving}\label{model.init}
+The first cases of HIV and AIDS in eSwatini
+were diagnosed in 1986 and 1987, respectively \cite{Whiteside2007},
+although HIV may have been present several years earlier \cite{Iliffe2006}.
+As such, I initialize the model in 1980 with no HIV,
+and simulate introduction of HIV at a random year between 1980 and 1985 (uniform prior).
+HIV introduction is modelled as
+exogenous infection of 0.01\% (\ttilde\,24) individuals in the model,%
+\footnote{No further import/export of HIV to/from eSwatini is considered thereafter in the model.
+  HIV transmission between eSwatini and neighbouring countries,
+  including South Africa and Mozambique,
+  has likely continued throughout the epidemic
+  due to labour migration and other factors \cite{Iliffe2006}.
+  However, I assume that such transmissions have low overall influence on epidemic dynamics.}
+  % TODO: discuss possible effects?
+distributed across activity groups in proportion to their size, comprising:
+% TODO: maybe among highest activity instead?
+5\% acute HIV ($h=2$), 65\% with CD4 $>$ 500 ($h=3$) and 30\% with 350 $<$ CD4 $<$ 500 ($h=4$),
+all undiagnosed ($c=1$).%
+\footnote{In compartmental models, the numbers of individuals in each state (compartment)
+  need not be whole numbers.}
+The population size of Swazi individuals aged 15--49 in 1980
+was defined as 243,000 from \cite{WorldBank}.

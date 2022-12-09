@@ -1,0 +1,61 @@
+\section{FSW Data}\label{app.model.fsw}
+%===================================================================================================
+\subsection{FSW Risk Factor Variable Distributions}\label{app.model.fsw.vars}
+Figures~\ref{fig:fsw.f.2011}~and~\ref{fig:fsw.f.2014}.
+\begin{figure}[h]
+  \foreach \vkey/\vtitle in {
+    age/Age,
+    y.ss/Years selling sex,
+    sw.income.mo/Monthly sex work income,
+    p.nonpay.mo/Non-paying partners,
+    cli.new.mo/Monthly new clients,
+    cli.reg.mo/Monthly regular clients,
+    cond.v.npp.alw/Non-paying condom use,
+    cond.v.new.alw/New client condom use,
+    cond.v.reg.alw/Regular client condom use,
+    sti.symp/Any STI symptoms past year}{%
+  \begin{subfigure}{0.33\linewidth}
+    \includegraphics[width=\linewidth]{{fsw-survey-2011-lr-\vkey}.pdf}
+    \caption{\vtitle}
+  \end{subfigure} }
+  \caption{HIV risk factor variables among higher vs lower risk FSW in eSwatini,
+    as estimated by multivariate logistic regression model
+    for serologic HIV status (2011)}
+  \label{fig:fsw.f.2011}
+\end{figure}
+\begin{figure}[h]
+  \foreach \vkey/\vtitle in {
+    age/Age,
+    y.ss/Years selling sex,
+    sw.income.mo/Monthly sex work income,
+    p.nonpay.mo/Non-paying partners,
+    cli.new.mo/Monthly new clients,
+    cli.reg.mo/Monthly regular clients,
+    cond.v.npp.last/Non-paying condom use,
+    cond.v.new.last/New client condom use,
+    cond.v.reg.last/Regular client condom use,
+    sti.symp/Any STI symptoms past year}{%
+    \begin{subfigure}{0.33\linewidth}
+      \includegraphics[width=\linewidth]{{fsw-survey-2014-lr-\vkey}.pdf}
+      \caption{\vtitle}
+  \end{subfigure} }
+  \caption{HIV risk factor variables among higher vs lower risk FSW in eSwatini,
+    as estimated by multivariate logistic regression model
+    for self-reported HIV status (2014)}
+  \label{fig:fsw.f.2014}
+\end{figure}
+%===================================================================================================
+\subsection{Duration in Sex Work}\label{app.model.fsw.dur}
+Figure~\ref{fig:fsw.dur}.
+\begin{figure}
+  \begin{subfigure}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{fsw-survey-2011-yss-hist.pdf}
+    \caption{2011 \cite{Baral2014}}
+  \end{subfigure}%
+  \begin{subfigure}{0.5\linewidth}
+    \includegraphics[width=\linewidth]{fsw-survey-2014-yss-hist.pdf}
+    \caption{2014 \cite{EswKP2014}}
+  \end{subfigure}
+  \caption{Duration in sex work among FSW in eSwatini}
+  \label{fig:fsw.dur}
+\end{figure}

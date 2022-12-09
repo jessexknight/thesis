@@ -1,0 +1,40 @@
+\centerline{%
+\small%
+\begin{tabular}{lcccccccccccc}
+  \toprule
+  & \multicolumn{4}{c}{2011 LR}
+  & \multicolumn{4}{c}{2014 LR}
+  & \multicolumn{4}{c}{2014 CPH} \\
+  \cmidrule(rl){2-5}\cmidrule(rl){6-9}\cmidrule(rl){10-13}
+  & \multicolumn{2}{c}{Univar} & \multicolumn{2}{c}{Multivar}
+  & \multicolumn{2}{c}{Univar} & \multicolumn{2}{c}{Multivar}
+  & \multicolumn{2}{c}{Univar} & \multicolumn{2}{c}{Multivar} \\
+  \cmidrule(rl){2-3}\cmidrule(rl){4-5}\cmidrule(rl){6-7}\cmidrule(rl){8-9}\cmidrule(rl){10-11}\cmidrule(rl){12-13}
+  Factor                          &  OR  &   p   &  OR  &   p    &  OR  &   p    &  OR  &   p    &  HR  &   p    &  HR  &   p    \\
+  \midrule                        % 2011 LR uni  % 2011 LR multi % 2014 LR uni   % 2014 LR multi % 2014 CPH uni  % 2014 CPH multi
+  Age\tn{a}                       & 1.11 & \vsig & ---  &  ---   & 1.14 & \vsig  & 1.15 & \vsig  & 1.09 & \vsig  & 1.09 & \vsig  \\
+  Years selling sex\tn{a}         & 1.13 & \vsig & 1.13 & \vsig  & 1.12 & \vsig  & ---  &  ---   & 1.08 & \vsig  & ---  &  ---   \\
+  Monthly sex work income\tn{b}   & 0.98 & 0.155 & ---  &  ---   & 0.98 & 0.097  & 0.97 & 0.084  & 0.98 & 0.019\s& 0.97 & 0.001\s\\[1ex]
+  Non-paying partners\tn{c}       & 0.88 & 0.307 & ---  &  ---   & 1.07 & 0.233  & ---  &  ---   & 1.05 & 0.312  & ---  &  ---   \\
+  Monthly new clients\tn{c}       & 1.01 & 0.412 & ---  &  ---   & 1.05 & \vsig  & 1.07 & \vsig  & 1.04 & \vsig  & 1.04 & \vsig  \\
+  Monthly regular clients\tn{c}   & 1.01 & 0.351 & ---  &  ---   & 1.03 & 0.002  & ---  &  ---   & 1.02 & \vsig  & 1.02 & 0.034\s\\[1ex]
+  Non-paying condom use\tn{d}     & 0.90 & 0.703 & ---  &  ---   & 0.90 & 0.673  & ---  &  ---   & 0.92 & 0.677  & ---  &  ---   \\
+  New client condom use\tn{d}     & 0.60 & 0.100 & ---  &  ---   & 0.48 & 0.006\s& 1.25 & 0.599  & 0.56 & 0.004\s& ---  &  ---   \\
+  Regular client condom use\tn{d} & 0.58 & 0.110 & ---  &  ---   & 0.39 & \vsig  & 0.35 & 0.004\s& 0.49 & \vsig  & 0.50 & \vsig  \\[1ex]
+  Any anal sex past month         & 0.97 & 0.896 & ---  &  ---   & 1.89 & 0.015\s& ---  &  ---   & 1.57 & 0.015\s& 1.27 & 0.260  \\
+  Any STI symptoms past year      & 2.29 & \vsig & 2.41 & \vsig  & 2.75 & \vsig  & 2.80 & \vsig  & 2.17 & \vsig  & 2.05 & \vsig  \\
+  \bottomrule
+\end{tabular}}
+% TODO: HIV status?
+\floatfoot{\raggedright
+  \tnt[a]{OR per year};
+  \tnt[b]{OR per Swazi lilangeni per month};
+  \tnt[c]{OR per partner};
+  \tnt[d]{2011: always vs not always, 2014: at last sex}.
+  --- indicates variable was not selected in the multivariate model.
+  LR: logistic regression on HIV$+/-$ status;
+  CPH: Cox proportional hazards on time to self-reported HIV seroconversion.
+  OR: odds ratio; HR: hazard ratio; p: p-value.
+  2011 data based on serologic HIV test;
+  2014 data based on self-reported HIV status, age of sex work debut, and age of HIV diagnosis.
+}

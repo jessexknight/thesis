@@ -1,0 +1,181 @@
+%===================================================================================================
+\subsection{Risk Heterogeneity Among FSW}\label{model.par.fsw}
+HIV transmission models which include FSW rarely sub-stratify this population, such as to reflect
+differential HIV risk or distinct typologies of sex work \cite{Blanchard2008,Scorgie2012};
+yet such heterogeneities likely influence transmission dynamics.
+Among the studies identified in Chapter~\ref{sr},
+only two sub-stratified FSW by risk-related factors:
+\citet{Low2015} distinguished between occasional and full-time FSW, while
+\citet{Shannon2015} sub-stratified FSW by
+work environment, violence exposure, and context-specific structural factors.
+Seven other studies, reflecting two unique models \cite{Johnson2012,Maheu-Giroux2017},
+employed age stratification of all activity groups, including FSW;
+these models had several risk-related parameters which varied by age.
+\par
+The model structure here (Figure~\ref{fig:model-risk})
+was designed to capture \emph{within}-FSW risk heterogeneity.
+The objective of the following analysis was therefore to parameterize
+lower versus higher risk FSW.
+I sought to define these groups based on biobehavioural and/or contextual factors
+which are demonstrably associated with HIV risk,
+and which can be mechanistically incorporated into a transmission model ---
+\ie through the force of infection equation.
+Later, the parameterization of these groups was validated through model fitting
+to relative differences in HIV prevalence \sref{model.cal.targ.prev}.
+\par
+Many cross-sectional studies of HIV among FSW quantify
+the association of risk factors with HIV serostatus
+\cite{Aklilu2001,Dunkle2005,Scorgie2012,Jonas2020}.
+However, serostatus reflects cumulative risk exposure,
+whereas sexual risk behaviour is dynamic \cite{Watts2010,vanWees2020},
+as is use of prevention resources \cite{Roberts2020}.
+For example, while HIV prevalence often increases with age,
+HIV incidence among women can peak shortly after sexual debut \cite{Dellar2015}.
+Thus, risk factors associated with HIV serostatus are not necessarily
+mechanistically related to HIV acquisition.
+Indeed, FSW may reduce risk behaviours in response to seroconversion \cite{McClelland2006}.
+Cohort studies that measure incidence
+can help identify risk factors for HIV acquisition \cite{McKinnon2015,Nouaman2022},
+but large sample sizes are often required to accurately estimate overall incidence rate,
+let alone risk factors \cite{Priddy2011}.
+%---------------------------------------------------------------------------------------------------
+\subsubsection{FSW Survey Data}\label{model.par.fsw.data}
+Three surveys, in
+2011 \cite{Baral2014} (N = 325),
+2014 \cite{EswKP2014} (N = 781), and
+2021 \cite{EswIBBS2022} (N = 676)
+provide HIV and biobehavioural data on FSW in eSwatini.
+The 2011 survey employed respondent driven sampling (RDS, details in \cite{Yam2013}),
+as did the 2021 survey.
+The 2014 survey employed venue-based snowball sampling, based on the
+Priorities for Local AIDS Control Efforts (PLACE) methodology,
+which aims to identify areas of higher incidence \cite{Weir2005}.
+I analyzed the individual-level data from 2011 and 2014 (data from 2021 not yet available)
+to explore the potential association of biobehavioural factors with HIV risk,
+so that such factors could then be used to distinguish between
+lower risk versus higher risk FSW.
+%---------------------------------------------------------------------------------------------------
+\subsubsection{HIV Status}\label{model.par.fsw.hiv}
+Only the 2011 and 2021 studies included serologic testing for HIV.
+Among those tested in 2011 (N = 317, 98\%), 70\% were \hivp,
+yielding RDS-adjusted prevalence estimate of 61\% (CI: 51--71\%) \cite{Baral2014}.
+Among serologically \hivn, 11\% self-reported \hivp status (false positive), and
+among serologically \hivp, 26\% self-reported \hivn status (false negative or undiagnosed).
+Overall, self-reported HIV status underestimated HIV prevalence in 2011
+by a factor of approximately 0.78 (55~vs~70\%).
+Unadjusted HIV prevalence in 2021 was 58.8\%,
+with 88\% (363/411) reporting previous awareness of \hivp status.
+\par
+In 2014, self-reported HIV prevalence was 38\% among respondents who reported (85\%).
+This 38\% is surprisingly low considering that
+the PLACE methodology explicitly aimed to sample venues
+with higher HIV incidence \cite{Weir2005}, and 2014 versus 2011 respondents
+were older (median 27 vs 25 years), % 2021 median: 28
+had been selling sex longer (median 5 vs 4 years), % 2021: 6
+and tested more frequently (87 vs 75\% tested at least once in the past year, % 2021: 75
+82 vs 63\% among self-reported \hivn).
+Perhaps the differences are attributable to the sampling methodology.
+Among respondents who self-reported \hivp status,
+the 2014 survey also asked for age of HIV diagnosis (6\% missing).
+Age of HIV diagnosis supports crude time-to-event analysis (next section),
+which can account for confounding by age and censoring,
+as compared to logistic regression on HIV status,
+keeping in mind the limitations of self-reported HIV status.
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Risk Factors}\label{model.par.fsw.fac}
+Next, I explored the potential association of risk factors with HIV
+via the following three models:%
+\footnote{Logistic regression models were implemented using \texttt{lrm} from:
+  \hreftt{cran.r-project.org/package=rms}.\\
+Cox proportional hazards models were implemented using \texttt{coxaalen} from:
+  \hreftt{cran.r-project.org/package=coxinterval}.}
+\begin{enumerate}
+  \item Logistic regression on serologic HIV status (2011 data)
+  \item Logistic regression on self-reported HIV status (2014 data)
+  \item Cox proportional hazards for interval-censored time to HIV infection,
+    with interval from self-reported sex work debut 
+    to either self-reported time of HIV diagnosis or survey date (2014 data);
+    Figure~\ref{fig:fsw.tte.interval} illustrates
+    the four potential censoring cases in this framework.
+\end{enumerate}
+An important limitation to all models is that
+risk factors reported by FSW at the time of survey
+are assumed to be fixed characteristics of the respondents,
+rather than dynamic characteristics that vary over time.
+Additionally, respondents with any missing variables for each individual model
+were excluded from that model. % TODO: (%)
+\begin{figure}
+  \centering
+  % \input{tikz/tte-interval} % TODO
+  \caption{Illustration of time-to-event analysis framework
+    for cross-sectional FSW survey data}
+  \label{fig:fsw.tte.interval}
+  \floatfoot{
+    $\bm{\times}$: HIV infection;
+    SW: time of sex work debut;
+    Dx: time of HIV diagnosis.}
+\end{figure}
+\par
+Risk factors were selected based on
+prior knowledge of plausible mechanistic influence on HIV incidence and/or prevalence.
+The risk factors explored are summarized in Table~\ref{tab:fsw.stats},
+including univariate and multivariate association under each model.
+Variable selection for multivariate models
+was performed using backward selection as described by \citet{Lawless1978},
+using a $p \le 0.1$ (per variable) threshold for stepwise variable retention.
+Estimated conditional effects of
+variables retained in the multivariate logistic regression models
+are illustrated in Figure~\ref{fig:fsw.lr}.
+\begin{table}
+  \centering
+  \caption{Risk factors explored for association with \hivp status among FSW in eSwatini}
+  \label{tab:fsw.stats}
+  \input{model/tab.fsw.factor.stats}
+\end{table}
+\begin{figure}
+  \begin{subfigure}{0.4\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{fsw-survey-2011-lr.pdf}
+    \caption{2011 (serologic HIV status)}
+  \end{subfigure}%
+  \begin{subfigure}{0.6\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{fsw-survey-2014-lr.pdf}
+    \caption{2014 (self-reported HIV status)}
+  \end{subfigure}
+  \caption{Predicted conditional effects (probability)
+    of significant variables in multivariate logistic regression models
+    from 2011 and 2014 surveys}
+  \label{fig:fsw.lr}
+  \floatfoot{\raggedright
+    sti.symp: any STI symptoms past year;
+    y.ss: years selling sex;
+    cli.new.mo: monthly new clients;
+    sw.income.mo: monthly sex work income.
+    Conditional probabilities shown for fixed covariates at arbitrary values.}
+\end{figure}
+\par
+Following variable selection, each multivariate model was used to predict
+the total \hivp status odds ratio (logistic) or HIV incidence hazard ratio (Cox)
+for each respondent in the respective survey ---
+\ie $e^{X_i\,\beta}$ for respondent $i$ ---
+representing an overall ``risk score'' under each model.
+Respondents were then stratified into the top 20\% and bottom 80\% by these risk scores.
+The values of each variable were compared between these two strata
+using a test for the ratio of the means \cite{Tamhane2004}
+to support model parameterization;
+these ratios are summarized in Table~\ref{tab:fsw.ratios},
+and the distributions of variable values are illustrated in
+Figures~\ref{fig:fsw.f.2011}~and~\ref{fig:fsw.f.2014}.
+\begin{table}
+  \centering
+  \caption{Ratios of HIV risk factor variables among higher vs lower risk FSW in eSwatini}
+  \label{tab:fsw.ratios}
+  \input{model/tab.fsw.factor.ratios}
+\end{table}
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Discussion}\label{model.par.fsw.disc}
+TODO
+% - novelty of 20/80 split by risk -> parameterization
+% - compare to other risk scores of SSA women: Balkus2016; Willcox2021
+% - limitions again
