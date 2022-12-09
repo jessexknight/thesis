@@ -1,0 +1,20 @@
+\makeatletter
+\def\markdraft@offset{5mm}
+\def\markdraft@text{draft}
+\AtBeginDocument{%
+  \AtBeginShipout{\AtBeginShipoutUpperLeft{%
+    \footnotesize\scshape\color{lightgray}%
+    \put(+\markdraft@offset,%
+         -\markdraft@offset-\f@size pt)%
+         {\rlap{\markdraft@text}}%
+    \put(-\markdraft@offset+\paperwidth,%
+         -\markdraft@offset-\f@size pt)%
+         {\llap{\markdraft@text}}%
+    \put(+\markdraft@offset,%
+         +\markdraft@offset-\paperheight)%
+         {\rlap{\markdraft@text}}%
+    \put(-\markdraft@offset+\paperwidth,%
+         +\markdraft@offset-\paperheight)%
+         {\llap{\markdraft@text}}%
+}}}
+\makeatother
