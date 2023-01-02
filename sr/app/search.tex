@@ -1,0 +1,38 @@
+\section{Search Strategy}\label{app.sr.search}
+We designed our search strategy with guidance from
+an information specialist at the University of Toronto Library.
+% ==============================================================================
+\subsection{Search Terms}\label{app.sr.search.terms}
+Our search strategy and step-wise results are as follows (Table~\ref{tab:sr.search}), where
+\srt{term/} denotes a MeSH term, and
+\srt{.mp} searches the main text fields, including
+title, abstract, and heading words.
+We searched MEDLINE and EMBASE via Ovid on 2020 March 20.
+Duplicate studies were removed automatically by Ovid and by Covidence;
+four additional duplicates with subtly different titles
+were later identified and removed manually.
+\par
+\input{sr/app/tab.search}
+\clearpage
+% ==============================================================================
+\subsection{Inclusion/Exclusion Criteria}
+\label{aa:search:criteria}
+\begin{table}[h]
+  \caption{Systematic review criteria for inclusion and exclusion}
+  \centering
+  \input{sr/app/tab.criteria}
+  \label{tab:criteria}
+\end{table}
+\clearpage
+% ==============================================================================
+\subsection{Included Studies}
+% ------------------------------------------------------------------------------
+\subsubsection{Dataset~B}
+\begin{srcites}
+  \foreach \bibid in \srbibidB{\srcite{\bibid}\par}
+\end{srcites}
+% ------------------------------------------------------------------------------
+\subsubsection{Dataset~A less B}
+\begin{srcites}
+  \foreach \bibid in \srbibidAxB{\srcite{\bibid}\par}
+\end{srcites}
