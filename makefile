@@ -9,3 +9,6 @@ bib:
 
 clean:
 	texclean .
+
+bibexport:
+	biber main --output-format=bibtex --output-fieldcase=lower
