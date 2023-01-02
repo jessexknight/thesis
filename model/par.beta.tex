@@ -65,7 +65,7 @@ further stratified by sex (male-to-female/insertive vs female-to-male/receptive)
 For vaginal intercourse, evidence for differential risk by sex is mixed,
 with some studies reporting no difference \cite{Wawer2005,Hughes2012},
 and others reporting up to 2-times higher male-to-female ($s'=2,s=1$) transmission
-vs female-to-male ($s'=1,s=2$) \cite{Boily2009}.
+vs female-to-male ($s'=1,s=2$) \cite{Gregson2002a,Boily2009}.
 % TODO: is this supported by Boily2009 for LIC ?? no...
 To reflect this uncertainty, I defined a gamma prior distribution for
 the relative rate of male-to-female vs female-to-male transmission with 95\%~CI: (1,~2);
@@ -141,7 +141,7 @@ use consistent definitions (\eg any GUD in p12m),
 then the time-averaged effect can be applied without need to estimate GUD episode duration.
 As such, I applied factors for increased susceptibility and infectiousness due to GUD
 in accordance with group-specific p12m GUD prevalence (see \sref{model.par.tm.gud}),
-with 95\%~CI (1.4,~19.5) and (1.03,~5.69), respectively.
+with 95\%~CI (1.43,~15) (skew normal distribution) and (1.03,~5.69) (gamma), respectively.
 %===================================================================================================
 \subsection{Prevalence of Transmission Modifiers}\label{model.par.tm}
 %---------------------------------------------------------------------------------------------------
@@ -167,10 +167,15 @@ In Zambia, circumcision status was not associated with paying for sex \cite{Carr
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Condom Use}\label{model.par.tm.condom}
 Condom use is typically reported as either
-categorical for a recent period, usually 30 days, \eg never, rarely, sometimes, often, always; or
+categorical for a recent period, usually 30 days,
+\eg \shortquote{never, rarely, sometimes, often, always}; or
 binary for the most recent sex act.
-Both report types may be subject to reporting bias \cite{Cordero-Coma2012},
+Both report types may be subject to reporting bias,
 but the ``last sex'' more directly translates into a proportion of sex acts.
+The direction of reporting bias may vary with social context, with
+\cite{Cordero-Coma2012} suggesting over-reporting of consom use, and
+\cite{Behanzin2013} suggesting under-reporting of conddom use.
+As such, I made no systemic adjustments to the available condom use data.
 Table~\ref{tab:esw.condom.data} summarizes the available condom use data for eSwatini.
 \begin{table}
   \centering
@@ -268,7 +273,7 @@ with an upper bound of 100\%.
 FSW data also suggest declining STI prevalence between 2011 and 2014.
 %this decline could reflect scale-up of differentiated health services delivery for key populations,
 %including STI testing and treatment for FSW \cite{TODO}.
-However, STI prevalence among Swazi youth in 2017--18 remained high \cite{Jasumback2020}.
+However, STI prevalence among Swati youth in 2017--18 remained high \cite{Jasumback2020}.
 Thus, to reflect uncertainty in STI/GUD prevalence trends,
 I sampled a relative reduction in GUD prevalence for all populations by 2050
 from a uniform distribution spanning [0.2,~1].

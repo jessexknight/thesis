@@ -1,9 +1,23 @@
 \section{Parameterization}\label{model.par}
 As described in \sref{intro.model.param}, model parameterization involves
-specification of model parameter values, such as proportions, probabilities, and rates,
+specification of model parameter values, such as proportions, probabilities, rates, and ratios,
 including stratified values to reflect heterogeneity,
 and sampling distributions to reflect uncertainty.
+Proportions and probabilities were generally modelled using
+a beta approximation of the binomial distribution (see \sref{app.model.math.binom}),
+while rates and ratios were generally modelled using a gamma or skewnormal distribution.
+\paragraph{Notation}
+If $X$ is a parameter stratified by dimensions $a,b,c$,
+then $X_{ab_{1}c_{23}}$ denotes the values of $X$ for
+a particular but \emph{unspecified} stratum of $a$,
+the \emph{specific} stratum $b = 1$,
+and the \emph{aggregated} strata $c = 2,3$
+(the aggregating operation is context-dependent, \eg sum for probabilities).
+Additionally, the indices $sihc$ from Table~\ref{tab:model.dims} denote ``self'' strata,
+whereas $s'i'h'c'$ denote ``other'' strata --- \ie individuals' partners.%
+\footnote{In the code: R uses one-based indexing, which match the notation here directly,
+  while Python uses zero-based indexing, which therefore appear as $i \rightarrow i-1$ in the code.}
 \input{model/par.fsw}
 \input{model/par.beta}
 \input{model/par.hiv}
-\input{model/par.popc}
+\input{model/par.popsex}
