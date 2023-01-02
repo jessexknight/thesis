@@ -70,6 +70,9 @@
   citecolor=cite,
   urlcolor=url,
 ]{hyperref}
+\makeatletter
+\hypersetup{pdftitle={\@title},pdfauthor={\@author}}
+\makeatother
 % figures
 \usepackage{subcaption,graphicx}
 \graphicspath{
@@ -103,12 +106,17 @@
 \renewcommand{\ast}{\raisebox{-.5ex}{*}\xspace}
 \newcommand{\Ro}[1][]{R_0^{\,\mathnormal{#1}}}
 % short text styles
+\newcommand{\opname}[1]{\operatorname{#1}\,}
 \newcommand{\tsub}[1]{\textsubscript{#1}}
 \newcommand{\tsup}[1]{\textsuperscript{#1}}
 \newcommand{\shortquote}[1]{``\emph{#1}''}
 \newcommand{\hreftt}[2][https://]{\href{#1#2}{\texttt{#2}}}
 \newcommand{\sref}[1]{\S\,\ref{#1}}
 \renewcommand{\eqref}[1]{Eq.~(\ref{#1})}
+% itemize & enumerate
+\usepackage{enumitem}
+\setitemize{itemsep=0pt,topsep=0pt}
+\setenumerate{itemsep=0pt,topsep=0pt}
 % systematic review styles
 \usepackage{tikz}
 \newcommand{\srt}[1]{{\ttfamily#1}}
