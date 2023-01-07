@@ -91,4 +91,235 @@ mortality rates within the first year of ART versus thereafter,
 suggesting that VLS is associated with 50\% mortality reduction independent of CD4 increase.
 Thus, I modelled an additional 50\% reduction in mortality among individuals with VLS ($c=4$),
 and half this (25\%) reduction before achieving VLS ($c=3$).
-% TODO: rates of diagnosis, testing, vls
+%===================================================================================================
+\subsection{Rates of HIV Diagnosis, ART Initiation, Viral Un-suppression \& Re-suppression}\label{model.par.cascade}
+Rates of HIV diagnosis $\delta$, ART initiation $\tau$, viral un-suppression $\zeta$
+(including treatment failure, discontinuation, or loss to follow-up),
+and viral re-suppression $\sigma'$ (Figure~\ref{fig:model.cascade})
+were defined to reflect historical trends and ART eligibility for eSwatini.
+These rates were further calibrated to reproduce observed cascade attainment over time in eSwatini
+(\eg proportion on ART among those diagnosed with HIV).
+Similar to condom use, rates were interpolated between specified years
+using monotone piecewise cubic interpolation \cite{Fritsch1980}.
+%----------------------------------------------------------------------------------------------------
+\subsubsection{HIV Diagnosis}\label{model.par.cascade.dx}
+Multiple eSwatini studies report the proportions of women and men who tested for HIV in the p12m.
+However, this proportion may not directly reflect the yearly rate of diagnosis,
+because individuals may test more frequently based on their perceived risk \cite{Witzel2017}.
+Indeed, EmaSwati living with HIV were more likely to have previously tested for HIV in
+2006 \cite[Table~14.9]{SDHS2006}, 2011 \cite[Table~5]{SHIMS1T}, and 2016 \cite[Table~7.3]{SHIMS2}.
+Another consideration is that the proportion tested in p12m
+likely underestimates the \emph{rate} of testing due to repeat testers.
+Assuming an exponentially-distributed time spent untested in the period under consideration
+(consistent with inherent compartmental modelling assumptions),
+the testing rate $\lambda$ can be calculated
+from the proportion tested $\rho$ over period $T$ via:
+\begin{equation}\label{eq:exp.decay}
+  \begin{aligned}
+       \rho &= 1 - \exp{(-\lambda T)} \\
+    \lambda &= - \log{(1-\rho)} / T
+  \end{aligned}
+\end{equation}
+HIV diagnosis rates over time $\delta$ were then parameterized based on testing rates
+using non-FSW women as a reference group,
+with separate time-varying \emph{relative} rates defined for FSW and men.
+Confidence intervals for relative rates were assumed using
+a standard deviation of 0.2 for FSW and 0.1 for men (gamma priors).
+\par
+Early HIV testing in eSwatini was mainly available to pregnant women via antenatal clinics,
+though a small number of youth and men also accessed HIV testing services \cite{EswHPC1998,HSRC2004}.
+Based on antenatal clinic data \cite{EswUNGASS2010},
+I modelled a gradual increase in rates of HIV diagnosis among women
+from zero to 95\%~CI (5,~15)\% (gamma prior) per year from 1990 to 2002,
+when the national HIV testing and counselling program was formally introduced \cite{NERCHA2012}.
+I assumed no initial differeces between FSW and other women,
+due to the lack of specific key populations prevention programs \cite{EswNASA2006}.
+I further assumed that HIV diagnosis among men initially occurred at 10\% the rate of women.
+\par
+By 2006, $\rho = {}$21.9~(20.6,~23.3)\% of women and 8.9~(7.8,~10.0)\% of men
+had tested for HIV and received the results in p12m \cite{SDHS2006}%
+\footnote{Unless otherwise noted, \shortquote{tested for HIV} will imply
+  \shortquote{and received the results} throughout this section.}
+--- relative rate: 0.377~(0.207,~0.597).
+Further scale-up of HIV testing began in 2006 via provider-initiated testing
+and improved integration with the general health care system \cite{NERCHA2012}.
+Between 2007 and 2010, such efforts
+doubled the number of testing locations (119 to 241) and
+tripled the number of total yearly tests (53,000 to 154,000) \cite{NERCHA2009,NERCHA2012}.
+By 2011, $\rho = {}$50.1\% of women, 31.7\% of men, and 61.7~(55.6,~67.5)\% of FSW
+had tested for HIV in p12m \cite{SHIMS1T,Baral2014},
+yielding testing rates of $\lambda = {}$0.709, 0.384, and 0.962 per year, respectively
+--- relative rate: 0.542~(0.364,~0.755) for men, and 1.365~(1.084,~1.849) for FSW.
+\par
+% TODO? 2014 eNSF KP programs started
+% TODO? Testing Reasonably consistent across age groups \cite[Figure~7.3.A]{SHIMS2}
+Phase~1 of the MaxART program \cite{MaxART1} ran from 2011 to 2014,
+with a primary objective to increase HIV testing.
+An estimated 284,680 people were reached with 389,658 tests by the end of Phase~1 (2014).
+By 2016, 57.1\% of women and 47.8\% of men had tested in p12m \cite{SHIMS2},
+yielding testing rates of $\lambda = {}$0.846 and 0.650 per year, respectively
+--- relative rate: 0.770~(0.587,~0.978) for men.
+In 2014 \cite{EswKP2014} and 2020 \cite{EswIBBS2022}
+approximately $\rho = {}$75\% of FSW had tested in p12m ($\lambda = 1.386$)
+as such, I applied a relative rate of 1.62,~(1.29,~2.07) for 2016.
+I held all rates of HIV diagnosis after 2016 fixed.
+%---------------------------------------------------------------------------------------------------
+\subsubsection{ART Initiation}\label{model.par.cascade.tx}
+Rates of ART initiation $\tau$ were modelled to reflect
+time-varying eligibility, availability, loss to follow-up,
+and differences between sex/activity groups.
+\paragraph{Eligibility}
+Historical ART eligibility in eSwatini has generally followed
+the evolving World Health Organization (WHO) guidelines
+\cite{WHO2003ART,WHO2007ART,WHO2013ART,WHO2016ART}.
+Initial eligibility included one of \cite{EswMOH2006}:
+\begin{itemize}
+  \item \cdf{}{200} cells/mm\tsup{3} and any WHO clinical stage
+  \item \cdf{}{350} cells/mm\tsup{3} and WHO clinical stage III
+  \item any CD4 count and WHO clinical stage IV
+\end{itemize}
+Eligibility was revised in 2010 \cite{EswMOH2010} to:
+\begin{itemize}
+  \item \cdf{}{350} cells/mm\tsup{3} and any WHO clinical stage
+  \item any CD4 count and WHO clinical stage III or IV
+\end{itemize}
+and again in 2015 \cite{EswMOH2015} to:
+\begin{itemize}
+  \item \cdf{}{500} cells/mm\tsup{3} and any WHO clinical stage
+  \item in a discordant partnership or having a specified illness (any CD4 count or WHO clinical stage)
+\end{itemize}
+before adoption of the current \shortquote{ART for all} guidelines
+in late 2016 (modelled as effectively January 2017) \cite{MaxART2,EswMOH2018}.
+Phase~2 of MaxART also began in 2015, offering immediate ART
+via 14 health facilities in a stepped wedge design (6 facilities added per year) \cite{MaxART2}.
+Relative to the 114 total facilities offering ART nationally at this time \cite{NERCHA2014},
+I assumed this trial had minimal direct impact on population-level ART initiation
+--- notwithstanding valuable insights gained regarding effective implementation \cite{MaxART2}.
+\par
+I implemented the CD4-only eligibility criteria directly in the model,
+which is structured to match these 200, 350, and 500 CD4 cells/mm\tsup{3} thresholds
+(Figure~\ref{fig:model.hiv}).
+For eligibility by WHO clinical stages (not explicitly modelled),
+I estimated relative rates of ART initiation based on the following data from
+South Africa \cite[Table~4]{Badri2004} and Saudi Arabia \cite[Table~2]{Edathodu2009}, respectively:
+\begin{itemize}
+  \item 43/111~(39\%) and 14/46~(30\%) of PLHIV with \cdf{200}{350} were at stages III or IV;\\
+        assumed: 35\% PLHIV with \cdf{200}{350} were eligible for ART pre-2010
+  \item 13/79~(16\%) and 6/76~(8\%) of PLHIV with \cdf{350}{} were at stage III;\\
+        assumed: 15\% PLHIV with \cdf{350}{500} were eligible for ART pre-2010
+        (5\% with \cdf{500}{})
+  \item 5/79~(6\%) and 1/76~(1\%) of PLHIV with \cdf{350}{} were at stage IV;\\
+        assumed: 20\% PLHIV with \cdf{350}{500} were eligible for ART 2010--2015
+        (5\% with \cdf{500}{})
+\end{itemize}
+I assumed that roll-out of eligibility changes in 2010, 2015, and 2017
+each occurred over a 1-year period.
+\paragraph{Availability and Initiation}
+ART first became available in eSwatini in late 2003
+via a one-hospital pilot project \cite{NERCHA2012}.
+Early ART scale-up was modest, with 31 facilities offering ART by the end of 2009 \cite{CDC2013ART};
+however, this number increased rapidly
+to 110 facilities by the end of 2011 \cite{NERCHA2012}.
+Phase~1 of MaxART (2011--2014) sought to
+further increase ART coverage among eligible PLHIV \cite{MaxART1},
+including decentralization to lower level facilities,
+bringing the total number of facilities to 170 by 2015 \cite{EswMOH2015a}.
+Finally, national adoption of \shortquote{Test and Start} in 2017
+likely further reduced delays in ART initiation,
+while loss to follow-up was reduced throughout the years of ART scale-up \cite{MaxART2}.
+\par
+Considering these data, I modelled the yearly ART initiation rate among eligible diagnosed PLHIV as:
+effectively $\tau = 0$ in 2003, gradually increasing to 1.5~(0.5,~3.0) by 2010;
+then to 9~(6,~12) by 2012; and stabilizing at 12 by 2018.
+This maximum rate of $\tau = 12$ corresponds to
+a mean effective delay of one month between diagnosis and ART initiation;
+this value was chosen in part to avoid numerical instability
+when solving the model with very high rates.
+\paragraph{Group Differences}
+In 2011, conditional ART coverage (among diagnosed) was greater among men versus women
+(Table~\ref{tab:targ.cascade}),
+suggesting greater ART initiation among men versus women.
+Yet, unconditional ART coverage (among PLHIV, regardless of diagnosis)
+were approximately equal (31.4 and 33.2\%, respectively),
+and so conditional differences may be explained by the fact that
+women were more likely to be diagnosed at an earlier HIV stage via antenatal care,
+and thereafter not yet eligible for ART.
+Thus, I assumed no differences in ART initiation among men versus women.
+A similar mechanism could partially explain
+differences in conditional coverage between FSW versus women overall (36.9 versus 48.0\%),
+as FSW were more slightly likely to know their status (74.1 versus 69.1\%).
+However, FSW face unique barriers to accessing ART
+related to stigma and material insecurity \cite{Lancaster2016};
+as such, I sampled a relative rate for ART initiation among FSW from [0.5,~1] (uniform prior).
+% TODO: remove in later years?
+%---------------------------------------------------------------------------------------------------
+\subsubsection{ART Failure}\label{model.par.cascade.fail}
+The modelled virally un-suppressed state ($c=5$) reflects any combination of
+treatment failure (\ie due to resistance mutations),
+discontinuation, or loss to follow-up (LTFU) after achieving viral suppression.
+The model does not explicitly simulate emergence and/or transmission of drug resistance,
+nor multiple unique ART regimens.
+As of 2016, resistance mutations to at least 1 of 3 drugs in combination regimens
+were identified in 10\% ART-naive PLHIV in eSwatini,
+and 16\% PLHIV with prior ART exposure \cite{WHO2021HIVDR}.
+However, the extent to which these individual mutations can cause
+complete treatment failure remains unclear. % TODO: SM or RK can help?
+Additionally, while transmissible resistance mutations could become more prevalent over time,
+emergence of new drugs (\eg Dolutegravir)
+can combat the population-level impacts of this resistance \cite{Hauser2019}.
+\par
+All available data suggests that retention in ART care
+--- \ie not discontinued or LTFU ---
+has improved over time in eSwatini \cite{NERCHA2014a,NERCHA2018a,SHIMS2}.
+Assuming an exponentially-distributed retention time
+(consistent with inherent compartmental modelling assumptions),
+I averaged the available data \cite[Table~6]{NERCHA2018a}
+to calculated the effective yearly ART attrition rate as:
+16.5\% in 2008, 13.8\% in 2010, 14.1\% in 2012, and 8.3\% in 2014.
+One-year LTFU was reported as 1\% in 2016 \cite{SHIMS2},
+but it's not clear whether this definition was consistent with the earlier estimates.
+Many measures of LTFU may also overestimate true LTFU
+by failing to account for transfers between clinics and deaths \cite{Fox2018,Wilkinson2015};
+it's not clear whether the reported measures for eSwatini account for transfers or deaths.
+\par
+LTFU was estimated to be 1.3 times higher among men versus women in South Africa \cite{Fox2018},
+which would be consistent with observed lower viral suppression among men versus women on ART
+in eSwatini (Table~\ref{tab:targ.cascade}) \cite{Fox2018}.
+The same study estimated that LTFU did not significantly differ
+by the modelled CD4-strata \cite{Fox2018}.
+No estimates of LTFU were available for FSW specifically in eSwatini,
+but among 354 FSW on ART in \cite{EswIBBS2022} (2021),
+103 knew the results of viral load monitoring in p12m,
+of whom only 8 self-reported undetectable viral load.
+Such data may again reflect the unique barriers to accessing ART faced by FSW \cite{Lancaster2016}.
+\par
+Considering all of the above data, I assumed:
+a yearly rate of viral un-suppression $\zeta$ among non-FSW women of
+10\% until 2010, decreasing to 3\% by 2018;
+plus relative rates for men: [1,~1.5], and FSW: [1,~2] (uniform priors).
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Viral Re-suppression}\label{model.par.cascade.retx}
+The rate of viral re-suppression $\sigma'$ aims to reflect the average delay associated with
+the steps of switching regimens (in case of treatment failure), or
+the steps of re-engaging in HIV care (in case of LTFU).
+\par
+For treatment failure, viral un-suppression must first be identified.
+Availability of viral load monitoring in eSwatini was limited until at least 2010 \cite{EswMOH2010},
+but incorporated into standard of care by 2015 (yearly testing) \cite{EswMOH2015}.
+Without viral load testing, treatment failure can still be indicated clinically \cite{EswMOH2010}.
+After suspecting treatment failure, at least three months of additional monitoring
+is typically required to rule-out issues of adherence \cite{EswMOH2010,EswMOH2015,EswMOH2018},
+before another regimen is started.
+Moreover, second/third-line regimen options
+were limited in eSwatini until at least 2014 \cite{NERCHA2014}.
+Upon switching to an improved regimen, I assume that viral suppression occurs
+at the same rate as among ART-naive PLHIV (see \sref{model.par.art}).
+\par
+For LTFU, no data directly indicate the average duration out of care in eSwatini.
+A recent model-based analysis of Kenyan data \cite{Bakoyannis2020} suggests
+an average between 8 months and 2 years.
+Considering large-scale, multisectorial efforts to improve ART care in eSwatini,
+it is likely that duration out of care has declined since 2010.
+Thus, I sampled the initial rate of viral re-suppression $\sigma'$ from
+a gamma prior with 95\% [0.5,~1.0], which was doubled over 2010--2018.
+I assumed no differences between groups.
