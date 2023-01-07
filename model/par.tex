@@ -15,8 +15,11 @@ and the \emph{aggregated} strata $c = 2,3$
 (the aggregating operation is context-dependent, \eg sum for probabilities).
 Additionally, the indices $sihc$ from Table~\ref{tab:model.dims} denote ``self'' strata,
 whereas $s'i'h'c'$ denote ``other'' strata --- \ie individuals' partners.%
-\footnote{In the code: R uses one-based indexing, which match the notation here directly,
-  while Python uses zero-based indexing, which therefore appear as $i \rightarrow i-1$ in the code.}
+\footnote{\label{foot:code.note}%
+  In the code: R uses one-based indexing, which match the notation here directly,
+  while Python uses zero-based indexing, which therefore appear as $i \rightarrow i-1$ in the code.
+  Also, the model code reorders states in the ART Cascade dimension for efficiency,
+  with $c={}$1:~Undiagnosed; 2:~Diagnosed; 3:~Virally~Un-suppressed; 4:~On~ART; 5:~Virally~Suppressed.}
 \input{model/par.fsw}
 \input{model/par.beta}
 \input{model/par.hiv}

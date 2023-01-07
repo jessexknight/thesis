@@ -250,7 +250,7 @@ but the sum squared error from all equations can be minimized.
 The odds ratios $\varphi$ were then defined as follows, including sampling distributions.
 \begin{figure}
   \centering
-  \includegraphics[scale=.8]{model-wp-adj}
+  \includegraphics[scale=.8]{model.wp.adj}
   \caption{Illustration of how women (and equivalently men)
     are reallocated between union/partners in p12m strata
     based on odds ratios $\varphi$}
@@ -587,13 +587,7 @@ median age of first marriage and proportions ever remarried were
 such data may not capture non-marital secondary unions.
 Thus, I assumed 5--20\% of unions among EmaSwati aged 50--54 were secondary.
 Further assuming an exponential distribution for
-the proportion of enduring partnerships $\rho$ versus time $t$:
-\begin{equation}\label{eq:exp.decay}
-  \begin{aligned}
-       \rho &= 1 - \exp{(-\lambda\,t)} \\
-    \lambda &= - \log{(1-\rho)} / t
-  \end{aligned}
-\end{equation}
+the proportion of enduring partnerships $\rho$ versus time $T$ per \eqref{eq:exp.decay},
 I defined $\rho \in (0.56, 0.71), t = 52 - 26 = 26$ years, yielding
 an effective partnership termination rate of $\lambda \in (1.32, 2.23)\%$ per year, and
 an effective partnership duration of $\delta_{p_{1}} = \lambda^{-1} \in (45, 76)$ years.
@@ -625,7 +619,7 @@ Rural Tanzania \cite{Nnko2004},
 and four cities in Kenya, Zambia, Benin, and Cameroon \cite{Ferry2001}.
 Based on these data, I defined a gamma prior distribution for
 the mean duration of casual partnerships $\delta_{p_{2}}$ with 95\%~CI (0.25,~1.5) years,
-roughly consistent with prior models \cite{Johnson2009}
+roughly consistent with prior models \cite{Johnson2009}.
 \paragraph{Sex Work Partnerships}
 As noted in \sref{model.par.sw.part}, duration of occasional sex work partnerships
 is ill defined, but can be defined to comprise a single sex act with $F_{p_{3}}\delta_{p_{3}} = 1$.

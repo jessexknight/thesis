@@ -15,7 +15,7 @@
 \renewcommand{\textfraction}{.15}
 \renewcommand{\floatpagefraction}{.67}
 % footnotes
-\usepackage[marginal]{footmisc}
+\usepackage[marginal,bottom]{footmisc}
 \addtolength{\skip\footins}{1pc plus 5pt minus 2pt}
 \setlength{\footnotesep}{1ex}
 % sections
@@ -95,8 +95,8 @@
   \parbox{#1\linewidth}{\footnotesize#2}}
 % acronyms & symbols
 \usepackage{xspace,pifont}
-\newcommand{\eg}{\textit{e.g.,}\xspace}
-\newcommand{\ie}{\textit{i.e.,}\xspace}
+\newcommand{\eg}{{e.g.,}\xspace}
+\newcommand{\ie}{{i.e.,}\xspace}
 \newcommand{\ttilde}{\raisebox{-.75ex}{\textasciitilde}}
 \newcommand{\hivp}{HIV$+$\xspace}
 \newcommand{\hivn}{HIV$-$\xspace}
@@ -113,6 +113,8 @@
 \newcommand{\hreftt}[2][https://]{\href{#1#2}{\texttt{#2}}}
 \newcommand{\sref}[1]{\S\,\ref{#1}}
 \renewcommand{\eqref}[1]{Eq.~(\ref{#1})}
+\newcommand{\ifempty}[3]{\if\relax\detokenize{#1}\relax#2\else#3\fi}
+\newcommand{\cdf}[2]{\ifempty{#2}{CD4\,$>$\,#1}{\ifempty{#1}{}{#1\,$<$\,}CD4\,$<$\,#2}}
 % itemize & enumerate
 \usepackage{enumitem}
 \setitemize{itemsep=0pt,topsep=0pt}

@@ -11,6 +11,7 @@ four partnership types ($p$), and two types of sex acts ($a$).
   \caption{Overview of model dimensions and stratifications}
   \label{tab:model.dims}
   \input{model/tab.dims}
+  \floatfoot{\centering See footnote \ref{foot:code.note} regarding indices in the code.}
 \end{table}
 \par
 Sexual activity groups were defined to reflect
@@ -33,28 +34,27 @@ lower and higher risk clients of FSW.
 \par
 Four types of sexual partnerships are modelled,
 with different levels of condom use and expected durations:
-% TODO: finalize durations
-long-term/spousal partnerships ($p=1$, lowest condom use, 12--25 years \cite{??}); % Morris2009a
-short-term partnerships ($p=2$, medium condom use, 1--6 months \cite{??}); % Johnson2006,Morris2009a
+long-term/spousal partnerships ($p=1$, lowest condom use, 14--19 years);
+short-term partnerships ($p=2$, medium condom use, 3--18 months);
 one-off new/occasional sex work partnerships ($p=3$, highest condom use, 1 sex act);
-and regular sex work partnerships ($p=4$, medium condom use, 2--24 months [assumed]).
-Figure~\ref{fig:model-risk} illustrates
+and regular sex work partnerships ($p=4$, medium condom use, 2--24 months).
+Figure~\ref{fig:model.risk} illustrates
 the modelled activity groups and possible partnership types between them.
 \begin{figure}
   \begin{subfigure}{\linewidth}
-    \includegraphics[scale=.8]{model-risk}
+    \includegraphics[scale=.8]{model.risk}
     \caption{Activity groups and partnership types}
-    \label{fig:model-risk}
+    \label{fig:model.risk}
   \end{subfigure}
   \begin{subfigure}{\linewidth}
-    \includegraphics[scale=.8]{model-hiv}
+    \includegraphics[scale=.8]{model.hiv}
     \caption{HIV states}
-    \label{fig:model-hiv}
+    \label{fig:model.hiv}
   \end{subfigure}
   \begin{subfigure}{\linewidth}
-    \includegraphics[scale=.8]{model-cascade}
+    \includegraphics[scale=.8]{model.cascade}
     \caption{ART cascade states}
-    \label{fig:model-cascade}
+    \label{fig:model.cascade}
   \end{subfigure}
   \caption{Model structure and transitions}
   \label{fig:model}
@@ -62,18 +62,20 @@ the modelled activity groups and possible partnership types between them.
     Low: lowest activity; Med: medium activity;
     LR/HR: lower/higher risk; FSW: female sex workers; Clients: of FSW;
     CD4: CD4+ T-cell count per mm\tsup{3};
-    Not shown: turnover amongst activity groups in (\subref{fig:model-risk}).}
+    Not shown: turnover amongst activity groups in (\subref{fig:model.risk}).}
 \end{figure}
 \par
 HIV infection is stratified into
-acute-HIV and stages defined by CD4 count (Figure~\ref{fig:model-hiv})
+acute-HIV and stages defined by CD4 count (Figure~\ref{fig:model.hiv})
 to reflect changes in mortality~\cite{Mangal2017},
-historical ART eligibility~\cite{EswUNGASS2010,MaxART2018},
+historical ART eligibility~\cite{EswMOH2006,EswMOH2010,EswMOH2015,EswMOH2018},
 and, with CD4 as a proxy for viral load, infectiousness~\cite{Boily2009}.
-The modelled ART cascade (Figure~\ref{fig:model-cascade})
+The modelled ART cascade (Figure~\ref{fig:model.cascade})
 includes the major steps associated with the ``90-90-90'' targets,
-plus a generic ``unlinked'' state reflecting any combination of
-treatment failure, discontinuation, or loss to follow-up.
+plus a generic ``virally un-suppressed'' state reflecting any combination of
+treatment failure, discontinuation, or loss to follow-up after achieving viral suppression.
+Loss to follow-up prior to viral suppression is not explicitly modelled,
+but subsumed into the rates of ART initiation and viral suppression.
 %===================================================================================================
 \subsection{Initialization \& Solving}\label{model.init}
 The first cases of HIV and AIDS in eSwatini
@@ -92,7 +94,7 @@ exogenous infection of 0.01\% (\ttilde\,24) individuals in the model,%
   % TODO: discuss possible effects?
 distributed across activity groups in proportion to their size, comprising:
 % TODO: maybe among highest activity instead?
-5\% acute HIV ($h=2$), 65\% with CD4 $>$ 500 ($h=3$) and 30\% with 350 $<$ CD4 $<$ 500 ($h=4$),
+5\% acute HIV ($h=2$), 65\% with \cdf{500}{} ($h=3$) and 30\% with \cdf{350}{500} ($h=4$),
 all undiagnosed ($c=1$).%
 \footnote{In compartmental models, the numbers of individuals in each state (compartment)
   need not be whole numbers.}
