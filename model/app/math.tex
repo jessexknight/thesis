@@ -26,13 +26,13 @@ overlaid on the density distribution $f\,(x\mid\theta)$; \eg Figure~\ref{fig:dis
   \includegraphics[width=.6\linewidth]{distr-fit}
   \caption{Example distribution fitting validation plot}
   \label{fig:distr.fit}
-  \floatfoot{Beta distribution fit to $\{q_{2.5} = .05, q_{97.5} = .30\}$;
+  \floatfoot{BAB distribution fit to $\{q_{2.5} = .05, q_{97.5} = .30\}$;
     blue solid lines: target quantiles $q_i$;
     red dotted lines: distribution quantiles $Q(p_i\mid\theta)$;
     red solid line: density distribution $f\,(x\mid\theta)$.}
 \end{figure}
 %===================================================================================================
-\subsection{Continuous Approximation of the Binomial Distribution}\label{app.model.math.binom}
+\subsection{Beta Approximation of the Binomial Distribution}\label{app.model.math.bab}
 Numerous model parameters and calibration targets represent population proportions.
 Such proportions can be estimated as $\rho = n / N$, where
 $N$ is the sample size and $n$ is the number of individuals with the characteristic of interest.
@@ -44,7 +44,7 @@ However, \eqref{eq:binom} is only defined for discrete values of $n$.
 It is more convenient to have a continuous distribution for $\rho$,
 for sampling parameters and evaluating the likelihood of calibration targets,
 since compartmental models can have non-whole-number population sizes.
-For this purpose, I use a beta approximation of the binomial distribution:
+For this purpose, I use a beta approximation of the binomial distribution (BAB):
 \begin{equation}\label{eq:beta}
   p(\rho) =
     \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\,\Gamma(\beta)}\,
@@ -58,8 +58,7 @@ $N = \{10,20,40\}$ and $\rho = \{0.01,0.1,0.5\}$.
 \begin{figure}
   \centering
   \includegraphics[width=.8\linewidth]{betabin}
-  \caption{Approximation of the binomial distribution
-    with the beta distribution}
+  \caption{Beta approximation of the binomial distribution (BAB)}
   \label{fig:betabin}
 \end{figure}
 %===================================================================================================

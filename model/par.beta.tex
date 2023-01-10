@@ -141,7 +141,7 @@ use consistent definitions (\eg any GUD in p12m),
 then the time-averaged effect can be applied without need to estimate GUD episode duration.
 As such, I applied factors for increased susceptibility and infectiousness due to GUD
 in accordance with group-specific p12m GUD prevalence (see \sref{model.par.tm.gud}),
-with 95\%~CI (1.43,~15) (skew normal distribution) and (1.03,~5.69) (gamma), respectively.
+with median 95\%~CI (1.43,~15) and (1.03,~5.69) (gamma priors), respectively.
 %===================================================================================================
 \subsection{Prevalence of Transmission Modifiers}\label{model.par.tm}
 %---------------------------------------------------------------------------------------------------
@@ -222,14 +222,14 @@ condom use in anal sex is approximately 79~(66,~94)\% that of condom use in vagi
   after assuming binomial-distributed proportions.}
 In eSwatini \cite{Baral2014,EswKP2014}, relative condom use in anal sex vs vaginal sex
 ranged from 44\% among new clients in 2011 to 88\% among regular clients in 2014.
-So, I sampled relative condom use in anal vs vaginal sex from a beta prior distribution
+So, I sampled relative condom use in anal vs vaginal sex from a BAB prior distribution
 with 95\%~CI: (50,~95)\%.
 \paragraph{Sampling \& Trends}
 While levels of condom use reported by men and women do not always agree,
 the levels should agree in simulated partnerships.
 To reflect uncertainty due to the discrepancy,
 I sampled condom use for each year and partnership type
-from beta prior distributions having 95\%~CI
+from BAB prior distributions having 95\%~CI
 that spans the range of estimates from men and women (where applicable),
 including the widest points of all confidence intervals.
 I assume that condom use was effectively zero in 1980 \cite{SFHS1988}.
@@ -240,7 +240,7 @@ for all sampled parameter values.
 For each available year, I simultaneously sample condom use for all partnership types,
 and samples failing the condition are discarded.
 As illustrated in \sref{app.model.math.jsam}, this sampling strategy
-minimizes differences between the prior and posterior (sampled) distributions.
+minimizes differences between the prior and sampled-with-constraint distributions.
 For each partnership type, I then smoothly interpolate
 between sampled levels of condom use over the available years
 using monotone piecewise cubic interpolation \cite{Fritsch1980}.
@@ -265,7 +265,7 @@ thus, self-reported STI symptoms among FSW may overestimate p12m GUD prevalence.
 Approximately 50\% and 25\% of FSW reported STI symptoms in 2011 and 2014, respectively.
 Reflecting uncertainty related to self-reported estimates, STI vs GUD, and sampling bias,
 I sampled p12m GUD prevalence among lower risk FSW from
-a beta distribution with 95\%~CI (10,~40)\%.
+a BAB distribution with 95\%~CI (10,~40)\%.
 Per analysis in \sref{model.par.fsw}, I assumed that STI (and thus GUD) prevalence was
 approximately 3~(1.5,~5) times higher among higher risk FSW (gamma prior),
 with an upper bound of 100\%.
