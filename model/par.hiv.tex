@@ -96,14 +96,14 @@ and half this (25\%) reduction before achieving VLS ($c=3$).
 Rates of HIV diagnosis $\delta$, ART initiation $\tau$, viral un-suppression $\zeta$
 (including treatment failure, discontinuation, or loss to follow-up),
 and viral re-suppression $\sigma'$ (Figure~\ref{fig:model.cascade})
-were defined to reflect historical trends and ART eligibility for eSwatini.
-These rates were further calibrated to reproduce observed cascade attainment over time in eSwatini
+were defined to reflect historical trends and ART eligibility for Eswatini.
+These rates were further calibrated to reproduce observed cascade attainment over time in Eswatini
 (\eg proportion on ART among those diagnosed with HIV).
 Similar to condom use, rates were interpolated between specified years
 using monotone piecewise cubic interpolation \cite{Fritsch1980}.
 %----------------------------------------------------------------------------------------------------
 \subsubsection{HIV Diagnosis}\label{model.par.cascade.dx}
-Multiple eSwatini studies report the proportions of women and men who tested for HIV in the p12m.
+Multiple Eswatini studies report the proportions of women and men who tested for HIV in the p12m.
 However, this proportion may not directly reflect the yearly rate of diagnosis,
 because individuals may test more frequently based on their perceived risk \cite{Witzel2017}.
 Indeed, EmaSwati living with HIV were more likely to have previously tested for HIV in
@@ -126,7 +126,7 @@ with separate time-varying \emph{relative} rates defined for FSW and men.
 Confidence intervals for relative rates were assumed using
 a standard deviation of 0.2 for FSW and 0.1 for men (gamma priors).
 \par
-Early HIV testing in eSwatini was mainly available to pregnant women via antenatal clinics,
+Early HIV testing in Eswatini was mainly available to pregnant women via antenatal clinics,
 though a small number of youth and men also accessed HIV testing services \cite{EswHPC1998,HSRC2004}.
 Based on antenatal clinic data \cite{EswUNGASS2010},
 I modelled a gradual increase in rates of HIV diagnosis among women
@@ -169,7 +169,7 @@ Rates of ART initiation $\tau$ were modelled to reflect
 time-varying eligibility, availability, loss to follow-up,
 and differences between sex/activity groups.
 \paragraph{Eligibility}
-Historical ART eligibility in eSwatini has generally followed
+Historical ART eligibility in Eswatini has generally followed
 the evolving World Health Organization (WHO) guidelines
 \cite{WHO2003ART,WHO2007ART,WHO2013ART,WHO2016ART}.
 Initial eligibility included one of \cite{EswMOH2006}:
@@ -215,7 +215,7 @@ South Africa \cite[Table~4]{Badri2004} and Saudi Arabia \cite[Table~2]{Edathodu2
 I assumed that roll-out of eligibility changes in 2010, 2015, and 2017
 each occurred over a 1-year period.
 \paragraph{Availability and Initiation}
-ART first became available in eSwatini in late 2003
+ART first became available in Eswatini in late 2003
 via a one-hospital pilot project \cite{NERCHA2012}.
 Early ART scale-up was modest, with 31 facilities offering ART by the end of 2009 \cite{CDC2013ART};
 however, this number increased rapidly
@@ -260,7 +260,7 @@ discontinuation, or loss to follow-up (LTFU) after achieving viral suppression.
 The model does not explicitly simulate emergence and/or transmission of drug resistance,
 nor multiple unique ART regimens.
 As of 2016, resistance mutations to at least 1 of 3 drugs in combination regimens
-were identified in 10\% ART-naive PLHIV in eSwatini,
+were identified in 10\% ART-naive PLHIV in Eswatini,
 and 16\% PLHIV with prior ART exposure \cite{WHO2021HIVDR}.
 However, the extent to which these individual mutations can cause
 complete treatment failure remains unclear. % TODO: SM or RK can help?
@@ -270,7 +270,7 @@ can combat the population-level impacts of this resistance \cite{Hauser2019}.
 \par
 All available data suggests that retention in ART care
 --- \ie not discontinued or LTFU ---
-has improved over time in eSwatini \cite{NERCHA2014a,NERCHA2018a,SHIMS2}.
+has improved over time in Eswatini \cite{NERCHA2014a,NERCHA2018a,SHIMS2}.
 Assuming an exponentially-distributed retention time
 (consistent with inherent compartmental modelling assumptions),
 I averaged the available data \cite[Table~6]{NERCHA2018a}
@@ -280,14 +280,14 @@ One-year LTFU was reported as 1\% in 2016 \cite{SHIMS2},
 but it's not clear whether this definition was consistent with the earlier estimates.
 Many measures of LTFU may also overestimate true LTFU
 by failing to account for transfers between clinics and deaths \cite{Fox2018,Wilkinson2015};
-it's not clear whether the reported measures for eSwatini account for transfers or deaths.
+it's not clear whether the reported measures for Eswatini account for transfers or deaths.
 \par
 LTFU was estimated to be 1.3 times higher among men versus women in South Africa \cite{Fox2018},
 which would be consistent with observed lower viral suppression among men versus women on ART
-in eSwatini (Table~\ref{tab:targ.cascade}) \cite{Fox2018}.
+in Eswatini (Table~\ref{tab:targ.cascade}) \cite{Fox2018}.
 The same study estimated that LTFU did not significantly differ
 by the modelled CD4-strata \cite{Fox2018}.
-No estimates of LTFU were available for FSW specifically in eSwatini,
+No estimates of LTFU were available for FSW specifically in Eswatini,
 but among 354 FSW on ART in \cite{EswIBBS2022} (2021),
 103 knew the results of viral load monitoring in p12m,
 of whom only 8 self-reported undetectable viral load.
@@ -304,21 +304,21 @@ the steps of switching regimens (in case of treatment failure), or
 the steps of re-engaging in HIV care (in case of LTFU).
 \par
 For treatment failure, viral un-suppression must first be identified.
-Availability of viral load monitoring in eSwatini was limited until at least 2010 \cite{EswMOH2010},
+Availability of viral load monitoring in Eswatini was limited until at least 2010 \cite{EswMOH2010},
 but incorporated into standard of care by 2015 (yearly testing) \cite{EswMOH2015}.
 Without viral load testing, treatment failure can still be indicated clinically \cite{EswMOH2010}.
 After suspecting treatment failure, at least three months of additional monitoring
 is typically required to rule-out issues of adherence \cite{EswMOH2010,EswMOH2015,EswMOH2018},
 before another regimen is started.
 Moreover, second/third-line regimen options
-were limited in eSwatini until at least 2014 \cite{NERCHA2014}.
+were limited in Eswatini until at least 2014 \cite{NERCHA2014}.
 Upon switching to an improved regimen, I assume that viral suppression occurs
 at the same rate as among ART-naive PLHIV (see \sref{model.par.art}).
 \par
-For LTFU, no data directly indicate the average duration out of care in eSwatini.
+For LTFU, no data directly indicate the average duration out of care in Eswatini.
 A recent model-based analysis of Kenyan data \cite{Bakoyannis2020} suggests
 an average between 8 months and 2 years.
-Considering large-scale, multisectorial efforts to improve ART care in eSwatini,
+Considering large-scale, multisectorial efforts to improve ART care in Eswatini,
 it is likely that duration out of care has declined since 2010.
 Thus, I sampled the initial rate of viral re-suppression $\sigma'$ from
 a gamma prior with 95\% [0.5,~1.0], which was doubled over 2010--2018.
