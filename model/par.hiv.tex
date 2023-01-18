@@ -36,11 +36,17 @@ Viral suppression via antiretroviral therapy (ART) influences
 the probability of HIV transmission, as well as rates of HIV progression and HIV-related mortality.
 The model considers individuals on ART before ($c=3$) and after ($c=4$)
 achieving full viral load suppression (VLS), as defined by undetectable HIV RNA in blood samples.
-Among retained patients initiating ART, time to VLS
+Among retained patients initiating ART (see \sref{model.par.cascade.tx} for rates), time to VLS
 is usually described as ``within 6 months'' \cite{Thompson2012}.
-More specifically, \citet{Mujugira2016} estimate the median time to VLS as 3 months,
-yielding an estimated \emph{mean} duration for $c=3$ of 4.3 months (see \sref{app.model.math.exp}),
-and thus $\sigma \approx 2.77$ per year.
+\citet{Mujugira2016} estimated the median time to VLS as 3.1 [IQR: 2.8,~5.5] months
+from 1592 HIV serodiscordant couples;
+however this time may be underestimated due to the trial conditions and population.
+The distribution of time to VLS (Figure~1 in \cite{Mujugira2016}) also featured a heavy tail,
+suggesting heterogeneity in time to VLS (see \sref{model.par.cascade.dx} for implications).
+For example, time to VLS may be prolonged due to social and economic barriers to care
+\cite{Dlamini-Simelane2017,Horter2019}.
+Considering these data, I sampled the time to VLS (duration in cascade state $c=3$)
+from a gamma distribution with 95\%~CI (0.33,~1.0) years.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Probability of HIV Transmission on ART}\label{model.par.art.beta}
 All available evidence suggests that viral suppression by ART to undetectable levels
@@ -69,16 +75,16 @@ half the reduced infectiousness of $c=3$, yielding 95\%~CI: (0.50,~0.83).
 Effective ART stops CD4 cell decline and results in some CD4 recovery \cite{Battegay2006,Lawn2006}.
 Most CD4 recovery occurs within the first year of treatment \cite{Battegay2006}.
 Due to the limited number of modelled treatment states,
-I model this initial recovery to be associated with the 4.3-month pre-VLS ART state ($c=3$).
+I model this initial recovery to be associated with the pre-VLS ART state ($c=3$).
 \citet{Lawn2006,Gabillard2013} estimate an increase of between 25--39 cells/mm\tsup{3} per month
 during the first 3 months of treatment.
-Since HIV states $h=4,5,6$ correspond to 150, 150, and 200-wide CD4 strata,
-I model rates of movement along \hunprog during pre-VLS ART ($c=3$) as
-0.20, 0.20, 0.17 per month, respectively.
 After initial increases, CD4 recovery is modest and plateaus.
 \citet{Battegay2006} report approximate increases of
 22.4 cells/mm\tsup{3} per year between years 1 and 5 on ART.
-Thus, I model rates of movement along \hunprog after VLS ($c=4$) as 0.15 per year.
+Since HIV states $h=4,5,6$ correspond to 150, 150, and 200-wide CD4 strata,
+I model rates of movement along \hunprog as
+0.167, 0.167, 0.125 per month, respectively, during pre-VLS ART ($c=3$) and
+0.1 per year after VLS ($c=4$).
 \par
 Since higher CD4 states are modelled to have lower mortality rates (see \sref{model.par.hiv.mort}),
 the modelled recovery of CD4 cells via ART described above implicitly affords a mortality benefit.
@@ -106,9 +112,9 @@ using monotone piecewise cubic interpolation \cite{Fritsch1980}.
 Multiple Eswatini studies report the proportions of women and men who tested for HIV in the p12m.
 However, this proportion may not directly reflect the yearly rate of diagnosis,
 because individuals may test more frequently based on their perceived risk \cite{Witzel2017}.
-Indeed, EmaSwati living with HIV were more likely to have previously tested for HIV in
+Indeed, EmaSwati living with HIV were more likely to have reported previously testing for HIV in
 2006 \cite[Table~14.9]{SDHS2006}, 2011 \cite[Table~5]{SHIMS1T}, and 2016 \cite[Table~7.3]{SHIMS2}.
-Another consideration is that the proportion tested in p12m
+Additionally, the proportion tested in p12m
 likely underestimates the \emph{rate} of testing due to repeat testers.
 Assuming an exponentially-distributed time spent untested in the period under consideration
 (consistent with inherent compartmental modelling assumptions),
@@ -120,12 +126,29 @@ from the proportion tested $\rho$ over period $T$ via:
     \lambda &= - \log{(1-\rho)} / T
   \end{aligned}
 \end{equation}
-HIV diagnosis rates over time $\delta$ were then parameterized based on testing rates
-using non-FSW women as a reference group,
+Moreover, \cite{Behanzin2013} found approximately 70\% underreporting of ever testing for HIV
+in face-to-face interviews versus anonymous polling booth surveys,
+with consistent results across married and unmarried women and men.
+\par
+Yet, preliminary model calibration
+using reported HIV testing rates (with 95\%~CI) described below as HIV diagnosis rates directly
+caused the model to overestimate \hivp status awareness versus the available data
+(see \sref{model.cal.targ.cascade}, Table~\ref{tab:targ.cascade}).
+This apparent discrepancy between reported population-level testing rates and \hivp status awareness
+is in fact common, and could be explained by testing rate heterogeneity \cite{Maheu-Giroux2019a}
+--- \ie the existance of ``fixed'' sub-populations
+who test frequently and those who test rarely or never.
+Without further stratifying the modelled population along this testing frequency dimension,
+it is impossible to capture this heterogeneity directly.
+However, an alternative solution is to reduce modelled HIV diagnosis rates
+to reproduce the available data on \hivp status awareness via model calibration.
+To this end, I parameterized HIV diagnosis rates over time based on reported testing rates (below),
+with a global reduction factor $f \sim \opname{Unif}(0.5,1)$.
+I further specified diagnosis rates using non-FSW women as a reference group,
 with separate time-varying \emph{relative} rates defined for FSW and men.
 Confidence intervals for relative rates were assumed using
 a standard deviation of 0.2 for FSW and 0.1 for men (gamma priors).
-\par
+\paragraph{HIV Testing Rates}
 Early HIV testing in Eswatini was mainly available to pregnant women via antenatal clinics,
 though a small number of youth and men also accessed HIV testing services \cite{EswHPC1998,HSRC2004}.
 Based on antenatal clinic data \cite{EswUNGASS2010},
@@ -140,16 +163,19 @@ By 2006, $\rho = {}$21.9~(20.6,~23.3)\% of women and 8.9~(7.8,~10.0)\% of men
 had tested for HIV and received the results in p12m \cite{SDHS2006}%
 \footnote{Unless otherwise noted, \shortquote{tested for HIV} will imply
   \shortquote{and received the results} throughout this section.}
---- relative rate: 0.377~(0.207,~0.597).
+--- relative rate for men vs women: 0.377~(0.207,~0.597).
 Further scale-up of HIV testing began in 2006 via provider-initiated testing
 and improved integration with the general health care system \cite{NERCHA2012}.
 Between 2007 and 2010, such efforts
 doubled the number of testing locations (119 to 241) and
 tripled the number of total yearly tests (53,000 to 154,000) \cite{NERCHA2009,NERCHA2012}.
-By 2011, $\rho = {}$50.1\% of women, 31.7\% of men, and 61.7~(55.6,~67.5)\% of FSW
-had tested for HIV in p12m \cite{SHIMS1T,Baral2014},
-yielding testing rates of $\lambda = {}$0.709, 0.384, and 0.962 per year, respectively
---- relative rate: 0.542~(0.364,~0.755) for men, and 1.365~(1.084,~1.849) for FSW.
+By 2011, an estimated $\rho = {}$46.8\% of women, 28.4\% of men, and 61.7~(55.6,~67.5)\% of FSW
+had tested for HIV in p12m \cite{SHIMS1T,Baral2014},%
+\footnote{The adjustment for missing ages 15--17 in \cite{SHIMS1T} from \sref{model.cal.targ.prev}
+  was applied to the reported 50.1\% of women and 31.7\% of men aged 18--49 who tested in p12m,
+  assuming 20\% of women and 10\% of men aged 15--17 tested in p12m.}
+yielding testing rates of $\lambda = {}$0.631, 0.333, and 0.962 per year, respectively
+--- relative rates: 0.529~(0.352,~0.743) for men, and 1.521~(1.206,~1.980) for FSW.
 \par
 % TODO? 2014 eNSF KP programs started
 % TODO? Testing Reasonably consistent across age groups \cite[Figure~7.3.A]{SHIMS2}
@@ -157,8 +183,10 @@ Phase~1 of the MaxART program \cite{MaxART1} ran from 2011 to 2014,
 with a primary objective to increase HIV testing.
 An estimated 284,680 people were reached with 389,658 tests by the end of Phase~1 (2014).
 By 2016, 57.1\% of women and 47.8\% of men had tested in p12m \cite{SHIMS2},
-yielding testing rates of $\lambda = {}$0.846 and 0.650 per year, respectively
---- relative rate: 0.770~(0.587,~0.978) for men.
+yielding testing rates of $\lambda = {}$0.846 and 0.650 per year, respectively.
+The relative rate for men increased to 0.770~(0.587,~0.978);
+however, this increase was \emph{not} applied (2011 relative rate maintained)
+to improve model fit (see \sref{model.cal}).
 In 2014 \cite{EswKP2014} and 2020 \cite{EswIBBS2022}
 approximately $\rho = {}$75\% of FSW had tested in p12m ($\lambda = 1.386$)
 as such, I applied a relative rate of 1.62,~(1.29,~2.07) for 2016.
@@ -254,6 +282,7 @@ as such, I sampled a relative rate for ART initiation among FSW from [0.5,~1] (u
 % TODO: remove in later years?
 %---------------------------------------------------------------------------------------------------
 \subsubsection{ART Failure}\label{model.par.cascade.fail}
+% TODO: add Jobanputra2015
 The modelled virally un-suppressed state ($c=5$) reflects any combination of
 treatment failure (\ie due to resistance mutations),
 discontinuation, or loss to follow-up (LTFU) after achieving viral suppression.
@@ -295,8 +324,8 @@ Such data may again reflect the unique barriers to accessing ART faced by FSW \c
 \par
 Considering all of the above data, I assumed:
 a yearly rate of viral un-suppression $\zeta$ among non-FSW women of
-10\% until 2010, decreasing to 3\% by 2018;
-plus relative rates for men: [1,~1.5], and FSW: [1,~2] (uniform priors).
+15\% until 2010, decreasing to 5\% by 2018;
+plus relative rates for men and FSW: [1,~1.5] (uniform priors).
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Viral Re-suppression}\label{model.par.cascade.retx}
 The rate of viral re-suppression $\sigma'$ aims to reflect the average delay associated with
@@ -311,7 +340,7 @@ After suspecting treatment failure, at least three months of additional monitori
 is typically required to rule-out issues of adherence \cite{EswMOH2010,EswMOH2015,EswMOH2018},
 before another regimen is started.
 Moreover, second/third-line regimen options
-were limited in Eswatini until at least 2014 \cite{NERCHA2014}.
+were limited in Eswatini until at least 2014 \cite{Jobanputra2015,NERCHA2014}.
 Upon switching to an improved regimen, I assume that viral suppression occurs
 at the same rate as among ART-naive PLHIV (see \sref{model.par.art}).
 \par
@@ -321,5 +350,5 @@ an average between 8 months and 2 years.
 Considering large-scale, multisectorial efforts to improve ART care in Eswatini,
 it is likely that duration out of care has declined since 2010.
 Thus, I sampled the initial rate of viral re-suppression $\sigma'$ from
-a gamma prior with 95\% [0.5,~1.0], which was doubled over 2010--2018.
+a gamma prior with 95\% [0.5,~1.0], which increased by a factor of 1.5 over 2010--2018.
 I assumed no differences between groups.

@@ -74,8 +74,6 @@ Since each partnership includes only one sex act,
 the frequency of sex $F_{p_{3}}$ and partnership duration $\delta_{p_{3}}$ are ill-defined,
 but can be defined for convenience as
 $F_{p_{3}} = 12$ (per year) and $\delta_{p_{3}} = 1/12$ (years).
-The correction for partnership duration explored in \sref{TODO}
-was not applied to new sex work partnerships. % TODO: double check
 \par
 For \emph{regular} sex work partnerships, uncertainties remain regarding
 partnership duration $\delta_{p_{4}}$, frequency of sex per month $F_{p_{4}}/12$, and
@@ -85,7 +83,7 @@ $C_{p_{4}s_{1}i_{34}}$ should be defined as $N$ directly;
 whereas if $N$ reflects the numbers of unique visits, then
 $C_{p_{4}s_{1}i_{34}}$ should be defined as $N/(F_{p_{4}}/12)$.
 I therefore derived a sampling distribution for $C_{p_{4}s_{1}i_{3}}$ empirically as follows.
-I assumed that $F_{p_{4}}/12$ was 1--4 visits per client per month (uniform),
+I assumed that $F_{p_{4}}/12$ was 0.5--3 visits per client per month (uniform),
 and that a random proportion of respondents ($\rho \in [0,1]$, uniform)
 reported unique clients or unique visits.
 Then, I sampled $N$ from a gamma distribution with mean (95\%~CI) 8.4~(6.0,~11.0)
@@ -93,8 +91,9 @@ Then, I sampled $N$ from a gamma distribution with mean (95\%~CI) 8.4~(6.0,~11.0
 \begin{equation}
   C_{p_{4}s_{1}i_{3}} \sim (\rho)\,N + (1-\rho)\,N\,/\,(F_{p_{4}}/12)
 \end{equation}
-I obtained mean (95\%CI): 6.1~(2.7,~9.7) for $C_{p_{4}s_{1}i_{3}}$,
-yielding 14.7~(7.3,~29.6) total sex acts per month with regular clients among lower risk FSW.
+I obtained mean (95\%CI): 7.0~(3.4,~12.5) for $C_{p_{4}s_{1}i_{3}}$,
+yielding 10.4~(5.6,~22.1) total sex acts per month
+with regular clients among lower risk FSW (prior distribution).
 For higher risk FSW, I sampled the \emph{relative} number of regular clients from
 1.5~(1.3,~1.7) (Table~\ref{tab:fsw.ratios}) as before.
 \paragraph{Clients}
@@ -360,7 +359,7 @@ The analysis above provides no information on these values,
 but the number of partners in p12m for the medium activity groups must be at least about 1.5
 to ensure these women and men actually have 2+ partners in p12m.
 Thus, I sampled the number of casual partners among women in the medium activity group
-$C_{p_{2}s_{1}i_{2}}$ from a gamma distribution with 95\%~CI (1.2,~3).
+$C_{p_{2}s_{1}i_{2}}$ from a gamma distribution with 95\%~CI (1.2,~2).
 As before, I calculated the numbers of casual partnerships among men in the medium activity group
 $C_{p_{2}s_{2}i_{2}}$ to balance total casual partnerships.
 %---------------------------------------------------------------------------------------------------
@@ -415,6 +414,9 @@ reflecting uncertainty in estimated projections \cite{UNWPP2019}.
 Finally, I calculated the population entry rate as $\nu = g + \mu$.
 These parameter values were informally validated by comparison of model outputs with
 Swati population sizes for ages 15--49 from \cite{WorldBank}.
+The distribution of activity groups among individuals \emph{entering} the model, denoted $E_{si}$,
+is different from the distribution among individuals \emph{currently} in the model $P_{si}$,
+but $E_{si}$ is computed automatically as described below in \sref{model.par.turnover.act}.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Activity Group Turnover}\label{model.par.turnover.act}
 In addition to overall population turnover (entry/exit from the open population),
@@ -424,40 +426,59 @@ and reported duration in higher activity contexts can be short \cite{Scorgie2012
 Previous modelling has shown that activity group turnover (sometimes called ``episodic risk'')
 can strongly influence parameter fitting and intervention impact \cite{Henry2015,Knight2020}.
 I model turnover from activity group $si$ to $si'$ as a constant rate $\theta_{sii'}$,
-which implies an assumption that duration in group $si$ is
+which implies an assumption that (in the absence of HIV) duration in group $si$ is
 exponentially distributed with mean $D_{si}$ \cite{Roberts2015}:
 \begin{equation}\label{eq:model.par.dur}
   D_{si} = \frac{1}{\mu + \sum_{i'}\theta_{sii'}}
 \end{equation}
 where $\mu$ is the overall exit rate from \sref{model.par.turnover.bd}.
-As shown previously \cite{Knight2020}, for fixed activity group sizes,
-the elements of $\theta_{sii'}$ may be uniquely resolved by
-specifying $N_{i}(N_{i}-1)$ non-redundant constraints,
-where specifying $D_{si}$ is one such constraint.
+As shown previously \cite{Knight2020}, the relative sizes of each sex-activity group $P_{si}$
+can be maintained at fixed values by satisfying the following ``mass-balance'' equation:
+\begin{equation}
+  \nu P_{si} = \nu E_{si} + \sum_{i'} \theta_{si'i} P_{si'} - \sum_{i} \theta_{sii'} P_{si}
+\end{equation}
+Specific turnover rates $\theta_{sii'}$ and entrant activity group sizes $E_{si}$
+can then be uniquely resolved by specifying
+$N_i\,(N_i-1) = 12$ non-redundant and compatible constraints,
+where specifying each $D_{si}$ is one such constraint.
 \paragraph{Duration Selling Sex}
-The unadjusted reported years selling sex among Swati FSW were
-median 4~(IQR: 2--7) in 2011 \cite{Baral2014} and 5~[3,~9] in 2014 \cite{EswKP2014},
-with raw distributions shown in Figure~\ref{fig:fsw.yss.raw}.
-RDS-adjusted proportions of FSW who report selling sex for 0--2, 3--5, 6--10, and 10+ years
-are also given for 2011 \cite{Baral2014} and 2021 \cite{EswIBBS2022}.
-The adjusted proportions are not significantly different between 2011 and 2021,
-and indicate fewer years selling sex versus the unadjusted proportions,
-which would be consistent with
-challenges in reaching women in the first year(s) of sex work \cite{Cheuk2020}.
-I fit an exponential distribution to these adjusted proportions (Figure~\ref{fig:fsw.yss.adj}),
-yielding an estimated distribution mean ${\lambda}^{-1}$
-of mean (95\%~CI) 4.2~(3.5,~5.3) years selling sex.
+The FSW survey data for 2011 \cite{Baral2014}, 2014 \cite{EswKP2014}, and 2021 \cite{EswIBBS2022}
+include questions on the respondent's current age, and age of first selling sex;
+the difference between these ages can then define a ``duration selling sex''.
+Using this approach, the unadjusted years selling sex among Swati FSW were
+median [IQR]: 4~[2,~7] in 2011 and 5~[3,~9] in 2014,
+with histograms shown in Figure~\ref{fig:fsw.yss.raw}.
+However, such estimates have three sources of bias:
+sampling error, censoring, and measurement error.
 \par
-Even after RDS-adjustment,
-the reported years selling sex in a cross sectional survey
-underestimate the eventual duration in sex work among respondents
-by a factor $f \le 2$,
-because respondents will continue selling sex after the survey;
-see \sref{app.model.math.dur} for an example and further discussion.
-Thus, the overall mean duration in sex work is given by $\bar{D} = f\,\lambda^{-1}$.
-Taking $f \sim \opname{Unif}(1.5,2)$,
-$\bar{D}$ is estimated to have mean (95\%~CI) of 7.4~(5.7,~9.6).
-This estimate is slightly longer than the pooled estimate for Africa up to 2010 \cite{Fazito2012}.
+Sampling error was addressed through RDS-adjustment in 2011 and 2021,
+yielding estimates of the proportions of FSW
+who have been selling sex for 0--2, 3--5, 6--10, and 10+ years.
+The adjusted proportions are not significantly different between 2011 and 2021, and
+indicate fewer years selling sex versus the unadjusted proportions, which would be consistent with
+challenges in reaching women in the first year(s) of sex work \cite{Cheuk2020}.
+I fit an exponential distribution to the cumulative adjusted proportions
+(Figure~\ref{fig:fsw.yss.adj}), yielding an estimated distribution mean
+${\lambda}^{-1}$ of 4.2~(3.5,~5.3) years.
+However, the reported years selling sex in a cross sectional survey
+will underestimate the eventual duration in sex work among respondents by a factor $f \le 2$,
+because respondents continue selling sex after the survey
+--- \ie the observed duration is right censored
+(see \sref{app.model.math.dur} for derivation and further discussion).
+Thus, the overall mean duration in sex work would be given by $\bar{D} = f\,\lambda^{-1}$.
+Yet, additionally, the current definition of duration selling sex
+includes a hidden assumption that FSW sell sex continuously after starting.
+In fact, 348/777 (45\%) FSW reported having ever stopped selling sex
+in the 2014 survey \cite{EswKP2014} (other surveys did not ask).
+Among these FSW, the expected duration selling sex in the current period
+(\ie since re-starting most recently)
+must be less than half ($\rho < 1/2$) of the durations calculated above.
+Thus, an adjusted overall mean duration can be calculated as
+$\bar{D} = (0.45\,\rho + 0.55)\,f\,\lambda^{-1}$.
+Taking $\rho \sim \opname{Unif}(0.2,0.4)$ and $f \sim \opname{Unif}(1.5,2)$,
+we obtain $\bar{D}$ with mean (95\%~CI): 5.13~(3.87,~6.72),
+similar to the pooled estimate for African FSW up to 2010: 5.5~years~\cite{Fazito2012}.
+\par
 Finally, I assumed that higher risk FSW stay in sex work longer by a factor of
 $R_{D}$ with 95\%~CI (1.54,~3.25) (gamma prior, Table~\ref{tab:fsw.ratios}).
 Thus, durations in sex work among higher risk ($D_{HR}$) and lower risk ($D_{LR}$) FSW
@@ -468,8 +489,7 @@ can be resolved using:
     R_{D} &= D_{HR} / D_{LR}
   \end{aligned}
 \end{equation}
-yielding $D_{LR} \sim 5.8~(4.4,~7.9)$ and $D_{HR} \sim 13.4~(9.3,~19.0)$.
-I fit gamma distributions to these data as priors.
+yielding mean (95\%~CI) $D_{LR}$: 4.07~(2.96,~5.48) and $D_{HR}$: 9.33~(6.30,~13.13) (gamma priors).
 \paragraph{Duration Buying Sex}
 Data to inform the average duration spent buying sex among clients is limited.
 \citet{Fazito2012} estimated mean durations of 4.6--5.5 years
@@ -481,7 +501,7 @@ Estimates ranged from 8.8~(6.5,~11.7)\% of men aged 25--34 who ever bought sex,
 to 2.2~(1.5,~3.2)\% of men aged 35--54 who bought sex in p12m.
 Based on these data, I defined a gamma prior distribution for the duration buying sex
 with 95\%~CI (4,~15) years, applied to both higher and lower risk clients.
-\paragraph{Wider Population}
+\paragraph{Lowest \& Medium Activity Groups}
 Data on individual-level changes to numbers of non-sex work partners in p12m
 is even more sparse than data related to sex work;
 so, it's unclear to what extent individuals move between the lowest and medium activity groups
@@ -495,25 +515,31 @@ the \emph{same} individuals have multiple partnerships each year.
 Reflecting this uncertainty, I sampled
 the rate of turnover from medium to lowest activity for both women and men
 from a gamma prior with 95\%~CI (5,~50)\% per year.
-I modelled an equal number of individuals turning over from lowest to medium activity per year
-(the actual rate depends on the activity group sizes).
-\par
-Next, I defined the distribution of activity groups from which women enter and exit sex work.
+\paragraph{Additional Turnover Assumptions}
+The above assumptions specify 3 key constraints for each sex:
+two durations $D_{si}$ and one turnover rate $\theta_{sii'}$.
 Since higher and lower risk FSW (and clients) are conceptualized as mutually exclusive groups,
-I modelled no turnover between these groups.
-Emerging data suggest that entry into sex work can be a fuzzy process
-which may include transactional sex \cite{Cheuk2020,Ma2020}.
-Thus, I assumed that most --- 95\%~CI (50,~90)\% --- of women entering sex work
-originate from the medium activity group (BAB prior).
-I further assumed that exiting sex work is unlikely to be
+I modelled no turnover between these groups:
+$\theta_{si_{3}i'_{4}} = \theta_{si_{4}i'_{3}} = 0$ (+2~constraints).
+Next, since FSW often enter sex work shortly after sexual debut \cite{Cheuk2020,Ma2020},
+and sexual activity is roughly constant or slightly declining with age \cite{Todd2009},
+I assumed that $E_{si} = f\,P_{si}$,%
+\footnote{Subject to $f \le (\nu - \mu + D_{si}^{-1})\,\nu^{-1}$,
+  which can be derived from Eq.~(10) in \cite{Knight2020}.}
+with $f = 2$ for FSW, $f = 1.5$ for clients,
+and $f = 1$ for medium activity women and men (+3~constraints);
+then $f < 1$ for the lowest activity women and men is computed automatically.
+Finally, since exiting sex work is unlikely to be
 an abrupt transition to monogamous or zero sexual activity \cite{Scorgie2012,Learmonth2015},
-and thus modelled an equal proportion of women \emph{exiting} sex work
-transitioning to the medium activity group.
-To maintain activity group sizes, I modelled
-an equal number of women entering and exiting sex work each year.
-Finally, in the absence of relevant data, I made equal assumptions regarding clients,
-except that the proportion of men entering from and exiting to the medium risk group
-was sampled from a BAB distribution with 95\%~CI (25,~90)\%.
+I further assumed that (50,~90)\% of women exiting sex work
+transition to the medium activity group (BAB prior) (+2~constraints).
+In the absence of relevant data, I made a similar assumption regarding clients,
+with (25,~90)\% former clients transitioning to the medium activity group.
+These $10 < 12$ total constraints then allow two degrees of freedom to resolve
+the values of $\theta_{sii'}$ and $E_{si}$.
+A non-negative solution to the system of constraints is solved as described in \cite{Knight2020},%
+\footnote{Using \hreftt{docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.nnls.html}}
+repeated at each timestep as $\nu$ varies with time.
 %===================================================================================================
 \subsection{Sex Frequency \& Partnership Duration}\label{model.par.sex}
 %---------------------------------------------------------------------------------------------------
@@ -530,11 +556,14 @@ Median sex frequency per partnership-year in 1998 Rakai, Uganda was
 approximately 90 acts with the ``more frequent'' of concurrent partners, and
 approximately 20 acts with the ``less frequent'' \cite{Morris2010}.
 Considering these data,
-I sample the number of sex acts per year in both main/spousal and casual partnerships
-($F_{p_{1}} = F_{p_{2}}$) from a gamma prior distribution with 95\%~CI (13,~156).
+I sampled the number of sex acts per year in main/spousal partnerships
+$F_{p_{1}}$ from a gamma prior distribution with 95\%~CI (13,~156),
+and a relative rate for casual partnerships $F_{p_{2}}/F_{p_{1}} \sim \opname{Unif}(0.25,1)$.
 As described in \sref{model.par.sw.part},
 I defined $F_{p_{3}} = 12$ for occasional sex work partnerships,
-and $F_{p_{4}} \sim \opname{Unif}(12,48)$ for regular sex work partnerships.
+and $F_{p_{4}} \sim \opname{Unif}(6,36)$ for regular sex work partnerships.
+I also constrained samples of $F_{p_{4}}$ such that
+higher risk FSW never have commercial sex more than twice daily, on average.
 % Coital frequency is not thought to be influenced by concurrent partnerships \cite{Delva2013}.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Anal Sex}\label{model.par.sex.anal}
@@ -544,15 +573,15 @@ Among all FSW, the proportion of ``average sex acts per week'' that were anal (v
 However, a previous coital diary study in neighbouring KwaZulu-Natal suggested
 much higher proportions were anal \cite{Ramjee1999},
 and face-to-face interview survey design may result in under-reporting \cite{Owen2020}.
-\citet{Owen2017} review studies of anal sex in South Africa, and estimate that
-0.6--16.5\% of sex acts among the general population are anal, vs
-0.6--29.2\% among higher-risk populations.%
-\footnote{``Higher-risk'' populations in \cite{Owen2017} were defined as:
-  \shortquote{STI clinic patients, FSW, their clients, and HIV-infected individuals}.}
+Owen et al. review studies of anal sex in South Africa, and estimate that
+0.6--16.5\% of sex acts among the general population are anal \cite{Owen2017}, vs
+2.4--15.9\% among FSW \cite{Owen2020}.
 To reflect this greater uncertainty, the proportions of sex acts which are anal
 in main/spousal and casual partnerships are sampled
-from a BAB prior distribution with 95\%~CI (0.6,~16.5)\%,
-and likewise for occasional and regular sex work partnerships with 95\%~CI (0.6,~29.2)\%.
+from a gamma prior distribution with 95\%~CI (0.6,~16.5)\%,
+and likewise for occasional and regular sex work partnerships with 95\%~CI (2.4,~15.9)\%.
+Finally, I ensure a greater proportion of anal sex
+in sex work versus main/spousal and casual partnerships per \sref{app.model.math.jsam}.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Partnership Duration}\label{model.par.sex.dur}
 As explored in Chapter~\ref{foi}, the durations of sexual partnerships
@@ -672,7 +701,7 @@ Three advantages of \eqref{eq:mix.eps} are:
 which are formed among like-with-like versus randomly; and
 (3) it guarantees that $M$ will be symmetric, even if $P$ and/or $C$ change.
 Yet, the simplicity of this approach precludes implementation of more complex mixing patterns,
-although some modest extensions can be made \cite{TODO}.
+although some modest extensions can be made \cite{??}.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Log-Linear Mixing}
 A more general  approach to mixing is developed in \cite{Morris1991}.
@@ -721,7 +750,7 @@ thus 15--20 iterations is often sufficient to come within computational precisio
 Since the partnerships matrix $M_{pii'}$ should adapt to reflect changes in
 group sizes (\eg due to HIV mortality) or numbers of partnerships offered (\eg see \sref{foi.TODO}),
 the matrix must be re-computed at every time point.
-Thus, the procedure \eqref{eq:foi.mix.Mn} could be considered computationally expensive.
+Thus, the procedure \eqref{eq:mix.iter} could be considered computationally expensive.
 However, this approach provides great flexibility and interpretability
 to specify complex mixing patterns via the odds matrix $\Phi_{pii'}$.
 \par
