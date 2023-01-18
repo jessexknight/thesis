@@ -19,8 +19,10 @@ whereas $s'i'h'c'$ denote ``other'' strata --- \ie individuals' partners.%
 \footnote{\label{foot:code.note}%
   In the code: R uses one-based indexing, which match the notation here directly,
   while Python uses zero-based indexing, which therefore appear as $i \rightarrow i-1$ in the code.
-  Also, the model code reorders states in the ART Cascade dimension for efficiency,
+  Also, the model code reorders states in the ART Cascade dimension for computational efficiency,
   with $c={}$1:~Undiagnosed; 2:~Diagnosed; 3:~Virally~Un-suppressed; 4:~On~ART; 5:~Virally~Suppressed.}
+Finally, I re-use several dummy variables throughout the chapter:
+$\rho$ for proportions, $\lambda$ for rates, $T$ for time periods, and $f$ for constants.
 \input{model/par.fsw}
 \input{model/par.beta}
 \input{model/par.hiv}
