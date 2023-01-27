@@ -93,7 +93,7 @@
   {art/fig/}
   {conc/fig/}}
 % tables
-\usepackage{booktabs,longtable,multicol,multirow}
+\usepackage{booktabs,longtable,multicol,multirow,csvsimple}
 \newcommand{\tn}[1]{\textsuperscript{\rlap{\,#1}}}
 \newcommand{\tnt}[2][*]{\textsuperscript{#1\,}{#2}}
 \newcommand{\tabitem}{{\textbullet}\hskip.5em}
@@ -102,6 +102,18 @@
 \newcommand{\vsig}{\llap{$<$}0.001\s\xspace}
 \newcommand{\floatfoot}[2][1]{\vskip\abovecaptionskip\par
   \parbox{#1\linewidth}{\footnotesize#2}}
+\makeatletter
+\let\olongtable\longtable\let\oendlongtable\endlongtable
+\renewenvironment{longtable}[5][]{%
+  \begingroup\singlespacing#1
+  \olongtable[#1]{#2}\caption{#3} \\
+  \toprule #4 \\ \midrule \endfirsthead
+  \multicolumn{\LT@cols}{l}{\dots~continued} \\ \midrule #4 \\ \midrule \endhead
+  \midrule \multicolumn{\LT@cols}{l}{continued~\dots} \endfoot
+  \bottomrule \noalign{\vskip\abovecaptionskip} \multicolumn{\LT@cols}{l}{%
+    \begin{minipage}{\dimexpr\linewidth-2\tabcolsep} \footnotesize#5 \end{minipage}} \endlastfoot
+  }{\oendlongtable\endgroup}
+\makeatother
 % acronyms & symbols
 \usepackage{xspace,pifont}
 \newcommand{\eg}{{e.g.,}\xspace}
