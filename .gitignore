@@ -1,6 +1,7 @@
 # general
 .old/
 .tmp/
+.coa/
 # tex
 *.aux
 *.bbl

@@ -1,11 +1,12 @@
 \input{markdraft}
 % fonts
-\usepackage{mathtools,bm,newtxsf}
+\usepackage{mathtools,bm,newtxsf,underscore}
 \usepackage[tabular,osf,sfdefault]{gandhi}
 \usepackage[italic]{mathastext}
 \usepackage[scale=.8]{FiraMono}
 \usepackage{microtype}\DisableLigatures{shape=sc}
 \let\obfseries\bfseries\renewcommand\bfseries{\boldmath\obfseries}
+\usepackage[T1]{fontenc}
 % spacing
 \frenchspacing
 \setlength{\parskip}{1ex}
@@ -17,14 +18,19 @@
 % footnotes
 \usepackage[marginal,bottom]{footmisc}
 \addtolength{\skip\footins}{1pc plus 5pt minus 2pt}
-\setlength{\footnotesep}{1ex}
 % sections
 \setcounter{secnumdepth}{4}
 \renewcommand{\paragraph}[1]{\par\textbf{#1.}\ }
-% maketitle crest
+% frontmatter
 \usepackage{xpatch}
 \xpatchcmd{\maketitle}{\@title}%
   {\@title\vfill\vfill\includegraphics[height=5cm]{ut-crest}\vfill}{}{}
+\newcommand{\singlespaced}[1]{%
+  \pretocmd{#1}{\begingroup\singlespacing}{}{}%
+  \apptocmd{#1}{\endgroup}{}{}}
+\singlespaced{\tableofcontents}
+\singlespaced{\listoffigures}
+\singlespaced{\listoftables}
 % headers
 \makeatletter
 \renewcommand{\headerstyle}[1]{\footnotesize\textsc{#1}}
@@ -42,6 +48,7 @@
   sorting=none,
   doi=false,
   url=true,
+  isbn=false,
   natbib=true,
   backend=biber,
   % defernumbers=true, % TODO (?)
@@ -52,7 +59,9 @@
 \renewcommand*{\multicitedelim}{\addcomma\,}
 \DeclareSourcemap{\maps[datatype=bibtex]{%
   \map{\step[fieldset=abstract,null]}}}
-\def\printchapterbibliography{\clearpage
+\DeclareSourcemap{\maps[datatype=bibtex]{%
+  \map{\step[typesource=techreport,typetarget=report]}}}
+\def\printchapterbibliography{\par%\clearpage % TODO
   \printbibliography[heading=subbibliography,resetnumbers=true]}
 \DeclareFieldFormat{url}{\url{#1}}
 \renewbibmacro{in:}{}
@@ -91,7 +100,7 @@
 \renewcommand{\d}{\hphantom{0}}
 \newcommand{\s}{\rlap{\tsup{*}}}
 \newcommand{\vsig}{\llap{$<$}0.001\s\xspace}
-\newcommand{\floatfoot}[2][1]{\vskip\belowcaptionskip\par
+\newcommand{\floatfoot}[2][1]{\vskip\abovecaptionskip\par
   \parbox{#1\linewidth}{\footnotesize#2}}
 % acronyms & symbols
 \usepackage{xspace,pifont}
