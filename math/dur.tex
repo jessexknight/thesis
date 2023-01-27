@@ -1,0 +1,61 @@
+\section{Durations}\label{app.math.dur}
+%===================================================================================================
+\subsection{Exponential Duration Assumption in Compartmental Modedls}\label{app.math.dur.exp}
+Let $\lambda$ be the fixed exit rate from compartment $A$, which is assumed to be homogeneous.
+Then $D \sim \lambda e^{-\lambda D}$ is % TODO: double check this
+the exponentially distributed duration time in the group.
+\paragraph{Mean \& Median Duration}
+The mean duration is $\mu = 1/\lambda$ and the median is $m = \log(2)/\lambda \approx 0.69\,\mu$.
+Thus, if 50\% of individuals progress from compartment $A$ to $B$ by time $\tau$ (median duration),
+the exit rate $\lambda$ is given by $\log(2)/\tau$.
+\paragraph{Collapsing Compartments in Series}
+Let compartments $A$ and $B$ be in series, with exit rates $\lambda_A$ and $\lambda_B$ respectively.
+Collapsing $A$ and $B$ into $AB$ will sum the mean durations: $D_{AB} = 1/\lambda_A + 1/\lambda_B$;
+thus, the exit rate from $AB$ will be $\lambda_{AB} = 1/(1/\lambda_A + 1/\lambda_B)$.
+\paragraph{Collapsing Compartments in Parallel}
+Let compartments $A$ and $B$ be in parallel, with exit rates $\lambda_A$ and $\lambda_B$ respectively.
+Collapsing $A$ and $B$ into $AB$ will sum the exit rates: $\lambda_{AB} = \lambda_A + \lambda_B$;
+thus, the mean duration in $AB$ will be $D_{AB} = 1/(\lambda_A + \lambda_B)$.
+%===================================================================================================
+\subsection{Estimating Duration in Sex Work from Cross Sectional Data}\label{app.math.dur.xs}
+Cross sectional sex work surveys will often ask respondents about their duration in sex work.
+These durations might then be taken to be the average durations in sex work;
+however, this will be an underestimate,
+because respondents will continue selling sex after the survey \cite{Fazito2012}.%
+\footnote{An alternate example would be
+  to take the mean age of a population as the life expectancy!
+  Thanks to Saulius Simcikas and Dr. Jarle Tufto
+  for help identifying and discussing this bias:
+  \hreftt{stats.stackexchange.com/questions/298828}.}
+% This bias parallels challenges to estimating sexual partnership duration \cite{Burington2010}.
+\par
+Figure~\ref{fig:diagram.dur.xs} illustrates a steady-state population
+with 7 women selling sex at any given time.
+The steady-state assumption implies that a women leaving sex work after $\delta$ years
+will be immediately replaced by a women entering sex work
+whose eventual duration will also be $\delta$ years.
+Let $\delta$ be this true duration, and $\delta_s$ be the duration reported in the survey.
+If we assume that the survey reaches women at a random time point during the duration $\delta$,
+then $\delta_s \sim \opname{Unif}(0,\delta)$,
+and the mean reported duration is $E(\delta_s) = \frac{1}{2}E(\delta)$.
+Thus, $E(\delta) = 2 E(\delta_s)$ would be an estimate of the true mean duration from the sample.
+In reality, sex work surveys may be more likely to reach
+women who have already been selling sex for several months or years,
+due to delayed self-identification as sex worker \cite{Cheuk2020}.
+Thus, we would expect that $f = E(\delta) / E(\delta_s) \in (1,2)$,
+which we can use to compute the mean exit rate as described in \sref{app.model.math.exp}.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{diagram.dur.xs}
+  \caption{Illustrative steady-state population of 7 FSW,
+    with varying true durations in sex work $\delta$,
+    versus the observed durations in sex work $\delta_s$ via cross-sectional survey.}
+  \label{fig:diagram.dur.xs}
+\end{figure}
+\par
+Another observation we can make from Figure~\ref{fig:diagram.dur.xs} is that
+women who sell sex longer are more likely to be captured in the survey.
+That is, while the sampled durations are representative of women who \emph{currently} sell sex,
+these durations are biased high versus the population of women who \emph{ever} sell sex.
+It's not clear whether this observation is widely understood
+and kept in mind when interpreting sex work survey data.

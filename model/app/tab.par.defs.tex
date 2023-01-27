@@ -1,0 +1,19 @@
+\begin{longtable}{rl}
+  {\label{tab:par.defs}Definitions of calibrated parameters}
+  {Parameter & Definition}{%
+    FSW: female sex worker;
+    p12m: past 12 months;
+    $\beta$: per-act probability of HIV transmission;
+    GUD: any genital ulcer disease in p12m;
+    ART: antiretroviral therapy;
+    VLS: viral load suppression;
+    additional relative (aR): relative value beyond one, \eg $R = 1.5 \rightarrow aR = 0.5$;
+    prevalence interpolator (iP): \eg $P_0 = 0.2, P_1 = 0.4, iP_x = 0.5 \rightarrow P_x = 0.3$;
+    all rates in per-year;
+    all durations in years;
+    all parameters reflect stratum averages;
+    \tnt[a,b,c,d,e]{parameters with relational sampling constraints
+      (see \sref{app.model.cal.constr})}.}
+  \csvreader[head to column names]{model/app/par.defs.csv}{}
+    {\small\texttt{\parameter}~\tn{\constr} & \footnotesize\definition\\}
+\end{longtable}

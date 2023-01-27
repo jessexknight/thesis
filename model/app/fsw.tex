@@ -1,0 +1,65 @@
+\section{Female Sex Worker Data}\label{app.model.fsw}
+%===================================================================================================
+\subsection{FSW Risk Factor Variable Distributions}\label{app.model.fsw.vars}
+Figures~\ref{fig:fsw.f.2011}~and~\ref{fig:fsw.f.2014}.
+\begin{figure}[h]
+  \foreach \vkey/\vtitle in {
+    age/Age,
+    y.ss/Years selling sex,
+    sw.income.mo/Monthly sex work income,
+    p.nonpay.mo/Non-paying partners,
+    cli.new.mo/Monthly new clients,
+    cli.reg.mo/Monthly regular clients,
+    cond.v.npp.alw/Non-paying condom use,
+    cond.v.new.alw/New client condom use,
+    cond.v.reg.alw/Regular client condom use,
+    sti.symp/Any STI symptoms past year}{%
+  \begin{subfigure}{0.33\linewidth}
+    \includegraphics[width=\linewidth]{{fsw-survey-2011-lr-\vkey}.pdf}
+    \caption{\vtitle}
+  \end{subfigure} }
+  \caption{HIV risk factor variables among higher vs lower risk FSW in Eswatini,
+    as estimated by multivariate logistic regression model
+    for serologic HIV status (2011)}
+  \label{fig:fsw.f.2011}
+\end{figure}
+\begin{figure}[h]
+  \foreach \vkey/\vtitle in {
+    age/Age,
+    y.ss/Years since first sold sex,
+    sw.income.mo/Monthly sex work income,
+    p.nonpay.mo/Non-paying partners,
+    cli.new.mo/Monthly new clients,
+    cli.reg.mo/Monthly regular clients,
+    cond.v.npp.last/Non-paying condom use,
+    cond.v.new.last/New client condom use,
+    cond.v.reg.last/Regular client condom use,
+    sti.symp/Any STI symptoms past year}{%
+    \begin{subfigure}{0.33\linewidth}
+      \includegraphics[width=\linewidth]{{fsw-survey-2014-lr-\vkey}.pdf}
+      \caption{\vtitle}
+  \end{subfigure} }
+  \caption{HIV risk factor variables among higher vs lower risk FSW in Eswatini,
+    as estimated by multivariate logistic regression model
+    for self-reported HIV status (2014)}
+  \label{fig:fsw.f.2014}
+\end{figure}
+%===================================================================================================
+\subsection{Years Since First Sold Sex}\label{app.model.res.fsw.dur}
+Figure~\ref{fig:fsw.yss.raw}.
+Figure~\ref{fig:fsw.yss.adj}.
+\begin{figure}
+  \includegraphics[width=\linewidth]{fsw-yss-hist.pdf}
+  \caption{Years since first sold sex among FSW in Eswatini (unadjusted)}
+  \label{fig:fsw.yss.raw}
+  \floatfoot{Data sources: 2011 \cite{Baral2014}, 2014 \cite{EswKP2014}}
+\end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[width=.7\linewidth]{fsw-yss-adj.pdf}
+  \caption{Cumulative distribution of years selling sex among FSW in Eswatini (RDS-adjusted)}
+  \label{fig:fsw.yss.adj}
+  \floatfoot{The line and shaded region illustrate
+    the median and 95\%~CI of sampled exponential distributions, respectively;
+    calibration data from \cite{Baral2014} (2011) and \cite{EswIBBS2022} (2011).}
+\end{figure}
