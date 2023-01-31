@@ -15,6 +15,8 @@
 \renewcommand{\bottomfraction}{.7}
 \renewcommand{\textfraction}{.15}
 \renewcommand{\floatpagefraction}{.67}
+\widowpenalty9999
+\clubpenalty9999
 % footnotes
 \usepackage[marginal,bottom]{footmisc}
 \addtolength{\skip\footins}{1pc plus 5pt minus 2pt}
@@ -118,15 +120,19 @@
 \usepackage{xspace,pifont}
 \newcommand{\eg}{{e.g.,}\xspace}
 \newcommand{\ie}{{i.e.,}\xspace}
+\newcommand{\vs}{{vs.}\xspace}
 \newcommand{\ttilde}{\raisebox{-.75ex}{\textasciitilde}}
 \newcommand{\hivp}{HIV$+$\xspace}
 \newcommand{\hivn}{HIV$-$\xspace}
 \newcommand{\hivu}{HIV\,?\,\xspace}
 \newcommand{\wph}{\textsc{wph}\xspace}
 \newcommand{\bph}{\textsc{bph}\xspace}
+\newcommand{\ir}{\textsc{ir}\xspace}
+\newcommand{\ip}{\textsc{ip}\xspace}
 \newcommand{\yes}{\ding{51}\xspace}
 \newcommand{\no}{\ding{55}\xspace}
 \renewcommand{\ast}{\raisebox{-.5ex}{*}\xspace}
+\newcommand{\p}{\bar{p}}
 \newcommand{\Ro}[1][]{R_0^{\,\mathnormal{#1}}}
 % short text styles
 \newcommand{\opname}[1]{\operatorname{#1}\,}

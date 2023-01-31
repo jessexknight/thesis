@@ -3,7 +3,7 @@
 \subsection{Proof that $B_{\wph} \ge B_{\bph}$}\label{app.math.misc.xph}
 In \sref{foi.prior.bhom}, I claimed that
 the per-partnership probability of transmission $B$ is larger for
-within- versus between-partnership heterogeneity
+within- \vs between-partnership heterogeneity
 --- $B_{\wph} \ge B_{\bph}$, from Eqs.~(\ref{eq:B.wph})~and~(\ref{eq:B.bph}), respectively ---
 given the same set of transmission modifiers $R_f, \alpha_f$.
 Here is a proof of that claim:
@@ -14,11 +14,12 @@ Here is a proof of that claim:
   \end{aligned}
 \end{equation}
 Let $x_f = {(1 - \beta_f)}^A$; then
-\begin{equation}
+\begin{equation}\label{eq:AM-GM}
   \prod_f {x_f}^{\alpha_f} \le \sum_f \alpha_f x_f
 \end{equation}
 Since $\sum_f \alpha_f = 1$ and $\alpha_f \in [0,1]$ are effectively weights,
-this is the weighted arithmetic mean--geometric mean (AM-GM) inequality \cite{Aldaz2009}.
+\eqref{eq:AM-GM} is the weighted arithmetic mean--geometric mean (AM-GM) inequality \cite{Aldaz2009}.
 In fact, \citet{Aldaz2009} further shows that the the gap between $B_{\wph}$ and $B_{\bph}$
-increases with the $\alpha_f$-weighted variance in ${\beta_f}^{\frac12}$ (although not exactly),
+increases with the $\alpha_f$-weighted variance in ${\beta_f}^{\frac12}$
+(although the increase is not exact),
 which supports the results of \sref{foi.exp.xph} mathematically.

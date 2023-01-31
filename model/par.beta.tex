@@ -3,13 +3,13 @@
 I parameterized the overall probability of transmission per sex act $\beta$ as
 the product of a base rate $\beta_0$,
 and independent relative effects corresponding to multiple factors.
-Such factors (indexed $k$) included:
+Such factors (indexed $f$) included:
 sex act type $a$, condom use, prevalence of circumcision among susceptible men,
 partner HIV infection stage $h'$ and viral suppression via ART $c'$,
 as well as prevalence of STI co-infection/symptoms among both partners.
 Thus, $\beta$ was defined as:
 \begin{equation}\label{eq:model.beta}
-  \beta_{asis'i'h'c'} = \beta_0 \, R_{\beta,k_1} \dots R_{\beta,k_N}
+  \beta_{asis'i'h'c'} = \beta_0 \, R_{\beta,f_1} \dots R_{\beta,f_N}
 \end{equation}
 The impact of each factor (except ART) on the probability of HIV transmission
 is described in the following subsections,
@@ -62,14 +62,14 @@ For \cdf{350}{} ($h=3,4$), I assumed no change from the baseline probability $\b
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Sex Act Types}\label{model.par.beta.sex}
 The model considers vaginal and anal intercourse,
-further stratified by sex (male-to-female/insertive vs female-to-male/receptive).
+further stratified by sex (male-to-female/insertive \vs female-to-male/receptive).
 For vaginal intercourse, evidence for differential risk by sex is mixed,
 with some studies reporting no difference \cite{Wawer2005,Hughes2012},
 and others reporting up to 2-times higher male-to-female ($s'=2,s=1$) transmission
-vs female-to-male ($s'=1,s=2$) \cite{Gregson2002a,Boily2009}.
+\vs female-to-male ($s'=1,s=2$) \cite{Gregson2002a,Boily2009}.
 % TODO: is this supported by Boily2009 for LIC ?? no...
 To reflect this uncertainty, I sampled
-the relative rate of male-to-female vs female-to-male transmission from $\opname{Unif}[1,~2]$;
+the relative rate of male-to-female \vs female-to-male transmission from $\opname{Unif}[1,~2]$;
 in applying this relative rate, both male-to-female and female-to-male transmission probabilities
 were adjusted such that the overall mean was preserved.
 \par
@@ -79,19 +79,19 @@ Analyses in \cite{Baggaley2018} were not stratified by HIV stage,
 so I assumed the same relative rates derived in \sref{model.par.fsw}
 applied equally to vaginal and anal intercourse.
 Overall female-to-male (insertive) per-act transmission probabilities were similar for
-anal intercourse \cite{Baggaley2013} (without ART): 0.14~(0.04,~0.29)\% vs
+anal intercourse \cite{Baggaley2013} (without ART): 0.14~(0.04,~0.29)\% \vs
 vaginal intercourse \cite{Boily2009} (without commercial sex exposure): 0.164~(0.056,~0.481)\%;
 thus I assumed that female-to-male (insertive) transmission probabilities
-for anal vs vaginal intercourse were equal.
+for anal \vs vaginal intercourse were equal.
 By contrast, male-to-female (receptive) per-act transmission probabilities were approximately 10 higher
-in anal intercourse \cite{Baggaley2018} (without ART): 1.67~(0.44,~3.67)\% vs
+in anal intercourse \cite{Baggaley2018} (without ART): 1.67~(0.44,~3.67)\% \vs
 vaginal intercourse \cite{Boily2009} (without commercial sex exposure): 0.143~(0.088,~0.233)\%;
 thus I assumed a fixed 10-fold increase in male-to-female transmission probability
-for anal vs vaginal intercourse.
+for anal \vs vaginal intercourse.
 See \sref{model.par.sex} for sex act frequency within each partnership type.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Circumcision}\label{model.par.beta.circ}
-Relative risk in per-act HIV female-to-male transmission for circumcised vs uncircumcised men
+Relative risk in per-act HIV female-to-male transmission for circumcised \vs uncircumcised men
 via vaginal intercourse has consistently been estimated as
 approximately 0.50, with 95\%~CI spanning (0.29,~0.96) \cite{Boily2009,Hughes2012,Patel2014}.
 Since circumcision status is unrelated to the research question,
@@ -109,7 +109,7 @@ See \sref{model.par.tm.circ} for prevalence of circumcision in Eswatini over tim
 \subsubsection{Condoms}\label{model.par.beta.condom}
 The most recent meta-analysis of condom effectiveness in heterosexual couples by \citet{Giannou2016}
 estimated a relative risk of approximately 0.26~(0.13,~0.43).
-No significant differences were noted between female-to-male vs male-to-female transmission.
+No significant differences were noted between female-to-male \vs male-to-female transmission.
 A recent study among men who have sex with men found
 a similar effect for anal sex \cite{Smith2015}.
 Thus, condom effectiveness was fixed at 74\%.
@@ -163,9 +163,9 @@ I assumed that coverage could reach and plateau at 50--90\% (95\%~CI) by 2050.
 There is minimal evidence of differential condom use by circumcision status \cite{SHIMS1},
 so I assumed no differences.
 Similarly, while circumcision differed by union status in \cite{SHIMS2}
-(\eg 22.1\% circumcised among men in a union vs 31.7\% among men not in a union),
+(\eg 22.1\% circumcised among men in a union \vs 31.7\% among men not in a union),
 differences did not persist after re-stratifying these men
-into groups with 0-1 vs 2+ partners per year, as described in \sref{model.par.nsw}.
+into groups with 0-1 \vs 2+ partners per year, as described in \sref{model.par.nsw}.
 In Zambia, circumcision status was not associated with paying for sex \cite{Carrasco2020}.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Condom Use}\label{model.par.tm.condom}
@@ -204,10 +204,10 @@ or more generally, what proportion of most recent sex acts was with a casual par
 I repeated the back-calculation assuming 5\% and 95\%,
 yielding the confidence intervals shown in Table~\ref{tab:esw.condom.data}.
 Estimates of condom use in non-paying partners were
-lower among FSW vs the wider population in 2011 (20.8\% vs \ttilde32\% ``always''), but
+lower among FSW \vs the wider population in 2011 (20.8\% vs \ttilde32\% ``always''), but
 higher in 2014-16 (80.1\% vs \ttilde55.7\% ``last sex'').
 Therefore, I assumed no differences in condom use
-among FSW vs the wider population for main/spousal or casual partnerships.
+among FSW \vs the wider population for main/spousal or casual partnerships.
 \paragraph{Sex Work}
 All data on sex work partnerships in Eswatini is from FSW (\ie not their clients).
 A 2001 study in Ghana \cite{Cote2004} suggested that
@@ -223,9 +223,9 @@ and defined the lower bound as 20\% of the reported values.
 condom use in anal sex is approximately 79~(66,~94)\% that of condom use in vaginal sex.%
 \footnote{I integrated the reported confidence intervals using the delta method
   after assuming binomial-distributed proportions.}
-In Eswatini \cite{Baral2014,EswKP2014}, relative condom use in anal sex vs vaginal sex
+In Eswatini \cite{Baral2014,EswKP2014}, relative condom use in anal sex \vs vaginal sex
 ranged from 44\% among new clients in 2011 to 88\% among regular clients in 2014.
-So, I sampled relative condom use in anal vs vaginal sex from a BAB prior distribution
+So, I sampled relative condom use in anal \vs vaginal sex from a BAB prior distribution
 with 95\%~CI: (50,~95)\%.
 \paragraph{Sampling \& Trends}
 While levels of condom use reported by men and women do not always agree,
@@ -244,7 +244,7 @@ condom use must be highest in new sex work partnerships, and lowest in main part
 for all sampled parameter values.
 For each available year, I simultaneously sample condom use for all partnership types,
 and samples failing the condition are discarded.
-As illustrated in \sref{app.model.math.jsam}, this sampling strategy
+As illustrated in \sref{app.math.distr.jsam}, this sampling strategy
 minimizes differences between the prior and sampled-with-constraint distributions.
 For each partnership type, I then smoothly interpolate
 between sampled levels of condom use over the available years
@@ -268,7 +268,7 @@ In the wider population \cite{SDHS2006},
 approximately 60\% of women self-reporting any STI symptoms specifically reported GUD in p12m;
 thus, self-reported STI symptoms among FSW may overestimate p12m GUD prevalence.
 Approximately 50\% and 25\% of FSW reported STI symptoms in 2011 and 2014, respectively.
-Reflecting uncertainty related to self-reported estimates, STI vs GUD, and sampling bias,
+Reflecting uncertainty related to self-reported estimates, STI \vs GUD, and sampling bias,
 I sampled p12m GUD prevalence among lower risk FSW from
 a BAB distribution with 95\%~CI (10,~40)\%.
 Per analysis in \sref{model.par.fsw}, I assumed that STI (and thus GUD) prevalence was
@@ -286,7 +286,7 @@ from a uniform distribution spanning [0.2,~1].
 Finally, no Eswatini-specific data are available for clients of FSW,
 but studies in Zimbabwe \cite{Cowan2005}, Senegal \cite{Santo2005} and Zambia \cite{Carrasco2020}
 have found 2.5--3.7 (95\% CI span 1.4--5.0) the odds
-of STI symptoms during the past 6--12 months among clients versus non-clients.
+of STI symptoms during the past 6--12 months among clients \vs non-clients.
 Yet, I assumed that even higher risk clients
 could not have greater GUD prevalence than lower risk FSW.
 Thus, I sampled higher risk client GUD prevalence uniformly between 7\% and that of lower risk FSW,

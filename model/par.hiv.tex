@@ -12,7 +12,7 @@ and treatment via antiretroviral therapy (ART).
 in a simple compartmental model.
 Based on these data, I modelled mean durations ($1/\eta_{h}$) of:%
 \footnote{Assuming exponential distributions for durations in each CD4 state
-  (see \sref{app.model.math.exp} for more details).}
+  (see \sref{app.math.dur.exp} for more details).}
 0.142 years in acute infection ($h=2$, from \sref{model.par.beta.hiv});
 3.35 years in \cdf{500}{} ($h=3$);
 3.74 years in \cdf{350}{500} ($h=4$); and
@@ -93,7 +93,7 @@ However, HIV infection is associated with increased risk of death by non-AIDS ca
 including cardiovascular disease and renal disease \cite{Phillips2008}.
 \citet{Lundgren2015} estimated 61\% reduction in non-AIDS life-threatening events due to ART.
 For the same CD4 strata, \citet{Gabillard2013} also report approximately 2-times higher
-mortality rates within the first year of ART versus thereafter,
+mortality rates within the first year of ART \vs thereafter,
 suggesting that VLS is associated with 50\% mortality reduction independent of CD4 increase.
 Thus, I modelled an additional 50\% reduction in mortality among individuals with VLS ($c=4$),
 and half this (25\%) reduction before achieving VLS ($c=3$).
@@ -127,12 +127,12 @@ from the proportion tested $\rho$ over period $T$ via:
   \end{aligned}
 \end{equation}
 Moreover, \cite{Behanzin2013} found approximately 70\% underreporting of ever testing for HIV
-in face-to-face interviews versus anonymous polling booth surveys,
+in face-to-face interviews \vs anonymous polling booth surveys,
 with consistent results across married and unmarried women and men.
 \par
 Yet, preliminary model calibration
 using reported HIV testing rates (with 95\%~CI) described below as HIV diagnosis rates directly
-caused the model to overestimate \hivp status awareness versus the available data
+caused the model to overestimate \hivp status awareness \vs the available data
 (see \sref{model.cal.targ.cascade}, Table~\ref{tab:targ.cascade}).
 This apparent discrepancy between reported population-level testing rates and \hivp status awareness
 is in fact common, and could be explained by testing rate heterogeneity \cite{Maheu-Giroux2019a}
@@ -163,7 +163,7 @@ By 2006, $\rho = {}$21.9~(20.6,~23.3)\% of women and 8.9~(7.8,~10.0)\% of men
 had tested for HIV and received the results in p12m \cite{SDHS2006}%
 \footnote{Unless otherwise noted, \shortquote{tested for HIV} will imply
   \shortquote{and received the results} throughout this section.}
---- relative rate for men vs women: 0.377~(0.207,~0.597).
+--- relative rate for men \vs women: 0.377~(0.207,~0.597).
 Further scale-up of HIV testing began in 2006 via provider-initiated testing
 and improved integration with the general health care system \cite{NERCHA2012}.
 Between 2007 and 2010, such efforts
@@ -264,18 +264,18 @@ a mean effective delay of one month between diagnosis and ART initiation;
 this value was chosen in part to avoid numerical instability
 when solving the model with very high rates.
 \paragraph{Group Differences}
-In 2011, conditional ART coverage (among diagnosed) was greater among men versus women
+In 2011, conditional ART coverage (among diagnosed) was greater among men \vs women
 (Table~\ref{tab:targ.cascade}),
-suggesting greater ART initiation among men versus women.
+suggesting greater ART initiation among men \vs women.
 Yet, unconditional ART coverage (among PLHIV, regardless of diagnosis)
 were approximately equal (31.4 and 33.2\%, respectively),
 and so conditional differences may be explained by the fact that
 women were more likely to be diagnosed at an earlier HIV stage via antenatal care,
 and thereafter not yet eligible for ART.
-Thus, I assumed no differences in ART initiation among men versus women.
+Thus, I assumed no differences in ART initiation among men \vs women.
 A similar mechanism could partially explain
-differences in conditional coverage between FSW versus women overall (36.9 versus 48.0\%),
-as FSW were more slightly likely to know their status (74.1 versus 69.1\%).
+differences in conditional coverage between FSW \vs women overall (36.9 \vs 48.0\%),
+as FSW were more slightly likely to know their status (74.1 \vs 69.1\%).
 However, FSW face unique barriers to accessing ART
 related to stigma and material insecurity \cite{Lancaster2016};
 as such, I sampled a relative rate for ART initiation among FSW from [0.5,~1] (uniform prior).
@@ -311,8 +311,8 @@ Many measures of LTFU may also overestimate true LTFU
 by failing to account for transfers between clinics and deaths \cite{Fox2018,Wilkinson2015};
 it's not clear whether the reported measures for Eswatini account for transfers or deaths.
 \par
-LTFU was estimated to be 1.3 times higher among men versus women in South Africa \cite{Fox2018},
-which would be consistent with observed lower viral suppression among men versus women on ART
+LTFU was estimated to be 1.3 times higher among men \vs women in South Africa \cite{Fox2018},
+which would be consistent with observed lower viral suppression among men \vs women on ART
 in Eswatini (Table~\ref{tab:targ.cascade}) \cite{Fox2018}.
 The same study estimated that LTFU did not significantly differ
 by the modelled CD4-strata \cite{Fox2018}.
