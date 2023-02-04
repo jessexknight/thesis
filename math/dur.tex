@@ -29,7 +29,7 @@ because respondents will continue selling sex after the survey \cite{Fazito2012}
   \hreftt{stats.stackexchange.com/questions/298828}.}
 % This bias parallels challenges to estimating sexual partnership duration \cite{Burington2010}.
 \par
-Figure~\ref{fig:diagram.dur.xs} illustrates a steady-state population
+Figure~\ref{fig:durs.pop} illustrates a steady-state population
 with 7 women selling sex at any given time.
 The steady-state assumption implies that a women leaving sex work after $\delta$ years
 will be immediately replaced by a women entering sex work
@@ -46,16 +46,121 @@ Thus, we would expect that $f = E(\delta) / E(\delta_s) \in (1,2)$,
 which we can use to compute the mean exit rate as described in \sref{app.math.dur.exp}.
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\linewidth]{diagram.dur.xs}
+  \includegraphics[scale=1]{durs.pop}
   \caption{Illustrative steady-state population of 7 FSW,
     with varying true durations in sex work $\delta$,
     \vs the observed durations in sex work $\delta_s$ via cross-sectional survey.}
-  \label{fig:diagram.dur.xs}
+  \label{fig:durs.pop}
 \end{figure}
 \par
-Another observation we can make from Figure~\ref{fig:diagram.dur.xs} is that
+Another observation we can make from Figure~\ref{fig:durs.pop} is that
 women who sell sex longer are more likely to be captured in the survey.
 That is, while the sampled durations are representative of women who \emph{currently} sell sex,
 these durations are biased high \vs the population of women who \emph{ever} sell sex.
 It's not clear whether this observation is widely understood
 and kept in mind when interpreting sex work survey data.
+%===================================================================================================
+\subsection{Quantifying Partnerships}\label{app.math.dur.qp}
+Similar to \sref{app.math.dur.xs},
+sexual partnerships are often quantified using cross-sectional surveys.
+In this case, respondents are typically asked to report the numbers of unique partners
+during a standardized recall period $\omega$ --- \eg
+\shortquote{How many different people have you had sex with during the past year?}
+Such data can then be used to inform modelled
+rates of partnership change $Q$ and/or numbers of concurrrent partnerships $K$.
+\par
+If partnership duration is long and the recall period is short
+--- including $\omega \approx 0$ for
+\shortquote{Are you currently in a long-term sexual partnership?} ---
+the reported partnerships mostly reflect \emph{ongoing} partnerships,
+and thus $x \approx K$.
+If partnership duration is short and the recall period is long,
+--- including $D \approx 0$ for
+\shortquote{How many one-off sexual partners have you had during the past year?} ---
+the reported partnerships mostly reflect \emph{complete} partnerships,
+and thus $x/\omega \approx Q$.
+However, if partnership duration and recall period are similar in length,
+the reported partnerships reflect a mixture of tail-ends, complete, and ongoing partnerships,
+and thus $x$ overestimates $K$, but $x/\omega$ also overestimates $Q$.
+In summary:
+\begin{itemize}
+  \item $\omega \ll D$: mostly ongoing partnerships;
+  $x \approx K$ (concurrrent)
+  \item $\omega \gg D$: mostly complete partnerships;
+  $x/\omega \approx Q$ (change rate)
+  \item $\omega\,\approx\,D$: some tail-ends, some complete, some ongoing;
+  $x > K$, $x/\omega > Q$ (neither)
+\end{itemize}
+\paragraph{Conceptual Framework}
+I developed an approach to estimate $Q$ and $K$ from $x$ and $\omega$.
+The approach requires the following assumptions
+(although future work could explore more complex/realistic assumptions):
+\begin{itemize}
+  \item partnership duration $D$ is known
+  \item any potential gap $G$ between successive partnerships is known
+  \item partnerships are at steady state and exactly equal, including fixed values for $D$ and $G$
+  \item timing of the survey/recall period is effectively random with respect to partnerships
+\end{itemize}
+Let $T = D + G$ be the total period corresponding to one partnership,
+such that one ``series'' of back-to-back partnerships contributes, on average,
+$D/T$ to the mean number of concurrrent partnerships $K$.
+The number of concurrent series $S$ is a conceptual tool for the population overall,
+which may include fractional values;
+\eg Figure~\ref{fig:durs.obs} illustrates a case with $S = 3.5$.
+We can then define:
+\begin{figure}
+  \centering
+  \includegraphics[scale=1]{durs.obs}
+  \caption{Illustration of conceptual framework for quantifying partnerships
+    from the number reported during a given recall period}
+  \label{fig:durs.obs}
+  \floatfoot{
+    Circle: partnership start; line: ongoing partnership; square: partnership end;
+    black: reported partnership; grey: partnership not reported;
+    dotted line: fractional partnership for population-level average;
+    $s$: partnership series index;
+    $\alpha$: partnership series weight for population-level average;
+    $\omega$/red: recall period;
+    $x$: number of reported partnerships for $\omega$.}
+\end{figure}
+\begin{alignat}{1}
+  Q &= S / T        \label{eq:Q.dur}\\
+  K &= S D / T = QD \label{eq:K.dur}
+\end{alignat}
+Thus, if the number of concurrent series $S$ can be estimated from
+the reported partnerships $x$ during recall period $\omega$,
+then $Q$ and $K$ can be resolved as in Eqs.~(\ref{eq:Q.dur})~and~(\ref{eq:K.dur}).
+\par
+For a single series $s$, the expected number of reported partnerships for the recall period $\omega$
+(including tail-ends, complete, and ongoing partnerships)
+is defined as $e = \mathbb{E}\,[x\mid s]$.
+Drawing on $p(x \mid s,\omega)$ (Figure~\ref{fig:durs.plot}, derivation not shown), we can obtain:
+\begin{equation}\label{eq:e.dur}
+  e = \mathbb{E}\,[x\mid s] = \frac{D + \omega}{T}
+\end{equation}
+which is linear with intercept $D/T$ and slope $\omega/T$.
+The number of concurrrent series is then estimated as the ratio of reported partnerships
+to those expected per series: $S = x/e$.
+\begin{figure}
+  \centering
+  \includegraphics[scale=1]{durs.plot}
+  \caption{Probability of reporting $x$ partnerships for a given recall period $\omega$,
+    fixed partnership duration $D$, gap between partnerships $G$, and partnership in one series.}
+  \label{fig:durs.plot}
+  \floatfoot{%
+    The function is evidently periodic with period $T = D + G$ and offset $G$;
+    the expected value $\mathbb{E}[x \mid s]$ is given in \eqref{eq:e.dur}.}
+\end{figure}
+\paragraph{Example}
+In Figure~\ref{fig:durs.obs},
+partnership duration $D = 3$ years, and gap length $G = 1$ year.
+An example recall period of $\omega = 6$ years is illustrated,
+for which an average of $x = 8$ partnerships would be reported.
+The expected number of reported partnerships per series is $e = (3+6)/(3+1) = 2.25$;
+thus $S = x/e \approx 3.5$,%
+\footnote{In fact, the illustrated value of $x = 8$ is slightly higher than
+  the expected value $\mathbb{E}[x \mid \omega = 6] = 7.875$,
+  due to the arbitrary relative timing of series' shown;
+  taking $x = 7.875$, we obtain $S = 3.5$ exactly.}
+$Q = S/T = 0.875$, and $K = QD = 2.625$.
+Such results can be verified by careful examination of Figure~\ref{fig:durs.obs}.
