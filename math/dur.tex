@@ -61,107 +61,67 @@ It's not clear whether this observation is widely understood
 and kept in mind when interpreting sex work survey data.
 %===================================================================================================
 \subsection{Quantifying Partnerships}\label{app.math.dur.qp}
-% TODO: simplify this as Q = x / (D + \omega), etc...
 Similar to \sref{app.math.dur.xs},
 sexual partnerships are often quantified using cross-sectional surveys.
 In this case, respondents are typically asked to report the numbers of unique partners
-during a standardized recall period $\omega$ --- \eg
+during a standardized recall period $\gamma$ --- \eg
 \shortquote{How many different people have you had sex with during the past year?}
 Such data can then be used to inform modelled
 rates of partnership change $Q$ and/or numbers of concurrrent partnerships $K$.
 \par
 If partnership duration is long and the recall period is short
---- including $\omega \approx 0$ for
+--- including $\gamma \approx 0$ for
 \shortquote{Are you currently in a long-term sexual partnership?} ---
 the reported partnerships mostly reflect \emph{ongoing} partnerships,
-and thus $x \approx K$.
+and thus $C \approx K$.
 If partnership duration is short and the recall period is long,
 --- including $D \approx 0$ for
 \shortquote{How many one-off sexual partners have you had during the past year?} ---
 the reported partnerships mostly reflect \emph{complete} partnerships,
-and thus $x/\omega \approx Q$.
+and thus $C/\gamma \approx Q$.
 However, if partnership duration and recall period are similar in length,
 the reported partnerships reflect a mixture of tail-ends, complete, and ongoing partnerships,
-and thus $x$ overestimates $K$, but $x/\omega$ also overestimates $Q$.
+and thus $C$ overestimates $K$, but $C/\gamma$ also overestimates $Q$.
 In summary:
 \begin{itemize}
-  \item $\omega \ll D$: mostly ongoing partnerships;
-  $x \approx K$ (concurrrent)
-  \item $\omega \gg D$: mostly complete partnerships;
-  $x/\omega \approx Q$ (change rate)
-  \item $\omega\,\approx\,D$: some tail-ends, some complete, some ongoing;
-  $x > K$, $x/\omega > Q$ (neither)
+  \item $\gamma \ll D$: mostly ongoing partnerships;
+  $C \approx K$ (concurrrent)
+  \item $\gamma \gg D$: mostly complete partnerships;
+  $C/\gamma \approx Q$ (change rate)
+  \item $\gamma\,\approx\,D$: some tail-ends, some complete, some ongoing;
+  $C > K$, $C/\gamma > Q$ (neither)
 \end{itemize}
-\paragraph{Conceptual Framework}
-I developed an approach to estimate $Q$ and $K$ from $x$ and $\omega$.
-The approach requires the following assumptions
-(although future work could explore more complex/realistic assumptions):
-\begin{itemize}
-  \item partnership duration $D$ is known
-  \item any potential gap $G$ between successive partnerships is known
-  \item partnerships are at steady state and exactly equal, including fixed values for $D$ and $G$
-  \item timing of the survey/recall period is effectively random with respect to partnerships
-\end{itemize}
-Let $T = D + G$ be the total period corresponding to one partnership,
-such that one ``series'' of back-to-back partnerships contributes, on average,
-$D/T$ to the mean number of concurrrent partnerships $K$.
-The number of concurrent series $S$ is a conceptual tool for the population overall,
-which may include fractional values;
-\eg Figure~\ref{fig:durs.obs} illustrates a case with $S = 3.5$.
-We can then define:
+\par
+I developed an approach to estimate $Q$ and $K$ from $C$ and $\gamma$.
+The approach draws on a similar assumption as in \sref{app.math.dur.xs}:
+that survey timing is effectively random with respect to partnership duration.
+Then, if either end of the recall period would capture an ongoing partnership,
+the intersection point would be, on average, at the partnership mid-point.
+Thus, the recall period is effectively extended
+by half the partnership duration $\delta/2$ on each end, and $\delta$ overall,
+as illustrated in Figure~\ref{fig:durs.partner}.
+As such, we can define $Q$ and $K$ as:
+\begin{alignat}{1}
+  Q &= \frac{C}{\gamma+\delta} \label{eq:C2Q.app}\\
+  K &= \frac{C\delta}{\gamma+\delta} = Q\delta \label{eq:C2K.app}
+\end{alignat}
 \begin{figure}
   \centering
-  \includegraphics[scale=1]{durs.obs}
+  \includegraphics[scale=1]{durs.partner}
   \caption{Illustration of conceptual framework for quantifying partnerships
     from the number reported during a given recall period}
-  \label{fig:durs.obs}
+  \label{fig:durs.partner}
   \floatfoot{
     Circle: partnership start; line: ongoing partnership; square: partnership end;
-    black: reported partnership; grey: partnership not reported;
-    dotted line: fractional partnership for population-level average;
-    $s$: partnership series index;
-    $\alpha$: partnership series weight for population-level average;
-    $\omega$/red: recall period;
-    $x$: number of reported partnerships for $\omega$.}
+    red: reported partnership; grey: partnership not reported;
+    $\gamma$/red: recall period;
+    $\delta$: partnership duration;
+    $C$: number of reported partnerships for $\gamma$.}
 \end{figure}
-\begin{alignat}{1}
-  Q &= S / T        \label{eq:Q.dur}\\
-  K &= S D / T = QD \label{eq:K.dur}
-\end{alignat}
-Thus, if the number of concurrent series $S$ can be estimated from
-the reported partnerships $x$ during recall period $\omega$,
-then $Q$ and $K$ can be resolved as in \eqrefs{eq:Q.dur}{eq:K.dur}.
 \par
-For a single series $s$, the expected number of reported partnerships for the recall period $\omega$
-(including tail-ends, complete, and ongoing partnerships)
-is defined as $e = \mathbb{E}\,[x\mid s]$.
-Drawing on $p(x \mid s,\omega)$ (Figure~\ref{fig:durs.plot}, derivation not shown), we can obtain:
-\begin{equation}\label{eq:e.dur}
-  e = \mathbb{E}\,[x\mid s] = \frac{D + \omega}{T}
-\end{equation}
-which is linear with intercept $D/T$ and slope $\omega/T$.
-The number of concurrrent series is then estimated as the ratio of reported partnerships
-to those expected per series: $S = x/e$.
-\begin{figure}
-  \centering
-  \includegraphics[scale=1]{durs.plot}
-  \caption{Probability of reporting $x$ partnerships for a given recall period $\omega$,
-    fixed partnership duration $D$, gap between partnerships $G$, and partnership in one series.}
-  \label{fig:durs.plot}
-  \floatfoot{%
-    The function is evidently periodic with period $T = D + G$ and offset $G$;
-    the expected value $\mathbb{E}[x \mid s]$ is given in \eqref{eq:e.dur}.}
-\end{figure}
-\paragraph{Example}
-In Figure~\ref{fig:durs.obs},
-partnership duration $D = 3$ years, and gap length $G = 1$ year.
-An example recall period of $\omega = 6$ years is illustrated,
-for which an average of $x = 8$ partnerships are reported.
-The expected number of reported partnerships per series is $e = (3+6)/(3+1) = 2.25$;
-thus $S = x/e \approx 3.5$,%
-\footnote{In fact, the illustrated value of $x = 8$ is slightly higher than
-  the expected value $\mathbb{E}[x \mid \omega = 6] = 7.875$,
-  due to the arbitrary relative timing of series' shown;
-  taking $x = 7.875$, we obtain $S = 3.5$ exactly.}
-$Q = S/T = 0.875$, and $K = QD = 2.625$.
-Such results can be verified by careful examination of Figure~\ref{fig:durs.obs}.
+As an example, Figure~\ref{fig:durs.partner} illustrates
+a recall period of $\gamma = 6$ years,
+for which $C = 9$ partnerships are reported,
+having durations of $\delta = 3$ years.
+Thus, we can compute $Q = 9/(6+3) = 1$ and $K = 1(3) = 3$,
+which can be verified by careful examination of Figure~\ref{fig:durs.partner}.
