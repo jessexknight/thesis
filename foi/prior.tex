@@ -206,21 +206,18 @@ This time, the distinction is familiar:
   \end{equation}
   \item \textbf{Incidence Proportion:}
   cumulative proportion of susceptible individuals infected over a period $\Delta_t$
-  --- transmission risks are competing; can only have $\lambda_i \le 1$.%
-  % TODO issue of different time periods modelled in B ?
-  \footnote{If all transmission modifiers $f$ are modelled as WPH via \eqref{eq:B.wph},
-    then \eqref{eq:foi.ip} could further simplify to effectively model
-    all sex acts across all partnerships during the period $\Delta_t$
-    as competing risks --- \ie in the exponent: $Q_{kii'} A_k \alpha_{kf} \Delta_t$.}
+  --- transmission risks are competing; can only have $\lambda_i \le 1$.
   \begin{equation}\label{eq:foi.ip}
-    \lambda_i^\ip = 1 - \prod_{ki'h'} \frac{{I}_{i'h'}}{N_{i'}} {(1 - B_{kii'h'})}^{Q_{kii'} \Delta_t}
+    \lambda_i^\ip = 1 - \prod_{ki'h'} {\left(1 - B_{kii'h'} \frac{{I}_{i'h'}}{N_{i'}}\right)}^{Q_{kii'} \Delta_t}
   \end{equation}
+  % TODO: describe why this looks like ~ wph even though partnerships are 'distinct'
+  % should *not* aggregate as if all partnerships are same i'h'
 \end{itemize}
 where:
 $Q_{kii'}$ is the rate of type-$k$ partnership formation between groups $i$ and $i'$,%
-\footnote{This partnership formation rate $Q_{kii'}$ is often broken down into
-  a partnership formation rate $Q_{ki}$ and a mixing matrix $\rho_{pii'}$,
-  as in \sref{model.par.mix.eps}.}
+\footnote{This fully stratified partnership formation rate $Q_{kii'}$ is often broken down into
+a per-person partnership formation rate $Q_{ki}$ and a mixing matrix $\rho_{pii'}$,
+as in \sref{model.par.mix.eps}.}
 % --- distinguished from the more generic ``contact rate'' $C_{kii'}$ from \eqref{eq:foi.strat},
 $B_{kii'h'}$ is the average per-partnership probability of transmission
 from group/infection stage $i'h'$ to group $i'$ via partnership type $k$,

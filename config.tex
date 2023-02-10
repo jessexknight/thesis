@@ -74,6 +74,13 @@
 \colorlet{link}{red}
 \colorlet{cite}{red!67!blu}
 \colorlet{url}{blu}
+\newcommand{\colorsquare}[1]{\textcolor{#1}{$\blacksquare$}}
+% TODO
+\definecolor{rd}{HTML}{FF0033}
+\definecolor{ry}{HTML}{990099}
+\definecolor{pd}{HTML}{00CC99}
+\definecolor{py}{HTML}{0066FF}
+\definecolor{np}{HTML}{FF9900}
 % hyperlinks
 \usepackage[
   colorlinks,
@@ -129,6 +136,11 @@
 \newcommand{\bph}{\textsc{bph}\xspace}
 \newcommand{\ir}{\textsc{ir}\xspace}
 \newcommand{\ip}{\textsc{ip}\xspace}
+\newcommand{\rd}{\textsc{rd}\xspace}
+\newcommand{\ry}{\textsc{ry}\xspace}
+\newcommand{\pd}{\textsc{pd}\xspace}
+\newcommand{\py}{\textsc{py}\xspace}
+\newcommand{\np}{\textsc{np}\xspace}
 \newcommand{\yes}{\ding{51}\xspace}
 \newcommand{\no}{\ding{55}\xspace}
 \renewcommand{\ast}{\raisebox{-.5ex}{*}\xspace}
@@ -152,6 +164,7 @@
 \setenumerate{itemsep=0pt,topsep=0pt}
 % systematic review styles
 \usepackage{tikz}
+\newcommand{\srds}[1]{Dataset~\hyperref{}{sr.dataset}{#1}{#1}}
 \newcommand{\srt}[1]{{\ttfamily#1}}
 \newcommand{\srcite}[1]{\quad\tabitem
     \parbox{2em}{\hfill\parencite{#1}}
