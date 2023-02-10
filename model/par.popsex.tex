@@ -39,62 +39,79 @@ and no direct estimates of FSW size exist for Eswatini.
 So, I use a common approach for inferring the FSW client size \cite{Cote2004},
 similar to the ``multiplier method'' \cite{Morison2001}.
 Given the FSW population proportion $P_{s_{1}i_{34}}$,
-the number of yearly new and regular sex work clients per FSW $C_{p_{34}s_{1}i_{34}}$,
+the number of average yearly new and regular sex work clients per FSW $Q_{p_{34}s_{1}i_{34}}$,
 the frequency of sex per partnership-year $F_{p_{34}}$, and
-the total number of yearly commercial sex acts per client year $C_{p_{34}s_{2}i_{34}}\,F_{p_{34}}$,
+the total number of yearly commercial sex acts per client year $Q_{p_{34}s_{2}i_{34}}\,F_{p_{34}}$,
 the total client population $P_{s_{2}i_{34}}$ is defined as:
 \begin{equation}
   {\textstyle\sum_{i}} P_{s_{2}i_{34}} =
-  \frac{\sum_{i,p} P_{s_{1}i_{34}}\,C_{p_{34}s_{1}i_{34}}\,F_{p_{34}}}
-       {\sum_{i,p} C_{p_{34}s_{2}i_{34}}\,F_{p_{34}}}
+  \frac{\sum_{pi} P_{s_{1}i}\,Q_{p_{34}s_{1}i_{34}}\,F_{p_{34}}}
+       {\sum_{pi}             Q_{p_{34}s_{2}i_{34}}\,F_{p_{34}}}
   \label{eq:model.fsw.cli.tot}
 \end{equation}
 Then, as with FSW, the proportion of total clients in the higher risk client group
 is defined as 20\% of all clients, and likewise for the lower risk group at 80\%.
-Using $C_{p_{34}s_{1}i_{34}}$, $C_{p_{34}s_{2}i_{34}}$, and $F_{p_{34}}$
-as defined in \sref{model.par.sw.part}, the client population size $P_{s_{2}i_{34}}$
+Using $Q_{p_{34}s_{1}i_{34}}$, $Q_{p_{34}s_{2}i_{34}}$, and $F_{p_{34}}$
+as defined below in \sref{model.par.sw.part}, the client population size $P_{s_{2}i_{34}}$
 estimated by this method was 13.1~(2.1,~38.5)\% of men. % TODO: double check
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Sex Work Partnerships}\label{model.par.sw.part}
 \paragraph{Female Sex Workers}
 Table~\ref{tab:fsw.ratios} summarizes the numbers of
-numbers of new and regular clients per month reported by Swati FSW,
+numbers of new and regular clients \emph{per month} reported by Swati FSW,
 stratified by higher \vs lower risk per the analysis in \sref{model.par.fsw.fac}.
-Based on the survey questions,%
+In general, the numbers of partners ``$C$'' reported
+for a given recall period $\gamma$ (\eg 1 month)
+do not directly inform a partnership formation rate $Q$ nor a number of concurrent partners $K$
+(see \sref{app.math.dur.qp});
+rather, under certain assumptions, $Q$ and $K$ can be defined as:
+\begin{alignat}{1}
+  Q &= \frac{C}{\gamma+\delta} \label{eq:C2Q}\\
+  K &= \frac{C\delta}{\gamma+\delta} = Q\delta \label{eq:C2K}
+\end{alignat}
+The choice of force of infection model (see Chapter~\ref{foi})
+will determine whether $Q$ or $K$ is used.
+Moreover, based on the survey questions,%
 \footnote{The survey questions were: \shortquote{In the last 30 days,
   how many (new/regular) clients have you had sex with?}, or similar.}
-it's not clear whether these numbers represent the numbers of unique men or unique client visits.
+it's not clear whether these reported partner numbers $C$
+represent the numbers of unique men or unique client visits.
+\par
 I assumed that all \emph{new} clients were one-off visits;
-thus the reported partner numbers effectively represented $1/12$th of the total number of
-yearly partnerships $C_{p_{3}s_{1}i_{34}}$.
-As such, I sampled the yearly numbers of new sex work partnerships among lower risk FSW
+thus the reported partner numbers effectively represented
+$1/12$th of the total numbers of yearly partnerships $Q_{p_{3}}$.
+As such, I sampled the yearly rate of new sex work partnerships among lower risk FSW
 from a gamma distribution with mean (95\%~CI) as 4.1~(2.5,~6.0) $\times$ 12,
-and the \emph{relative} number among higher risk FSW from 2.0~(1.6,~2.5).
-Since each partnership includes only one sex act,
-the frequency of sex $F_{p_{3}}$ and partnership duration $\delta_{p_{3}}$ are ill-defined,
+and the \emph{relative} rate among higher risk FSW from 2.0~(1.6,~2.5).
+Since each partnership is assumed to include only one sex act,
+the partnership duration $\delta_{p_{3}}$, frequency of sex $F_{p_{3}}$,
+and number of concurrent partnerships $K_{p_{3}}$ are ill-defined,
 but can be defined for convenience as
-$F_{p_{3}} = 12$ (per year) and $\delta_{p_{3}} = 1/12$ (years).
+$\delta_{p_{3}} = 1/12$ (years), $F_{p_{3}} = 12$ (per year),
+and $K_{p_{3}} = Q_{p_{3}} / 12$ (per year).
 \par
 For \emph{regular} sex work partnerships, uncertainties remain regarding
-partnership duration $\delta_{p_{4}}$, frequency of sex per month $F_{p_{4}}/12$, and
-interpretation of survey responses ``$N$'' as unique clients or total client visits per month.
-If $N$ reflects the numbers of unique clients, then
-$C_{p_{4}s_{1}i_{34}}$ should be defined as $N$ directly;
-whereas if $N$ reflects the numbers of unique visits, then
-$C_{p_{4}s_{1}i_{34}}$ should be defined as $N/(F_{p_{4}}/12)$.
-I therefore derived a sampling distribution for $C_{p_{4}s_{1}i_{3}}$ empirically as follows.
-I assumed that $F_{p_{4}}/12$ was 0.5--3 visits per client per month (uniform),
-and that a random proportion of respondents ($\rho \in [0,1]$, uniform)
-reported unique clients or unique visits.
-Then, I sampled $N$ from a gamma distribution with mean (95\%~CI) 8.4~(6.0,~11.0)
-(Table~\ref{tab:fsw.ratios}), and defined:
-\begin{equation}
-  C_{p_{4}s_{1}i_{3}} \sim (\rho)\,N + (1-\rho)\,N\,/\,(F_{p_{4}}/12)
+partnership duration $\delta_{p_{4}}$ (see \sref{model.par.sex.dur}),
+frequency of sex per month $F_{p_{4}}/12$, and
+survey responses $C$ reflecting unique clients or total client visits per month.
+If $C$ reflects the numbers of unique clients, then
+$Q_{p_{4}s_{1}i_{34}}$ can be defined via \eqref{eq:C2Q} using $C$ directly;
+whereas if $C$ reflects the numbers of unique visits, then
+$Q_{p_{4}s_{1}i_{34}}$ should be defined using $C/(F_{p_{4}}/12)$.
+I assumed that $\rho = 2/3$ of respondents interpreted the question as in the former case,
+and $1-\rho = 1/3$ as in the latter, such that:
+\begin{equation}\label{eq:C.swr}
+  C' = \rho\,C + (1-\rho)\,C/(F_{p_{4}}/12)
 \end{equation}
-I obtained mean (95\%CI): 7.0~(3.4,~12.5) for $C_{p_{4}s_{1}i_{3}}$,
-yielding 10.4~(5.6,~22.1) total sex acts per month
-with regular clients among lower risk FSW (prior distribution).
-For higher risk FSW, I sampled the \emph{relative} number of regular clients from
+Taking $F_{p_{4}}/12 = 2$ as the prior mean from \sref{model.par.sex.freq},
+\eqref{eq:C.swr} simplifies to $C' = \frac{5}{6}\,C$.
+Then, sampling $C_{p_{4}s_{1}i_{3}}$
+from a gamma distribution with mean (95\%~CI) 8.4~(6.0,~11.0) from Table~\ref{tab:fsw.ratios},
+and $\delta_{p_{4}}$ as specified in \sref{model.par.sex.dur},
+I defined $Q_{p_{4}s_{1}i_{3}}$ and $K_{p_{4}s_{1}i_{3}}$
+via \eqref{eq:C2Q} using $C'_{p_{4}s_{1}i_{3}}$ and $\gamma = 1/12$ year.
+% TODO: summarize distributions: Q, K, KF
+For higher risk FSW, I sampled the \emph{relative} number/rate of regular clients from
 1.5~(1.3,~1.7) (Table~\ref{tab:fsw.ratios}) as before.
 \paragraph{Clients}
 For Sub-Saharan African clients of FSW, data on
@@ -110,13 +127,13 @@ the mean number of sexual partners was
 gamma-distributed with age over 10, peaking at 64 visits per year for clients aged 37.
 To reflect these data, I specified clients overall to have
 mean (95\%~CI) 60~(35,~90) sex acts with FSW per year
-($C_{p_{34}s_{2}i_{34}}\,F_{p_{34}}$, gamma prior).
+($K_{p_{34}s_{2}i_{34}}\,F_{p_{34}}/12$, gamma prior).
 Then, the yearly sex acts among lower and higher risk clients are defined such that
 higher risk have 2.0~(1.6,~2.5) times the number risk.
 Finally, since the distribution of sex acts between new \vs regular sex work partnerships
-must match that among FSW, the specific values of $C_{p_{34}s_{2}i_{34}}$
+must match that among FSW, the specific values of $K_{p_{34}s_{2}i_{34}}$
 were computed automatically.
-% TODO: summarize distributions
+% TODO: summarize distributions: Q, K, KF
 See \sref{model.par.nsw.sw} for numbers of main/spousal and casual partnerships
 among FSW and clients.
 %===================================================================================================
@@ -345,23 +362,25 @@ The lowest activity men were then then defined as $1 - P_{s_{2}i_{234}}$,
 representing (50,~85)\% of men.
 \paragraph{Main/Spousal Partnerships}
 To simplify model fitting, I sampled a common proportion of
-individuals having a main/spousal partnership from a BAB distribution with 95\%~CI (25,~50)\%,
+individuals reporting a main/spousal partnership from a BAB distribution with 95\%~CI (25,~50)\%,
 applied to all women and men in the lowest activity groups ($C_{p_{1}s_{12}i_{1}}$),
 as well as all women in the median activity group ($C_{p_{1}s_{1}i_{2}}$).
+Then, \eqrefs{eq:C2Q}{eq:C2K} were used to define $Q$ and $K$, respectively.
 Since FSW and clients had fewer main/spousal partnerships (see \sref{model.par.nsw.sw}),
 I calculated the proportion of men in the medium activity group having main/spousal partnerships
-$C_{p_{1}s_{2}i_{2}}$ to balance the total number of main/spousal partnerships among women and men.
+$K_{p_{1}s_{2}i_{2}}$ to balance the total number of main/spousal partnerships among women and men.
 \paragraph{Casual Partnerships}
 I similarly defined a common proportion of women and men in the lowest activity groups
-having casual partnership $C_{p_{2}s_{12}i_{1}}$ with 95\%~CI (20,~55)\%.
+reporting casual partnership $C_{p_{2}s_{12}i_{1}}$ with 95\%~CI (20,~55)\%.
 However, the number of casual partnerships among $W_{2+}$ and $M_{2+}$ ramains uncertain.
 The analysis above provides no information on these values,
 but the number of partners in p12m for the medium activity groups must be at least about 1.5
 to ensure these women and men actually have 2+ partners in p12m.
-Thus, I sampled the number of casual partners among women in the medium activity group
-$C_{p_{2}s_{1}i_{2}}$ from a gamma distribution with 95\%~CI (1.2,~2).
+Thus, I sampled the number of casual partners reported by women in the medium activity group
+$C_{p_{2}s_{1}i_{2}}$ from a gamma distribution with 95\%~CI (1.2,~2),
+and computed $Q$ and $K$ via \eqrefs{eq:C2Q}{eq:C2K}.
 As before, I calculated the numbers of casual partnerships among men in the medium activity group
-$C_{p_{2}s_{2}i_{2}}$ to balance total casual partnerships.
+$K_{p_{2}s_{2}i_{2}}$ to balance total casual partnerships.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Main/Spousal \& Casual Partnerships among FSW \& Clients}\label{model.par.nsw.sw}
 Among Swati FSW, the mean number of total non-paying partners in the past month was
@@ -372,20 +391,21 @@ while 54 and 72\% (respectively) reported being in a relationship, only 6 and 3\
 although many non-marital partners may still constitute effectively ``main'' partnerships
 with respect to condom use and duration.
 Thus, I assumed that:
-50\% of all FSW had a main/spousal partner (\ie $C_{p_{1}s_{1}i_{34}} = 0.5$);
-lower risk FSW had $C_{p_{2}s_{1}i_{3}} = 0.5$ casual partners; and
-higher risk FSW had $C_{p_{2}s_{1}i_{4}} = 1.0$ casual partners, on average.
+50\% of all FSW reported a main/spousal partner (\ie $C_{p_{1}s_{1}i_{34}} = 0.5$);
+lower risk FSW reported $C_{p_{2}s_{1}i_{3}} = 0.5$ casual partners; and
+higher risk FSW reported $C_{p_{2}s_{1}i_{4}} = 1.0$ casual partners, on average.
 \par
-Available data suggest that about half of clients also have non-sex work partners,
+Available data suggest that about half of clients also report non-sex work partners,
 which are not always distinguished as main/spousal \vs casual partnerships
 \cite{Lowndes2000,Santo2005}.
 Non-paying partners of FSW are also often clients of other FSW \cite{Voeten2007,Godin2008}.
 Yet, clients of FSW also tend to be younger and more likely to be
 never/formerly married \vs non-client men \cite{Lowndes2000,Carael2006}.
-So, I assumed that clients had
+So, I assumed that clients reported
 half the numbers of main/spousal partnerships compared to lowest activity men:
 $C_{p_{1}s_{2}i_{34}} = 0.5\,C_{p_{1}s_{2}i_{1}}$, and
 25--100\% the numbers of casual partnerships compared to medium activity women (uniform prior).
+As before, I computed $Q$ and $K$ via \eqrefs{eq:C2Q}{eq:C2K}.
 %===================================================================================================
 \subsection{Turnover}\label{model.par.turnover}
 %---------------------------------------------------------------------------------------------------
@@ -561,7 +581,7 @@ $F_{p_{1}}$ from a gamma prior distribution with 95\%~CI (13,~156),
 and a relative rate for casual partnerships $F_{p_{2}}/F_{p_{1}} \sim \opname{Unif}(0.25,1)$.
 As described in \sref{model.par.sw.part},
 I defined $F_{p_{3}} = 12$ for occasional sex work partnerships,
-and $F_{p_{4}} \sim \opname{Unif}(6,36)$ for regular sex work partnerships.
+and $F_{p_{4}} \sim \opname{Unif}(12,36)$ for regular sex work partnerships.
 I also constrained samples of $F_{p_{4}}$ such that
 higher risk FSW never have commercial sex more than twice daily, on average.
 % Coital frequency is not thought to be influenced by concurrent partnerships \cite{Delva2013}.
