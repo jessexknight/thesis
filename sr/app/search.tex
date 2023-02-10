@@ -1,7 +1,7 @@
 \section{Search Strategy}\label{app.sr.search}
 We designed our search strategy with guidance from
 an information specialist at the University of Toronto Library.
-% ==============================================================================
+%===================================================================================================
 \subsection{Search Terms}\label{app.sr.search.terms}
 Our search strategy and step-wise results are as follows (Table~\ref{tab:sr.search}), where
 \srt{term/} denotes a MeSH term, and
@@ -14,25 +14,27 @@ were later identified and removed manually.
 \par
 \input{sr/app/tab.search}
 \clearpage
-% ==============================================================================
-\subsection{Inclusion/Exclusion Criteria}
+%===================================================================================================
+\subsection{Inclusion/Exclusion Criteria}\label{app.sr.search.inex}
 \label{aa:search:criteria}
 \begin{table}[h]
   \caption{Systematic review criteria for inclusion and exclusion}
   \centering
   \input{sr/app/tab.criteria}
-  \label{tab:criteria}
+  \label{tab:sr.criteria}
 \end{table}
 \clearpage
-% ==============================================================================
-\subsection{Included Studies}
-% ------------------------------------------------------------------------------
-\subsubsection{Dataset~B}
+%===================================================================================================
+\subsection{Included Studies}\label{app.sr.search.dataset}
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Dataset B}\label{app.sr.search.dataset.B}
+\hyperdef{sr.dataset}{B}{}%
 \begin{srcites}
   \foreach \bibid in \srbibidB{\srcite{\bibid}\par}
 \end{srcites}
-% ------------------------------------------------------------------------------
-\subsubsection{Dataset~A less B}
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Dataset A less B}\label{app.sr.search.dataset.A}
+\hyperdef{sr.dataset}{A}{}%
 \begin{srcites}
   \foreach \bibid in \srbibidAxB{\srcite{\bibid}\par}
 \end{srcites}

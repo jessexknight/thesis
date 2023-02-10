@@ -1,4 +1,4 @@
-\section{Prior Models}\label{foi.prior}
+\section{Prior Approaches}\label{foi.prior}
 The earliest HIV transmission models \cite{Anderson1986}
 were adapted from models of other sexually transmitted diseases,
 especially gonorrhea \cite{Yorke1978,Nold1980,Hethcote1982}.
@@ -40,7 +40,7 @@ have been designed for compartmental models which
 explicitly aggregate the risk of transmission across different numbers and types of sex acts,
 and likewise across different numbers and types of sexual partners/partnerships.
 The remainder of this section reviews these equations and their assumptions in detail.
-% ==================================================================================================
+%===================================================================================================
 \subsection{Aggregating Sex Acts within a Partnership}\label{foi.prior.bhom}
 To account for repeated sex acts with the same partner,
 the per-partnership probability of transmission $B$ was conceptualized as follows. % TODO: cite?
@@ -101,7 +101,7 @@ more and more acts are ``wasted'' --- occuring after transmission.
     $A$: total acts per partnership;
     $\alpha$: fraction of total acts (within or between partnerships).}
 \end{figure}
-% ==================================================================================================
+%===================================================================================================
 \subsection{Heterogeneity in the Per-Act Probability of Transmission}\label{foi.prior.bhet}
 As noted above, the per-act probability of transmission $\beta$ is heterogeneous,
 varying with factors like: HIV infection stage, genital ulcer disease, condom use, etc.
@@ -118,7 +118,6 @@ reflecting different interpretations of $\alpha_f$:%
 \footnote{In most compartmental models without repeated contacts (partnerships),
   this distinction is not possible or necessary, because
   all contacts (sex acts) between two compartments (risk groups) are assumed to be independent.}
-\pagebreak % TEMP
 \begin{itemize}
   \item \textbf{{Within}-Partnership Heterogeneity (WPH)}:
   modelled partnerships are identical, but comprise heterogeneous acts
@@ -184,7 +183,7 @@ is often deferred to the full incidence equation (\sref{TODO}) using an equivale
 but where $\gamma_g$ is replaced by
 the unconditional prevalence of stage/status~$g$ among \emph{all} partners.
 % TODO: anything else to add?
-% ==================================================================================================
+%===================================================================================================
 \subsection{Aggregating Partnerships}\label{foi.prior.part}
 Although we considered between-partnership heterogeneity in \sref{foi.prior.bhet},
 the modelled per-partnership probability of transmission $B$
@@ -196,7 +195,7 @@ Thus, the second step in constructing the incidence equation is to
 aggregate transmission risk across these various partnerships.
 \par
 As in \sref{foi.prior.bhet}, there are two main approaches to aggregating partnerships
---- indeed having similar equations to Eqs.~(\ref{eq:B.wph})~and~(\ref{eq:B.bph}).
+--- indeed having similar equations to \eqrefs{eq:B.wph}{eq:B.bph}.
 This time, the distinction is familiar:
 \begin{itemize}
   \item \textbf{Incidence Rate:}
@@ -256,11 +255,10 @@ In sum, unless the period $\Delta_t$ can be matched to the numerical solver time
 incidence rate \eqref{eq:foi.ir} is preferred over incidence proportion \eqref{eq:foi.ip}
 as the force of infection equation.
 % cite Diekmann2021 ?
-% ==================================================================================================
+%===================================================================================================
 \subsection{Revisiting Partnership Duration}\label{foi.prior.dur}
 A final issue in constructing the force of infection equation relates to parameterization.
-In Eqs.~(\ref{eq:B.n})--(\ref{eq:foi.ip}),
-partnership durations $\delta$ are not explicitly modelled,
+In \eqrefr{eq:B.n}{eq:foi.ip}, partnership durations $\delta$ are not explicitly modelled,
 but implied by the total numbers of sex acts per partnership $A$,
 and a presumed frequency of sex per partnership $F$, such that $A = F\delta$.
 By contrast, the partnership formation rate $Q$ is often directly informed by survey questions like
@@ -272,11 +270,11 @@ the total sex acts per partnership are (and should be) reduced to reflect up to 
 --- \ie $A \le F$, or effectively $\delta \le 1$ year.
 This change \vs $Q < 1, A > F$
 can substantially reduce the proportions of sex acts which are modelled as ``wasted'',
-and thus increases transmission via longer ($\delta > 1$ year) partnerships.
+and thus increases transmission via what would be longer ($\delta > 1$ year) partnerships.
 On the other hand, using the true $Q < 1, A > F$
 can effectively delay early transmission in longer partnerships,
 such that modelled HIV prevalence could lag behind true HIV prevalence.
-These dynamics are further explored in \sref{foi.exp.model}.
+These dynamics are further explored in simulation experiments (\sref{foi.exp.model}).
 \par
 Lastly, it is worth noting that partnership duration $\delta$ is further related to
 the average partnership formation rate $Q$ and
@@ -288,6 +286,6 @@ the number of concurrent partners $K$ and the frequency of sex with each partner
 The overall rate of sex would be the same: $QA = KF$.
 In some ways, this $KF$ parameterization is more intuitive,
 and it will be useful later, in the new force of infection approach (\sref{foi.prop}).
-% ==================================================================================================
+%===================================================================================================
 \subsection{Limitations and Alternate Modelling Frameworks}\label{foi.prior.lims}
 TODO

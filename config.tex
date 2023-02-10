@@ -93,7 +93,7 @@
   {model/fig/}
   {foi/fig/}
   {art/fig/}
-  {conc/fig/}}
+  {math/fig/}}
 % tables
 \usepackage{booktabs,longtable,multicol,multirow,csvsimple}
 \newcommand{\tn}[1]{\textsuperscript{\rlap{\,#1}}}
@@ -142,6 +142,8 @@
 \newcommand{\hreftt}[2][https://]{\href{#1#2}{\texttt{#2}}}
 \newcommand{\sref}[1]{\S\,\ref{#1}}
 \renewcommand{\eqref}[1]{Eq.~(\ref{#1})}
+\newcommand{\eqrefs}[2]{Eqs.~(\ref{#1})~and~(\ref{#2})}
+\newcommand{\eqrefr}[2]{Eqs.~(\ref{#1})--(\ref{#2})}
 \newcommand{\ifempty}[3]{\if\relax\detokenize{#1}\relax#2\else#3\fi}
 \newcommand{\cdf}[2]{\ifempty{#2}{CD4\,$>$\,#1}{\ifempty{#1}{}{#1\,$<$\,}CD4\,$<$\,#2}}
 % itemize & enumerate

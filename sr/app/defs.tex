@@ -1,5 +1,4 @@
-\section{Definitions \& Extraction}
-\label{a:defs}
+\section{Definitions \& Extraction}\label{app.sr.defs}
 Data were obtained from (in order of precedence):
 article text; article tables; article figures; appendix text; appendix tables; appendix figures;
 and likewise for articles cited like ``the model is previously described elsewhere''.
@@ -10,9 +9,8 @@ For the values of fitted parameters, we used the posterior value as reported, in
 the mean or median of the posterior distribution, or the best fitting value.
 If the posterior was not reported, we used the mean or median of the prior distribution,
 including the midpoint of uniform sampling ranges.
-% ==============================================================================
-\subsection{Epidemic Context}
-\label{aa:defs:context}
+%===================================================================================================
+\subsection{Epidemic Context}\label{app.sr.defs.context}
 Let $t_0$ be the time of ART scale-up/scenario divergence in the model.
 \paragraph{HIV Prevalence}
 As reported in the context overall at $t_0$:
@@ -38,12 +36,10 @@ The countries counted were: \emph{\srcountries}.
 See Table~\ref{tab:sr.search} for related search terms.
 If a study modelled multiple countries at a national scale or smaller,
 the counter for each country was incremented.
-% ==============================================================================
-\subsection{Risk Heterogeneity}
-\label{aa:defs:risk}
-% ------------------------------------------------------------------------------
-\subsubsection{Key Populations}
-\label{aaa:defs:kp}
+%===================================================================================================
+\subsection{Risk Heterogeneity}\label{app.sr.defs.risk}
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Key Populations}\label{app.sr.defs.kp}
 \paragraph{Female Sex Workers}
 Any female activity group meeting 3 criteria:
 representing {$<$5\%} of the female population; and
@@ -69,9 +65,8 @@ Any activity group(s) described by the authors as transgender.
 Any activity group(s) described by the authors as PWID.
 \paragraph{Prisoners}
 Any activity group(s) described by the authors as prisoners.
-% ------------------------------------------------------------------------------
-\subsubsection{Activity Groups}
-\label{aaa:defs:act}
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Activity Groups}\label{app.sr.defs.act}
 Activity groups were defined as any stratification based on
 sex/gender and the number and/or types of partnerships formed, including key populations,
 but excluding stratifications by age.
@@ -90,9 +85,8 @@ and other activity group(s);
 \emph{Multiple}: movement between multiple pairs of risk groups;
 \emph{Replacement}: only movement from low to high activity
 to maintain high activity group size(s) against disproportionate HIV mortality.
-% ------------------------------------------------------------------------------
-\subsubsection{Partnerships}
-\label{aaa:defs:pt}
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Partnerships}\label{app.sr.defs.pt}
 \paragraph{Approaches}
 How studies defined partnerships, classified into one of three approaches:
 \emph{Generic}: all partnerships are equal;
@@ -114,9 +108,8 @@ Mixing by activity group was classified as either:
 \emph{Proportionate}: proportionate to the total number of partnerships offered by each risk group;
 \emph{Assortative}: any degree of preferential partnership formation between
 individuals of the same or similar risk groups.
-% ------------------------------------------------------------------------------
-\subsubsection{Age Groups}
-\label{aaa:defs:age}
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Age Groups}\label{app.sr.defs.age}
 \paragraph{Count}
 The number of age groups considered in the model.
 \paragraph{Risk}
@@ -127,9 +120,8 @@ We classified whether partnership formation between age groups was assumed to be
 \emph{Strictly Assortative}: any degree of preferential partnership formation between
 individuals of the same or similar age groups that is equal for both sexes.
 \emph{Off-Diagonal}: any degree of preferential partnership formation between younger women and older men.
-% ==============================================================================
-\subsection{HIV Natural History}
-\label{aa:defs:hiv}
+%===================================================================================================
+\subsection{HIV Natural History}\label{app.sr.defs.hiv}
 \paragraph{Count}
 The number of states of HIV infection considered in the model,
 excluding stratifications related to treatment.
@@ -146,11 +138,10 @@ and how that decreased was modelled:
 \emph{Partners}: decreased rate of partnership formation;
 \emph{Sex Acts per Partnership}: decreased frequency of sex per partnership; and/or
 \emph{Generic}: representative decreased probability of transmission.
-% ==============================================================================
-\subsection{Antiretroviral Therapy}
-\label{aa:defs:art}
-% ------------------------------------------------------------------------------
-\subsubsection{Transmission}
+%===================================================================================================
+\subsection{Antiretroviral Therapy}\label{app.sr.defs.art}
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Transmission}\label{app.sr.defs.art.trans}
 \label{aaa:defs:trans}
 \paragraph{Transmission Reduction due to ART}
 The relative reduction in probability of transmission
@@ -162,9 +153,8 @@ then the relative reduction among individuals who are on treatment was used.
 Any consideration of 1+ strains of HIV which are transmitted and for which ART had reduced benefits.
 We did not document the number of resistant strains,
 or characteristics of resistance and transmissibility.
-% ------------------------------------------------------------------------------
-\subsubsection{Treatment Cascade States}
-\label{aaa:defs:cascade}
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Treatment Cascade States}\label{app.sr.defs.art.cascade}
 \paragraph{Forward Cascade}
 We extracted whether each of the following states were included (binary):
 \emph{Diagnosed}: aware of their \hivp status, but have not yet started ART;
@@ -186,9 +176,8 @@ differed by any of the following stratifications:
 \emph{sex}; \emph{age}; \emph{activity}; and \emph{key populations}.
 If the study did not mention possible differences in such rates,
 then we assumed that no differences were modelled.
-% ------------------------------------------------------------------------------
-\subsubsection{Behaviour Change}
-\label{aaa:defs:bc}
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Behaviour Change}\label{app.sr.defs.art.bc}
 \paragraph{HIV Counselling}
 Whether any sexual behaviour change associated with HIV testing and counselling
 was applied to individuals in the diagnosed and/or on-ART states (binary),
@@ -198,13 +187,11 @@ and what changed:
 \emph{Partners}: decreased rate of partnership formation;
 \emph{Sex Acts per Partnership}: decreased frequency of sex per partnership; and/or
 \emph{Generic}: representative decreased probability of transmission due to counselling.
-% ==============================================================================
-\subsection{ART Prevention Impact}
-\label{aa:defs:api}
+%===================================================================================================
+\subsection{ART Prevention Impact}\label{app.sr.defs.api}
 The following data were extracted per scenario, rather than per-study.
-% ------------------------------------------------------------------------------
-\subsubsection{Intervention}
-\label{aa:defs:interv}
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Intervention}\label{app.sr.defs.api.interv}
 \paragraph{ART Initiation Criteria}
 What criteria were used for ART eligibility as part of the intervention:
 \emph{Symptomatic (AIDS)};
@@ -215,10 +202,10 @@ What criteria were used for ART eligibility as part of the intervention:
 \emph{Other}.
 \paragraph{Intervention Population}
 Among which population sub-group(s) was the scale-up of ART coverage/initiation applied.
-Only scenarios with ART intervention for all individuals were included in Dataset~B.
+Only scenarios with ART intervention for all individuals were included in \srds{B}.
 \paragraph{Impact Population}
 Among which population sub-group(s) was the ART prevention impact measured.
-Only scenarios measuring ART prevention impacts in all individuals were included in Dataset~B.
+Only scenarios measuring ART prevention impacts in all individuals were included in \srds{B}.
 \paragraph{ART Coverage Target}
 The proportion of people living with HIV in the intervention population who are on ART
 by the end of ART scale-up.
@@ -230,9 +217,8 @@ The years at which ART scale-up as part of the intervention started and stopped,
 If interventions were modelled as instantaneous, such as increasing ART initiation rate,
 then we considered $t_0 = t_f$.
 Impact time horizons were measured relative to $t_0$.
-% ------------------------------------------------------------------------------
-\subsubsection{Impact}
-\label{aa:defs:impact}
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Impact}\label{app.sr.defs.api.impact}
 For both measures of ART prevention impact,
 we extracted reported values from the text for any available time horizon,
 as well as figure data for any of the following time horizons, if available:

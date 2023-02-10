@@ -1,10 +1,9 @@
-\clearpage % TEMP
-\section{Proposed Model}\label{foi.prop}
+\section{Proposed Approach}\label{foi.prop}
 In this section, I propose a new approach to
 modelling HIV transmission within sexual partnerships in compartmental models.
 The approach overcomes the limitations of prior approaches described in \sref{foi.prior.lims},
 without the need to change modelling frameworks.
-% ==================================================================================================
+%===================================================================================================
 \subsection{Illustrative Toy Scenario}\label{foi.prop.toy}
 Consider the moment of one transmission event
 in a population of 16 monogamous partnerships, with 25\% infection prevalence
@@ -56,7 +55,7 @@ Evidently, this assumption is worse for longer partnerships.
     $S$: susceptible; $I$: infectious; $\lambda$: force of infection;
     dashed circles: individuals involved in transmission event.}
 \end{figure}
-% ==================================================================================================
+%===================================================================================================
 \subsection{Conceptual Development}\label{foi.prop.concept}
 The toy scenario highlights how any partnership where transmission has occured
 should be ``removed'' from the force of infection.
@@ -115,7 +114,7 @@ The issue of transmission via multiple partnerships is discussed in \sref{foi.pr
     $\eta$: rate of progression between infection stages;
     $\delta$: partnership duration.}
 \end{figure}
-% ==================================================================================================
+%===================================================================================================
 \subsection[Equations]{Equations%
   \footnote{\shortquote{Enough talk. Show me the \$} --- \LaTeX\ users.}}\label{foi.prop.eq}
 Since partnership duration is now considered separately and explicitly,
@@ -134,7 +133,7 @@ based on the total numbers of partnerships ``offered'' by each group: $M_{pi}, M
 plus some parameter(s) specifying mixing patterns (\eg $\Phi$).
 Working backwards, I start by defining $M_{pi}$ (and likewise $M_{pi'}$) via
 the sum across health statuses --- \ie susceptible, and different stages of infection $h$:
-\begin{equation}
+\begin{equation}\label{eq:M.SI}
   M_{pi} = M_{S,pi} + \sum_h M_{I,pih}
 \end{equation}
 I then define the total numbers of partnerships ``offered'' by susceptible individuals as:
@@ -166,7 +165,7 @@ The per-person transmission rates to group $i$, and from group $i'h'$ can then b
   \lambda'_{pi'h'} &= \sum_{i} \Lambda_{pii'h'}\,{I_{i'h'}}^{-1} \label{eq:foi.jh}
 \end{alignat}
 However, for the purposes of solving the model,
-division by $S_{i}$ and $I_{i'h'}$ can be skipped in Eqs.~(\ref{eq:foi.i}) and (\ref{eq:foi.jh}),
+division by $S_{i}$ and $I_{i'h'}$ can be skipped in \eqrefs{eq:foi.i}{eq:foi.jh},
 since $\lambda'_{pi}$ and $\lambda'_{pi'h'}$ are immediately multiplied by $S_{i}$ and $I_{i'h'}$,
 respectively, in the system of differential equations.
 \par
@@ -175,7 +174,7 @@ a) are assumed to form new partnerships at a rate $\delta_p^{-1}$,
 and thereby transition to stratum $I_{ih\p_0}$ (``all new partners''3); and
 b) otherwise transition between infection stages, cascade of care, activity groups, etc. as usual,
 as illustrated in Figure~\ref{fig:model.hiv.p}.
-% ==================================================================================================
+%===================================================================================================
 \subsection{Transmission via Multiple Partnerships}\label{foi.prop.mp}
 In the proposed approach (\ie new stratification and equations),
 I do not explicitly model the proportions of infected individuals
