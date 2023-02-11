@@ -2,7 +2,7 @@
 %===================================================================================================
 \subsection{Exponential Duration Assumption in Compartmental Modedls}\label{app.math.dur.exp}
 Let $\lambda$ be the fixed exit rate from compartment $A$, which is assumed to be homogeneous.
-Then $D \sim \lambda e^{-\lambda D}$ is % TODO: double check this
+Then $\delta \sim \lambda e^{-\lambda \delta}$ is % TODO: double check this
 the exponentially distributed duration time in the group.
 \paragraph{Mean \& Median Duration}
 The mean duration is $\mu = 1/\lambda$ and the median is $m = \log(2)/\lambda \approx 0.69\,\mu$.
@@ -10,12 +10,12 @@ Thus, if 50\% of individuals progress from compartment $A$ to $B$ by time $\tau$
 the exit rate $\lambda$ is given by $\log(2)/\tau$.
 \paragraph{Collapsing Compartments in Series}
 Let compartments $A$ and $B$ be in series, with exit rates $\lambda_A$ and $\lambda_B$ respectively.
-Collapsing $A$ and $B$ into $AB$ will sum the mean durations: $D_{AB} = 1/\lambda_A + 1/\lambda_B$;
+Collapsing $A$ and $B$ into $AB$ will sum the mean durations: $\delta_{AB} = 1/\lambda_A + 1/\lambda_B$;
 thus, the exit rate from $AB$ will be $\lambda_{AB} = 1/(1/\lambda_A + 1/\lambda_B)$.
 \paragraph{Collapsing Compartments in Parallel}
 Let compartments $A$ and $B$ be in parallel, with exit rates $\lambda_A$ and $\lambda_B$ respectively.
 Collapsing $A$ and $B$ into $AB$ will sum the exit rates: $\lambda_{AB} = \lambda_A + \lambda_B$;
-thus, the mean duration in $AB$ will be $D_{AB} = 1/(\lambda_A + \lambda_B)$.
+thus, the mean duration in $AB$ will be $\delta_{AB} = 1/(\lambda_A + \lambda_B)$.
 %===================================================================================================
 \subsection{Estimating Duration in Sex Work from Cross Sectional Data}\label{app.math.dur.xs}
 Cross sectional sex work surveys will often ask respondents about their duration in sex work.
@@ -75,7 +75,7 @@ If partnership duration is long and the recall period is short
 the reported partnerships mostly reflect \emph{ongoing} partnerships,
 and thus $C \approx K$.
 If partnership duration is short and the recall period is long,
---- including $D \approx 0$ for
+--- including $\delta \approx 0$ for
 \shortquote{How many one-off sexual partners have you had during the past year?} ---
 the reported partnerships mostly reflect \emph{complete} partnerships,
 and thus $C/\gamma \approx Q$.
@@ -84,11 +84,11 @@ the reported partnerships reflect a mixture of tail-ends, complete, and ongoing 
 and thus $C$ overestimates $K$, but $C/\gamma$ also overestimates $Q$.
 In summary:
 \begin{itemize}
-  \item $\gamma \ll D$: mostly ongoing partnerships;
+  \item $\gamma \ll \delta$: mostly ongoing partnerships;
   $C \approx K$ (concurrrent)
-  \item $\gamma \gg D$: mostly complete partnerships;
+  \item $\gamma \gg \delta$: mostly complete partnerships;
   $C/\gamma \approx Q$ (change rate)
-  \item $\gamma\,\approx\,D$: some tail-ends, some complete, some ongoing;
+  \item $\gamma\,\approx\,\delta$: some tail-ends, some complete, some ongoing;
   $C > K$, $C/\gamma > Q$ (neither)
 \end{itemize}
 \par
