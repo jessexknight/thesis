@@ -1,0 +1,87 @@
+\begin{tabular}{llp{.33\linewidth}p{.4\linewidth}}
+  \toprule
+  \textbf{Factor}
+& \textbf{MP\tn{a}}
+& \textbf{Definition}
+& \textbf{Possible mechanism(s) of influence on ART prevention impact}
+\\
+\midrule
+  Acute Infection
+& $\beta_i$
+& Increased infectiousness immediately following infection \citep{Hollingsworth2008,Boily2009}
+& \textbf{Biological}: transmissions during acute infection are unlikely to be prevented by ART
+\\
+  Late-Stage Infection
+& $\beta_i$
+& Increased infectiousness during late-stage infection \citep{Hollingsworth2008,Boily2009}
+& \textbf{Biological}: transmissions during late-stage are more likely to be prevented by ART
+\\
+  Drug Resistance
+& $\beta_i$
+& Transmitted factor that requires regimen switch to achieve viral suppression \citep{DeWaal2018}
+& \textbf{Biological}: transmissions during longer delay to achieving viral suppression will not be prevented by ART
+\\
+\midrule
+  HIV Morbidity
+& $Q$; $A$
+& Reduced sexual activity during late-stage disease \citep{Myer2010,McGrath2013}
+& \textbf{Behaviour Change}: reduced morbidity via ART could increase HIV prevalence among the sexually active population
+\\
+  HIV Counselling
+& $Q$; $A$; $\alpha$
+& Reduced sexual activity and/or increased condom use after HIV diagnosis \citep{Tiwari2020}
+& \textbf{Behaviour Change}: increased HIV testing with ART scale up can contribute to prevention even before viral suppression is achieved
+\\
+\midrule
+  Activity Groups
+& $Q$; $\alpha$
+& Any stratification by rate of partnership formation \citep{Anderson1991}
+& \textbf{Network}: higher transmission risk among higher activity
+\\
+  Age Groups
+& $Q$; $\alpha$
+& Any stratification by age
+& \textbf{Network \& Cascade}: higher transmission risk and barriers to viral suppression among youth \citep{Birdthistle2019,Green2020}
+\\
+  Key Populations
+& $Q$; $\alpha$
+& Any epidemiologically defined higher risk groups \citep{WHO2016KP}
+& \textbf{Network \& Cascade} higher transmission risk and barriers to viral suppression among key populations \citep{Hakim2018}
+\\
+  Group Turnover
+& $\theta$
+& Individuals move between activity groups and/or key populations reflecting sexual lifecourse \citep{Watts2010}
+& \textbf{Network \& Cascade}: counteract effect of stratification due to shorter periods in higher risk \citep{Knight2020};
+  viral suppression may be achieved only after periods of higher risk
+\\
+  Assortative Mixing
+& $\Phi$
+& Any degree of assortative mixing (like-with-like) by age, activity, and/or key populations
+& \textbf{Network}: assortative sexual networks compound effect of stratification \citep{Anderson1991}
+\\
+  Partnership Types
+& $A$; $\alpha$
+& Different partnership types are simulated, with different numbers of sex acts and/or condom usage \citep{Scorgie2012}
+& \textbf{Network}: longer duration and lower condom use among main versus casual/sex work partnerships
+  counteracts effect of stratification
+\\
+  ART Cascade Gaps
+& $\delta$; $\tau$
+& Slower ART cascade transitions among higher activity groups or key populations \citep{Hakim2018,Green2020}
+& \textbf{Cascade}: ART prevention benefits may be allocated differentially among risk groups
+\\
+\bottomrule
+\end{tabular}
+\floatfoot{
+  \tnt[a]{MP: Model Parameters ---
+  $\beta_i, \beta_s$: transmission probability per act (infectiousness, susceptibility);
+  $A$:         number of sex acts of each type per partnership;
+  $\alpha$:    proportion of sex acts unprotected by a condom;
+  $Q$:         partnership formation rate;
+  $\Phi$:      mixing matrix (probability of partnership formation);
+  $\mu$:       mortality rate;
+  $\nu$:       entry rate;
+  $\theta$:    internal turnover between activity groups;
+  $\delta$:    diagnosis rate;
+  $\tau$:      ART initiation rate (and retention-related factors).
+}}

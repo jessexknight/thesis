@@ -1,0 +1,83 @@
+\def\baselinestretch{1.0}\footnotesize
+\newcommand{\xpos}[1]{\ifnum#1<9\relax\d#1\else#1\fi}
+\newcommand{\xneg}[1]{%
+  \ifnum#1<-99\relax#1\else
+  \ifnum#1<-9\relax\d#1\else
+  \ifnum#1<0\relax\d\d#1\else
+  \ifnum#1<10\relax\d\d\m#1\else
+  \ifnum#1<100\relax\d\m#1\else\m#1%
+  \fi\fi\fi\fi\fi}
+\newcommand{\pci}[2]{(\,\xpos{#1},\,\xpos{#2}\,)}
+\newcommand{\nci}[2]{(\,\xneg{#1},\,\xneg{#2}\,)}
+\setlength{\tabcolsep}{.5em}
+\centerline{
+\begin{tabular}{ll|rrcrc|rrcrc}
+  \toprule
+  & & \multicolumn{5}{c}{Incidence Reduction (\%)}
+    & \multicolumn{5}{c}{Cumulative Infections Averted (\%)} \\
+  \cmidrule(rl){3-7}\cmidrule(rl){8-12}
+  Factor               & Level            & N\tn{a} & \multicolumn{2}{c}{Median (IQR)} & \multicolumn{2}{c}{Effect (95\% CI)\tn{b}} 
+                                          & N\tn{a} & \multicolumn{2}{c}{Median (IQR)} & \multicolumn{2}{c}{Effect (95\% CI)\tn{b}} \\
+  \midrule
+  Risk Stratif. \&     & None             &  98 &  19 & \pci{7}{44}   & \REF &               &  45 & 29 & \pci{18}{47} & \REF &                 \\
+  Cascade Diff.        & Activity (No KP) &  22 &  35 & \pci{22}{46}  &    4 & \nci{-14}{22} &  39 &  6 & \pci{3}{22}  &   24 & \nci{12}{36}    \\
+                       & + KP (Same)      &   5 &  41 & \pci{6}{50}   &   72 & \nci{-31}{175}&   8 & 10 & \pci{3}{21}  &   20 & \nci{11}{28}    \\
+                       & + KP (Priority)  &   1 &  85 & \pci{85}{85}  &  136 & \nci{73}{199} &  23 & 21 & \pci{11}{41} &  131 & \nci{97}{166}   \\[1ex]
+  Activity Turnover    & No               & 117 &  26 & \pci{8}{45}   & \REF &               &  87 & 20 & \pci{5}{35}  & \REF &                 \\
+                       & Yes              &   9 &  22 & \pci{21}{50}  &  -82 &\nci{-153}{-11}&  28 & 18 & \pci{7}{38}  &  -86 & \nci{-103}{-70} \\[1ex]
+  Sex/Gender Stratif.  & No               &  97 &  21 & \pci{7}{44}   & \REF &               &  39 & 29 & \pci{18}{44} & \REF &                 \\
+  \& Cascade Diff.     & Yes (Same)       &  22 &  41 & \pci{30}{53}  &   -4 & \nci{-32}{23} &  48 &  8 & \pci{3}{24}  &  -49 & \nci{-62}{-36}  \\
+                       & Yes (Men Low)    &   7 &  21 & \pci{2}{22}   &    5 & \nci{-41}{50} &  28 & 16 & \pci{4}{35}  & -125 & \nci{-143}{-108}\\[1ex]
+  Partnership Types    & Generic          & 107 &  21 & \pci{8}{44}   & \REF &               &  48 & 28 & \pci{15}{42} & \REF &                 \\
+                       & By Groups        &  16 &  33 & \pci{22}{52}  &  -22 & \nci{-53}{9}  &  66 & 11 & \pci{3}{28}  &   34 & \nci{20}{49}    \\
+                       & Overlapping      &   3 &  50 & \pci{45}{62}  &    8 & \nci{-52}{69} &   1 & 58 & \pci{58}{58} &   -9 & \nci{-60}{43}   \\ \midrule
+  Time Horizon         & 0-10             &  36 &  17 & \pci{7}{35}   & \REF &               &  40 & 14 & \pci{3}{26}  & \REF &                 \\
+  (years)              & 11-20            &  63 &  20 & \pci{8}{42}   &    3 & \nci{-3}{9}   &  60 & 22 & \pci{8}{38}  &    9 & \nci{2}{17}     \\
+                       & 21-30            &  15 &  47 & \pci{39}{65}  &    3 & \nci{-7}{13}  &  11 & 23 & \pci{7}{47}  &   12 & \nci{6}{19}     \\
+                       & 31+              &  12 &  46 & \pci{24}{57}  &   12 & \nci{5}{20}   &   4 & 34 & \pci{29}{40} &    5 & \nci{1}{8}      \\[1ex]
+  HIV Prevalence       & 11+              & 112 &  22 & \pci{8}{44}   & \REF &               &  75 & 18 & \pci{4}{35}  & \REF &                 \\
+  (\%)                 & 1-10             &  14 &  43 & \pci{36}{49}  &   -9 & \nci{-49}{31} &  39 & 26 & \pci{11}{36} &   -9 & \nci{-20}{2}    \\
+                       & 0-1              &   0 & --- &      ---      &      &               &   1 & 49 & \pci{49}{49} &   -3 & \nci{-30}{24}   \\[1ex]
+  HIV Incidence        & Increasing       &   2 &  40 & \pci{38}{43}  &      &               &   5 & 32 & \pci{29}{41} &      &                 \\
+  Trend\tn{c}          & Inc-to-stable    &   1 &  97 & \pci{97}{97}  &      &               &   1 & 68 & \pci{68}{68} &      &                 \\
+                       & Stable           &  17 &  21 & \pci{20}{29}  &      &               &  24 &  4 & \pci{2}{7}   &      &                 \\
+                       & Dec-to-stable    &  81 &  15 & \pci{6}{43}   &      &               &  11 &  1 & \pci{-8}{28} &      &                 \\
+                       & Decreasing       &   1 &  57 & \pci{57}{57}  &      &               &  13 & 29 & \pci{19}{38} &      &                 \\ \midrule
+  RR Transmission      & 0.0-0.039        &  11 &  22 & \pci{14}{35}  & \REF &               &  44 &  6 & \pci{2}{27}  & \REF &                 \\
+  on ART               & 0.04-0.099       &  42 &  49 & \pci{34}{67}  &   55 & \nci{22}{89}  &  60 & 27 & \pci{15}{38} &  -41 & \nci{-54}{-29}  \\
+                       & 0.1+             &  73 &  12 & \pci{5}{30}   &    9 & \nci{-31}{48} &  11 & 19 & \pci{1}{33}  &  -20 & \nci{-26}{-13}  \\[1ex]
+  CD4 Threshold for    & Symptomatic      &   3 &  38 & \pci{37}{41}  &   47 & \nci{25}{68}  &  24 &  4 & \pci{2}{7}   &  -30 & \nci{-46}{-15}  \\
+  ART Initiation       & 200              &   3 &  28 & \pci{26}{32}  & \REF &               &   4 & 28 & \pci{24}{30} & \REF &                 \\
+                       & 350              &  10 &  29 & \pci{22}{38}  &   15 & \nci{3}{28}   &  18 & 18 & \pci{13}{27} &    3 & \nci{-2}{7}     \\
+                       & 500              &  15 &  29 & \pci{16}{43}  &   27 & \nci{8}{45}   &  13 & 29 & \pci{23}{35} &   17 & \nci{10}{24}    \\
+                       & Any              &  41 &  56 & \pci{22}{75}  &   30 & \nci{14}{47}  &  22 & 51 & \pci{28}{62} &   42 & \nci{37}{48}    \\
+                       & Mixed            &  54 &  10 & \pci{5}{31}   &    1 & \nci{-31}{32} &  34 & 16 & \pci{5}{37}  &   63 & \nci{54}{72}    \\[1ex]
+  ART Coverage         & 0-59             &   3 &  28 & \pci{26}{31}  &      &               &  11 & 30 & \pci{13}{43} &      &                 \\
+  Target (\%)\tn{c}    & 60-84            &  13 &  29 & \pci{21}{41}  &      &               &  22 & 22 & \pci{8}{39}  &      &                 \\
+                       & 85+              &  13 &  46 & \pci{36}{66}  &      &               &  21 & 36 & \pci{26}{43} &      &                 \\ \midrule
+  Acute Infection      & No               &  35 &  22 & \pci{10}{57}  & \REF &               &  15 & 38 & \pci{24}{50} & \REF &                 \\
+                       & Yes              &  91 &  26 & \pci{9}{44}   &   52 & \nci{13}{91}  & 100 & 16 & \pci{5}{32}  &   51 & \nci{36}{66}    \\[1ex]
+  Late-Stage Infection & No               &  38 &  39 & \pci{13}{56}  & \REF &               &  12 & 36 & \pci{20}{48} & \REF &                 \\
+                       & Yes              &  88 &  22 & \pci{8}{43}   &  -23 & \nci{-37}{-8} & 103 & 18 & \pci{5}{34}  &  -37 & \nci{-65}{-9}   \\[1ex]
+  Trans. Drug Resist.  & No               & 114 &  21 & \pci{7}{43}   & \REF &               & 102 & 18 & \pci{5}{36}  & \REF &                 \\
+                       & Yes              &  12 &  72 & \pci{39}{85}  &   -4 & \nci{-46}{39} &  13 & 26 & \pci{20}{30} &   -3 & \nci{-8}{3}     \\ \midrule
+  HIV Morbidity        & No               & 102 &  21 & \pci{7}{45}   & \REF &               &  73 & 27 & \pci{13}{42} & \REF &                 \\
+                       & Any              &  24 &  34 & \pci{22}{46}  &   35 & \nci{16}{54}  &  42 &  6 & \pci{3}{23}  &  -20 & \nci{-26}{-14}  \\[1ex]
+  HTC Behav. Change    & No               & 112 &  21 & \pci{7}{45}   & \REF &               &  81 & 23 & \pci{11}{38} & \REF &                 \\
+                       & Any              &  14 &  41 & \pci{29}{49}  &  -39 & \nci{-73}{-4} &  34 &  6 & \pci{3}{22}  &  -13 & \nci{-18}{-7}   \\
+  \bottomrule
+\end{tabular}}
+\floatfoot{
+  \tnt[a]{N: number of unique scenarios and time horizons;
+    sums across factor levels may be less than 126 and 115 due to missing variables.}
+  \tnt[b]{Effect estimates from linear multivariate regression
+    with generalized estimating equations \cite{Hojsgaard2006};
+    effects are illustrated in Figure~C.20.}
+  \tnt[c]{Omitted from regression model due to missing data.}
+  RR: relative risk;
+  HTC: HIV testing and counselling;
+  KP: key populations.
+  priority: modelled ART cascade transitions were faster in KP vs overall due to prioritized programs;
+  same: cascade transitions were assumed the same in KP as overall.
+  Factor definitions are given in Appendix~B.
+}

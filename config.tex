@@ -110,11 +110,12 @@
   \caption{#4}
   \label{fig:#2#1}}
 % tables
-\usepackage{booktabs,longtable,multicol,multirow,csvsimple}
+\usepackage{booktabs,longtable,rotating,multicol,multirow,csvsimple}
 \newcommand{\tn}[1]{\textsuperscript{\rlap{\,#1}}}
 \newcommand{\tnt}[2][*]{\textsuperscript{#1\,}{#2}}
 \newcommand{\tabitem}{{\textbullet}\hskip.5em}
 \renewcommand{\d}{\hphantom{0}}
+\newcommand{\m}{\hphantom{-}}
 \newcommand{\s}{\rlap{\tsup{*}}}
 \newcommand{\vsig}{\llap{$<$}0.001\s\xspace}
 \newcommand{\floatfoot}[2][1]{\vskip\abovecaptionskip\par
@@ -140,6 +141,7 @@
 \newcommand{\hivp}{HIV$+$\xspace}
 \newcommand{\hivn}{HIV$-$\xspace}
 \newcommand{\hivu}{HIV\,?\,\xspace}
+\newcommand{\REF}{\textsc{ref}\xspace}
 \newcommand{\wph}{\textsc{wph}\xspace}
 \newcommand{\bph}{\textsc{bph}\xspace}
 \newcommand{\ir}{\textsc{ir}\xspace}
@@ -181,5 +183,6 @@
 \newenvironment{srcites}%
   {\begin{multicols}{2}\footnotesize\setlength\parskip{0pt}}%
   {\end{multicols}}
+\usepackage{pdfpages}
 % \DeclareRobustCommand{\%}{\textnormal{\char`\%}} % TODO (?)
 % end
