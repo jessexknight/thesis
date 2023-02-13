@@ -4,3 +4,32 @@
 % preserve order with article appendix
 \foreach \bibid in \srbibidB{\nocite{\bibid}}
 \foreach \bibid in \srbibidAxB{\nocite{\bibid}}
+\def\srplotlistdist{
+  api.prev/HIV prevalence at $t_0$ (\%),
+  api.inc/HIV incidence at $t_0$ (per 1000 PY),
+  api.phase/HIV epidemic phase,
+  hiv.n/Number of HIV states,
+  art.rbeta/Relative infectiousness on ART,
+  act.n/Number of activity groups,
+  age.n/Number of age groups,
+  act.HRW.p/Proportion of women in the highest female activity group,
+  act.HRM.p/Proportion of men in the client or highest activity male group}
+\def\srplotlistapi{%
+  inc.Risk/Risk Stratification \& ART cascade differences: IR,
+  chi.Risk/Risk Stratification \& ART cascade differences: CIA,
+  inc.act.turn.any/Any activity group turnover: IR,
+  chi.act.turn.any/Any activity group turnover: CIA,
+  inc.Sex/Sex stratification \& any ART cascade differences: IR,
+  chi.Sex/Sex stratification \& any ART cascade differences: CIA,
+  inc.pt.def/Type of partnership definition: IR,
+  chi.pt.def/Type of partnership definition: CIA,
+  inc.api.prev.cat/HIV prevalence at $t_0$ (\%): IR,
+  chi.api.prev.cat/HIV prevalence at $t_0$ (\%): CIA,
+  inc.api.phase/HIV epidemic phase: IR,
+  chi.api.phase/HIV epidemic phase: CIA,
+  inc.art.cd4/CD4 initiation criteria: IR,
+  chi.art.cd4/CD4 initiation criteria: CIA,
+  inc.art.cov.cat/ART intervention coverage target: IR,
+  chi.art.cov.cat/ART intervention coverage target: CIA,
+  inc.art.rbeta.cat/Relative infectiousness on ART: IR,
+  chi.art.rbeta.cat/Relative infectiousness on ART: CIA}

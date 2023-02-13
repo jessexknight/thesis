@@ -75,7 +75,6 @@
 \colorlet{cite}{red!67!blu}
 \colorlet{url}{blu}
 \newcommand{\colorsquare}[1]{\textcolor{#1}{$\blacksquare$}}
-% TODO
 \definecolor{rd}{HTML}{FF0033}
 \definecolor{ry}{HTML}{990099}
 \definecolor{pd}{HTML}{00CC99}
@@ -101,6 +100,15 @@
   {foi/fig/}
   {art/fig/}
   {math/fig/}}
+\newcommand{\iterfig}[4][]{\vskip\textfloatsep
+  \setcaptiontype{figure}
+  \foreach \var/\title in #3{\hfill
+    \parbox[t]{\dimexpr.5\linewidth-1em}{%
+      \includegraphics[width=\linewidth]{{#2.\var}.pdf}
+      \subcaption{\title}
+      \label{fig:#2.\var}}}
+  \caption{#4}
+  \label{fig:#2#1}}
 % tables
 \usepackage{booktabs,longtable,multicol,multirow,csvsimple}
 \newcommand{\tn}[1]{\textsuperscript{\rlap{\,#1}}}
