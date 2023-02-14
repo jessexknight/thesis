@@ -1,0 +1,29 @@
+\begin{tabular}{lcrccccll}
+  \toprule
+  &&& Raw & \multicolumn{2}{c}{Adjusted} \\ \cmidrule(rl){4-4}\cmidrule(rl){5-6}
+  Population\tn{a} & Year &      N &  \%  &  \%  &   (95\%~CI)  & Used & Ref & Notes \\
+  \midrule
+  Overall          & 2016 & 9,476 &\d1.48 &  --- & (0.96,~\d1.99) & \yes & \cite{SHIMS2}      & \tn{bc} \\[1ex]
+  Women Overall    & 2011 & 5,486 &\d3.1\d& 2.94 & (2.52,~\d3.47) & \yes & \cite{Justman2016} & \tn{de} \\
+                   & 2016 & 5,227 &\d1.99 &  --- & (1.16,~\d2.80) & \yes & \cite{SHIMS2}      & \tn{bc} \\[1ex]
+  Men Overall      & 2011 & 5,746 &\d1.7\d& 1.50 & (1.16,~\d1.84) & \yes & \cite{Justman2016} & \tn{de} \\
+                   & 2016 & 4,249 &\d0.99 &  --- & (0.39,~\d1.59) & \yes & \cite{SHIMS2}      & \tn{bc} \\[1ex]
+  LR Women         & 2011 & 4,924 &\d3.21 & 1.58 & (0.40,~\d2.24) & \ast & \cite{Justman2016} & \tn{def} \\
+  Non-LR Women     & 2011 &    93 & 10.10 & 9.62 & (4.76,~18.29)  & \ast & \cite{Justman2016} & \tn{de} \\
+  LR Men           & 2011 & 3,855 &\d1.64 & 0.76 & (0.01,~\d1.17) & \ast & \cite{Justman2016} & \tn{def} \\
+  Non-LR Men       & 2011 &   874 &\d3.87 & 3.42 & (2.21,~\d4.94) & \ast & \cite{Justman2016} & \tn{de} \\[1ex]
+  FSW Overall      & 2021 &   676 & 11.71 &  --- & (8.31,~16.92)  & \yes & \cite{EswIBBS2022} & \tn{b} \\
+  \bottomrule
+\end{tabular}
+\floatfoot{%
+  \tnt[a]{LR: lower risk, reporting 0-1 partners p6m;
+    Non-LR: lower risk, reporting 2+ partners p6m;
+    FSW: female sex worker};
+  \tnt[b]{via HIV-1 Limiting Antigen recency testing};
+  \tnt[c]{95\%~CI as reported from sampling adjustment};
+  \tnt[d]{via 6 month cohort (94.4\% follow-up)};
+  \tnt[e]{adjusted from ages 18--49 to 15--49 (see \sref{model.cal.targ.prev})};
+  \tnt[f]{adjusted for biased reporting of risk behaviours
+    (see \sref{model.par.nsw.bias} and \sref{model.cal.targ.prev})};
+  \ast used within incidence ratio only;
+  all estimates used the skew normal distribution.}

@@ -1,0 +1,43 @@
+%===================================================================================================
+\subsection{Approach}\label{model.cal.appr}
+I used a Bayesian approach for model calibration \cite{Menzies2017}.
+Let $\theta$ denote the complete set of 74 calibrated model parameters (Table~\ref{tab:par.defs}),
+and $T$ the complete set of calibration targets.
+The goal of calibration is to obtain samples from
+the posterior distribution of parameters given the targets $p(\theta \mid T)$.
+This posterior distribution can be defined via Bayes' rule as:
+\begin{equation}
+  p(\theta \mid T) = \frac{p(T \mid \theta)\,p(\theta)}{p(T)}
+\end{equation}
+The posterior distribution was characterized empirically via Monte Carlo simulation
+--- \ie by randomly sampling parameter sets $\theta_s \sim p(\theta)$,
+and for each set computing the likelihood $p(T \mid \theta_s)$.
+This likelihood was defined via
+independent uncertainty distributions for each calibration target $T_i$.
+For example, overall HIV prevalence in Eswatini was estimated as
+27.2\%, 95\%~CI: (25.8,~28.7) in 2016 \cite{SHIMS2};
+using this information, I defined a BAB distribution
+as the likelihood function for this calibration target $p(T_i \mid \theta)$.
+Thus, a parameter set $\theta_{s_1}$ which yields
+model-estimated overall HIV prevalence $T_i(\theta_{s_1}) = 25\%$ in 2016
+would have a higher likelihood for this target than
+a parameter set $\theta_{s_2}$ which yielsds $T_i(\theta_{s_2}) = 20\%$ in 2016.
+The independent likelihoods for each target were aggregated on logarithmic scale
+to give the overall likelihood:
+\begin{equation}
+  \log p(T \mid \theta_s) = \sum_i \log p(T_i \mid \theta_s)
+\end{equation}
+Any individual log-likelihood which was beyond computational precision was replaced with
+an arbitrarily large negative number ($-{10}^6$).
+In order to obtain good coverage of the sampling space,
+most (57) calibrated parameters were sampled using Latin hypercube sampling \cite{Stein1987}.
+The remaining 17 calibrated parameters were sampled randomly and iteratively
+until they satisfied a set of relational constraints (see \sref{app.model.cal.constr}).
+\par
+Although several iterative methods exist to
+update the sampling distributions based on the likelihoods,
+and thereby characterize the posterior distribution more efficiently \cite{Menzies2017},
+I did not update the sampling distributions.
+Rather, I simply took the top 1\% of parameter sets $\theta_s$ by likelihood,
+and assume these are approximately representative of the posterior distribution.
+Within the top 1\%, I also did not weight parameter sets by likelihood.
