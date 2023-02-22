@@ -15,7 +15,7 @@ For simplicity, I considered a single illustrative factor $f$
 affecting $\alpha_f \in [0,1]$ proportion of sex acts ($1-\alpha_f$ are unaffected),
 with relative probability of transmission $R_f \in [0.01,~10]$.
 I~then computed $B_{\wph}$ and $B_{\bph}$ for $A \in [1,1000]$ total sex acts,
-using a per-act probability of transmission $\beta = 0.34$\%
+using a base per-act probability of transmission $\beta = 0.34$\%
 as a representative value for HIV \cite{Boily2009}.
 \par
 \begin{figure}
@@ -72,7 +72,25 @@ and likewise larger for risk-increasing factors (\eg anal sex)
 affecting a minority of a moderate number of sex acts ($\alpha \approx 100$).
 %===================================================================================================
 \subsection{Partnership Durations}\label{foi.exp.dur}
-Figure~\ref{fig:dur.surf} TODO
+As described in \sref{foi.prior.part}, multiple prior models have
+implicitly assumed a maximum partnership duration $\delta \le 1$ year.
+As such, the adjustment for ``wasted contacts'' \eqref{eq:B} would have less effect.
+This reduced effect can be quantified via
+the effective probability of transmission per sex act $\beta'$
+--- \ie tangent slopes in Figure~\ref{fig:binom.dur} --- defined as:
+\begin{equation}\label{eq:beta.eff}
+  \beta' = \frac{B}{A} = \frac{1 - {(1 - \beta)}^{A}}{A}
+\end{equation}
+Figure~\ref{fig:dur.surf} illustrates the 1-year $\beta'_1$ \vs true-duration $\beta'_\delta$, for
+different partnership durations $\delta \in [1, 30]$ and sex frequencies $F \in [1,~180]$ per year.
+% Evidently $\beta'_1$ does not depend on $\delta$.
+Assuming $\delta \le 1$ can considerably increase the modelled rate of transmission
+for partnerships with $F \ge 52$ (\ie weekly) and a true duration $\delta \ge 5$ years,
+including up to \emph{8-fold} difference with $F \approx 100$ and $\delta \approx 30$.
+Thus, prior models using $\delta \le 1$ may have
+substantially overestimated the relative contribution of
+longer partnerships with frequent sex --- including main/spousal partnerships ---
+to overall transmission.
 \begin{figure}
   \centering\includegraphics[scale=.6]{dur.surf.pdf}
   \caption{Effective probability of transmission per sex act
@@ -87,6 +105,8 @@ Figure~\ref{fig:dur.surf} TODO
 \end{figure}
 %===================================================================================================
 \subsection{Full Model}\label{foi.exp.model}
+TODO
+Table~\ref{tab:foi.models}
 \begin{table}[h]
   \centering
   \caption{Compared approaches to modelling HIV transmission via sexual partnerships}

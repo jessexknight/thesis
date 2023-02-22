@@ -164,15 +164,15 @@ The per-person transmission rates to group $i$, and from group $i'h'$ can then b
   \lambda_{pi} &= \sum_{i'h'} \Lambda_{pii'h'}\,{S_{i}}^{-1} \label{eq:foi.i} \\
   \lambda'_{pi'h'} &= \sum_{i} \Lambda_{pii'h'}\,{I_{i'h'}}^{-1} \label{eq:foi.jh}
 \end{alignat}
-However, for the purposes of solving the model,
-division by $S_{i}$ and $I_{i'h'}$ can be skipped in \eqrefs{eq:foi.i}{eq:foi.jh},
+For the purposes of solving the model,
+we can skip division by $S_{i}$ and $I_{i'h'}$ in \eqrefs{eq:foi.i}{eq:foi.jh},
 since $\lambda'_{pi}$ and $\lambda'_{pi'h'}$ are immediately multiplied by $S_{i}$ and $I_{i'h'}$,
 respectively, in the system of differential equations.
 \par
-The final two model changes to reiterate are that infected individuals in stratum $I_{ih\p}$:
-a) are assumed to form new partnerships at a rate $\delta_p^{-1}$,
-and thereby transition to stratum $I_{ih\p_0}$ (``all new partners''3); and
-b) otherwise transition between infection stages, cascade of care, activity groups, etc. as usual,
+Finally, and to reiterate from above, infected individuals in stratum $I_{ih\p}$
+are assumed to form new partnerships at a rate $\delta_p^{-1}$,
+and thereby transition to stratum $I_{ih\p_0}$ (``all new partners''); and
+otherwise transition between infection stages, cascade of care, activity groups, etc. as usual,
 as illustrated in Figure~\ref{fig:model.hiv.p}.
 %===================================================================================================
 \subsection{Transmission via Multiple Partnerships}\label{foi.prop.mp}
@@ -184,13 +184,13 @@ To do so, the required size of the new dimension $\p$ would be at least $2^{P}$,
 where $P$ is the number of different types of partnerships modelled.
 For transmission via three different partnerships, the required size would be at least $3^P$, etc.
 Indeed, this exponential relationship is related to the challenge of
-specifying all combinations of partnership states in pair-based models \cite{Kretzschmar2017}.
+specifying all possible combinations of partnership states in pair-based models \cite{Kretzschmar2017}.
 However, under frequentist assumptions, we can equivalently model
 two transmissions by one individual as one transmission each by two individuals.
 Thus, we can transfer two individuals from $I_{ih\p_0}$ to
 $I_{ih\p_1}$ and $I_{ih\p_2}$ (one each) under the $P+1$ stratification,
 instead of just one individual from $I_{ih\p_0}$ to
-$I_{ih\p_{12}}$ under any of the exponential the stratifications.
+$I_{ih\p_{12}}$ under any of the exponential $x^P$ the stratifications.
 \par
 In fact, $I_{ih\p_0}$ can be \emph{negative} (but only for $\p = 0$),
 because the dimension $\p$ is only relevant to \eqref{eq:M.I};
@@ -211,7 +211,7 @@ With this perspective, the constraint in \eqref{eq:I.constr} may be intuitive:
 we cannot ``remove'' more than the total number of partnerships ``offered''.
 This constraint should also be easy to guarantee for small enough timesteps,
 because $M_{I,pih}$ approaches zero as $I_{ih\p}$ approaches $I_{ih} K_{pi}$
---- i.e. all type-$p$ partnerships become concordant,
+--- i.e. all type-$p$ partnerships become \hivp concordant,
 and no more transmission can occur via these partnerships until partners change.
 % TODO: discuss the possibility of being in multiple seroconcordant partnerships following transmission
 % slightly more complicated modelling of transitions within "k" dimension,

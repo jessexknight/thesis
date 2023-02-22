@@ -16,14 +16,14 @@ $I/N$ is the current prevalence of infection.
 \par
 If the population is stratified into multiple groups $i$,
 the infection is stratified into multiple infectious stages $h$,
-and contacts are stratified into multiple types $k$,
+and contacts are stratified into multiple types $p$,
 then \eqref{eq:foi.simple} can be generalized to:
 \begin{equation}\label{eq:foi.strat}
-  \lambda_i = \sum_{ki'h'} C_{kii'} \beta_{kh'} \frac{I_{i'h'}}{N_{i'}}
+  \lambda_i = \sum_{pi'h'} C_{pii'} \beta_{ph'} \frac{I_{i'h'}}{N_{i'}}
 \end{equation}
 where:
-$C_{kii'}$ is the average rate of type-$k$ contacts per-person among group $i$ with group $i'$,
-$\beta_{kh'}$ is the average probability of transmission per type-$k$ contact given infection stage $h'$,
+$C_{pii'}$ is the average rate of type-$p$ contacts per-person among group $i$ with group $i'$,
+$\beta_{ph'}$ is the average probability of transmission per type-$p$ contact given infection stage $h'$,
 and $I_{i'h'}/N_{i'}$ is the prevalence of infection stage $h'$ among group $i'$.
 Note that \eqref{eq:foi.strat} implicitly assumes that
 contact rate and mixing by infection status/stage is random.

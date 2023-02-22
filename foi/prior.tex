@@ -17,8 +17,7 @@ the probability of transmission was increasingly parameterized per act \vs per p
 % TODO: cite?
 \par
 The shift to per-act \vs per-partnership parameterization highlighted
-a fundamental limitation of compartmental models
-(including pair-based models, see \sref{foi.prior.lims}):
+a fundamental limitation of compartmental models (see \sref{foi.prior.lims}):
 compartmental models cannot model individual partnerships,
 because each ``compartment'' reflects a group of individuals
 whose characteristics are assumed to be homogeneous \cite{Rao2021}.
@@ -33,7 +32,7 @@ but the timing of specific sex acts or other events within partnerships
 cannot be captured in compartmental models.
 Further implications of the ``instantaneous partnership assumption''
 and alternate modelling frameworks which avoid this assumption
-are discussed in \sref{foi.prior.lims} and \sref{foi.prop}.
+are discussed in \sref{foi.prior.lims}, \ref{foi.prior.alt}, and \ref{foi.prop}.
 \par
 Thus, over the years, different force of infection equations
 have been designed for compartmental models which
@@ -178,8 +177,8 @@ should be aggregated as BPH,%
   --- which only serves to highlight the limitations of
   either approach to aggregating heterogeneity in $\beta$.}
 with $\gamma_g$ as the conditional prevalence of each stage/status~$g$ among infected partners.
-In fact, aggregating infection stage and treatment status
-is often deferred to the full incidence equation (\sref{TODO}) using an equivalent form,
+In fact, aggregating infection stage and treatment status is often deferred to
+the full incidence equation (see \sref{foi.prior.part}) using an equivalent form,
 but where $\gamma_g$ is replaced by
 the unconditional prevalence of stage/status~$g$ among \emph{all} partners.
 % TODO: anything else to add?
@@ -190,38 +189,40 @@ the modelled per-partnership probability of transmission $B$
 still corresponds to a single average partnership.
 Some population groups may have multiple partners per unit time (usually year),
 possibly including different types of partnerships,
-or indeed less than one partnership per year, on average.
+or less than one partnership per year, on average.
 Thus, the second step in constructing the incidence equation is to
 aggregate transmission risk across these various partnerships.
 \par
 As in \sref{foi.prior.bhet}, there are two main approaches to aggregating partnerships
 --- indeed having similar equations to \eqrefs{eq:B.wph}{eq:B.bph}.
-This time, the distinction is familiar:
+This time, the distinction may be more familiar:
 \begin{itemize}
   \item \textbf{Incidence Rate:}
   instantaneous rate of infection among susceptible individuals
   --- transmission risks are addative; can have $\lambda_i > 1$.
   \begin{equation}\label{eq:foi.ir}
-    \lambda_i^\ir = \sum_{ki'h'} Q_{kii'} B_{kii'h'} \frac{{I}_{i'h'}}{N_{i'}}
+    \lambda_i^\ir = \sum_{pi'h'} Q_{pii'} B_{pii'h'} \frac{{I}_{i'h'}}{N_{i'}}
   \end{equation}
   \item \textbf{Incidence Proportion:}
   cumulative proportion of susceptible individuals infected over a period $\Delta_t$
   --- transmission risks are competing; can only have $\lambda_i \le 1$.
   \begin{equation}\label{eq:foi.ip}
-    \lambda_i^\ip = 1 - \prod_{ki'h'} {\left(1 - B_{kii'h'} \frac{{I}_{i'h'}}{N_{i'}}\right)}^{Q_{kii'} \Delta_t}
+    \lambda_i^\ip = 1 - \prod_{pi'h'} {\left(1 - B_{pii'h'} \frac{{I}_{i'h'}}{N_{i'}}\right)}^{Q_{pii'} \Delta_t}
   \end{equation}
   % TODO: describe why this looks like ~ wph even though partnerships are 'distinct'
   % should *not* aggregate as if all partnerships are same i'h'
 \end{itemize}
 where:
-$Q_{kii'}$ is the rate of type-$k$ partnership formation between groups $i$ and $i'$,%
-\footnote{This fully stratified partnership formation rate $Q_{kii'}$ is often broken down into
-a per-person partnership formation rate $Q_{ki}$ and a mixing matrix $\rho_{pii'}$,
+$Q_{pii'}$ is the rate of type-$p$ partnership formation between groups $i$ and $i'$,%
+\footnote{This fully stratified partnership formation rate $Q_{pii'}$ is often broken down into
+a per-person partnership formation rate $Q_{pi}$ and a mixing matrix $\rho_{pii'}$,
 as in \sref{model.par.mix.eps}.}
-% --- distinguished from the more generic ``contact rate'' $C_{kii'}$ from \eqref{eq:foi.strat},
-$B_{kii'h'}$ is the average per-partnership probability of transmission
-from group/infection stage $i'h'$ to group $i'$ via partnership type $k$,
+% --- distinguished from the more generic ``contact rate'' $C_{pii'}$ from \eqref{eq:foi.strat},
+$B_{pii'h'}$ is the average per-partnership probability of transmission
+from group/infection stage $i'h'$ to group $i'$ via partnership type $p$,
 and $I_{i'h'}/N_{i'}$ is the prevalence of infection stage $h'$ among group $i'$.
+Similar to within- \vs between-partnership heterogeneity,
+we can show that $\lambda^\ir \ge \lambda^\ip$ (see \sref{app.math.misc.xph}).
 \par
 By definition, the force of infection is a rate \cite{Anderson1991}.
 Yet in principle, incidence proportion could be more precise than incidence rate
@@ -229,7 +230,8 @@ Yet in principle, incidence proportion could be more precise than incidence rate
 Since most models are now solved computationally,
 the period $\Delta_t$ could be matched to the timestep of the numerical solver.
 However, the added precision may be insignificant, as $\Delta_t$ should be small.%
-\footnote{Also, many popular numerical solvers do not pass the timestep $\Delta_t$
+\footnote{\label{foot:ode}%
+  Also, many popular numerical solvers do not pass the timestep $\Delta_t$
   (only the current time $t$) to the derivative computing function,
   and may use adaptive timestep sizes for precision while solving --- including:
   \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.odeint.html}
@@ -260,10 +262,11 @@ but implied by the total numbers of sex acts per partnership $A$,
 and a presumed frequency of sex per partnership $F$, such that $A = F\delta$.
 By contrast, the partnership formation rate $Q$ is often directly informed by survey questions like
 \shortquote{How many different people have you had sex with in the past 12 months?}
+(see also \sref{app.math.dur.qp}).
 As such, the lowest possible value among sexually active individuals
-would appear to be $Q = 1$ (per year).
+could naively be taken as $Q = 1$ (per year).
 Then, if $Q \ge 1$ is used in the model,
-the total sex acts per partnership are (and should be) reduced to reflect up to one year
+the total sex acts per partnership can (and should be) reduced to reflect up to one year
 --- \ie $A \le F$, or effectively $\delta \le 1$ year.
 This change \vs $Q < 1, A > F$
 can substantially reduce the proportions of sex acts which are modelled as ``wasted'',
@@ -278,11 +281,153 @@ the average partnership formation rate $Q$ and
 the average number of concurrent partners $K$ by $Q = K/\delta$.%
 \footnote{Gaps between partnerships do not result in $Q < K/\delta$,
   because the average $K$ would be reduced if some individuals are ``between partnerships''.}
-Thus, an alternate parameterization might specify
+Thus, an alternate parameterization could specify
 the number of concurrent partners $K$ and the frequency of sex with each partner $F$.
-The overall rate of sex would be the same: $QA = KF$.
+The overall rate of sex would be the same: $QA = KF$, since $A = F\delta$.
 In some ways, this $KF$ parameterization is more intuitive,
 and it will be useful later, in the new force of infection approach (\sref{foi.prop}).
 %===================================================================================================
-\subsection{Limitations and Alternate Modelling Frameworks}\label{foi.prior.lims}
-TODO
+\subsection{Limitations of Prior Approaches}\label{foi.prior.lims}
+Evidently, prior approaches to modelling HIV transmission in sexual partnerships
+have several limitations (see also \cite{Rao2021}).
+These limitations, and their implications for existing model-based evidence,
+can be summarized as follows.
+\paragraph{Instantaneous Partnerships}
+\eqrefs{eq:foi.ir}{eq:foi.ip} both include
+the current HIV prevalence $I/N$ directly in the force of infection.
+Thus, newly infected individuals are modelled to be
+immediately at risk of onward transmission,
+including via the exact same partnership by which they were infected.
+Similarly, individuals who recently transmitted to a given partner are also modelled to be
+at risk of transmitting (again) to the same partner,
+albeit with a small absolute rate reduction due to the smaller susceptible population.
+This modelling assumption acts to increase the modelled rate of transmission \vs ``reality'',
+especially for longer partnerships.
+As a result, the contribution of longer partnerships to overall transmission
+has likely been systematically overestimated by compartmental models,
+while the contribution of shorter partnerships has likely been underestimated.
+This point was directly illustrated in 
+a comparison of compartmental \vs network-based models \cite{Johnson2016a}.
+This bias has substantial implications for which types of interventions and populations
+have been prioritized using compartmental model-based evidence.
+\paragraph{Aggregating Past/Future Sex Acts}
+The instantaneous partnerships assumption is in fact
+directly related to the ``wasted contacts'' issue,
+because the delay in onward transmission risk that is missing under instantaneous partnerships
+reflects the same post-transmission period within partnerships wherein contacts are ``wasted''.
+The prevailing solution to this issue is to
+define the per-partnership probability of transmission $B$ by
+aggregating competing risks from each sex act within a given partnership via \eqref{eq:B} et al.
+However, as described in \sref{foi.prior.dur}, this approach introduces a trade off between
+capturing the true proportion of ``wasted contacts'' in longer partnerships
+(using the true partnership duration~$\delta$)
+\vs capturing the true magnitude of early transmission within partnerships (using $\delta \le 1$).
+These two options would then underestimate or overestimate
+the contribution of longer partnerships to overall transmission, respectively,
+with broader implications as described above.
+Moreover, the sex acts aggregated within each partnership via \eqref{eq:B} et al.
+are parameterized to reflect current conditions
+--- \ie HIV stage, treatment status, condom use, etc. ---
+even though such conditions almost certainly evolve over the course of partnerships,
+especially longer partnerships.
+Again, we can see the direct connection to the instantaneous partnerships assumption.
+This issue parallels limitations of cross-sectional risk factor analyses
+(\eg \sref{model.par.fsw.fac}),
+where risk factors are modelled as static,
+but true risk accumulates via cumulative exposure to dynamic risk factors.
+The implications of aggregating these past/future sex acts are not immediately obvious,
+and likely depend on numerous factors and conditions.
+\paragraph{Incidence Proportion}
+Risk from multiple partnerships is sometimes aggregated as
+incidence proportion $\lambda^\ip$ via \eqref{eq:foi.ip}.
+As described in \sref{foi.prior.part}, this approach is not inherently wrong,
+but the specification of time period $\Delta_t = 1$ often is.
+This $\Delta_t$ \emph{should} be matched to the timestep of the numerical solver,
+but $\Delta_t = 1$ year is often used,
+and the resulting incidence applied as a rate over smaller timesteps, reducing transmission.
+Since $\lambda^\ip$ saturates at 1 --- similar to $B(A)$ in Figure~\ref{fig:binom.dur} ---
+transmission to higher risk groups is disproportionately reduced.
+Thus, this error may \emph{further} underestimate
+the importance of prevention among higher risk groups.
+\paragraph{Within \vs Between Partnership Heterogeneity}
+The final limitation of prior approaches is the apparent lack of distinction between
+within- \vs between-partnership heterogeneity when computing
+the average per-partnership probability of transmission $B$.
+Both WPH and BPH --- \ie \eqrefs{eq:B.wph}{eq:B.bph} --- and combinations thereof, have been used
+to model modified transmission risk in a proportion of sex acts due to
+HIV stage, treatment status, PrEP use, condom use, STI co-infection, circumcision, and more,
+but the choice of aggregation model is almost never explicitly justified.
+For some factors, there may be no ``correct'' choice,
+but modellers should be aware of the assumptions implied by their choice.
+The implications of model choice for transmission dynamics
+mainly derive from the fact that $B_{\wph} \ge B_{\bph}$,
+but even then the differences are often small (see \sref{foi.exp.xph}).
+%===================================================================================================
+\subsection{Alternate Modelling Frameworks}\label{foi.prior.alt}
+Recognizing the limitations of compartmental models in simulating
+infectious disease transmission via sexual partnerships,
+two main alternate modelling frameworks have been developed.
+These frameworks are illustrated in Figure~\ref{fig:fw}.
+\begin{figure}
+  \centering\foreach \var/\cap in
+  {comp/Classic compartmental,pair/Pair-formation,ibm/Individual-based}{%
+  \begin{subfigure}[b]{.33\linewidth}
+    \centering
+    \includegraphics[width=.9\linewidth]{mf.\var}
+    \caption{\cap}
+    \label{fig:mf.\var}
+  \end{subfigure}}
+  \caption{Representations of health states and sexual partnerships
+    under three different STI modelling frameworks}
+  \label{fig:fw}
+  \floatfoot{
+    $S$: susceptible; $I$: infectious;
+    solid arrows: partnerships; dashed arrows: state transitions.}
+\end{figure}
+\paragraph{Pair-Formation Models}
+Pair-formation models were developed as early as 1988,
+with the explicit motivation to overcome limitations of
+classic compartmental models of STI transmission \cite{Dietz1988a}.
+In pair-formation models, the fundamental population stratification
+reflects different partnership configurations and health states \cite{Kretzschmar2017}, such as:
+susceptible and single, a susceptible/infected pair in a long-term partnership, etc.
+(Figure~\ref{fig:mf.pair}).
+Such models can therefore track the numbers of partnerships
+where transmission is \vs is not possible,
+thereby avoiding the instantaneous partnership assumption.
+Pair-formation models have been applied to a variety of STIs \cite{Kretzschmar2017}.
+However, the numbers of strata required to reflect all possible partnership configurations
+--- including, for example, FSW with severals regular clients,
+each of whom may have additional ongoing partnerships themselves ---
+\emph{and} all possible health states among connected partners
+--- including different HIV infection stages and treatment statuses ---
+quickly become impractical \cite{Kretzschmar2017,Rao2021}.
+As such, pair-formation models have seen little widespread adoption
+for STI or HIV transmission modelling \cite{Rao2021}.
+\paragraph{Individual-Based Models}
+Individual-based models, also knowns as agent-based, network-based, or microsimulation models,
+explicitly simulate unique individuals (Figure~\ref{fig:mf.ibm}),
+representing a fundamental change in the model unit from groups of individuals
+--- \ie the ``compartments'' of compartmental models \cite{Rao2021}.
+Individual-based models can therefore model unique partnerships, and track them over time.
+Such individuals and partnerships can then be
+parameterized in fundamentally different ways \vs compartmental models,
+including with continuous valued features like infection age and sex frequency,
+\vs predetermined categories like infection stages and partnership types \cite{Pellis2015,Rao2021}.
+Parameters for each individual and partnership are thus sampled randomly and/or dynamically,
+allowing more complete and nuanced representations of
+risk heterogeneity and partnership dynamics.
+Such nuances can in fact be key determinants of epidemic dynamics and intervention impact
+\cite{Hontelez2013,Johnson2016a}.
+Evidently, many of the limitations of compartmental and pair-formation models
+do not apply to individual-based models \cite{Rao2021}.
+Yet these limitations are replaced with new challenges,
+especially related to implementing, parameterizing, and calibrating these powerful models
+\cite{Rao2021,Pellis2015,Hazelbag2020}.
+For example, much effort has been dedicated to
+formalizing the statistical properties of dynamic networks
+via temporal exponential family random graph models (tERGM) \cite{Jenness2018}
+or latent order logistic models (LOLOG) \cite{Clark2022},
+so that dynamic networks can be generated which are consistent with observed data.
+Although individual-based models have seen greater use than pair-formation models,
+these challenges still prevent universal adoption over classic compartmental models \cite{Rao2021}.
