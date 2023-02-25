@@ -7,19 +7,21 @@ Several relational constraints were imposed on calibrated parameter values durin
 For each set of constraints below, the selected parameters were repeatedly sampled
 (randomly, not via Latin hypercube) until all constraints were satisfied:
 \begin{itemize}\singlespacing
-  \item[a.] \texttt{(F_swr * C_swr_fsw_l * RC_swr_fsw_h:l + C_swo_fsw_l * RC_swo_fsw_h:l) < 2 * 365}
+  % \item[a.] \texttt{(F_swr * C_swr_fsw_l * RC_swr_fsw_h:l + C_swo_fsw_l * RC_swo_fsw_h:l) < 2 * 365}
+  \item[a.] \texttt{K_swo_fsw_l * RC_swo_fsw_h:l * F_swo + K_swr_fsw_l * RC_swr_fsw_h:l * F_swr < 2*365}\\
+            where: \texttt{K_swx_fsw_l = C1m_swx_fsw_l * dur_swx / (dur_swx + 1/12)}
   \item[b.] \texttt{PF_ai_swx <=  0.5}\\
             \texttt{PF_ai_mcx <= PF_ai_swx}
-  \item[c.] Let \texttt{k} denote \texttt{PF_condom}:\\
-            \texttt{k_msp_2006 < k_msp_2016}\\
-            \texttt{k_cas_2006 < k_cas_2016}\\
-            \texttt{k_swo_2002 < k_swo_2011 < k_swo_2014}\\
-            \texttt{k_swr_2002 < k_swr_2011 < k_swr_2014}\\
-            \texttt{k_msp_2006 < k_cas_2006}\\
-            \texttt{k_msp_2016 < k_cas_2016}\\
-            \texttt{k_swr_2002 < k_swo_2002}\\
-            \texttt{k_swr_2011 < k_swo_2011}\\
-            \texttt{k_swr_2014 < k_swo_2014}
+  \item[c.] Let \texttt{c} denote \texttt{PF_condom}:\\
+            \texttt{c_msp_2006 < c_msp_2016}\\
+            \texttt{c_cas_2006 < c_cas_2016}\\
+            \texttt{c_swo_2002 < c_swo_2011 < c_swo_2014}\\
+            \texttt{c_swr_2002 < c_swr_2011 < c_swr_2014}\\
+            \texttt{c_msp_2006 < c_cas_2006}\\
+            \texttt{c_msp_2016 < c_cas_2016}\\
+            \texttt{c_swr_2002 < c_swo_2002}\\
+            \texttt{c_swr_2011 < c_swo_2011}\\
+            \texttt{c_swr_2014 < c_swo_2014}
   \item[d.] \texttt{1 <= (Rbeta_acute * dur_acute) <= 63}
   \item[e.] \texttt{P_gud_fsw_l > .07}\\
             \texttt{(P_gud_fsw_l * RP_gud_fsw_h:l) < 1}

@@ -10,19 +10,19 @@ turn_xm_xl,          , turnover rate from medium to lowest activity (women and m
 Pturn_fsw_m:l,       , proportion of FSW who transition to medium activity
 Pturn_cli_m:l,       , proportion of clients who transition to medium activity
 growth_2050,         , rate of Eswatini population growth in 2050
-C_msp_xl,            , number of main/spousal partners among lowest activity
-C_cas_xl,            , number of casual partners among lowest activity
-C_cas_wm,            , number of casual partners among medium activity women
+C12m_msp_xl,         , number of main/spousal partners in p12m among lowest activity
+C12m_cas_xl,         , number of casual partners in p12m among lowest activity
+C12m_cas_wm,         , number of casual partners in p12m among medium activity women
 RC_cas_cli:wm,       , relative number of casual partners among clients vs medium activity women
-C_swo_fsw_l,         , number of occasional sex work partners among lower risk FSW
-C_swr_fsw_l,         , number of regular sex work partners among lower risk FSW
+C1m_swo_fsw_l,       , number of occasional sex work partners in p1m among lower risk FSW
+C1m_swr_fsw_l,       , number of regular sex work partners in p1m among lower risk FSW
 RC_swo_fsw_h:l,      , relative number of occasional sex work partners among higher vs lower risk FSW
 RC_swr_fsw_h:l,      , relative number of regular sex work partners among higher vs lower risk FSW
-CF_swx_cli,          , rate of visiting FSW (sex acts) among clients overall
-RCF_swx_cli_h:l,     , relative rate of visiting (sex acts) among higher vs lower risk clients
+KF_swx_cli,          , rate of visiting FSW (sex acts) among clients overall
+RKF_swx_cli_h:l,     , relative rate of visiting (sex acts) among higher vs lower risk clients
 F_msp,               , rate of sex acts in main/spousal partnerships
 RF_cas:msp,          , relative rate of sex acts in casual vs main/spousal partnerships
-qdur_msp,            , quantile duration of main/spousal partnerships
+dur_msp ,            , duration of main/spousal partnerships
 dur_cas,             , duration of casual partnerships
 dur_swr,             , duration of regular sex work partnerships
 F_swr,              a, rate of sex acts in regular sex work partnerships
@@ -66,8 +66,8 @@ Rdx_m:wq_2011,       , relative rate of diagnosis among men vs non-FSW women in 
 aRdx_fsw:wq_2011,    , additional relative rate of diagnosis among FSW vs non-FSW women in 2011
 aRdx_wq_16:11,       , additional relative rate of diagnosis among non-FSW women in 2016 vs 2011
 aRdx_fsw:wq_2016,    , additional relative rate of diagnosis among FSW vs non-FSW women in 2016
-tx_2012,             , rate of ART initiation among diagnosed and eligible in 2012
 tx_2010,             , rate of ART initiation among diagnosed and eligible in 2010
+tx_2012,             , rate of ART initiation among diagnosed and eligible in 2012
 Rtx_fsw:wq,          , relative rate of ART initiation among FSW vs non-FSW women
 ivx,                 , duration on ART before achieving VLS initially
 Runvx_m:wq,          , relative rate of viral unsuppression among men vs non-FSW women
