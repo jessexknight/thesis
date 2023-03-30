@@ -26,7 +26,7 @@
 % frontmatter
 \usepackage{xpatch}
 \xpatchcmd{\maketitle}{\@title}%
-  {\@title\vfill\vfill\includegraphics[height=5cm]{ut-crest}\vfill}{}{}
+  {\@title\vfill\vfill\includegraphics[height=.2\textheight]{ut-crest}\vfill}{}{}
 \newcommand{\singlespaced}[1]{%
   \pretocmd{#1}{\begingroup\singlespacing}{}{}%
   \apptocmd{#1}{\endgroup}{}{}}
@@ -46,7 +46,7 @@
 \makeatother
 % bibliography
 \usepackage[
-  style=numeric,
+  style=numeric-comp,
   sorting=none,
   doi=false,
   url=true,
@@ -74,11 +74,10 @@
 \colorlet{link}{red}
 \colorlet{cite}{red!67!blu}
 \colorlet{url}{blu}
-\newcommand{\colorsquare}[1]{\textcolor{#1}{$\blacksquare$}}
 \definecolor{rd}{HTML}{FF0033}
 \definecolor{ry}{HTML}{990099}
-\definecolor{pd}{HTML}{00CC99}
-\definecolor{py}{HTML}{0066FF}
+\definecolor{pd}{HTML}{00CC66}
+\definecolor{py}{HTML}{0066CC}
 \definecolor{np}{HTML}{FF9900}
 % hyperlinks
 \usepackage[
@@ -102,13 +101,25 @@
   {math/fig/}}
 \newcommand{\iterfig}[4][]{\vskip\textfloatsep
   \setcaptiontype{figure}
-  \foreach \var/\title in #3{\hfill
+  \foreach \var/\cap in #3{\hfill
     \parbox[t]{\dimexpr.5\linewidth-1em}{%
       \includegraphics[width=\linewidth]{{#2.\var}.pdf}
-      \subcaption{\title}
+      \subcaption{\cap}
       \label{fig:#2.\var}}}
   \caption{#4}
   \label{fig:#2#1}}
+\newcommand{\subcaptionoverlap}{\captionsetup[subfigure]{skip=-\baselineskip,margin=0pt}}
+\newcommand{\fffit}{1000 model fits (top 1\% by likelihood among 100,000 sampled parameter sets)}
+\newcommand{\fffoi}{See Table~\ref{tab:foi.models} for approach definitions}
+\newcommand{\ffribbon}{ribbon and curve: range and median of model fits}
+\newcommand{\fftargets}{points and error bars: mean and 95\%~CI for each calibration target}
+\newcommand{\ffbox}{whiskers, boxes, and midlines: 95\%~CI, 50\%~CI, median of model fits}
+\newcommand{\ffwiw}{median numbers of infections across all model fits shown}
+\newcommand{\fftpaf}{TPAF: transmission population attributable fraction, \sref{foi.exp.model.tpaf}}
+\newcommand{\ffpops}{Low: lowest activity; Med: medium activity;
+  LR/HR: lower/higher risk; FSW: female sex workers; Clients: of FSW}
+\newcommand{\ffpopz}{Lower Risk: all women and men not involved in sex work;
+  FSW: female sex workers; Clients: of FSW}
 % tables
 \usepackage{booktabs,longtable,rotating,multicol,multirow,csvsimple}
 \newcommand{\tn}[1]{\textsuperscript{\rlap{\,#1}}}
@@ -136,8 +147,9 @@
 \usepackage{xspace,pifont}
 \newcommand{\eg}{{e.g.,}\xspace}
 \newcommand{\ie}{{i.e.,}\xspace}
+\newcommand{\nb}{{n.b.}\xspace}
 \newcommand{\vs}{{vs.}\xspace}
-\newcommand{\ttilde}{\raisebox{-.75ex}{\textasciitilde}}
+\newcommand{\ttilde}{\textasciitilde\,}
 \newcommand{\hivp}{HIV$+$\xspace}
 \newcommand{\hivn}{HIV$-$\xspace}
 \newcommand{\hivu}{HIV\,?\,\xspace}
@@ -146,11 +158,11 @@
 \newcommand{\bph}{\textsc{bph}\xspace}
 \newcommand{\ir}{\textsc{ir}\xspace}
 \newcommand{\ip}{\textsc{ip}\xspace}
-\newcommand{\rd}{\textsc{rd}\xspace}
-\newcommand{\ry}{\textsc{ry}\xspace}
-\newcommand{\pd}{\textsc{pd}\xspace}
-\newcommand{\py}{\textsc{py}\xspace}
-\newcommand{\np}{\textsc{np}\xspace}
+\newcommand{\rd}{\textcolor{rd}{\textsc{rd}}\xspace}
+\newcommand{\ry}{\textcolor{ry}{\textsc{ry}}\xspace}
+\newcommand{\pd}{\textcolor{pd}{\textsc{pd}}\xspace}
+\newcommand{\py}{\textcolor{py}{\textsc{py}}\xspace}
+\newcommand{\np}{\textcolor{np}{\textsc{np}}\xspace}
 \newcommand{\yes}{\ding{51}\xspace}
 \newcommand{\no}{\ding{55}\xspace}
 \renewcommand{\ast}{\raisebox{-.5ex}{*}\xspace}
@@ -168,6 +180,7 @@
 \newcommand{\eqrefr}[2]{Eqs.~(\ref{#1})--(\ref{#2})}
 \newcommand{\ifempty}[3]{\if\relax\detokenize{#1}\relax#2\else#3\fi}
 \newcommand{\cdf}[2]{\ifempty{#2}{CD4\,$>$\,#1}{\ifempty{#1}{}{#1\,$<$\,}CD4\,$<$\,#2}}
+\renewenvironment{quote}{\list{}{\rightmargin=\leftmargin\topsep=0pt}\item\relax\itshape}{\endlist}
 % itemize & enumerate
 \usepackage{enumitem}
 \setitemize{itemsep=0pt,topsep=0pt}
