@@ -42,7 +42,7 @@ The remainder of this section reviews these equations and their assumptions in d
 %===================================================================================================
 \subsection{Aggregating Sex Acts within a Partnership}\label{foi.prior.bhom}
 To account for repeated sex acts with the same partner,
-the per-partnership probability of transmission $B$ was conceptualized as follows. % TODO: cite?
+the per-partnership probability of transmission $B$ was conceptualized as follows \cite{Allard1990}.
 Let $A$ denote the total number of sex acts in the partnership,
 and $\beta$ denote the probability of transmission per act.
 For now, $\beta$ is assumed to be equal for all acts.
@@ -101,22 +101,24 @@ more and more acts are ``wasted'' --- occuring after transmission.
     $\alpha$: fraction of total acts (within or between partnerships).}
 \end{figure}
 %===================================================================================================
-\subsection{Heterogeneity in the Per-Act Probability of Transmission}\label{foi.prior.bhet}
+\subsection{Heterogeneity in the Per-Act Probability of Transmission}\label{foi.prior.xph}
 As noted above, the per-act probability of transmission $\beta$ is heterogeneous,
 varying with factors like: HIV infection stage, genital ulcer disease, condom use, etc.
 \cite{Boily2009,Giannou2016}.
 The next step in developing a force of infection equation is to extend \eqref{eq:B}
-to allow heterogeneity in $\beta$.
+to allow heterogeneity in $\beta$ \cite{Allard1990}.
 Let $\beta_f$ denote the probability of transmission associated
 with a particular factor (or combination of factors) $f$; and
 let $\alpha_f$ denote the proportion of acts $A$ in an average partnership
 having transmission probability $\beta_f$
 (thus $\Sigma_f \alpha_f = 1$).
-There are two approaches to aggregating $\beta_f$,
+There are two main approaches to aggregating $\beta_f$,
 reflecting different interpretations of $\alpha_f$:%
 \footnote{In most compartmental models without repeated contacts (partnerships),
   this distinction is not possible or necessary, because
   all contacts (sex acts) between two compartments (risk groups) are assumed to be independent.}
+\footnote{In fact, further variations on \eqrefs{eq:B.wph}{eq:B.bph} have also been used;
+  \sref{app.foi.prior} gives some examples.}
 \begin{itemize}
   \item \textbf{{Within}-Partnership Heterogeneity (WPH)}:
   modelled partnerships are identical, but comprise heterogeneous acts
@@ -170,10 +172,12 @@ sex acts with condoms \vs without condoms
 should be aggregated as WPH, with $\alpha_f = 0.5$.
 By contrast, heterogeneity in individual-level factors like infection stage or treatment status
 should be aggregated as BPH,%
-\footnote{Individual-level factors should be aggregated as BPH because
+\footnote{\label{foot:xph.future}
+  Individual-level factors should be aggregated as BPH because
   a given partner has exactly one current infection stage or treatment status;
   of course, this stage/status could evolve over the course the partnership,
   but this future trajectory is not explicitly modelled
+  % TODO: exception = Thembisa?
   --- which only serves to highlight the limitations of
   either approach to aggregating heterogeneity in $\beta$.}
 with $\gamma_g$ as the conditional prevalence of each stage/status~$g$ among infected partners.
@@ -184,16 +188,16 @@ the unconditional prevalence of stage/status~$g$ among \emph{all} partners.
 % TODO: anything else to add?
 %===================================================================================================
 \subsection{Aggregating Partnerships}\label{foi.prior.part}
-Although we considered between-partnership heterogeneity in \sref{foi.prior.bhet},
+Although we considered between-partnership heterogeneity in \sref{foi.prior.xph},
 the modelled per-partnership probability of transmission $B$
 still corresponds to a single average partnership.
 Some population groups may have multiple partners per unit time (usually year),
 possibly including different types of partnerships,
 or less than one partnership per year, on average.
 Thus, the second step in constructing the incidence equation is to
-aggregate transmission risk across these various partnerships.
+aggregate transmission risk across these various partnerships \cite{Allard1990}.
 \par
-As in \sref{foi.prior.bhet}, there are two main approaches to aggregating partnerships
+As in \sref{foi.prior.xph}, there are two main approaches to aggregating partnerships
 --- indeed having similar equations to \eqrefs{eq:B.wph}{eq:B.bph}.
 This time, the distinction may be more familiar:
 \begin{itemize}
@@ -266,7 +270,7 @@ By contrast, the partnership formation rate $Q$ is often directly informed by su
 As such, the lowest possible value among sexually active individuals
 could naively be taken as $Q = 1$ (per year).
 Then, if $Q \ge 1$ is used in the model,
-the total sex acts per partnership can (and should be) reduced to reflect up to one year
+the total sex acts per partnership can (and should) be reduced to reflect up to one year
 --- \ie $A \le F$, or effectively $\delta \le 1$ year.
 This change \vs $Q < 1, A > F$
 can substantially reduce the proportions of sex acts which are modelled as ``wasted'',
@@ -368,9 +372,11 @@ Recognizing the limitations of compartmental models in simulating
 infectious disease transmission via sexual partnerships,
 two main alternate modelling frameworks have been developed.
 These frameworks are illustrated in Figure~\ref{fig:fw}.
+A more detailed system for classifying modelling frameworks
+is also given in Appendix~1 of \cite{Johnson2016a}.
 \begin{figure}
   \centering\foreach \var/\cap in
-  {comp/Classic compartmental,pair/Pair-formation,ibm/Individual-based}{%
+  {comp/Classic compartmental,pair/Pair-based,ibm/Individual-based}{%
   \begin{subfigure}[b]{.33\linewidth}
     \centering
     \includegraphics[width=.9\linewidth]{mf.\var}
@@ -384,26 +390,32 @@ These frameworks are illustrated in Figure~\ref{fig:fw}.
     $S$: susceptible; $I$: infectious;
     solid arrows: partnerships; dashed arrows: state transitions.}
 \end{figure}
-\paragraph{Pair-Formation Models}
-Pair-formation models were developed as early as 1988,
+%---------------------------------------------------------------------------------------------------
+\paragraph{Pair-Based Models}
+Pair-based models, also known as pair-formation models, were developed as early as 1988,
 with the explicit motivation to overcome limitations of
 classic compartmental models of STI transmission \cite{Dietz1988a}.
-In pair-formation models, the fundamental population stratification
+In pair-based models, the fundamental population stratification
 reflects different partnership configurations and health states \cite{Kretzschmar2017}, such as:
 susceptible and single, a susceptible/infected pair in a long-term partnership, etc.
 (Figure~\ref{fig:mf.pair}).
 Such models can therefore track the numbers of partnerships
 where transmission is \vs is not possible,
 thereby avoiding the instantaneous partnership assumption.
-Pair-formation models have been applied to a variety of STIs \cite{Kretzschmar2017}.
-However, the numbers of strata required to reflect all possible partnership configurations
---- including, for example, FSW with severals regular clients,
-each of whom may have additional ongoing partnerships themselves ---
+Pair-based models have been applied to a variety of STIs \cite{Kretzschmar2017}.
+However, the numbers of compartments required to reflect all possible partnership configurations
 \emph{and} all possible health states among connected partners
---- including different HIV infection stages and treatment statuses ---
 quickly become impractical \cite{Kretzschmar2017,Rao2021}.
-As such, pair-formation models have seen little widespread adoption
+For example, a classic compartmental model with 2 risk groups and 2 health states
+would require $2\times2=4$ compartments;
+whereas even a first-order pair-based model (\ie without ``triples'')
+would require $2\times2$ (singles) + ${(2\times2)}^2$ (pairs) ${} = 20$ compartments;
+a second-order pair-based model would require $4 + 4^2 + 4^3 = 84$ compartments.
+Thus, pair-based models are especially limited in their ability to model partnership concurrency
+--- the role of which in HIV epidemiology remains controversial \cite{Sawers2013}.
+As such, pair-based models have seen little widespread adoption
 for STI or HIV transmission modelling \cite{Rao2021}.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Individual-Based Models}
 Individual-based models, also knowns as agent-based, network-based, or microsimulation models,
 explicitly simulate unique individuals (Figure~\ref{fig:mf.ibm}),
@@ -415,11 +427,10 @@ parameterized in fundamentally different ways \vs compartmental models,
 including with continuous valued features like infection age and sex frequency,
 \vs predetermined categories like infection stages and partnership types \cite{Pellis2015,Rao2021}.
 Parameters for each individual and partnership are thus sampled randomly and/or dynamically,
-allowing more complete and nuanced representations of
-risk heterogeneity and partnership dynamics.
+allowing more complete and nuanced representations of risk heterogeneity and partnership dynamics.
 Such nuances can in fact be key determinants of epidemic dynamics and intervention impact
 \cite{Hontelez2013,Johnson2016a}.
-Evidently, many of the limitations of compartmental and pair-formation models
+Evidently, many of the limitations of compartmental and pair-based models
 do not apply to individual-based models \cite{Rao2021}.
 Yet these limitations are replaced with new challenges,
 especially related to implementing, parameterizing, and calibrating these powerful models
@@ -429,5 +440,5 @@ formalizing the statistical properties of dynamic networks
 via temporal exponential family random graph models (tERGM) \cite{Jenness2018}
 or latent order logistic models (LOLOG) \cite{Clark2022},
 so that dynamic networks can be generated which are consistent with observed data.
-Although individual-based models have seen greater use than pair-formation models,
+Although individual-based models have seen greater use than pair-based models,
 these challenges still prevent universal adoption over classic compartmental models \cite{Rao2021}.
