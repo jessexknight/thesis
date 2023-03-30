@@ -186,19 +186,19 @@ in 2006-07 (\subref{fig:Cwp.2006}) and 2016-17 (\subref{fig:Cwp.2016}).
   \centering
   \begin{subfigure}{0.7\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{Cwp-2006}
+    \includegraphics[width=\linewidth]{Cwp.2006}
     \caption{2006-07 \cite{SDHS2006}}
     \label{fig:Cwp.2006}
   \end{subfigure}
   \begin{subfigure}{0.7\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{Cwp-2016}
+    \includegraphics[width=\linewidth]{Cwp.2016}
     \caption{2016 \cite{SHIMS2}}
     \label{fig:Cwp.2016}
   \end{subfigure}
   \begin{subfigure}{0.7\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{Cwp-adj}
+    \includegraphics[width=\linewidth]{Cwp.adj}
     \caption{Adjusted (mean)}
     \label{fig:Cwp.adj}
   \end{subfigure}
@@ -251,7 +251,7 @@ I modelled this relationship through an odds ratio $\varphi_{W,s1:0}$,
 which is roughly equivalent in interpretation to
 the proportion ratios estimated by \citet{Behanzin2013}:%
 \footnote{Odds ratios ensure no proportions become greater than one or negative.}
-\begin{equation}\label{eq:Cwp-or}
+\begin{equation}\label{eq:Cwp.or}
   \varphi_{Ws1:0} = \frac{W'_{s1}}{W'_{0}} \bigg/ \frac{W_{s1}}{W_{0}}
 \end{equation}
 I defined similar odds ratios $\varphi_{Ws2+:s1}$, $\varphi_{Wu2+:u1}$,
@@ -677,6 +677,7 @@ sometimes regular paying clients later become
 non-paying emotional partners \cite{Voeten2007,Mbonye2022}.
 Based on \cite{Voeten2002}, I defined a gamma prior distribution for
 the mean duration of regular sex work partnerships $\delta_{p_{4}}$ with 95\%~CI (0.5,~2.0) years.
+% TODO: is this too long given FSW turnover?
 %===================================================================================================
 \subsection{Mixing}\label{model.par.mix}
 In addition to more concentrated transmission
@@ -788,7 +789,7 @@ while men adapt their partner numbers to balance;
 and conversely for $\omega = \{0,1\}$.
 I fixed $\omega = \{0.5,0.5\}$ for equal adaptation among women and men.
 %---------------------------------------------------------------------------------------------------
-\subsubsection{Odds of Mixing}
+\subsubsection{Odds of Mixing}\label{model.par.mix.odds}
 Despite the flexibility in the odds of mixing matrix $\Phi_{pii'}$,
 limited data are available to inform specific elements,
 especially for Eswatini in particular.
