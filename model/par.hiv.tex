@@ -99,6 +99,7 @@ Thus, I modelled an additional 50\% reduction in mortality among individuals wit
 and half this (25\%) reduction before achieving VLS ($c=3$).
 %===================================================================================================
 \subsection{Rates of HIV Diagnosis, ART Initiation, Viral Un-suppression \& Re-suppression}\label{model.par.cascade}
+% TODO: add Walsh2020
 Rates of HIV diagnosis $\delta$, ART initiation $\tau$, viral un-suppression $\zeta$
 (including treatment failure, discontinuation, or loss to follow-up),
 and viral re-suppression $\sigma'$ (Figure~\ref{fig:model.cascade})
@@ -148,6 +149,7 @@ I further specified diagnosis rates using non-FSW women as a reference group,
 with separate time-varying \emph{relative} rates defined for FSW and men.
 Confidence intervals for relative rates were assumed using
 a standard deviation of 0.2 for FSW and 0.1 for men (gamma priors).
+%---------------------------------------------------------------------------------------------------
 \paragraph{HIV Testing Rates}
 Early HIV testing in Eswatini was mainly available to pregnant women via antenatal clinics,
 though a small number of youth and men also accessed HIV testing services \cite{EswHPC1998,HSRC2004}.
@@ -196,6 +198,7 @@ I held all rates of HIV diagnosis after 2016 fixed.
 Rates of ART initiation $\tau$ were modelled to reflect
 time-varying eligibility, availability, loss to follow-up,
 and differences between sex/activity groups.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Eligibility}
 Historical ART eligibility in Eswatini has generally followed
 the evolving World Health Organization (WHO) guidelines
@@ -242,6 +245,7 @@ South Africa \cite[Table~4]{Badri2004} and Saudi Arabia \cite[Table~2]{Edathodu2
 \end{itemize}
 I assumed that roll-out of eligibility changes in 2010, 2015, and 2017
 each occurred over a 1-year period.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Availability and Initiation}
 ART first became available in Eswatini in late 2003
 via a one-hospital pilot project \cite{NERCHA2012}.
@@ -263,6 +267,7 @@ This maximum rate of $\tau = 12$ corresponds to
 a mean effective delay of one month between diagnosis and ART initiation;
 this value was chosen in part to avoid numerical instability
 when solving the model with very high rates.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Group Differences}
 In 2011, conditional ART coverage (among diagnosed) was greater among men \vs women
 (Table~\ref{tab:targ.cascade}),
