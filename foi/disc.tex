@@ -3,7 +3,7 @@ Compartmental models of sexual HIV transmission continue to support HIV epidemic
 including the Spectrum suite of models \cite{Stover2021,Spectrum2022},
 the Optima HIV model \cite{Kerr2015,Optima2021},
 the Asian Epidemic Model \cite{Brown2004},
-the Thembisa model for South Africa \cite{Johnson2006,Johnson2016,Johnson2022},
+the Thembisa model for South Africa \cite{Johnson2006,Johnson2016cc,Johnson2022},
 and numerous others (\eg Chapter~\ref{sr}).
 Such models usually simulate sexual HIV transmission within risk- and/or age-stratified populations,
 possibly considering multiple partnership types and/or transmission modifiers.
@@ -85,7 +85,7 @@ overestimate the impact of risk-increassing modifiers (\eg GUD).%
 \subsection{Beyond Instantaneous Partnerships}\label{foi.disc.bip}
 The 2021 review by \citet{Rao2021} summarizes frameworks that have been used to
 simulate partnership dynamics for modelling sexually transmitted infections
-(see also \sref{foi.prior.alt} and Appendix~1 of \cite{Johnson2016a}).
+(see also \sref{foi.prior.alt} and Appendix~1 of \cite{Johnson2016mf}).
 Besides pair-based models, the review does not identify another approach
 which has extended the compartmental modelling framework beyond instantaneous partnerships.
 Pair-based models have not seen widespread adoption, likely due to
@@ -111,7 +111,7 @@ have been explored previously, via comparison with
 deterministic pair-based models \cite{Kretzschmar1998,Eames2002,Lloyd-Smith2004},
 a stochastic pair-based model \cite{Eames2002},
 a stochastic static network-based model \cite{Eames2002}, and
-a stochastic dynamic network-based model \cite{Johnson2016a}.
+a stochastic dynamic network-based model \cite{Johnson2016mf}.
 % TODO: Watts1992: initial fast phase (all susceptible, then delayed by partnership change)
 \par
 \citet{Kretzschmar1998} highlight how biases associated with instantaneous partnership
@@ -142,9 +142,9 @@ and modelled incidence was \emph{underestimated} relative to the proposed approa
 No adjustments for ``wasted contacts'' were described in \cite{Eames2002,Lloyd-Smith2004},
 reflecting the former case.
 %---------------------------------------------------------------------------------------------------
-\paragraph{\citet{Johnson2016a}}
+\paragraph{\citet{Johnson2016mf}}
 This landmark study compared modelling frameworks across 6 STIs.%
-\footnote{The term ``frequency-dependent'' in \cite{Johnson2016a} is synonymous with
+\footnote{The term ``frequency-dependent'' in \cite{Johnson2016mf} is synonymous with
   ``instantaneous partnerships'' here.}
 The models explored were more complex than previous works, including:
 population stratification by sex, age, and risk,
@@ -153,7 +153,7 @@ Although an adjustment for ``wasted contacts'' for instantaneous partnerships wa
 the adjustment considered different time period across partnership types:
 1 month for main/spousal, 6 months for casual, and none for sex work partnerships;
 thus, regular sex work partnerships were not considered.
-Similar to experiments in \sref{foi.exp.model}, \cite{Johnson2016a} first compared
+Similar to experiments in \sref{foi.exp.model}, \cite{Johnson2016mf} first compared
 model outputs from frameworks with equal parameters, and then again with recalibrated parameters.
 \par
 With equal parameters, findings echoed those above \cite{Eames2002,Lloyd-Smith2004},
@@ -167,22 +167,22 @@ of several illustrative intervention strategies also differed substantially.
 These differences were summarized as:
 \shortquote{\emph{[instantaneous partnership models]} are likely to
 underestimate the importance of interventions that are targeted at high-risk groups, while
-overestimating the impact of interventions targeted at low-risk groups} \cite{Johnson2016a}.
+overestimating the impact of interventions targeted at low-risk groups} \cite{Johnson2016mf}.
 Such findings are similar to those in \sref{foi.exp.model.tpaf}, where
 the TPAFs of lower risk populations and main/spousal partnerships were overestimated, while
 the TPAFs of casual partnerships were underestimated
 under 1-year approaches (\ry,~\py) \vs the new proposed approach (\np).
-However, while \cite{Johnson2016a} observed that instantaneous partnerships
+However, while \cite{Johnson2016mf} observed that instantaneous partnerships
 \shortquote{may underestimate the contribution of commercial sex},
 the TPAFs of FSW, clients, and sex work partnerships
 were similar across approaches in \sref{foi.exp.model.tpaf}.
 These different findings could be explained by the fact that
-\cite{Johnson2016a} only modelled one-off sex work partnerships,
+\cite{Johnson2016mf} only modelled one-off sex work partnerships,
 whereas transmission via sex work in the Eswatini model
 was dominated by regular partnerships (Figure~\ref{fig:foi.wiw.part}).
 Indeed, many HIV models have yet to incorporate longer partnerships between higher risk groups
 (see \sref{sr.res.f.net} and \sref{model.disc.par.part}).
-Thus, I would offer to rephrase the conclusions of \cite{Johnson2016a} as:
+Thus, I would offer to rephrase the conclusions of \cite{Johnson2016mf} as:
 \shortquote{without complete adjustment for `wasted contacts',
   models with instantaneous partnerships may
   overestimate the contribution of longer partnerships, and
@@ -197,7 +197,7 @@ with adjustments for ``wasted contacts'' of 1-year or less.
 The results in \sref{foi.exp.model.tpaf} suggest that such models
 have likely \emph{systematically} and \emph{significantly} overestimated
 the relative contributions of longer \vs shorter partnerships to overall transmission.
-Such results are corroborated by \cite{Johnson2016a},
+Such results are corroborated by \cite{Johnson2016mf},
 and have substantial implications for the existing body of model-based evidence.
 That is, models continue to help inform which interventions are prioritized and for whom,
 and existing evidence may overestimate the importance of prevention within longer partnerships
@@ -302,7 +302,7 @@ It may also be useful to compare key model outputs
 before \vs after integrating the proposed approach in existing models
 and highlight notable differences, similar to the experiments in \sref{foi.exp.model}.
 Similar work could compare and indeed validate the proposed approach \vs individual-based models,
-similar to the experiments in \cite{Johnson2016a}.
+similar to the experiments in \cite{Johnson2016mf}.
 \par
 Additionally, while I developed the proposed approach in the context of HIV,
 accurate simulation of partnership dynamics is also relevant for
