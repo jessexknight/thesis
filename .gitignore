@@ -2,6 +2,7 @@
 .old/
 .tmp/
 .coa/
+main.pdf
 # tex
 *.aux
 *.bbl
