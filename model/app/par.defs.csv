@@ -26,36 +26,35 @@ dur_msp ,            , duration of main/spousal partnerships
 dur_cas,             , duration of casual partnerships
 dur_swr,             , duration of regular sex work partnerships
 F_swr,              a, rate of sex acts in regular sex work partnerships
-PF_ai_mcx,          b, proportion of sex acts which are anal in non-sex work partnerships
-PF_ai_swx,          b, proportion of sex acts which are anal in sex work partnerships
+PF_ai,               , proportion of sex acts which are anal in all partnerships
 pref_msp_xl,         , log-odds of main/spousal partnership formation among lowest activity
 pref_mcx_swx,        , log-odds of non-sex work partnership formation among FSW and clients
 Rbeta_condom,        , relative per-act probability of HIV transmission with a condom
 RPF_condom_a:v,      , relative condom use in anal vs vaginal sex
-PF_condom_msp_2006, c, condom use in main/spousal partnerships in 2006
-PF_condom_msp_2016, c, condom use in main/spousal partnerships in 2006
-PF_condom_cas_1988, c, condom use in casual partnerships in 1988
-PF_condom_cas_2006, c, condom use in casual partnerships in 2006
-PF_condom_cas_2016, c, condom use in casual partnerships in 2016
-PF_condom_swo_2002, c, condom use in occasional sex work partnerships in 2002
-PF_condom_swo_2011, c, condom use in occasional sex work partnerships in 2011
-PF_condom_swo_2014, c, condom use in occasional sex work partnerships in 2014
-PF_condom_swr_2002, c, condom use in regular sex work partnerships in 2002
-PF_condom_swr_2011, c, condom use in regular sex work partnerships in 2011
-PF_condom_swr_2014, c, condom use in regular sex work partnerships in 2014
+RPF_condom_1996,    , relative condom use in all partnerships in 1996 vs 2002 or 2006
+PF_condom_msp_2006, b, condom use in main/spousal partnerships in 2006
+PF_condom_msp_2016, b, condom use in main/spousal partnerships in 2006
+PF_condom_cas_2006, b, condom use in casual partnerships in 2006
+PF_condom_cas_2016, b, condom use in casual partnerships in 2016
+PF_condom_swo_2002, b, condom use in occasional sex work partnerships in 2002
+PF_condom_swo_2011, b, condom use in occasional sex work partnerships in 2011
+PF_condom_swo_2014, b, condom use in occasional sex work partnerships in 2014
+PF_condom_swr_2002, b, condom use in regular sex work partnerships in 2002
+PF_condom_swr_2011, b, condom use in regular sex work partnerships in 2011
+PF_condom_swr_2014, b, condom use in regular sex work partnerships in 2014
 PF_circum_2050,      , prevalence of circumcision by 2050
 beta_0,              , per-act probability of HIV transmission $\beta$ for \cdf{350}{} (reference)
-Rbeta_acute,        d, relative $\beta$ during acute infection
+Rbeta_acute,        c, relative $\beta$ during acute infection
 Rbeta_350,           , relative $\beta$ for \cdf{200}{350}
 Rbeta_200,           , relative $\beta$ for \cdf{}{350}
 Rbeta_vi_rec,        , relative $\beta$ for receptive vaginal sex
 aRbeta_gud_sus,      , additional relative $\beta$ for GUD among susceptible partner
 aRbeta_gud_inf,      , additional relative $\beta$ for GUD among infectious partner
-dur_acute,          d, duration of acute infection
-P_gud_fsw_l,        e, prevalence of GUD among lower risk FSW
-RP_gud_fsw_h:l,     e, relative prevalence of GUD among higher vs lower risk FSW
+dur_acute,          c, duration of acute infection
+P_gud_fsw_l,        d, prevalence of GUD among lower risk FSW
+RP_gud_fsw_h:l,     d, relative prevalence of GUD among higher vs lower risk FSW
 RP_gud_2050,         , relative prevalence of GUD overall in 2050 vs 2020
-iP_gud_cli_fsw:gp,   , prevalence interpolator for GUD vs medium activity and FSW
+iP_gud_h:l,          , prevalence interpolator for GUD among medium activity vs DHS and FSW
 Rbeta_uvls,          , relative $\beta$ on ART but before VLS
 Rdx_global,          , relative rate of diagnosis overall
 dx_w_2002,           , rate of diagnosis among women in 2002

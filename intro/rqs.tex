@@ -1,0 +1,59 @@
+\section{Research Questions}\label{intro.rqs}
+Considering the issue of ``where to draw the line'' with respect to model complexity,
+the original aim of this thesis was to offer generalizable insights as to
+when different factors of risk heterogeneity matter most.%
+\footnote{What is a PhD research proposal if not overambitious?}
+However, preliminary work reviewing prior models and implementing a benchmark model
+revealed another, equally important issue:
+% TODO: this sudden pivot is jarring?
+\begin{quote}
+  Models with the \textbf{same structure} and using the \textbf{same data}
+  could differ further due to differences in
+  \textbf{assumptions} during data analyses and model implementation.
+\end{quote}
+For example:
+survey data may give the numbers of sexual partners reported by respondents in the past 12 months,
+but these data may be interpreted in different ways to actually specify model parameters.
+For another example:
+a model may be stratified by age, but the model may or may not also consider differences by age
+in rates of HIV testing, treatment initiation, etc.
+Such assumptions therefore reflect another dimension to operationalized ``risk heterogeneity'',
+which is especially relevant in applied modelling.
+\par
+Thus, the overarching research question of this thesis is:
+\begin{quote}
+  How do modelling assumptions influence outputs from
+  compartmental models of heterosexual HIV transmission?
+\end{quote}
+where modelling assumptions are conceptualized as:
+\begin{itemize}
+  \item \textbf{model structure:} which
+  stratifications of the population and/or processes are explicitly represented?
+  \item \textbf{model parameterization:} which
+  data are used as model inputs and calibration targets, and how?
+  \item \textbf{model implementation:} which
+  equations are used to define the rates of transmission and transition between compartments?
+\end{itemize}
+and model outputs include:
+direct estimates (\eg HIV incidence over time),
+causal inference (\eg comparison of intervention scenarios), and
+qualitative interpretation of a collection of results.
+\par
+Of course, comprehensive study of these numerous assumptions and outputs
+across epidemic contexts is beyond the scope of a single thesis.
+Rather, I sought to explore these aspects mainly in the Eswatini epidemic context,
+through the following specific aims, each reflecting a chapter in the thesis:
+\begin{itemize}
+  \item Chapter~\ref{sr} systematically reviews the structure and assumptions used in
+  prior compartmental HIV transmission models exploring ART scale-up in Sub-Saharan Africa
+  \item Chapter~\ref{model} details the design, parameterization, and calibration of
+  a ``benchmark'' compartmental model of heterosexual HIV transmission in Eswatini,
+  with specific focus on precise interpretation of input data, and adjustment for potential biases
+  \item Chapter~\ref{foi} applies this model to examine
+  the impact of different assumptions and equations on
+  model-estimated HIV incidence and the relative contribution of specific transmission pathways
+  \item Chapter~\ref{art} further applies the model to explore
+  how differences in who is assumed to be reached by ART scale-up
+  can influence model-estimated ART prevention impacts
+\end{itemize}
+Finally, Chapter~\ref{conc} offers some concluding remarks.

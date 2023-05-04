@@ -14,11 +14,11 @@ is generally considered unreliable due to social desirability bias,
 particularly if the survey is face-to-face and household-based
 \cite{Konings1995,Gregson2002,Gregson2004,Lowndes2012,Behanzin2013}.
 Therefore, FSW population size estimates require
-targeted surveys and unique methodologies \cite{UNAIDS2010size,Abdul-Quader2014}.
+targeted surveys and unique methodologies \cite{UNAIDS2010kps,Abdul-Quader2014}.
 In both \cite{EswKP2014} and \cite{EswIBBS2022}, the Swati FSW population size
 was estimated using a combination of
 unique object method, service multiplier method, prior survey participation,
-and network scale-up method (NSUM) \cite{UNAIDS2010size}.
+and network scale-up method (NSUM) \cite{UNAIDS2010kps}.
 In 2011 \cite{EswKP2014}, regional FSW population size estimates
 ranged from 0.7\% to 6.5\% of all women,
 with overall population-weightedd mean across regions of 2.9\%;
@@ -56,6 +56,7 @@ as defined below in \sref{model.par.sw.part}, the client population size $P_{s_{
 estimated by this method was 13.1~(2.1,~38.5)\% of men. % TODO: double check
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Sex Work Partnerships}\label{model.par.sw.part}
+%---------------------------------------------------------------------------------------------------
 \paragraph{Female Sex Workers}
 Table~\ref{tab:fsw.ratios} summarizes the numbers of
 numbers of new and regular clients \emph{per month} reported by Swati FSW,
@@ -113,6 +114,7 @@ via \eqref{eq:C2Q} using $C'_{p_{4}s_{1}i_{3}}$ and $\gamma = 1/12$ year.
 % TODO: summarize distributions: Q, K, KF
 For higher risk FSW, I sampled the \emph{relative} number/rate of regular clients from
 1.5~(1.3,~1.7) (Table~\ref{tab:fsw.ratios}) as before.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Clients}
 For Sub-Saharan African clients of FSW, data on
 the number of unique FSW visited and the frequency of sex is sparse.
@@ -186,19 +188,19 @@ in 2006-07 (\subref{fig:Cwp.2006}) and 2016-17 (\subref{fig:Cwp.2016}).
   \centering
   \begin{subfigure}{0.7\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{Cwp-2006}
+    \includegraphics[width=\linewidth]{Cwp.2006}
     \caption{2006-07 \cite{SDHS2006}}
     \label{fig:Cwp.2006}
   \end{subfigure}
   \begin{subfigure}{0.7\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{Cwp-2016}
+    \includegraphics[width=\linewidth]{Cwp.2016}
     \caption{2016 \cite{SHIMS2}}
     \label{fig:Cwp.2016}
   \end{subfigure}
   \begin{subfigure}{0.7\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{Cwp-adj}
+    \includegraphics[width=\linewidth]{Cwp.adj}
     \caption{Adjusted (mean)}
     \label{fig:Cwp.adj}
   \end{subfigure}
@@ -206,6 +208,7 @@ in 2006-07 (\subref{fig:Cwp.2006}) and 2016-17 (\subref{fig:Cwp.2016}).
     stratified by union status and numbers of partners in the past 12 months}
   \label{fig:Cwp}
 \end{figure}
+%---------------------------------------------------------------------------------------------------
 \paragraph{Reporting Bias}
 Next, I consider the issue of reporting bias.
 $M_{2+}$ is consistently much greater than $W_{2+}$.
@@ -224,7 +227,7 @@ women with 3+ partners are under-reported or indeed missing from the survey.
 explored explanations (b) and (c) through measures of consistency; their results suggested that
 under-reporting of non-spousal partnerships by women (c) was more likely,
 perhaps due to social norms and pressures;
-such norms in Eswatini are explored in \cite{Ruark2019,Pulerwitz2021}.
+such norms in Eswatini are explored in \cite{Ruark2014,Fielding-Miller2016,Ruark2019,Pulerwitz2021}.
 In fact, a review comparing computer-based tools \vs face-to-face interviews
 for surveying sexual behaviour \cite{Langhaug2010} found that
 \emph{both} women and men may under-report sexual partners, but women more so.
@@ -238,7 +241,8 @@ exchanging sex for money, gifts or favours in p12m, while
 Such findings were similar to those from Zimbabwe (1990s) \cite{Gregson2002}.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Bias Adjustment: Approach}\label{model.par.nsw.bias}
-Reflecting these potential reporting biases,
+Reflecting these potential reporting biases
+and qualitative insights from \cite{Ruark2014,Fielding-Miller2016,Ruark2019,Pulerwitz2021},
 I modelled the ``true'' proportions of Swati women and men
 in each union/partners in p12m stratum as follows.
 Let $W_{s1}$ and $W_{u1}$ denote sub-proportions of $W_{1}$ who are single and in a union, respectively,
@@ -251,7 +255,7 @@ I modelled this relationship through an odds ratio $\varphi_{W,s1:0}$,
 which is roughly equivalent in interpretation to
 the proportion ratios estimated by \citet{Behanzin2013}:%
 \footnote{Odds ratios ensure no proportions become greater than one or negative.}
-\begin{equation}\label{eq:Cwp-or}
+\begin{equation}\label{eq:Cwp.or}
   \varphi_{Ws1:0} = \frac{W'_{s1}}{W'_{0}} \bigg/ \frac{W_{s1}}{W_{0}}
 \end{equation}
 I defined similar odds ratios $\varphi_{Ws2+:s1}$, $\varphi_{Wu2+:u1}$,
@@ -280,6 +284,7 @@ The odds ratios $\varphi$ were then defined as follows, including sampling distr
     Wu2+: in a union and 2+ partners in p12m.
     $\varphi$: odds of truly being in the second (arrowhead) vs first (tail) group.}
 \end{figure}
+%---------------------------------------------------------------------------------------------------
 \paragraph{Union Status}
 I assumed that under-reporting of main/spousal partnerships was minimal,
 but that some ``main'' partnerships may not be captured in
@@ -296,6 +301,7 @@ Thus, I sampled each of $\varphi_{u1:0}$, $\varphi_{u1:s1}$, and $\varphi_{u2+:s
 from $1+\opname{Gamma}(\alpha,\beta=1)$
 with $\alpha=.5$ for women and $\alpha=.3$ for men,
 yielding mean (95\%~CI): 1.50~(1.00,~3.51) and 1.30~(1.00,~2.90), respectively.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Partner Numbers}
 Next, I defined $\varphi_{s1:0}$, $\varphi_{s2+:s1}$, and $\varphi_{u2+:u1}$ as follows
 (vertial transitions in Figure~\ref{fig:model.nsw.adj}).
@@ -340,6 +346,7 @@ Numerically, the mean (95\%~CI) estimates were:
     with 2+ partners in p12m were in a main/spousal partnership,
     and the rest had only casual partnerships.
 \end{itemize}
+%---------------------------------------------------------------------------------------------------
 \paragraph{Group Sizes}
 From these results, I defined the sizes of the modelled lower and medium activity groups,
 and the average numbers of main/spousal partnerships per person.
@@ -360,6 +367,7 @@ a BAB distribution with 95\%~CI (10,~17)\%, yielding
 which is close to (15,~44)\% from $M_{2+}$.
 The lowest activity men were then then defined as $1 - P_{s_{2}i_{234}}$,
 representing (50,~85)\% of men.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Main/Spousal Partnerships}
 To simplify model fitting, I sampled a common proportion of
 individuals reporting a main/spousal partnership from a BAB distribution with 95\%~CI (25,~50)\%,
@@ -369,6 +377,7 @@ Then, \eqrefs{eq:C2Q}{eq:C2K} were used to define $Q$ and $K$, respectively.
 Since FSW and clients had fewer main/spousal partnerships (see \sref{model.par.nsw.sw}),
 I calculated the proportion of men in the medium activity group having main/spousal partnerships
 $K_{p_{1}s_{2}i_{2}}$ to balance the total number of main/spousal partnerships among women and men.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Casual Partnerships}
 I similarly defined a common proportion of women and men in the lowest activity groups
 reporting casual partnership $C_{p_{2}s_{12}i_{1}}$ with 95\%~CI (20,~55)\%.
@@ -461,6 +470,7 @@ Specific turnover rates $\theta_{sii'}$ and entrant activity group sizes $E_{si}
 can then be uniquely resolved by specifying
 $N_i\,(N_i-1) = 12$ non-redundant and compatible constraints,
 where specifying each $D_{si}$ is one such constraint.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Duration Selling Sex}
 The FSW survey data for 2011 \cite{Baral2014}, 2014 \cite{EswKP2014}, and 2021 \cite{EswIBBS2022}
 include questions on the respondent's current age, and age of first selling sex;
@@ -510,6 +520,7 @@ can be resolved using:
   \end{aligned}
 \end{equation}
 yielding mean (95\%~CI) $D_{LR}$: 4.07~(2.96,~5.48) and $D_{HR}$: 9.33~(6.30,~13.13) (gamma priors).
+%---------------------------------------------------------------------------------------------------
 \paragraph{Duration Buying Sex}
 Data to inform the average duration spent buying sex among clients is limited.
 \citet{Fazito2012} estimated mean durations of 4.6--5.5 years
@@ -521,6 +532,7 @@ Estimates ranged from 8.8~(6.5,~11.7)\% of men aged 25--34 who ever bought sex,
 to 2.2~(1.5,~3.2)\% of men aged 35--54 who bought sex in p12m.
 Based on these data, I defined a gamma prior distribution for the duration buying sex
 with 95\%~CI (4,~15) years, applied to both higher and lower risk clients.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Lowest \& Medium Activity Groups}
 Data on individual-level changes to numbers of non-sex work partners in p12m
 is even more sparse than data related to sex work;
@@ -535,6 +547,7 @@ the \emph{same} individuals have multiple partnerships each year.
 Reflecting this uncertainty, I sampled
 the rate of turnover from medium to lowest activity for both women and men
 from a gamma prior with 95\%~CI (5,~50)\% per year.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Additional Turnover Assumptions}
 The above assumptions specify 3 key constraints for each sex:
 two durations $D_{si}$ and one turnover rate $\theta_{sii'}$.
@@ -623,6 +636,7 @@ while case (a) reflects an unbiased estimate.%
   thus the mean duration in case (b) will be $\alpha/\beta = 2\lambda$ (twice as long).}
 The difference between the exponential distribution mean and median
 should also be kept in mind (see \sref{app.math.dur.exp}).
+%---------------------------------------------------------------------------------------------------
 \paragraph{Main/Spousal Partnerships}
 Detailed data on marriage in Eswatini was only captured in 2006 \cite[Table~6.1]{SDHS2006}.
 The median age of first marriage was 24.3 among women and 27.7 among men (26.0 overall).
@@ -659,6 +673,7 @@ For simplicity, I assumed an effective main/spousal partnership change rate of 1
 with the proposed approach (regardless of mortality),
 and effective duration of 14.5--18.5 years with the classic approach (both uniform priors).
 % TODO: implement this fully (!)
+%---------------------------------------------------------------------------------------------------
 \paragraph{Casual Partnerships}
 No data is available regarding durations of non-marital sexual partnerships in Eswatini,
 and regional data on are also limited.
@@ -669,6 +684,7 @@ and four cities in Kenya, Zambia, Benin, and Cameroon \cite{Ferry2001}.
 Based on these data, I defined a gamma prior distribution for
 the mean duration of casual partnerships $\delta_{p_{2}}$ with 95\%~CI (0.25,~1.5) years,
 roughly consistent with prior models \cite{Johnson2009}.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Sex Work Partnerships}
 As noted in \sref{model.par.sw.part}, duration of occasional sex work partnerships
 is ill defined, but can be defined to comprise a single sex act with $F_{p_{3}}\delta_{p_{3}} = 1$.
@@ -677,6 +693,7 @@ sometimes regular paying clients later become
 non-paying emotional partners \cite{Voeten2007,Mbonye2022}.
 Based on \cite{Voeten2002}, I defined a gamma prior distribution for
 the mean duration of regular sex work partnerships $\delta_{p_{4}}$ with 95\%~CI (0.5,~2.0) years.
+% TODO: is this too long given FSW turnover?
 %===================================================================================================
 \subsection{Mixing}\label{model.par.mix}
 In addition to more concentrated transmission
@@ -706,8 +723,7 @@ someone from group $i$ forming a \emph{given} type-$p$ partnership with someone 
   \rho_{pii'} = (\epsilon)\,I_{ii'} + (1 - \epsilon)\,\pi_{ii'},
   \quad I_{ii'} = \begin{cases} ~1 & i = i'\\ ~0 & i \ne i' \end{cases},
   \quad \pi_{ii'} = \frac{M_{pi'}}{\sum_{j}M_{pj}}
-\end{equation}
-where:
+\end{equation} where:
 $I$ represents complete like-with-like mixing (an identity matrix),
 $\pi$ represents random mixing (random but proportional to the number of partnerships ``offered''),
 and $\epsilon$ effectively interpolates between these two extremes.
@@ -788,7 +804,7 @@ while men adapt their partner numbers to balance;
 and conversely for $\omega = \{0,1\}$.
 I fixed $\omega = \{0.5,0.5\}$ for equal adaptation among women and men.
 %---------------------------------------------------------------------------------------------------
-\subsubsection{Odds of Mixing}
+\subsubsection{Odds of Mixing}\label{model.par.mix.odds}
 Despite the flexibility in the odds of mixing matrix $\Phi_{pii'}$,
 limited data are available to inform specific elements,
 especially for Eswatini in particular.
@@ -811,7 +827,7 @@ greater odds of forming main/spousal partnerships with each other,
 based loosely on age cohorting effects \cite{Leclerc-Madlala2008},
 observed like-with-like sexual mixing preferences in numerous other contexts
 \cite{Morris1991,Garnett1993a,Admiraal2016},
-and prior modelling work \cite{Knight2022-sr}.
+and prior modelling work \cite{Knight2022sr}.
 I sampled $\Phi_{p_{1}i_{1}i'_{1}}$ from a gamma prior with 95\%~CI of (1.5,~3).
 I made no further assumptions about preferential mixing (\ie all other elements $\Phi = 1$).
 Thus, I assumed that occasional and regular sex work partnerships form

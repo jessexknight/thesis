@@ -37,7 +37,7 @@ For early infection ($h=2$), \citet{Boily2009} estimated
 the relative infectiousness of the first 5 months of infection
 as 9.2~(4.5,~18.8) times higher than the asymptomatic period.
 However, both the duration and infectiousness of the acute phase
-have been long debated \cite{Hollingsworth2008,Cohen2011,Cohen2012}.
+have been long debated \cite{Hollingsworth2008,Cohen2011ahi,Cohen2012}.
 In a recent reanalysis of the Rakai cohort data, \citet{Bellan2015} estimate
 a much smaller contribution of the acute phase to overall infection,
 summarized as 8.4~(0,~63) ``excess hazard-months'' (EHM).
@@ -61,6 +61,7 @@ for the relative rate of HIV transmission in these two stages ($h=5,6$), respect
 For \cdf{350}{} ($h=3,4$), I assumed no change from the baseline probability $\beta_0$.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Sex Act Types}\label{model.par.beta.sex}
+% TODO: Hughes2012: no diff mtf/ftm after adjustment (but age gaps?)
 The model considers vaginal and anal intercourse,
 further stratified by sex (male-to-female/insertive \vs female-to-male/receptive).
 For vaginal intercourse, evidence for differential risk by sex is mixed,
@@ -116,6 +117,7 @@ Thus, condom effectiveness was fixed at 74\%.
 See \sref{model.par.tm.condom} for levels of condom use in Eswatini over time.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Genital Ulcer Disease}\label{model.par.beta.gud}
+% TODO: Hughes2012: GUD only +sus not +inf
 Genital ulcer disease (GUD)
 is another another established risk factor for HIV transmission \cite{Plummer1991,Fleming1999}.
 Some, but not all GUD is associated with sexually transmitted infections (STIs),
@@ -186,6 +188,7 @@ Table~\ref{tab:esw.condom.data} summarizes the available condom use data for Esw
   \label{tab:esw.condom.data}
   \input{model/tab.condom.data}
 \end{table}
+%---------------------------------------------------------------------------------------------------
 \paragraph{Main/Spousal \& Casual}
 No direct estimates of condom use in main/spousal partnerships are available;
 condom use at last sex (with a non-paying partner)
@@ -208,6 +211,7 @@ lower among FSW \vs the wider population in 2011 (20.8\% vs \ttilde32\% ``always
 higher in 2014-16 (80.1\% vs \ttilde55.7\% ``last sex'').
 Therefore, I assumed no differences in condom use
 among FSW \vs the wider population for main/spousal or casual partnerships.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Sex Work}
 All data on sex work partnerships in Eswatini is from FSW (\ie not their clients).
 A 2001 study in Ghana \cite{Cote2004} suggested that
@@ -218,6 +222,7 @@ Estimates for 2002 \cite{EswSBSS2002} were obtained from two major cities only (
 since early condom availability was mainly urban,
 treated these estimates as 95\%~CI upper-bounds,
 and defined the lower bound as 20\% of the reported values.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Anal Sex}
 \citet{Owen2020} estimate that among FSW globally,
 condom use in anal sex is approximately 79~(66,~94)\% that of condom use in vaginal sex.%
@@ -227,6 +232,7 @@ In Eswatini \cite{Baral2014,EswKP2014}, relative condom use in anal sex \vs vagi
 ranged from 44\% among new clients in 2011 to 88\% among regular clients in 2014.
 So, I sampled relative condom use in anal \vs vaginal sex from a BAB prior distribution
 with 95\%~CI: (50,~95)\%.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Sampling \& Trends}
 While levels of condom use reported by men and women do not always agree,
 the levels should agree in simulated partnerships.
@@ -251,6 +257,7 @@ between sampled levels of condom use over the available years
 using monotone piecewise cubic interpolation \cite{Fritsch1980}.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Genital Ulcer Disease}\label{model.par.tm.gud}
+% TODO: update for 2023-03-02
 Self-reported prevalence of GUD in p12m among sexually active women and men aged 15--49
 was approximately 7\% in 2006 \cite[Table~13.14]{SDHS2006};
 this prevalence was not stratified by numbers of partners, so I assumed it was equal across

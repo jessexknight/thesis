@@ -1,0 +1,333 @@
+\section{Discussion}\label{model.disc}
+Model design, parameterization, and calibration are key steps in applied transmission modelling,
+each step comprising numerous assumptions and analyses.
+As I illustrate throughout this thesis,
+these assumptions and analyses can be strong determinants of model outputs.
+Yet, the full details of these steps
+are often relegated to the supplementary materials of published articles --- if available at all ---
+with varying notation, terminology, and organization \cite{Delva2012,Knight2022sr}.
+It's not clear whether these supplementary materials
+are subject to the same level of peer review as the main text.
+This chapter gives the complete details of the Eswatini model development, which,
+in combination with the online code,\footref{foot:github}
+aims to provide full transparency and opportunity for peer review.
+%===================================================================================================
+\subsection{Methodological Contributions for Model Parameterization}\label{model.disc.par}
+The analyses required to support model parameterization depend heavily on the available data.
+Standardized approaches will likely remain less fruitful \vs
+careful consideration of the data at hand with respect to potential biases and precise interpretation.
+This chapter presents several novel methodologies for model parameterization,
+which may be useful to modellers, epidemiologists, and others.
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Quantifying Sexual Behaviour}\label{model.disc.par.sex}
+Quantifying sexual behaviour has long been challenging due to
+issues of representative sampling, non-response, recall bias, and reporting bias \cite{Fenton2001}.
+Such challenges may be magnified by the HIV epidemic itself,
+and intersect with issues of stigma and marginalization.
+Household-based face-to-face surveys, such as the demographic and health surveys \cite{DHS}
+are typically one of few context-specific data sources for HIV transmission models;
+yet sexual behaviour data from these surveys have a high risk of bias.
+For example, household-based surveys likely miss populations at higher risk of HIV,
+including those who are highly mobile, homeless, or who live in institutions
+like brothels, prisons, and barracks \cite{GarciaCalleja2005,Mishra2008,Cassels2014,Camlin2016}.
+As such, household-based surveys are generally not recommended to collect data on
+stigmatized behaviour and/or key populations \cite{UNAIDS2010kps,Abdul-Quader2014}.
+\par
+Moreover, comparison of survey delivery modes, including
+self-administered questionnaires, computer-assisted tools, and anonymous polling booth methods
+suggests that face-to-face surveys likely induce strong social desirability reporting bias
+\cite{Langhaug2010,Lowndes2012}.
+For example, reporting of extramarital sex in p12m among men and women
+was estimated via polling booth \vs face-to-face survey to be
+3--7 times higher in Benin \cite{Behanzin2013} and 6--8 times higher in India \cite{Lowndes2012};
+reporting of genital ulcers was likewise 2--5 and \emph{14--35} times higher, respectively;
+buying and selling sex was similarly biased \cite{Behanzin2013,Lowndes2012}.
+Qualitative data from Eswatini \cite{Ruark2014,Fielding-Miller2016,Ruark2019,Pulerwitz2021}
+reinforce the possibility of prevalent unreported sexual partnerships.
+% TODO: something about non-mutually exclusive partnership types?
+% TODO: reiterate that gen-pop surveys are not enough: compare KP pop sizes & data vs DHS
+%---------------------------------------------------------------------------------------------------
+\paragraph{Reporting Bias Adjustment}
+In \sref{model.par.nsw}, I proposed a framework to incorporate reporting biases
+when estimating the proportions of women and/or men who report stigmatized behaviour
+--- in this case, numbers of sexual partners.
+This framework formalizes ad hoc adjustments often made by modellers
+to reconcile relatively small numbers of reported partners
+with high levels of observed transmission, \eg \cite{Anderson2014}.
+Unlike ad hoc adjustments, the proposed framework explicitly uses
+a specified ratio between adjusted \vs reported population proportions engaging in the behaviour,
+and further supports uncertainty in this ratio via Monte Carlo sampling.
+The framework also allows estimation of
+internally consistent population proportions (\ie sum to 100\%) for more than 2 strata
+through constructing and solving a system of constrained, nonlinear equations.
+%---------------------------------------------------------------------------------------------------
+\paragraph{Recall Period Adjustment}
+A related issue concerns how to derive a partnership formation rate
+(or number of concurrent parthers) from survey data.
+Sexual health surveys will typically ask questions like
+\shortquote{How many different people have you had sex with in the past 12 months?} \cite{DHS}
+or \shortquote{past 1 month}, etc. \cite{Baral2014,EswKP2014,EswSBSS2002}.
+Then, it's not obvious whether the reported partner numbers should be interpreted as
+a rate per recall period, or simply a number of concurrent partners.
+Indeed, the former interpretation of these data has likely contributed to
+a common practice of capping modelled partnership durations at 1 year (see \sref{foi.prior.dur}),
+with notable influence on model outputs.
+In \sref{app.math.dur.qp}, I showed that the correct interpretation
+is somewhere in between these extremes,
+and derived expressions for both
+the partnership formation rate \eqref{eq:C2Q.app}
+and numbers of concurrent partners \eqref{eq:C2K.app}, given a partnership duration.
+While partnership duration can also be challenging to measure \cite{Burington2010},
+these expressions can help conceptualize survey responses and,
+at minimum, support more precise assumptions when analyzing the data.
+Future work should explore the influence of heterogeneous partnership duration on these equations.
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Log-Linear Mixing}\label{model.disc.par.mix}
+Mixing patterns --- \ie who contacts whom --- are
+a well-established determinant of epidemic dynamics \cite{Nold1980,Jacquez1988,Garnett1993}.
+Like-with-like (``assortative'') mixing generally acts to
+compound the effects of risk heterogeneity:
+increasing the initial rate of epidemic growth (reproduction number)
+and decreasing the equilibrium prevalence \cite{Jacquez1988}.
+Despite the recognized importance of mixing,
+there are surprisingly limited data to inform sexual mixing patterns among risk groups, and
+many compartmental HIV models continue to use a 1-parameter ($\epsilon$) approach
+\cite{Nold1980,Knight2022sr}.%
+\footnote{Stratification of partnership types,
+  where different risk groups form different numbers of each partnership type,
+  also contributes to overall mixing patterns.}
+This approach assumes that a minimum proportion of partners ($\epsilon$)
+are guaranteed to be from the same risk group,
+and that this proportion is fixed and equal for all risk groups.
+\par
+By contrast, the log-linear approach proposed in \cite{Morris1991}
+provides greater flexibility in conceptualizing and implementing mixing via
+the \emph{odds} of any two groups mixing \vs random mixing.
+However, \cite{Morris1991} does not provide a method to
+maintain fixed partnership numbers / formation rates
+--- which are typically assumed constant based on the available data ---
+for arbitrary mixing patterns;
+I hypothesize that this limitation has prevented widespread adoption of the log-linear approach.
+In \sref{model.par.mix.ll}, I developed a method to maintain
+fixed partnership formation rates for arbitrary mixing patterns
+using an iterative proportional fitting procedure \cite{Ruschendorf1995}.
+This method therefore allows specification of more complex mixing patterns
+to reflect emerging data and/or modelling hypotheses,
+while maintaining fixed overall sexual activity.
+The log-linear approach also defines mixing patterns at the population-level
+(\vs partnerships per-person, or conditional probability of a given partnership),
+making it easy to verify and/or enforce that partnerships ``balance'',
+as population-level mixing matrices should be symmetric \cite{Knight2023chap}.
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Duration of Risk Exposure}\label{model.disc.par.dur}
+In addition to risk heterogeneity and mixing, recent work has shown that
+``turnover'' among risk groups, also called ``episodic risk'', is another key determinant of
+epidemic dynamics and intervention impact \cite{Henry2015,Knight2020}.
+Risk group turnover acts to reduce risk heterogeneity via
+net movement of infections from higher risk groups into lower risk groups;
+thus, calibrating a model to a given prevalence ratio with \vs without turnover
+requires an even larger \emph{incidence} ratio \cite{Knight2020}.
+Turnover can be parameterized using, among other things,
+the average duration within a given risk group \cite{Knight2020}.
+Within the model, these durations are implicitly assumed to be exponentially distributed,
+which appears reasonable for Swati FSWs \cite{Baral2014,EswKP2014} (Figure~\ref{fig:fsw.yss.adj}).
+However, such durations are often estimated from survey data using the difference between
+the respondent's current age and the age they reported first selling sex.
+As discussed in \sref{model.par.turnover.act}~and~\ref{app.math.dur.xs},
+this definition of sex work duration can be biased by up to three factors:
+right censoring, as FSW continue selling sex after the survey (duration underestimated);
+difficulties reaching new FSW \cite{Cheuk2020} (duration overestimated);
+and intermittent engagement in sex work (duration overestimated).
+Although I have tried to explicitly account for such biases,
+future work could explore and compare alternate methods of estimating
+duration in sex work (or other epidemiologically relevant ``states'') \cite{Fazito2012}.
+Indeed, in the absence of age stratification,
+the conceptualization and implementation of turnover in the current model is somewhat simplistic
+(see also \sref{model.disc.lim.str}), ignoring
+unique vulnerabilities faced by young sex workers \cite{Cheuk2020}, and
+whether paid sex is driven by supply \vs demand \cite{Garnett1993,Steen2019}.
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Within-Group Heterogeneity}\label{model.disc.par.het}
+Key populations are usually assumed to be homogeneous in compartmental models
+--- \ie heterogeneity \emph{within} key populations is not considered.
+Yet, there is substantial variability in
+the structural, behavioural, and network-level HIV risk factors experienced by FSW,
+within and between epidemic ontexts \cite{Blanchard2008,Scorgie2012,Shannon2015,Willcox2021}.
+The Eswatini model aims to represent this heterogeneity --- albeit simply ---
+by stratifying FSW into higher and lower risk groups.
+As explored in \sref{model.par.fsw}, I parameterized these groups using individual-level data from
+FSW surveys in 2011 \cite{Baral2014} and 2014 \cite{EswKP2014} in Eswatini.
+Although these data were not ideal for inferring mechanistic risk (see below),
+the data-driven stratification and parameterization of risk groups used
+--- drawing on risk score methodology \cite{Ayton2020,Willcox2021} ---
+may be useful elsewhere.
+\par
+Unfortunately, these parameterization analyses are limited by
+the suitability of the available data, namely:
+the cross-sectional nature of both surveys, and
+the availability of only self-reported HIV status in 2014 \cite{Baral2014,EswKP2014}.
+While cross-sectional data can be used to estimate associations of factors with HIV status,
+which may be directly useful for recommending HIV testing \cite{Moucheraud2022},
+the same factors may not be associated with HIV \emph{acquisition} risk,
+since risk is dynamic but HIV status reflects cumulative risk.
+Factors associated with acquisition risk would be more useful as mechanistic model inputs,
+and can be estimated from longitudinal data,
+as in the case of risk scores used to support PrEP initiation \cite{Ayton2020,Willcox2021}.
+Regarding HIV status, self-reported status was historically considered unreliable due to
+low rates of HIV diagnosis and high rates of incidence among FSW \cite{Mountain2014sr,Hakim2018};
+however, recent scale-up of HIV testing and incidence declines in Eswatini
+may render self-reported HIV status a reasonable proxy for serological HIV status~\cite{Xia2021}.
+%---------------------------------------------------------------------------------------------------
+% TODO: (?) \subsubsection{Partnerships Types}\label{model.disc.par.part}
+% Although not a novel contribution of this model, the explicit representation of both
+% occasional (one-off) and regular (repeat) sex work partnerships \dots
+% and main/spousal partnerships \emph{between} FSW and their clients.
+% \cite{Watts2010}
+% longer & lower condom use
+%===================================================================================================
+\subsection{Limitations of the Model}\label{model.disc.lim}
+Despite the advacements in model parameterization described above,
+the model developed here still has several limitations.
+This section describes these limitation and their potential influence on model outputs.
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Model Structure}\label{model.disc.lim.str}
+The model structure includes $2 \times 4 \times (1 + 5 \times 5) = 208$ compartments in total,
+reflecting sex, activity level, and HIV / treatment dimensions,
+as well as four distinct partnership types, and vaginal \vs anal sex.
+Yet even these stratifications omit several important aspects of HIV epidemiology in Eswatini.
+%---------------------------------------------------------------------------------------------------
+\paragraph{Men Who Have Sex with Men}
+Men who have sex with men (MSM) experience disproportionate HIV risk globally
+due to multiple factors, including
+increased probability of transmission via anal sex and differences in sexual network density
+\cite{Beyrer2012,Hessou2019}.
+Pooled HIV prevalence among MSM is estimated to be
+3--9 times higher \vs men overall in Sub-Saharan Africa (SSA);
+however, prevalence ratios are generally smaller in larger epidemics \cite{Hessou2019}.
+In fact, HIV prevalence among Swati MSM has been estimated to be
+similar to among men aged 15--49 overall (approximately 20\%) \cite{Hessou2019,EswIBBS2022,SHIMS2},
+likely because Swati MSM tend to skew younger, while HIV prevalence increases with age
+\cite{SHIMS2,EswIBBS2022}
+The population size of MSM in Eswatini is estimated to be
+1--2\% of men aged 15--49 \cite{EswKP2014,EswIBBS2022,WorldBank}.
+Thus, although unmet needs of MSM in other SSA countries
+are estimated to drive overall transmission \cite{Stone2021,Silhol2021},
+including via overlapping MSM and heterosexual networks \cite{Beyrer2010},
+the same may be less true in the Eswatini due to high overall HIV prevalence.
+Therefore, the influence of omitting MSM on modelled HIV transmission dyanmics
+would likely be relatively small in Eswatini \vs in contexts with lower overall HIV prevalence.
+%---------------------------------------------------------------------------------------------------
+\paragraph{Age Stratification \& Transactional Partnerships}
+HIV prevalence in Eswatini, as elsewhere, continues to be strongly associated with age,
+increasing from $<$5\% at age 15 to approximately 50\% between ages 30--50,
+and declining thereafter \cite{SDHS2006,SHIMS1,SHIMS2}.
+While HIV risk likely accumulates with age due to sexual activity,
+older generations would have experienced lower cumulative risk
+if their sexual activity peaked before widespread HIV transmission.
+The age of peak prevalence is also shifting older as incidence declines, suggesting that
+younger generations are experiencing lower cumulative risk by a given age \vs older generations;
+yet, prevalence continues to peak earlier among women \vs men, suggesting that
+women experience more risk earlier \cite{SDHS2006,SHIMS1,SHIMS2}.
+\par
+Indeed, adolescent girls and young women are increasingly recognized as another key population
+in the HIV epidemic response \cite{Dellar2015}, whose vulnerabilities include:
+higher biological susceptibility, gender-based violence, food/economic insecurity, and
+transactional relationships --- defined in \cite{Stoebenau2016} as:
+\shortquote{non-commercial, non-marital sexual relationships motivated by
+the implicit assumption that sex will be exchanged for material support or other benefits}
+\cite{Yi2013,Dellar2015,Wamoyi2016}.
+Qualitative data highlight the prevalence of such factors in Eswatini,
+with roots in patriarchal norms and broader social pressures
+\cite{Jones2009,Ruark2014,Fielding-Miller2016,Ruark2019,Pulerwitz2021}.
+\par
+By omitting age stratification,
+and not explicitly modelling transactional relationships as distinct from casual partnerships,
+the model may fail to capture two key epidemiological phenomena:
+1) declining incidence due to age-cohorting effects ---
+since true overall age mixing is likely assortative with moderate age disparities
+\cite{Harling2014,Fielding-Miller2016,Pulerwitz2021}
+some infections can become ``trapped'' within age cohorts \cite{Beauclair2018},
+whereas the model without age stratification implicitly assumes
+random age mixing throughout the population;%
+\footnote{The importance of age-disparate partnerships for prevention remains controversial
+  \cite{Leclerc-Madlala2008,Ott2011,Harling2014}.}
+2) mechanistic contributions of transactional partnerships and associated factors ---
+the importance of transmission drivers that are not modelled evidently cannot be inferred,
+and may instead be mis-attributed to factors that \emph{are} modelled,
+such as the relative susceptibility of women \vs men (see \sref{model.par.beta.sex}).
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Calibration}\label{model.disc.lim.cal}
+My goals for model parameterization and calibration were to:
+a) obtain parameter sets which yielded plausible HIV epidemic trajectories for
+Eswatini and/or Southern Africa in general; and
+b) favor additional uncertainty over assumption-driven parameter constraints.
+Thus, I opted to consider uncertainty in a large number of parameters ($N = 73$),
+despite having only a similar number of calibration targets ($N = 69$).
+I represented this uncertainty mainly via univariate parameter priors,
+which could permit implausible \emph{combinations} of parameter values,
+although I enforced a few joint parameter constraints (\sref{app.model.cal.constr}).
+Additionally, the calibration approach used
+(selecting the top 1\% of 100,000 parameter sets by likelihood)
+was similar to prior approaches \cite{Johnson2010}, but still relatively simple and ad hoc.
+As a result, my ability to infer model parameter values through calibration was limited,
+and many parameter posterior distributions did not differ significantly from their priors
+(Figure~\ref{fig:post.cor}).
+The quality of parameter inference and model agreement with the calibration targets
+might be improved using more efficient calibration techniques \cite{Menzies2017}, such as
+Sampling Importance Resampling (SIR) \cite{Rubin1987} or
+Incremental Mixture Importance Sampling (IMIS) \cite{Raftery2010}.
+However, the quality of model-based evidence likely depends
+more on appropriate specification of model structure and unbiased parameter priors,
+than on more efficient calibration techniques.
+%---------------------------------------------------------------------------------------------------
+\subsubsection{Evolving Context \& Interventions}\label{model.disc.lim.evo}
+A final group of limitations relate to the evolving epidemic context and interventions
+which are not captured by the model, including
+the \covid pandemic, growing civil unrest, and emerging interventions.
+These conditions have largely developed since 2018, and thus
+are unlikely to influence the retrospective modelling analyses of later chapters.
+Moreover, the model applications in Chapters \ref{foi}~and~\ref{art} are mainly illustrative,
+rather than directly tied to specific policy questions for Eswatini.
+%---------------------------------------------------------------------------------------------------
+\paragraph{\covid}
+Many health systems were disrupted by the \covid pandemic, including in Eswatini \cite{EswCOP21}.
+Prevention programs were particularly impacted during 2020, including scale-up of
+pre-exposure prophylaxis (PrEP) and voluntary medical male circumcision (VMMC),
+as well as HIV and viral load testing services \cite{EswCOP21}.
+While rapid interventions designed to minimize ART interruption were largely successful,
+\covid mortality was high among PLHIV in Eswatini \cite{EswCOP21}.
+Additionally, government restrictions aimed at reducing \covid transmission --- including
+closing bars, clubs, etc., imposing a nighttime curfew, and travel restrictions \cite{EswIBBS2022}
+--- likely also reduced HIV incidence, especially among FSW \cite{Stone2023}.
+%---------------------------------------------------------------------------------------------------
+\paragraph{Civil Unrest}
+As noted in \sref{intro.esw},
+democratic freedoms in Eswatini are severely limited by the absolute monarchy \cite{Mthembu2022},
+and socioeconomic inequality remains high \cite{Kali2023}.
+An ongoing financial crisis and frustration with the political conditions led to
+growing pro-democratic protests since 2018,
+which grew further with \covid restrictions \cite{Kali2023,Mthembu2022}.
+Such protests have been met with violence, including the assassination of
+prominent human rights lawyer and activist Thulani Maseko in 2023 January \cite{Maseko2023}.
+The trajectory of this unrest is not clear \cite{Maphalala2021},
+but the implications for HIV service delivery in the coming years could be substantial.
+%---------------------------------------------------------------------------------------------------
+\paragraph{New Interventions}
+In 2017, Eswatini began a PrEP demonstration project
+in 6 rural primary care clinics \cite{NERCHA2018,Barnighausen2019},
+and aims to expand PrEP access nationally in the coming years,
+with a focus on adolescent girls and young women (AGYW) and FSW \cite{EswCOP21}.
+An estimated 25\% of FSW (N = 264) and 8\% of MSM (N = 303) were on PrEP by 2021 \cite{EswIBBS2022}.
+The success of these efforts will likely be further improved
+with the addition of long-acting injectable PrEP options \cite{Clement2020,Smith2023}.
+Similar improvements in viral suppression may also be gained in the coming years
+via long-acting injectable ART \cite{Thoueille2022}.
+Injectable PrEP and ART can help overcome
+many of the structural barriers associated with oral --- \ie daily pill --- regimens,
+such as high population mobility and familial power structures
+\cite{Dlamini-Simelane2017,Horter2019,Becker2020,Barnighausen2020}.
+The current PrEP expansion is also part of the national roll-out of the DREAMS
+(Determined, Resilient, Empowered, AIDSFree, Mentored, and Safe) package,
+which aims to address multiple HIV vulnerabilities among AGYWs \cite{Saul2018,EswCOP21}.
+The current model does not currently include any of these emerging interventions,
+but they should be feasible to integrate in the future.

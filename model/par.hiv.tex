@@ -50,7 +50,7 @@ from a gamma distribution with 95\%~CI (0.33,~1.0) years.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Probability of HIV Transmission on ART}\label{model.par.art.beta}
 All available evidence suggests that viral suppression by ART to undetectable levels
-prevents HIV transmission, \ie undetectable = untransmittable (``U=U'') \cite{Eisinger2019}.
+prevents HIV transmission, \ie undetectable = untransmittable (``U=U'') \cite{Eisinger2019uu}.
 Thus, I assumed zero HIV transmission from individuals with VLS ($c=4$).
 However, HIV transmission may still occur
 during the period between ART initiation to viral suppression ($c=3$) \cite{Mujugira2016}.
@@ -99,6 +99,7 @@ Thus, I modelled an additional 50\% reduction in mortality among individuals wit
 and half this (25\%) reduction before achieving VLS ($c=3$).
 %===================================================================================================
 \subsection{Rates of HIV Diagnosis, ART Initiation, Viral Un-suppression \& Re-suppression}\label{model.par.cascade}
+% TODO: add Walsh2020
 Rates of HIV diagnosis $\delta$, ART initiation $\tau$, viral un-suppression $\zeta$
 (including treatment failure, discontinuation, or loss to follow-up),
 and viral re-suppression $\sigma'$ (Figure~\ref{fig:model.cascade})
@@ -148,6 +149,7 @@ I further specified diagnosis rates using non-FSW women as a reference group,
 with separate time-varying \emph{relative} rates defined for FSW and men.
 Confidence intervals for relative rates were assumed using
 a standard deviation of 0.2 for FSW and 0.1 for men (gamma priors).
+%---------------------------------------------------------------------------------------------------
 \paragraph{HIV Testing Rates}
 Early HIV testing in Eswatini was mainly available to pregnant women via antenatal clinics,
 though a small number of youth and men also accessed HIV testing services \cite{EswHPC1998,HSRC2004}.
@@ -155,7 +157,7 @@ Based on antenatal clinic data \cite{EswUNGASS2010},
 I modelled a gradual increase in rates of HIV diagnosis among women
 from zero to 95\%~CI (5,~15)\% (gamma prior) per year from 1990 to 2002,
 when the national HIV testing and counselling program was formally introduced \cite{NERCHA2012}.
-I assumed no initial differeces between FSW and other women,
+I assumed no initial differences between FSW and other women,
 due to the lack of specific key populations prevention programs \cite{EswNASA2006}.
 I further assumed that HIV diagnosis among men initially occurred at 10\% the rate of women.
 \par
@@ -196,10 +198,11 @@ I held all rates of HIV diagnosis after 2016 fixed.
 Rates of ART initiation $\tau$ were modelled to reflect
 time-varying eligibility, availability, loss to follow-up,
 and differences between sex/activity groups.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Eligibility}
 Historical ART eligibility in Eswatini has generally followed
 the evolving World Health Organization (WHO) guidelines
-\cite{WHO2003ART,WHO2007ART,WHO2013ART,WHO2016ART}.
+\cite{WHO2003art,WHO2007art,WHO2013art,WHO2016art}.
 Initial eligibility included one of \cite{EswMOH2006}:
 \begin{itemize}
   \item \cdf{}{200} cells/mm\tsup{3} and any WHO clinical stage
@@ -242,6 +245,7 @@ South Africa \cite[Table~4]{Badri2004} and Saudi Arabia \cite[Table~2]{Edathodu2
 \end{itemize}
 I assumed that roll-out of eligibility changes in 2010, 2015, and 2017
 each occurred over a 1-year period.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Availability and Initiation}
 ART first became available in Eswatini in late 2003
 via a one-hospital pilot project \cite{NERCHA2012}.
@@ -263,6 +267,7 @@ This maximum rate of $\tau = 12$ corresponds to
 a mean effective delay of one month between diagnosis and ART initiation;
 this value was chosen in part to avoid numerical instability
 when solving the model with very high rates.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Group Differences}
 In 2011, conditional ART coverage (among diagnosed) was greater among men \vs women
 (Table~\ref{tab:targ.cascade}),
@@ -290,7 +295,7 @@ The model does not explicitly simulate emergence and/or transmission of drug res
 nor multiple unique ART regimens.
 As of 2016, resistance mutations to at least 1 of 3 drugs in combination regimens
 were identified in 10\% ART-naive PLHIV in Eswatini,
-and 16\% PLHIV with prior ART exposure \cite{WHO2021HIVDR}.
+and 16\% PLHIV with prior ART exposure \cite{WHO2021dr}.
 However, the extent to which these individual mutations can cause
 complete treatment failure remains unclear. % TODO: SM or RK can help?
 Additionally, while transmissible resistance mutations could become more prevalent over time,
