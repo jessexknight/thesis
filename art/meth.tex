@@ -68,7 +68,7 @@ over multiple time horizons up to 2030, starting from $t_0 = 2000$:
 \end{equation} where:
 $\Lambda$ denotes absolute numbers of infections per year, and
 $\lambda$ denotes incidence rate per susceptible per year.
-For each scenario, I computed relative additional infections for each model fit $j$,
+For each scenario, I computed these outcomes (CAI and AIR) for each model fit $j$,
 and reported median (95\% CI) values across model fits, reflecting uncertainty.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Objective 2: Conditions under which cascade differences matter most}\label{art.meth.obj.2}
@@ -77,16 +77,16 @@ the effects of lower cascade among certain risk groups on relative CAI and AIR,
 plus potential effect modification by epidemic conditions.
 The hypothesized causal effets are illustrated
 as a directed acyclic graph in Figure~\ref{fig:art.2.dag},
-and the synthetic data generation processes and variable definitions are detailed below.
+and the synthetic data generation processes and variable definitions are as follows.
 \par
-For this regression analysis, I obtained 10,000 samples as follows.
+For this regression analysis, I obtained 10,000 samples.
 I explored a wider range of counterfactual scenarios \vs Objective~\ref{obj:art.1}
-by randomly sampling the relative rates for diagnosis and treatment initiation
-$R_d, R_t \sim \opname{Beta}(\alpha=3.5,\beta=1.9)$, having 95\%~CI: (0.25,~0.95),
-and treatment failure
-$R_u \sim \opname{Gamma}(\alpha=3.4,\beta=1.9)$, having 95\%~CI: (1.5,~15), for each of:
-FSW, clients, and the remaining lower risk population (9~total values).
-Sampling distributions were chosen to obtain cascades in 2020 spanning
+by randomly sampling the relative rates for
+diagnosis and treatment initiation $R_d, R_t \sim \opname{Beta}(\alpha=3.5,\beta=1.9)$
+and treatment failure $R_u \sim \opname{Gamma}(\alpha=3.4,\beta=1.9)$
+for each of: FSW, clients, and the remaining lower risk population (9~total values).
+These sampling distributions had 95\%~CI: (0.25,~0.95) and (1.5,~15), respectively,
+and were chosen to obtain cascades in 2020 spanning
 approximately \mbox{60-60-90} through \mbox{90-90-95} (Figure~\ref{fig:art.2.cascade}). % MAN
 For each of $N_f = 1000$ model fits, I generated $N_k = 10$ counterfactual scenarios per fit
 via random relative rates ``$R$'' via Latin hypercube sampling,
@@ -98,7 +98,7 @@ yielding $N_f N_k = {}$10,000 total counterfactual samples for the regression.
     differential viral suppression across risk groups matters most}
   \label{fig:art.2.dag}
   \floatfoot{
-    $Y$: cumulative additional infections or additional incidence rate by 2030;
+    $Y$: cumulative additional infections (CAI) or additional incidence rate (AIR) by 2030;
     $D$: difference in population-overall viral unsuppression
       in counterfactual \vs base case scenario;
     $d_i$: difference in group-$i$-specific viral unsuppression
@@ -109,7 +109,7 @@ yielding $N_f N_k = {}$10,000 total counterfactual samples for the regression.
 For each of these 10,000 samples, I defined
 relative CAI and AIR by 2030 \vs the base case, as in Objective~\ref{obj:art.1}.
 For each sample, I further defined
-$U_{fki}$ for risk groups $i \in \{1:\txn{FSW}, 2:\txn{clients}, *:\txn{overall}\}$
+$U_{fki}$ for risk groups $i \in \{\tdef{1}{FSW}, \tdef{2}{clients}, \tdef{*}{overall}\}$
 as the proportions virally unsuppressed among people living with HIV by 2020,
 reflecting a summary measure of ART cascade gaps.
 Using $U_{fki}$, I defined the main regression predictors as:
@@ -123,18 +123,19 @@ $d_{fki} = U_{fki} - U_{fk*} \lessgtr 0$, reflecting differences in
 Next, I defined the following measures of epidemic conditions ($C_{fj}$) related to sex work,
 as hypothesized modifiers of the effect of disproportionate unsuppression on relative CAI and RAI:
 FSW and client population sizes (\% of population overall);
-average duration (in years) selling sex among FSW and buying sex among clients; and
-HIV prevalence ratios in the year 2000 among FSW \vs other women, and among clients \vs other men.
+average rate of turnover among FSW and clients
+(per year, reciprocal of duration selling / buying sex); and
+HIV incidence ratios in the year 2000 among FSW \vs other women, and among clients \vs other men.
 For these measures, I combined higher and lower risk FSW,
 and likewise higher and lower risk clients.
-I used HIV prevalence ratios in 2000 to reflect
+I used HIV incidence ratios in 2000 to reflect
 summary measures of risk heterogeneity prior to ART,
 as compared to including all modelled risk factors
-for HIV acquisition and transmission (\eg Table~\ref{tab:sr.factors}),
+for HIV acquisition (\eg Table~\ref{tab:sr.factors}),
 which could lead to overfitting and improper inference due to effect mediation. % TODO: collinearity?
 \par
 Finally, I defined a general linear model for each outcome (CAI, AIR) as:
-\begin{equation}
+\begin{equation}\label{eq:art.glm}
   \txn{CAI, AIR} = \beta_0\,D
                  + \sum_i \beta_i\,d_i
                  + \sum_{ij} \beta_{ij}\,d_i\,C_j
@@ -152,11 +153,14 @@ to control for repeated use of each model fit $f$.
 I standardized all model variables ($D$, $d_i$, $C_j$) via
 $\hat{x} = (x - \txn{mean}(x)) / \txn{SD}(x)$
 to avoid issues of different variable scales and collinearity in interaction terms.
-Note that this standardization does not imply that
-regression coefficient \emph{magnitudes} can be compared to indicate variable ``importance'',
-because the standardization applied to each variable is driven by the variance in the variable
+This standardization does not imply that
+regression coefficient magnitudes can be compared to indicate variable ``importance'',
+because the standardization applied to each variable is driven
+by the variance before standardization
 --- in this case reflecting arbitrary ranges ($D$, $d_i$) or uncertainty in calibration ($C_j$).%
 \footnote{I verified that results were qualitatively the same using
   $\hat{x} = (x - \txn{median}(x)) / \txn{IQR}(x)$.
   For further discussion on interpretation of standardized regression coefficients,
   see also: \hreftt{stats.stackexchange.com/questions/29781} and links therein.}
+Rather, effect sizes can be interpreted as:
+the expected change in outcome per standard deviation change in the variable.
