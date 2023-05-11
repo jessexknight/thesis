@@ -33,8 +33,9 @@ $y_i(y)$ is the number of individuals in state $i$ at time $t$;
 $\theta$ is a set of model parameters; and
 $f_i$ defines the rate of change in $y_i$ as a function of all other $y$, $\theta$, and $t$,
 reflecting mechanistic assumptions about infection transmission and other state transitions.
-For example, if the average rate of transition from state $k$ to $k+1$ is $\eta_k$,
-then $f_k$ would include a term $-\,\eta_k y_k$ and $f_{k+1}$ would include $+\,\eta_k y_k$.%
+For example, if the average rate of transition from state $k$ to $k+1$ is $\eta$,
+then $f_k$ would include a term ``$-\,\eta\,y_k$''
+and $f_{k+1}$ would include a term ``$+\,\eta\,y_k$''.%
 \footnote{A constant transition rate also implies an exponentially-distributed duration
   in the originating state; see \sref{app.math.dur.exp} for further details.}
 Usually, the most complex rate to specify is
@@ -88,7 +89,7 @@ remain transparent, humble, and ultimately accurate,
 especially when models are used to guide allocation of massive resources for millions of people.
 %===================================================================================================
 \subsection{Risk Heterogeneity}\label{intro.model.het}
-The central role of individuals with more sexual partners in STI/HIV transmission
+The central role of individuals with more sexual partners in STI and HIV transmission
 has long been recognized in so-called ``core group theory'' \cite{Yorke1978,Stigum1994,Watts2010}.
 This theory has since been generalized to consider ``risk heterogeneity'' more broadly,
 reflecting differences in acquisition and/or onward transmission risk within a given population.
@@ -96,11 +97,11 @@ Such heterogeneity can be driven by
 biological factors such as co-infection,
 individual-level factors such as numbers of sexual partners, and
 network-level fractors such as patterns of sexual mixing,
-as well as upstream structural factors which influence all of the above. % TODO: cite?
+as well as upstream structural factors which influence all of the above. % TODO: (?) cite
 Indeed, risk heterogeneity is an important factor in all infectious diseases \cite{Suen2017},
 and can even be considered to comprise phenomena like superspreading events \cite{Lloyd-Smith2005}.
 In the context of HIV, risk heterogeneity is directly related to key populations,
-who experience multiple intersecting drivers of risk, as described in \sref{intro.hiv.kp}.
+who experience multiple intersecting drivers of risk, as described in \sref{intro.hiv.epi.kp}.
 \par
 Risk heterogeneity has several key implications for transmission dynamics:
 \begin{itemize}
@@ -111,11 +112,7 @@ Risk heterogeneity has several key implications for transmission dynamics:
     where $\mu$ and $\sigma^2$ are the mean and variance of contact rates \cite{Anderson1986};
     under like-with-like mixing by risk, $R_0$ increases further \cite{Jacquez1988}.
   \item Endemic ``equilibrium'' prevalence
-    is lower with \vs without risk heterogeneity \cite{Anderson1986};%
-    \footnote{Many modelling analyses have explored infectious disease ``equilibrium'';
-      such analyses may offer theoretical insights,
-      but are likely of limited value for applied modelling,
-      due to numerous dynamic conditions and interventions which preclude epidemic stabilization.}
+    is lower with \vs without risk heterogeneity \cite{Anderson1986};
     this is because rapid early transmission among higher risk groups results in
     ``saturation'' of infection and/or immunity within these groups,
     where fewer and fewer contacts can result in transmission; by contrast,
@@ -135,22 +132,24 @@ Risk heterogeneity has several key implications for transmission dynamics:
 % TODO: (?) asymmetry: contacts vs susceptibility vs infectiousness
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Where to Draw the Line}
-The importance of risk heterogeneity is evidently well-recognized.
+The importance of risk heterogeneity is well-recognized.
 However, there are many potential factors that contribute to risk heterogeneity,
 and even more ways of representing each factor within a model.
 Recognizing time and data constraints to model building, it's rarely obvious
 \emph{which factors} should be included in a model,
 \emph{how} they should be included, and
 \emph{what happens} if they are not adequately modelled.
-For example: Should the modelled population be stratified by age, or risk, or both?
+For example:
+Should the modelled population be stratified by age, or risk, or both?
 How many age and/or risk groups should be modelled?
 In other words: \shortquote{Where to draw the line?} \cite{Suen2017}.
 The answers to such questions likely depend on both the modelled context and application.
 This uncertainty in appropriate model specification
 is sometimes called ``structural uncertainty'' \cite{Bernard2017,Suen2017}.
-Note that, unlike model specification problems in classic statistics,
+However, unlike model specification problems in classic statistics,
 the ratio of structural uncertainty \vs available data in transmission modelling
-is generally too high to use information criteria-based approaches (\eg~\cite{Zhang2023}).
+is generally too high to use information criteria-based approaches (\eg~\cite{Zhang2023})
+to select a ``good'' or ``optimal'' model structure.
 % TODO: (?) forced to make mechanistic assumptions --> falsifiability
 \par
 Only a few studies have sought to thoroughly explore how
@@ -164,7 +163,7 @@ specific interventions in specific epidemic contexts \cite{Hontelez2013,Bernard2
 Such strucural comparison studies are impressive feats considering the challenges of
 implementing, parameterizing, and calibrating a single model structure, let alone several.
 These studies generally found that
-increasing model complexity reduced the projected impact of prevention interventions
+increasing model complexity reduced the projected impact of generic prevention interventions
 --- reflecting the influence of risk heterogeneity on the challenge of epidemic control ---
 and that no clear threshold of ``sufficient'' complexity emerged,
 beyond which model outputs stopped changing with further complexity.
