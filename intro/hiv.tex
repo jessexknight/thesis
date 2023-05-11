@@ -1,7 +1,7 @@
 \section{HIV}\label{intro.hiv}
 An estimated 38~million people are living with HIV globally,
 with 1.5~million new infections annually \cite{AIDSinfo}.
-However, as discussed below, HIV disproportionately affects particular populations
+As discussed below, HIV often disproportionately affects specific populations
 due to intersecting social, economic, and biological vulnerabilities \cite{WHO2016kp,Jin2021}.
 Advances in prevention and treatment continue to reduce the rate of new infections and
 increase the quality and quantity of life among people living with HIV (PLHIV) \cite{Eisinger2019tk}.
@@ -71,7 +71,7 @@ include highly mobile populations, young women, and those engaged in transaction
 \cite{Oldenburg2014,Wamoyi2016,Camlin2019,Cheuk2020,Day2020,Khalifa2022}.
 HIV disproportionately affects these populations due to intersections of
 behavioural risks, stigma, criminalization, violence, and poverty \cite{WHO2016kp}.
-For example, women often enter sex work out of food/economic insecurity \cite{Scorgie2012}.
+For example, women may enter sex work out of food/economic insecurity \cite{Scorgie2012}.
 Then, criminalization of sex work leaves women vulnerable to sexual violence (including by police)
 and arrest for carrying condoms, or condom confiscation \cite{Scorgie2012,Shannon2015}.
 Moreover, women selling sex may be reluctant to engage in HIV treatment and/or prevention services
@@ -79,7 +79,7 @@ due to criminalization and experiences of stigma and discrimination \cite{Lancas
 \par
 The odds of HIV infection among Female sex workers (FSW)
 \vs women aged 15--49 was estimated as 13.5 globally, using data from 2007-11,
-and 12.4 even in higher prevalence SSA epidemics \cite{Baral2012}.
+and 12.4 in SSA specifically \cite{Baral2012}.
 Higher numbers of sexual partners increases risk directly via more potential exposures,
 but also via co-transmission of other sexually transmitted infections (STIs) \cite{Scorgie2012}.
 Some clients may also pay more for condomless and/or anal sex,
@@ -91,13 +91,13 @@ as well as patriarchal attitudes~\cite{Scorgie2012,Shannon2015}.
 \par
 The contribution of transmission among key populations and via sex work
 is often suggested to be small in ``generalized'' epidemics \cite{Leclerc2008,Shubber2014}.
-However, such analyses typically rely on
+However, such conclusions typically rely on
 biased household-based face-to-face survey data \cite{Langhaug2010,Lowndes2012},
 generic behavioural assumptions \cite{Shubber2014}, and
 simplistic methodology which fails to account for onward transmission \cite{Mishra2014mot}.
-In fact, transmission models are among the best tools to capture the large indirect benefits of
-interventions prioritizating key population needs \cite{Mishra2014mot,Long2021};
-such models have often found that these interventions are most cost effective
+By contrast, mathematical transmission models can capture the large indirect benefits of
+interventions prioritizating key populations \cite{Mishra2014mot,Long2021}
+and such models often show that these prioritized interventions are most cost effective
 \cite{Stuart2018,Maheu-Giroux2019,Johnson2019}.
 \par
 Understanding and meeting the unique needs of different key populations is thus
@@ -125,29 +125,38 @@ among FSW and key populations in general~\cite{Atuhaire2021}.
 % TODO: (?) STI screening, antenatal care, needle exchange, safe supply, male sex workers ...
 %===================================================================================================
 \subsection{Epidemic Response}\label{intro.hiv.resp}
-HIV infection has been stigmatized since the earliest days of the epidemic;
-efforts to raise awareness and funding for HIV research and services
-are rooted in activism \cite{Merson2008}.
+HIV infection has been stigmatized since the beginning of the epidemic, and the epidemic response
+--- including efforts to raise awareness and funding for HIV research and services ---
+is rooted in activism against stigma and towards equity \cite{Merson2008}.
 By now, over US\$\,20 billion is available globally each year to fight HIV, with approximately
 60\% of funds provided by domestic and private sources (\eg ministries of health), and
-40\% by international organizations \cite{UNAIDSFin}, including: % TODO: order, cite ?
-UNAIDS (Joint United Nations Programme on HIV and AIDS),
-PEPFAR (President's Emergency Plan for AIDS Relief), and
-the Global Fund (to Fight AIDS, Tuberculosis and Malaria).
-% TODO: specific e.g. successes?
+40\% by international organizations \cite{UNAIDSFin}, including:
+PEPFAR (the President's Emergency Plan for AIDS Relief),
+the Global Fund (to Fight AIDS, Tuberculosis and Malaria), and
+UNAIDS (Joint United Nations Programme on HIV and AIDS).
+% TODO: (?) specific e.g. successes
 These funds support numerous prevention and treatment tools \cite{Eisinger2019tk},
 which are ideally prioritized according epidemic drivers and cost effectiveness.
-However, understanding these drivers and estimating intervention impacts
---- where transmission modelling plays a key role --- remains controversial
-\cite{Shelton2010,Mutevedzi2014,Geffen2018,Baral2019}.
+Understanding these drivers and estimating intervention impacts is rarely simple,
+but can be supported by implementation science and mathematical modelling
+\cite{Shelton2010,Mutevedzi2014,Geffen2018,Baral2019,Schwartz2022}.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Prevention}\label{intro.hiv.resp.prev}
 The earliest efforts to prevent sexual transmission of HIV focused on
-condom promotion, behaviour change, voluntary counselling and testing (VTC),
+condom distribution and promotion, behaviour change, voluntary counselling and testing (VTC),
 and treatment of other sexually transmitted infections (STIs) \cite{Royce1997,Marseille2002}.
-The role of broader structural factors like
-economic and political stability, gender equality, and criminalization
-were also recognized early on \cite{Parker2000}.
+Condoms continue to be a key tool in prevention,
+including following HIV diagnosis \cite{Tiwari2020}.
+By contrast, the effectiveness of population-level behaviour change interventions,
+such as to reduce numbers of sexual partners, remains unclear \cite{Gregson2009}.
+Current behavioural interventions mainly focus on
+education to empower informed decision making \cite{Faust2018}.
+In many cases, the feasibility of individual-level behaviour change
+is constrained by structural factors, including
+economic and political stability, gender equality, and criminalization \cite{Gupta2008}.
+The role of structural factors were recognized early on \cite{Parker2000},
+and efforts to understand and address these factors continue to inform novel prevention strategies
+\cite{Gupta2008,Beyrer2012,McBride2021}.
 Voluntary medical male circumcision (VMMC) is also protective \cite{Auvert2005},
 and has been recommended in some contexts since 2007 \cite{WHO2020vmmc}.
 More recent advancements in antiretroviral therapy (ART), especially multi-drug combinations,
@@ -190,7 +199,7 @@ Recovery of CD4 T cells is even slower, and complete recovery to baseline levels
 \cite{Battegay2006,Maartens2014}.
 %---------------------------------------------------------------------------------------------------
 \paragraph{Treatment Eligibility \& Benefits}
-Early ART eligibility criteria (especially for resource-constrained settings)
+Initial ART eligibility criteria (especially for resource-constrained settings)
 were focused on PLHIV with advanced disease
 (defined by CD4 T cell counts per mL of blood and/or clinical staging) \cite{WHO2003art},
 for whom ART is most beneficial \cite{Gabillard2013,Maartens2014}.%
@@ -210,7 +219,7 @@ This recognition, along with model-based predictions \cite{Granich2009,Eaton2012
 then motivated several large-scale studies of ``treatment as prevention''
 designed to estimate the population-level incidence reduction achievable via ART scale-up
 \cite{Havlir2019,Hayes2019,Iwuji2018}.
-Unfortunately, the results of these trials were mostly inconclusive,
+The results of these trials were mostly inconclusive,
 prompting renewed calls to understand and address ``who is left behind'',
 and other persistent drivers of transmission \cite{Akullian2017,Eisinger2019tk,Baral2019,Havlir2020}.
 Improving ART coverage for individual-level and partnership-level benefits
@@ -228,5 +237,5 @@ of whom, the percentage who are on ART,
 of whom, the percentage who have undetectable viral load.
 National progress towards these goals is highly prioritized and commonly reported \cite{AIDSinfo},
 although differences across risk groups
---- and their potential implications for ``treatment as prevention'' ---
+--- and the potential implications of these differences for ``treatment as prevention'' ---
 are increasingly highlighted \cite{Akullian2017,Hakim2018,Green2020}.
