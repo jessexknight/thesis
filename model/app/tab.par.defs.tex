@@ -1,6 +1,11 @@
-\begin{longtable}{crl}
-  {\label{tab:par.defs}Definitions of calibrated parameters}
-  {* & Parameter & Definition}{%
+\begin{landscape}\small
+\setlength{\tabcolsep}{3pt}
+\def\unsep{\null\hspace{-3pt}\null}
+\begin{longtable}{crlrrlrrl}
+  {\label{tab:par.defs}Definitions and distributions of calibrated parameters}
+  {  & & & \multicolumn{3}{c}{Prior} & \multicolumn{3}{c}{Posterior} \\
+    \cmidrule(rl){4-6}\cmidrule(rl){7-9}
+    * & Parameter & Definition & Mean & \multicolumn{2}{c}{(95\%~CI)} & Mean & \multicolumn{2}{c}{(95\%~CI)}}{%
     * relational sampling constraints (see \sref{app.model.cal.constr});
     FSW: female sex worker;
     p12m: past 12 months;
@@ -13,6 +18,8 @@
     all rates in per-year;
     all durations in years;
     all parameters reflect stratum averages.}
-  \csvreader[head to column names]{model/app/par.defs.csv}{}
-    {\small\constr & \texttt{\parameter} & \footnotesize\definition\\}
+  \csvreader[head to column names]{model/app/par.full.csv}{}
+    {\constr & \texttt{\parameter} & \definition
+    & \imu & \unsep(\ilo, & \unsep\ihi) & \omu & \unsep(\olo, & \unsep\ohi)\\}
 \end{longtable}
+\end{landscape}

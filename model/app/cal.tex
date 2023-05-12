@@ -1,10 +1,11 @@
 \section{Model Calibration}\label{app.model.cal}
-Table~\ref{tab:par.defs} gives the short names (used in code and results figures) and definitions
+Table~\ref{tab:par.defs} gives the short names (used in code and some results figures),
+definitions, and distributions (prior and posterior mean and 95\%~CI)
 of the calibrated model parameters ($N = 73$).
-The precise sampling distributions, constraints, and application of each parameter to define
+The exact sampling distributions, constraints, and application of each parameter to define
 the complete set of model inputs is available online:\\
 \hreftt{github.com/mishra-lab/hiv-fsw-art/blob/master/code/model/params.py}
-\input{model/app/tab.par.defs}
+% \input{model/app/tab.par.defs} (*) moved below for landscape pagebreak
 %===================================================================================================
 \subsection{Relational Sampling Constraints}\label{app.model.cal.constr}
 Several relational constraints were imposed on calibrated parameter values during sampling.
@@ -14,7 +15,6 @@ were sampled randomly (not via Latin hypercube) and repeated until all constrain
 as noted in \sref{app.math.distr.jsam},
 this sampling strategy effectively changes the prior distribution
 to reflect both the original prior and the specified constraints.
-\clearpage % TEMP
 \begin{itemize}\singlespacing
   \item[a.] \texttt{K_swo_fsw_l * RC_swo_fsw_h:l * F_swo + K_swr_fsw_l * RC_swr_fsw_h:l * F_swr < 2*365}\\
             where: \texttt{K_swx_fsw_l = C1m_swx_fsw_l * dur_swx / (dur_swx + 1/12)}
@@ -32,6 +32,7 @@ to reflect both the original prior and the specified constraints.
   \item[d.] \texttt{P_gud_fsw_l > .07}\\
             \texttt{(P_gud_fsw_l * RP_gud_fsw_h:l) < 1}
 \end{itemize}
+\input{model/app/tab.par.defs} % (*)
 %===================================================================================================
 \subsection{Results}\label{app.model.cal.res}
 This section provides additional results to supplement \sref{model.res.cal}.
