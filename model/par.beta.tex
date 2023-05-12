@@ -218,7 +218,7 @@ A 2001 study in Ghana \cite{Cote2004} suggested that
 FSW were more likely than their clients to report having used a condom.
 As such, I adjusted the lower bound of 95\%~CI for condom use in sex work partnerships ($p=3,4$)
 as either 75\% of the reported lower bound, or the lowest reported region-specific estimate.
-Estimates for 2002 \cite{EswSBSS2002} were obtained from two major cities only (Manzini and Mbambane);
+Estimates for 2002 \cite{EswBSS2002} were obtained from two major cities only (Manzini and Mbambane);
 since early condom availability was mainly urban,
 treated these estimates as 95\%~CI upper-bounds,
 and defined the lower bound as 20\% of the reported values.
@@ -257,14 +257,13 @@ between sampled levels of condom use over the available years
 using monotone piecewise cubic interpolation \cite{Fritsch1980}.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Genital Ulcer Disease}\label{model.par.tm.gud}
-% TODO: update for 2023-03-02
 Self-reported prevalence of GUD in p12m among sexually active women and men aged 15--49
-was approximately 7\% in 2006 \cite[Table~13.14]{SDHS2006};
-this prevalence was not stratified by numbers of partners, so I assumed it was equal across
-sexually active individuals in lowest and medium activity groups.
-However, approximately 19~and~32\% of the lowest activity women and men
-were not sexually active during p12m (see \sref{model.par.nsw});
-thus I reduced GUD prevalence by 19~and~32\%, respectively, among these groups.
+was approximately 7\% in 2006 \cite[Table~13.14]{SDHS2006}.
+This prevalence was not stratified by numbers of partners,
+so I modelled GUD prevalence among the lowest risk women and men as
+7\% times the proportion sexually active (see \sref{model.par.nsw}). % TODO: (+) see code
+Among the medium risk groups, I sampled GUD prevalence uniformly between
+7\% and the prevalence modelled among FSW (below).
 \par
 The 2011 and 2014 FSW surveys did not ask respondents about GUD specifically,
 but about any STI symptoms in p12m.%
@@ -282,9 +281,8 @@ Per analysis in \sref{model.par.fsw}, I assumed that STI (and thus GUD) prevalen
 approximately 3~(1.5,~5) times higher among higher risk FSW (gamma prior),
 with an upper bound of 100\%.
 %\par
-FSW data also suggest declining STI prevalence between 2011 and 2014.
-%this decline could reflect scale-up of differentiated health services delivery for key populations,
-%including STI testing and treatment for FSW \cite{TODO}.
+FSW data also suggest declining STI prevalence between 2011 and 2014,
+which could reflect scale-up of STI testing and treatment for FSW \cite{NERCHA2012}.
 However, STI prevalence among Swati youth in 2017--18 remained high \cite{Jasumback2020}.
 Thus, to reflect uncertainty in STI/GUD prevalence trends,
 I sampled a relative reduction in GUD prevalence for all populations between 2020 and 2050
@@ -296,5 +294,6 @@ have found 2.5--3.7 (95\% CI span 1.4--5.0) the odds
 of STI symptoms during the past 6--12 months among clients \vs non-clients.
 Yet, I assumed that even higher risk clients
 could not have greater GUD prevalence than lower risk FSW.
-Thus, I sampled higher risk client GUD prevalence uniformly between 7\% and that of lower risk FSW,
-and sampled lower risk client GUD prevalence uniformly between 7\% and that of higher risk clients.
+Thus, I defined GUD prevalence among lower risk clients as
+midway between that of the medium risk groups and lower risk FSW, and
+among higher risk clients as sampled uniformly between lower and higher risk FSW.
