@@ -3,7 +3,7 @@ Compartmental models of sexual HIV transmission continue to support HIV epidemic
 including the Spectrum suite of models \cite{Stover2021,Spectrum2022},
 the Optima HIV model \cite{Kerr2015,Optima2021},
 the Asian Epidemic Model \cite{Brown2004},
-the Thembisa model for South Africa \cite{Johnson2006,Johnson2016cc,Johnson2022},
+the Thembisa model for South Africa \cite{Johnson2016cc,Johnson2022},
 and numerous others (\eg Chapter~\ref{sr}).
 Such models usually simulate sexual HIV transmission within risk- and/or age-stratified populations,
 possibly considering multiple partnership types and/or transmission modifiers.
@@ -29,8 +29,8 @@ BPH reflects an assumption that partnerships are different, but each comprise id
 This distinction --- \ie all of \eqrefr{eq:B}{eq:B.xph} and variants thereof ---
 is unnecessary under the proposed approach.
 \par
-Numerous variations on \eqrefr{eq:B}{eq:foi.ip} have been used in prior models
-(see \sref{app.foi.prior}).
+Numerous variations on \eqrefr{eq:B}{eq:foi.ip} have been used in prior models.
+% (see \sref{app.foi.prior}).
 % TODO: if time, add appendix section with different prior variations (using consistent notation)
 For example, the Optima \cite{Kerr2015} and Goals \cite{Stover2014} models
 aggregate heterogeneity due to HIV infection stage
@@ -181,7 +181,7 @@ These different findings could be explained by the fact that
 whereas transmission via sex work in the Eswatini model
 was dominated by regular partnerships (Figure~\ref{fig:foi.wiw.part}).
 Indeed, many HIV models have yet to incorporate longer partnerships between higher risk groups
-(see \sref{sr.res.f.net} and \sref{model.disc.par.part}).
+(see \sref{sr.res.f.net}).
 Thus, I would offer to rephrase the conclusions of \cite{Johnson2016mf} as:
 \shortquote{without complete adjustment for `wasted contacts',
   models with instantaneous partnerships may
@@ -189,9 +189,7 @@ Thus, I would offer to rephrase the conclusions of \cite{Johnson2016mf} as:
   underestimate the contribution of shorter partnerships.}
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Implications for Existing Model-Based Evidence}\label{foi.disc.bip.evid}
-% TODO: verify, including adjustment durations
 The vast majority of existing compartmental HIV transmission models
---- including all those listed at the start of this chapter ---
 have used an instantaneous partnerships approach,
 with adjustments for ``wasted contacts'' of 1-year or less.
 The results in \sref{foi.exp.model.tpaf} suggest that such models
@@ -213,7 +211,7 @@ effective partnership duration was 4~[2.6,~6.2] years.%
 \footnote{Median [IQR] estimated via Monte Carlo sampling of $\bar{c}, R, \varpi$
   from uniform prior distributions in Table~S7;
   posterior parameter distribution were not given in \cite{Anderson2014}.}
-% and only sex work partnerships were considered among FSW and their clients
+% and only sex work partnerships were considered among FSW and their clients % TODO (?)
 If longer partnership durations were more accurately modelled,
 the relative impact of PrEP for FSW \vs early ART for non-MSM would likely increase.
 %---------------------------------------------------------------------------------------------------
@@ -240,11 +238,11 @@ FSW, their clients, MSM, and PWID, without age stratification \cite{Stover2014}.
 \footnote{An age-stratified variant of Goals was recently developed for generalized epidemics,
   which subsumes key populations as proportions of age strata;
   the new model is called the Goals ``Age-Stratified Model'' (ASM), whereas
-  the original model is now called the Goals ``Risk-Stratified Model'' (RSM) \cite{Stover2021}.}
+  the original model is now called the Goals ``Risk-Stratified Model'' (RSM) \cite{Stover2021}.
+  To confuse matters further, a Goals ``Age-Risk-Stratified Model'' is also being developed.}
 Yet, as in the Optima model, the force of infection is defined as an incidence proportion
-% TODO: illustrate equivalence of equations in footnote?
 --- using a transformation of \eqref{eq:foi.ip} --- with $\Delta_t = 1$~year.
-% Moreover, the minimum partnership change rate among sexually active risk groups is 1 pre year.
+% Moreover, the minimum partnership change rate among sexually active risk groups is 1 pre year. % TODO (?)
 Thus, for the same reasons as Optima (and worse with $\Delta_t = {}$1 \vs 0.2~years),
 the relative impact of prioritizing shorter partnerships and key populations for prevention
 have likely been systematically underestimated by the Goals Model.
@@ -265,9 +263,10 @@ and thus underestimates the importance of prevention among these populations.
 Finally, I illustrated these potential biases
 in the context of a high prevalence HIV epidemic (Eswatini),
 but these biases and implications for prevention could be even greater elsewhere.
-% TODO: comment on periods vs populations at higher risk? i.e. sexual life course?
+% TODO: (?) comment on periods vs populations at higher risk i.e. sexual life course
 %===================================================================================================
 \subsection{Transmission-Driven Emergence of Serosorting Patterns}\label{foi.disc.ss}
+% TODO: (?) this feels out of place, but not sure where to put instead ...
 HIV serosorting is a controversial harm reduction strategy defined as
 preferential selection of sexual partners with matching (perceived) HIV serostatus;
 related strategies can involve modified sexual practices with a given partner on the same basis
@@ -291,7 +290,7 @@ or consideration of only new partnerships \cite{Kim2020}.
 Hopefully I have made a convincing case for the value added by the proposed approach.
 Thus, an obvious area for future work would be to integrate this approach
 into new and existing compartmental HIV transmission models,
-including widely-used models like Spectrum, Optima, Asian Epidemic Model, and Thembisa.
+including widely-used models like Spectrum Goals, Optima, Asian Epidemic Model, and Thembisa.
 To this end, the complete implementation of the proposed approach
 in the Eswatini model is available online,%
 \footnote{See: \hreftt{github.com/mishra-lab/hiv-fsw-art/blob/master/code/model/foi.py},

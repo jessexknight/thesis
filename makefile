@@ -1,5 +1,5 @@
 all:
-	make clean && make tex && make bib && make tex && make tex
+	make tex && make bib && make tex && make tex
 
 tex:
 	pdflatex main

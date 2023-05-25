@@ -4,7 +4,7 @@
 \subsubsection{Population Sizes}\label{model.par.sw.size}
 Population sizes of all activity groups are modelled as proportions of the total population,
 which are assumed to remain roughly constant,
-although individuals can move between groups (see \sref{model.par.turnover.act}),
+although individuals can move between groups (see \sref{model.par.turn.act}),
 and disproportionate mortality due to HIV between groups
 may cause higher risk groups to shrink over time.
 %---------------------------------------------------------------------------------------------------
@@ -417,9 +417,9 @@ $C_{p_{1}s_{2}i_{34}} = 0.5\,C_{p_{1}s_{2}i_{1}}$, and
 25--100\% the numbers of casual partnerships compared to medium activity women (uniform prior).
 As before, I computed $Q$ and $K$ via \eqrefs{eq:C2Q}{eq:C2K}.
 %===================================================================================================
-\subsection{Turnover}\label{model.par.turnover}
+\subsection{Turnover}\label{model.par.turn}
 %---------------------------------------------------------------------------------------------------
-\subsubsection{Births \& Deaths}\label{model.par.turnover.bd}
+\subsubsection{Births \& Deaths}\label{model.par.turn.bd}
 The modelled population considers ages 15--49,
 reflecting commonly reported data and the majority of sexual activity.
 In the absence of mortality, individuals would therefore
@@ -446,9 +446,9 @@ These parameter values were informally validated by comparison of model outputs 
 Swati population sizes for ages 15--49 from \cite{WorldBank}.
 The distribution of activity groups among individuals \emph{entering} the model, denoted $E_{si}$,
 is different from the distribution among individuals \emph{currently} in the model $P_{si}$,
-but $E_{si}$ is computed automatically as described below in \sref{model.par.turnover.act}.
+but $E_{si}$ is computed automatically as described below in \sref{model.par.turn.act}.
 %---------------------------------------------------------------------------------------------------
-\subsubsection{Activity Group Turnover}\label{model.par.turnover.act}
+\subsubsection{Activity Group Turnover}\label{model.par.turn.act}
 In addition to overall population turnover (entry/exit from the open population),
 I model movement of individuals between activity groups within the model.
 Activity group turnover reflects the fact that risk is not constant over sexual life course,
@@ -461,7 +461,7 @@ exponentially distributed with mean $D_{si}$ \cite{Roberts2015}:
 \begin{equation}\label{eq:model.par.dur}
   D_{si} = \frac{1}{\mu + \sum_{i'}\theta_{sii'}}
 \end{equation}
-where $\mu$ is the overall exit rate from \sref{model.par.turnover.bd}.
+where $\mu$ is the overall exit rate from \sref{model.par.turn.bd}.
 As shown previously \cite{Knight2020}, the relative sizes of each sex-activity group $P_{si}$
 can be maintained at fixed values by satisfying the following ``mass-balance'' equation:
 \begin{equation}

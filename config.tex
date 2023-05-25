@@ -1,4 +1,6 @@
 \input{markdraft}
+% \usepackage{showframe}\def\ShowFrameColor{\color{lightgray}} % DEBUG
+%---------------------------------------------------------------------------------------------------
 % fonts
 \usepackage{mathtools,bm,newtxsf,underscore}
 \usepackage[tabular,osf,sfdefault]{gandhi}
@@ -7,6 +9,7 @@
 \usepackage{microtype}\DisableLigatures{shape=sc}
 \let\obfseries\bfseries\renewcommand\bfseries{\boldmath\obfseries}
 \usepackage[T1]{fontenc}
+%---------------------------------------------------------------------------------------------------
 % spacing
 \frenchspacing
 \setlength{\parskip}{1ex}
@@ -17,12 +20,13 @@
 \renewcommand{\floatpagefraction}{.67}
 \widowpenalty9999
 \clubpenalty9999
-% footnotes
+%---------------------------------------------------------------------------------------------------
+% footnotes + sections
 \usepackage[marginal,bottom]{footmisc}
 \addtolength{\skip\footins}{1pc plus 5pt minus 2pt}
-% sections
 \setcounter{secnumdepth}{4}
 \renewcommand{\paragraph}[1]{\par\textbf{#1.}\ }
+%---------------------------------------------------------------------------------------------------
 % frontmatter
 \usepackage{xpatch}
 \xpatchcmd{\maketitle}{\@title}%
@@ -33,6 +37,7 @@
 \singlespaced{\tableofcontents}
 \singlespaced{\listoffigures}
 \singlespaced{\listoftables}
+%---------------------------------------------------------------------------------------------------
 % headers
 \makeatletter
 \renewcommand{\headerstyle}[1]{\footnotesize\textsc{#1}}
@@ -44,6 +49,7 @@
   \def\sectionmark##1{\markright{%
       \if@mainmatter\headerstyle{\thesection\hskip.8em##1}\fi}}}
 \makeatother
+%---------------------------------------------------------------------------------------------------
 % bibliography
 \usepackage[
   style=numeric-comp,
@@ -68,6 +74,7 @@
   \printbibliography[heading=subbibliography,resetnumbers=true]}
 \DeclareFieldFormat{url}{\url{#1}}
 \renewbibmacro{in:}{}
+%---------------------------------------------------------------------------------------------------
 % colors
 \usepackage{xcolor}
 \definecolor{red}{HTML}{CC0033}
@@ -80,6 +87,7 @@
 \definecolor{G}{HTML}{00CC66}\colorlet{pd}{G}
 \definecolor{B}{HTML}{0066CC}\colorlet{py}{B}
 \definecolor{Y}{HTML}{FF9900}\colorlet{np}{Y}
+%---------------------------------------------------------------------------------------------------
 % hyperlinks
 \usepackage[
   colorlinks,
@@ -87,11 +95,35 @@
   citecolor=cite,
   urlcolor=url,
 ]{hyperref}
+\usepackage{nameref}
 \makeatletter
 \hypersetup{pdftitle={\@title},pdfauthor={\@author}}
 \makeatother
+%---------------------------------------------------------------------------------------------------
+% floatfoot
+\newcommand{\floatfoot}[2][1]{\nopagebreak\vskip\abovecaptionskip\par
+  \parbox{#1\linewidth}{\footnotesize#2}}
+\newcommand{\ffpbar}[1][calibration target]{points and error bars: mean and 95\%~CI for each #1}
+\newcommand{\ffbox}[1][model fits]{whiskers, boxes, and midlines: 95\%~CI, 50\%~CI, median of #1}
+\newcommand{\ffribbon}[1][model fits]{ribbon and curve: range and median of #1}
+\newcommand{\fffsw}[1]{%
+  \foreach \year/\status in {2011/serologic,2014/self-reported}{
+  \foreach \var/\lab in {f/factor,c/continuous}{
+  (\subref{#1.\year.\var}) \year, \status\ HIV status, \lab\ variables;}}}
+\newcommand{\ffpops}{Low: lowest activity; Med: medium activity;
+  LR/HR: lower/higher risk; FSW: female sex workers; Clients: of FSW}
+\newcommand{\ffpopz}{Lower Risk: all women and men not involved in sex work;
+  FSW: female sex workers; Clients: of FSW}
+\newcommand{\fffit}{1000 model fits (top 1\% by likelihood among 100,000 sampled parameter sets)}
+\newcommand{\fffoi}{See Table~\ref{tab:foi.models} for approach definitions}
+\newcommand{\ffart}{Base case: \cashi by 2020;
+  ``left behind'' counterfactual scenarios: \casmd overall by 2020,
+  with reduced cascade (\caslo) among FSW, clients of FSW, both, or neither}
+\newcommand{\ffwiw}{median numbers of infections across all model fits shown}
+\newcommand{\fftpaf}{TPAF: transmission population attributable fraction, \sref{foi.exp.model.tpaf}}
+%---------------------------------------------------------------------------------------------------
 % figures
-\usepackage{subcaption,graphicx}
+\usepackage{subcaption,graphicx,lscape}
 \graphicspath{
   {front/fig/}
   {intro/fig/}
@@ -100,6 +132,7 @@
   {foi/fig/}
   {art/fig/}
   {math/fig/}}
+\newcommand{\subcaptionoverlap}{\captionsetup[subfigure]{skip=-\baselineskip,margin=0pt}}
 \newcommand{\iterfig}[6][]{\vskip\textfloatsep
   \setcaptiontype{figure}
   \foreach \var/\cap in #4{
@@ -107,21 +140,7 @@
       \includegraphics[width=\linewidth]{{#2.\var}.pdf}
       \subcaption{\cap}\label{fig:#2.\var}}\ifx1#3\par\fi}
   \caption{#5}\label{fig:#2#1}\floatfoot{#6}}
-\newcommand{\subcaptionoverlap}{\captionsetup[subfigure]{skip=-\baselineskip,margin=0pt}}
-\newcommand{\fffit}{1000 model fits (top 1\% by likelihood among 100,000 sampled parameter sets)}
-\newcommand{\fffoi}{See Table~\ref{tab:foi.models} for approach definitions}
-\newcommand{\ffart}{Base case: \cashi by 2020;
-  ``left behind'' counterfactual scenarios: \casmd overall by 2020,
-  with reduced cascade (\caslo) among FSW, clients of FSW, both, or neither}
-\newcommand{\ffribbon}{ribbon and curve: range and median of model fits}
-\newcommand{\fftargets}{points and error bars: mean and 95\%~CI for each calibration target}
-\newcommand{\ffbox}{whiskers, boxes, and midlines: 95\%~CI, 50\%~CI, median of model fits}
-\newcommand{\ffwiw}{median numbers of infections across all model fits shown}
-\newcommand{\fftpaf}{TPAF: transmission population attributable fraction, \sref{foi.exp.model.tpaf}}
-\newcommand{\ffpops}{Low: lowest activity; Med: medium activity;
-  LR/HR: lower/higher risk; FSW: female sex workers; Clients: of FSW}
-\newcommand{\ffpopz}{Lower Risk: all women and men not involved in sex work;
-  FSW: female sex workers; Clients: of FSW}
+%---------------------------------------------------------------------------------------------------
 % tables
 \usepackage{booktabs,longtable,rotating,multicol,multirow,csvsimple}
 \newcommand{\tn}[1]{\textsuperscript{\rlap{\,#1}}}
@@ -131,11 +150,9 @@
 \newcommand{\m}{\hphantom{-}}
 \newcommand{\s}{\rlap{\tsup{*}}}
 \newcommand{\vsig}{\llap{$<$}0.001\s\xspace}
-\newcommand{\floatfoot}[2][1]{\nopagebreak\vskip\abovecaptionskip\par
-  \parbox{#1\linewidth}{\footnotesize#2}}
 \makeatletter
 \let\olongtable\longtable\let\oendlongtable\endlongtable
-\renewenvironment{longtable}[5][]{%
+\renewenvironment{longtable}[5][]{% fmt,cols,caption,header,footer
   \begingroup\singlespacing#1
   \olongtable[#1]{#2}\caption{#3} \\
   \toprule #4 \\ \midrule \endfirsthead
@@ -145,6 +162,7 @@
     \begin{minipage}{\dimexpr\linewidth-2\tabcolsep} \footnotesize#5 \end{minipage}} \endlastfoot
   }{\oendlongtable\endgroup}
 \makeatother
+%---------------------------------------------------------------------------------------------------
 % acronyms & symbols
 \usepackage{xspace,pifont}
 \newcommand{\eg}{{e.g.,}\xspace}
@@ -166,15 +184,16 @@
 \newcommand{\pd}{\textcolor{pd}{\textsc{pd}}\xspace}
 \newcommand{\py}{\textcolor{py}{\textsc{py}}\xspace}
 \newcommand{\np}{\textcolor{np}{\textsc{np}}\xspace}
-\newcommand{\caslo}{\textcolor{G!33!B}{\mbox{60-40-80}}\xspace}
-\newcommand{\casmd}{\textcolor{G!66!B}{\mbox{80-80-90}}\xspace}
-\newcommand{\cashi}{\textcolor{G!99!B}{\mbox{95-95-95}}\xspace}
+\newcommand{\caslo}{\textcolor{B!66!G}{\mbox{60-40-80}}\xspace}
+\newcommand{\casmd}{\textcolor{B!33!G}{\mbox{80-80-90}}\xspace}
+\newcommand{\cashi}{\textcolor{B!00!G}{\mbox{95-95-95}}\xspace}
 \newcommand{\yes}{\ding{51}\xspace}
 \newcommand{\no}{\ding{55}\xspace}
 \renewcommand{\ast}{\raisebox{-.5ex}{*}\xspace}
 \newcommand{\p}{\bar{p}}
-\newcommand{\Ro}[1][]{R_0^{\,\mathnormal{#1}}}
+%---------------------------------------------------------------------------------------------------
 % short text styles
+\newcommand{\tdef}[2]{#1{\,:\,}\txn{#2}}
 \newcommand{\opname}[1]{\operatorname{#1}\,}
 \newcommand{\tsub}[1]{\textsubscript{#1}}
 \newcommand{\tsup}[1]{\textsuperscript{#1}}
@@ -187,10 +206,13 @@
 \newcommand{\ifempty}[3]{\if\relax\detokenize{#1}\relax#2\else#3\fi}
 \newcommand{\cdf}[2]{\ifempty{#2}{CD4\,$>$\,#1}{\ifempty{#1}{}{#1\,$<$\,}CD4\,$<$\,#2}}
 \renewenvironment{quote}{\list{}{\rightmargin=\leftmargin\topsep=0pt}\item\relax\itshape}{\endlist}
+\let\txn\textnormal
+%---------------------------------------------------------------------------------------------------
 % itemize & enumerate
 \usepackage{enumitem}
 \setitemize{itemsep=0pt,topsep=0pt}
 \setenumerate{itemsep=0pt,topsep=0pt}
+%---------------------------------------------------------------------------------------------------
 % systematic review styles
 \usepackage{tikz}
 \newcommand{\srds}[1]{Dataset~\hyperref{}{sr.dataset}{#1}{#1}}
