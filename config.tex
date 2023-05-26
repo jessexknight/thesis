@@ -106,7 +106,7 @@
 \newcommand{\ffpopz}{Lower Risk: all women and men not involved in sex work;
   FSW: female sex workers; Clients: of FSW}
 \newcommand{\fffit}{1000 model fits (top 1\% by likelihood among 100,000 sampled parameter sets)}
-\newcommand{\fffoi}{See Table~\ref{tab:foi.models} for approach definitions}
+\newcommand{\fffoi}{Table~\ref{tab:foi.models} gives approach definitions}
 \newcommand{\ffart}{Base case: \cashi by 2020;
   ``left behind'' counterfactual scenarios: \casmd overall by 2020,
   with reduced cascade (\caslo) among FSW, clients of FSW, both, or neither}
@@ -119,10 +119,10 @@
   {front/fig/}
   {intro/fig/}
   {sr/fig/}
-  {model/fig/}
-  {foi/fig/}
+  {model/fig/}{model/fig/fsw/}{model/fig/fit/}
+  {foi/fig/}{foi/fig/fit/}
   {art/fig/}}
-\newcommand{\subcaptionoverlap}{\captionsetup[subfigure]{skip=-\baselineskip,margin=0pt}}
+\newcommand{\subcapoverlap}{\captionsetup[subfigure]{skip=-\baselineskip,margin=0pt}}
 \newcommand{\iterfig}[6][]{\vskip\textfloatsep
   \setcaptiontype{figure}
   \foreach \var/\cap in #4{
@@ -130,6 +130,7 @@
       \includegraphics[width=\linewidth]{{#2.\var}.pdf}
       \subcaption{\cap}\label{fig:#2.\var}}\ifx1#3\par\fi}
   \caption{#5}\label{fig:#2#1}\floatfoot{#6}}
+\def\fitscale{.475}
 %---------------------------------------------------------------------------------------------------
 % tables
 \usepackage{booktabs,longtable,rotating,multicol,multirow,csvsimple}

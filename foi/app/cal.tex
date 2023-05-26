@@ -1,0 +1,35 @@
+\section{Model Calibration under Different Approaches}\label{app.foi.cal}
+This section illustrates the results of model calibration
+under the four force of infection approaches explored in \sref{foi.exp.model}:
+Effective Partnerships Reduction (\epa),
+Instantaneous Rate-Duration (\ird),
+Instantaneous Rate-1-Year (\iry), and
+Instantaneous Proportion-1-Year (\ipy).
+Figures~\ref{fig:fit.prev.foi}--\ref{fig:fit.inc1v2.foi} illustrate the modelled HIV
+prevalence, prevalence ratios, incidence, and incidence ratios,
+plus associated calibration targets, for each approach.
+Qualitative differences between approaches appear to be minimal,
+except for lower incidence among FSW in Figure~\ref{fig:fit.inc.py},
+as expected (see \sref{foi.exp.model.dyn}).
+\par
+\foreach \vf/\var/\vlab in {%
+  1/prev/prevalence,%
+  1/prev1v2/prevalence ratios between selected risk groups,%
+  1/inc/incidence,%
+  .6/inc1v2/incidence ratios between selected risk groups}{
+  \begin{figure}[h]
+    \subcapoverlap\centering
+    \foreach \foi in {base,rd,ry,py}{
+      \begin{subfigure}{\vf\linewidth}
+        \centerline{\includegraphics[scale=\fitscale]{fit.\var.\foi.all.pdf}}
+        \caption{\raggedright}
+        \label{fig:fit.\var.\foi}
+      \end{subfigure}\\}
+    \caption{Modelled HIV \vlab and associated calibration targets
+      under different force of infection approaches}
+    \label{fig:fit.\var.foi}
+    \floatfoot{Approaches:
+      \foreach \foi/\flab in {base/\epa,rd/\ird,ry/\iry,py/\ipy}{
+        \sfref{fig:fit.\var.\foi}: \flab;}
+      \fffoi; \fffit; \ffribbon; \ffpbar.}
+  \end{figure}}

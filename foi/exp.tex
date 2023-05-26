@@ -8,7 +8,7 @@ For computing an average per-partnership probability of transmission ($B$),
 \sref{foi.prior.xph} clarified the interpretations of
 \eqref{eq:B.wph} \vs \eqref{eq:B.bph} as modelling
 within-partnership heterogeneity (WPH) \vs between-partnership heterogeneity (BPH), respectively.
-As shown in \sref{app.foi.proof.xph} (proof), $B_{\wph} \ge B_{\bph}$.
+As shown in \sref{app.foi.proof} (proof), $B_{\wph} \ge B_{\bph}$.
 Here I explore under what conditions the ratio $B_{\wph}~/~B_{\bph}$ is maximized
 --- \ie when does choosing the correct approach matter most.
 For simplicity, I considered a single illustrative factor $f$
@@ -157,6 +157,7 @@ and converted $A = F \delta$ and $Q = K/\delta$ for all 3 prior approaches (\ird
 with the additional adjustment $\delta_1 = \min{(\delta,1)}$ for the 1-year approaches (\iry,~\ipy).
 For \emph{approach-specific} parameters, I repeated the methods in \sref{model.cal},
 yielding 1000 unique model fits (parameter sets) for each prior approach.
+Model calibration figures for HIV prevalence and incidence are given in \sref{app.foi.cal}.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Transmission Dynamics using Equal Parameters}\label{foi.exp.model.dyn}
 Figure~\ref{fig:foi.ep.incidence} illustrates HIV incidence under each approach among
@@ -195,12 +196,13 @@ the complete network of modelled transmission under \epa (Figure~\ref{fig:wiw.ba
 \end{itemize}
 Overall, \ird resulted in the most \emph{consistent} bias \vs \epa across groups and over time.
 \begin{figure}
-  \subcaptionoverlap
+  \subcapoverlap
   \foreach \var in {raw,rel}{
   \begin{subfigure}{\linewidth}
     \centering
     \includegraphics[width=.975\linewidth]{foi.ep.incidence.\var.pdf}
-    \caption{\raggedright}\label{fig:foi.ep.incidence.\var}
+    \caption{\raggedright}
+    \label{fig:foi.ep.incidence.\var}
   \end{subfigure}}
   \caption{HIV incidence among selected risk groups,
     estimated under different prior force of infection approaches (colours)
@@ -231,8 +233,6 @@ Interestingly, there were minimal differences in Figure~\ref{fig:foi.wiw.part} b
   \label{fig:foi.wiw.part}
   \floatfoot{\fffoi; \ffwiw.}
 \end{figure}
-% Model recalibration under each prior approach followed the methods in \sref{model.cal}
-% to yield 1000 unique parameter sets
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Prevention Priorities using Approach-Specific Parameters}\label{foi.exp.model.tpaf}
 Many models applied to assess HIV prevention priorities
