@@ -1,4 +1,5 @@
-\section{Prior Approaches}\label{foi.prior}
+\section{Prior Approaches: Instantaneous Partnerships}\label{foi.prior}
+% TODO: \includegraphics[scale=1]{diag.inst} - where?
 The earliest HIV transmission models \cite{Anderson1986}
 were adapted from models of other sexually transmitted diseases,
 especially gonorrhea \cite{Yorke1978,Nold1980,Hethcote1982}.
@@ -20,7 +21,7 @@ The shift to per-act \vs per-partnership parameterization highlighted
 a fundamental limitation of compartmental models (see \sref{foi.prior.lims}):
 compartmental models cannot model individual partnerships,
 because each ``compartment'' reflects a group of individuals
-whose characteristics are assumed to be homogeneous \cite{Rao2021}.
+whose characteristics are assumed to be homogeneous and memoryless \cite{Rao2021}.
 Therefore, the dynamics of sexual partnerships must be modelled using
 average rates of partnership change and average characteristics of those partnerships.
 As a result, partnerships are effectively modelled as instantaneous, such that
@@ -64,32 +65,31 @@ the probability of ``escaping'' infection after all $A$ acts:%
 \end{alignat}
 We can show that $B \le \beta A$.
 Thus, a model with partnerships using \eqref{eq:B}
-reduces transmission \vs a model without partnerships
-by adjusting for ``wasted contacts''.
-Figure~\ref{fig:binom.dur} illustrates the shape of $B(A)$ (curve)
+reduces transmission \vs a model without partnerships by adjusting for PTC.
+Figure~\ref{fig:binom.dur} illustrates the shape of $B(A)$ (red)
 and the corresponding effective probabilities of transmission per act $B/A$ (tangent slopes)
-for a shorter (red) \vs longer (blue) partnership.
+for a shorter (blue) \vs longer (green) partnership.
 Although $B(A)$ is monotonic, the effective probability of transmission per act
 decreases with the number of acts because, on average,
-more and more acts are ``wasted'' --- occuring after transmission.
-% The average proportion of post-transmission acts (PTA)
-% also increases with the per-act probability of transmission $\beta$, according to:
-% \begin{equation}\label{eq:pte}
-%   P_{PTA} = 1 - \frac{B(A)}{\beta A}
-% \end{equation}
+more and more acts occur after transmission.
+The average proportion of sex acts that occur after transmission
+also increases with the per-act probability of transmission $\beta$, according to:
+\begin{equation}\label{eq:ptc}
+  P_{PTC} = 1 - \frac{B(A)}{\beta A}
+\end{equation}
 \begin{figure}
   \centerline{
   \begin{subfigure}[b]{.5\linewidth}
     \centering\includegraphics[scale=1]{binom.dur.pdf}
     \caption{Probability of transmission per partnership $B$ \vs number of sex acts $A$,
-      comparing shorter (red) \vs longer (blue) partnerships}
+      comparing shorter (blue) \vs longer (green) partnerships}
     \label{fig:binom.dur}
   \end{subfigure}\quad%
   \begin{subfigure}[b]{.5\linewidth}
     \centering\includegraphics[scale=1]{binom.dots.xph.pdf}
     \caption{Average accumulation of transmission probability for
-      within-partnership heterogeneity (red) \vs
-      between-partnership heterogeneity (blue)}
+      within-partnership heterogeneity (left) \vs
+      between-partnership heterogeneity (right)}
     \label{fig:binom.xph}
   \end{subfigure}}
   \caption{Per-partnership robability of transmission \vs number of acts}
@@ -123,7 +123,7 @@ reflecting different interpretations of $\alpha_f$:%
   \item \textbf{{Within}-Partnership Heterogeneity (WPH)}:
   modelled partnerships are identical, but comprise heterogeneous acts
   --- $\alpha_f$ denotes a proportion of acts in each partnership
-  (Figure~\ref{fig:binom.xph} red).
+  (Figure~\ref{fig:binom.xph} left).
   % \emph{some acts in all partnerships}
   \begin{equation}\label{eq:B.wph}
     B_{\wph} = 1 - \prod_f {(1 - \beta_f)}^{A\alpha_f}
@@ -131,21 +131,21 @@ reflecting different interpretations of $\alpha_f$:%
   \item \textbf{{Between}-Partnership Heterogeneity (BPH)}:
   modelled partnerships are different, but each comprise identical acts
   --- $\alpha_f$ denotes a proportion of partnerships
-  (Figure~\ref{fig:binom.xph} blue).
+  (Figure~\ref{fig:binom.xph} right).
   % \emph{all acts in some partnerships}
   \begin{equation}\label{eq:B.bph}
     B_{\bph} = 1 - \sum_f \alpha_f {(1 - \beta_f)}^{A}
   \end{equation}
 \end{itemize}
 Figure~\ref{fig:binom.xph} illustrates these approaches for a simple case with two factors.
-For WPH (red), each factor $f$ marginally contributes to
+For WPH (left), each factor $f$ marginally contributes to
 the probability of escaping infection in every partnership.
-For BPH (blue), the overall probability of escaping infection is modelled as
+For BPH (right), the overall probability of escaping infection is modelled as
 a weighted average across partnerships, each affected by a single factor $f$.
 Both approaches guarantee $B < 1$,
 but we can show that $B_{\wph} \ge B_{\bph}$
-by the (weighted) AM-GM inequality (see \sref{app.math.misc.xph}) \cite{Aldaz2009}.
-% TODO: discuss how these two options are used willy-nilly
+by the (weighted) AM-GM inequality (see \sref{app.foi.proof.xph}) \cite{Aldaz2009}.
+% TODO: (?) discuss how these two options are used willy-nilly
 Intuitively, this inequality arises because
 any large probability of transmission $\beta_f$
 has disproportionate influence in \eqref{eq:B.wph},
@@ -224,7 +224,7 @@ $B_{pii'h'}$ is the average per-partnership probability of transmission
 from group/infection stage $i'h'$ to group $i'$ via partnership type $p$,
 and $I_{i'h'}/N_{i'}$ is the prevalence of infection stage $h'$ among group $i'$.
 Similar to within- \vs between-partnership heterogeneity,
-we can show that $\lambda^\ir \ge \lambda^\ip$ (see \sref{app.math.misc.xph}).
+we can show that $\lambda^\ir \ge \lambda^\ip$ (see \sref{app.foi.proof.xph}).
 \par
 By definition, the force of infection is a rate \cite{Anderson1991}.
 Yet in principle, incidence proportion could be more precise than incidence rate
@@ -246,11 +246,11 @@ Moreover, some applications of this approach have used
 a period of $\Delta_t = 1$ year in the equation, but then
 applied the resulting incidence proportion $\lambda_i^\ip$ as a rate over smaller timesteps.
 Such applications then erroneously reduce \emph{current} transmission
-due to \emph{future} ``wasted contacts'' across multiple partnerships.
+due to \emph{future} PTC across multiple partnerships.
 This reduction is then redundant because
-``wasted contacts'' \emph{within} partnerships are already captured via
+PTC \emph{within} partnerships are already captured via
 the per-partnership probability of transmission, while
-``wasted contacts'' \emph{between} partnerships are already captured via
+PTC \emph{between} partnerships are already captured via
 multiple opportunities for transmission over successive timesteps.
 In sum, unless the period $\Delta_t$ can be matched to the numerical solver timestep,
 incidence rate \eqref{eq:foi.ir} is preferred over incidence proportion \eqref{eq:foi.ip}
@@ -264,14 +264,14 @@ but implied by the total numbers of sex acts per partnership $A$,
 and a presumed frequency of sex per partnership $F$, such that $A = F\delta$.
 By contrast, the partnership formation rate $Q$ is often directly informed by survey questions like
 \shortquote{How many different people have you had sex with in the past 12 months?}
-(see also \sref{app.math.dur.qp}).
+(see also \sref{app.model.math.qp}).
 As such, the lowest possible value among sexually active individuals
 could naively be taken as $Q = 1$ (per year).
 Then, if $Q \ge 1$ is used in the model,
 the total sex acts per partnership can (and should) be reduced to reflect up to one year
 --- \ie $A \le F$, or effectively $\delta \le 1$ year.
 This change \vs $Q < 1, A > F$
-can substantially reduce the proportions of sex acts which are modelled as ``wasted'',
+can substantially reduce the proportions of sex acts which are modelled as PTC,
 and thus increases transmission via what would be longer ($\delta > 1$ year) partnerships.
 On the other hand, using the true $Q < 1, A > F$
 can effectively delay early transmission in longer partnerships,
@@ -294,6 +294,7 @@ Evidently, prior approaches to modelling HIV transmission in sexual partnerships
 have several limitations (see also \cite{Rao2021}).
 These limitations, and their implications for existing model-based evidence,
 can be summarized as follows.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Instantaneous Partnerships}
 \eqrefs{eq:foi.ir}{eq:foi.ip} both include
 the current HIV prevalence $I/N$ directly in the force of infection.
@@ -308,20 +309,19 @@ especially for longer partnerships.
 As a result, the contribution of longer partnerships to overall transmission
 has likely been systematically overestimated by compartmental models,
 while the contribution of shorter partnerships has likely been underestimated.
-This point was directly illustrated in 
-a comparison of compartmental \vs network-based models \cite{Johnson2016mf}.
 This bias has substantial implications for which types of interventions and populations
 have been prioritized using compartmental model-based evidence.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Aggregating Past/Future Sex Acts}
-The instantaneous partnerships assumption is in fact
-directly related to the ``wasted contacts'' issue,
+The instantaneous partnerships assumption is in fact directly related to the PTC issue,
 because the delay in onward transmission risk that is missing under instantaneous partnerships
-reflects the same post-transmission period within partnerships wherein contacts are ``wasted''.
+reflects the same post-transmission period within partnerships
+wherein additional sex acts cannot result in more infections.
 The prevailing solution to this issue is to
 define the per-partnership probability of transmission $B$ by
 aggregating competing risks from each sex act within a given partnership via \eqref{eq:B} et al.
 However, as described in \sref{foi.prior.dur}, this approach introduces a trade off between
-capturing the true proportion of ``wasted contacts'' in longer partnerships
+capturing the true proportion of PTC in longer partnerships
 (using the true partnership duration~$\delta$)
 \vs capturing the true magnitude of early transmission within partnerships (using $\delta \le 1$).
 These two options would then underestimate or overestimate

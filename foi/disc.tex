@@ -27,7 +27,7 @@ in the per-act probability of transmission $\beta$. Whereas
 WPH reflects an assumption that all partnerships are identical, but comprise heterogeneous acts,
 BPH reflects an assumption that partnerships are different, but each comprise identical acts.
 This distinction --- \ie all of \eqrefr{eq:B}{eq:B.xph} and variants thereof ---
-is unnecessary under the proposed approach.
+is unnecessary under the \emph{Effective Partnerships Adjustment} approach.
 \par
 Numerous variations on \eqrefr{eq:B}{eq:foi.ip} have been used in prior models.
 % (see \sref{app.foi.prior}).
@@ -44,7 +44,7 @@ the \emph{multiplicative} interaction of infection stage and other modifiers,
 while simultaneously allowing a high-infectivity stage with low prevalence (\eg acute HIV)
 to increase transmission risk across all partnerships (see Figure~\ref{fig:binom.xph}).
 As a result, this approach yields intermediate $B_{\wph} \ge B' \ge B_{\bph}$
-(see \sref{app.math.misc.xph}).
+(see \sref{app.foi.proof.xph}).
 It's not clear whether these variations have systematically biased existing model-based evidence,
 but improved understanding of the assumptions and potential biases of each approach
 can help guide interpretation of existing results,
@@ -102,7 +102,8 @@ reflects precisely the kind of dense, persistent sexual network  --- \ie high co
 which is difficult to model via a pair-based approach.
 The importance of partnership concurrency in HIV transmission has been debated extensively
 \cite{Mah2010,Tanser2011,Goodreau2012,Boily2012,Sawers2013}.
-Thus, the proposed approach offers an alternative to hybrid / pair-based models for such networks,
+Thus, the \emph{Effective Partnerships Adjustment} approach offers
+an alternative to hybrid / pair-based models for such networks,
 and thereby solves a 30-year old modelling challenge \cite{Dietz1988a}.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Prior Comparisons of Models with \vs Without Instantaneous Partnerships}\label{foi.disc.bip.prior}
@@ -124,22 +125,22 @@ especially for non-marital partnerships, remain lacking (see \sref{model.par.sex
 Efforts to fill this data gap will likely benefit from careful consideration of
 different measurement approaches and sources of error \cite{Burington2010},
 perhaps in conjunction with efforts to better quantify partnership formation rates,
-as explored in \sref{app.math.dur.qp}.
+as explored in \sref{app.model.math.qp}.
 \par
 \citet{Eames2002,Lloyd-Smith2004} both show that instantaneous partnerships
 can result in overestimation of the initial epidemic growth rate and equilibrium prevalence.
 Such finding seem intuitive.
 However, in \sref{foi.exp.model} (Figure~\ref{fig:foi.ep.incidence}),
 I showed how the rate of epidemic growth under instantaneous partnerships strongly depends
-on the effective partnership duration used for the ``wasted contacts'' adjustment
+on the effective partnership duration used for the ``post-transmission contacts'' (PTC) adjustment
 --- if such an adjustment is applied at all.
-That is, when durations were capped at 1 year (approaches \ry,~\py),
+That is, when durations were capped at 1 year (approaches \iry,~\ipy),
 this adjustment likely had little effect,
-and modelled incidence was indeed overestimated relative to the proposed approach;
-by contrast, when full partnership durations were used (approaches \rd,~\pd),
-this adjustment reduced transmission immediately in anticipation of future ``wasted contacts'',
-and modelled incidence was \emph{underestimated} relative to the proposed approach.
-No adjustments for ``wasted contacts'' were described in \cite{Eames2002,Lloyd-Smith2004},
+and modelled incidence was indeed overestimated relative to the \epa approach;
+by contrast, when full partnership durations were used (approach \ird),
+this adjustment reduced transmission immediately in anticipation of future PTC,
+and modelled incidence was \emph{underestimated} relative to the \epa approach.
+No adjustments for PTC were described in \cite{Eames2002,Lloyd-Smith2004},
 reflecting the former case.
 %---------------------------------------------------------------------------------------------------
 \paragraph{\citet{Johnson2016mf}}
@@ -149,7 +150,7 @@ This landmark study compared modelling frameworks across 6 STIs.%
 The models explored were more complex than previous works, including:
 population stratification by sex, age, and risk,
 and three partnership types within a dynamic sexual network, in a South African context.
-Although an adjustment for ``wasted contacts'' for instantaneous partnerships was applied,
+Although an adjustment for PTC in instantaneous partnerships was applied,
 the adjustment considered different time period across partnership types:
 1 month for main/spousal, 6 months for casual, and none for sex work partnerships;
 thus, regular sex work partnerships were not considered.
@@ -171,7 +172,7 @@ overestimating the impact of interventions targeted at low-risk groups} \cite{Jo
 Such findings are similar to those in \sref{foi.exp.model.tpaf}, where
 the TPAFs of lower risk populations and main/spousal partnerships were overestimated, while
 the TPAFs of casual partnerships were underestimated
-under 1-year approaches (\ry,~\py) \vs the new proposed approach (\np).
+under 1-year approaches (\iry,~\ipy) \vs the \emph{Effective Partnerships Adjustment} (\epa).
 However, while \cite{Johnson2016mf} observed that instantaneous partnerships
 \shortquote{may underestimate the contribution of commercial sex},
 the TPAFs of FSW, clients, and sex work partnerships
@@ -183,7 +184,7 @@ was dominated by regular partnerships (Figure~\ref{fig:foi.wiw.part}).
 Indeed, many HIV models have yet to incorporate longer partnerships between higher risk groups
 (see \sref{sr.res.f.net}).
 Thus, I would offer to rephrase the conclusions of \cite{Johnson2016mf} as:
-\shortquote{without complete adjustment for `wasted contacts',
+\shortquote{without complete adjustment for PTC,
   models with instantaneous partnerships may
   overestimate the contribution of longer partnerships, and
   underestimate the contribution of shorter partnerships.}
@@ -191,7 +192,7 @@ Thus, I would offer to rephrase the conclusions of \cite{Johnson2016mf} as:
 \subsubsection{Implications for Existing Model-Based Evidence}\label{foi.disc.bip.evid}
 The vast majority of existing compartmental HIV transmission models
 have used an instantaneous partnerships approach,
-with adjustments for ``wasted contacts'' of 1-year or less.
+with adjustments for PTC of 1-year or less.
 The results in \sref{foi.exp.model.tpaf} suggest that such models
 have likely \emph{systematically} and \emph{significantly} overestimated
 the relative contributions of longer \vs shorter partnerships to overall transmission.
@@ -253,7 +254,7 @@ are built upon the instantaneous partnerships assumption and associated equation
 I have shown that this assumption and these equations can significantly bias
 model-estimated contributions of different populations and partnerships to overall transmission,
 and thus the model-estimated importance of different prevention strategies.
-Specifically, the common practice of only adjusting for up to 1-year of ``wasted contacts''
+Specifically, the common practice of only adjusting for up to 1-year of PTC
 (or equivalently: assuming that all individuals change partners at least once per year)
 overestimates the importance of prevention in longer partnerships, and
 underestimates the importance of prevention in shorter partnerships.
