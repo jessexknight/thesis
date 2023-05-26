@@ -64,7 +64,7 @@ stratified by higher \vs lower risk per the analysis in \sref{model.par.fsw.fac}
 In general, the numbers of partners ``$C$'' reported
 for a given recall period $\gamma$ (\eg 1 month)
 do not directly inform a partnership formation rate $Q$ nor a number of concurrent partners $K$
-(see \sref{app.math.dur.qp});
+(see \sref{app.model.math.qp});
 rather, under certain assumptions, $Q$ and $K$ can be defined as:
 \begin{alignat}{1}
   Q &= \frac{C}{\gamma+\delta} \label{eq:C2Q}\\
@@ -184,7 +184,7 @@ The assumptions were:
 \end{itemize}
 Figure~\ref{fig:Cwp} illustrates the resulting
 proportions of women and men in each union/partners in p12m stratum
-in 2006-07 (\subref{fig:Cwp.2006}) and 2016-17 (\subref{fig:Cwp.2016}).
+in 2006-07 \sfref{fig:Cwp.2006} and 2016-17 \sfref{fig:Cwp.2016}.
 \begin{figure}
   \centering
   \begin{subfigure}{0.7\linewidth}
@@ -271,7 +271,7 @@ but the sum squared error from all equations can be minimized.
 The odds ratios $\varphi$ were then defined as follows, including sampling distributions.
 \begin{figure}
   \centering
-  \includegraphics[scale=.8]{model.wp.adj}
+  \includegraphics[scale=.8]{diag.nsw.adj}
   \caption{Illustration of how women (and equivalently men)
     are reallocated between union/partners in p12m strata
     based on odds ratios $\varphi$}
@@ -331,7 +331,7 @@ yielding 7.00~(3.20,~12.67) and 2.00~(1.03,~4.69).
 The mean resulting adjusted proportions $W'$ and $M'$
 from solving the system with the assumed odds ratios $\varphi$
 are illustrated in Figure~\ref{fig:Cwp.adj}, which can be compared to
-the reported proportions in \subref{fig:Cwp.2006}~and~\subref{fig:Cwp.2016}.
+the reported proportions in \sfref{fig:Cwp.2006}~and~\sfref{fig:Cwp.2016}.
 Figure~\ref{fig:Cwp.adj.dens} also illustrates the empiric density distributions
 for each element $W'_{i}$ and $M'_{i}$.
 Numerically, the mean (95\%~CI) estimates were:
@@ -495,7 +495,7 @@ However, the reported years selling sex in a cross sectional survey
 will underestimate the eventual duration in sex work among respondents by a factor $f \le 2$,
 because respondents continue selling sex after the survey
 --- \ie the observed duration is right censored
-(see \sref{app.math.dur.xs} for derivation and further discussion).
+(see \sref{app.model.math.xdur} for derivation and further discussion).
 Thus, the overall mean duration in sex work would be given by $\bar{D} = f\,\lambda^{-1}$.
 Yet, additionally, the current definition of duration selling sex
 includes a hidden assumption that FSW sell sex continuously after starting.
@@ -621,7 +621,7 @@ can be key determinants of epidemic dynamics and intervention impact.%
 Eswatini-specific data on partnership duration are lacking.
 Moreover, accurate estimation of partnership duration remains challenging even when data exist,
 due to censoring, truncation, and sampling biases \cite{Burington2010}.
-Similar to challenges in estimating sex work duration (\sref{app.math.dur}),
+Similar to challenges in estimating sex work duration (\sref{app.model.math.xdur}),
 we must distinguish the definition of an ``average partnership'' as
 (a) among all partnerships in a population over a given \emph{time period}, \vs
 (b) among all partnerships in a population \emph{cross-section}.
@@ -632,7 +632,7 @@ while case (a) reflects an unbiased estimate.%
   the durations in case (b) will be gamma-distributed with $\alpha = 2, \beta = \lambda$;
   thus the mean duration in case (b) will be $\alpha/\beta = 2\lambda$ (twice as long).}
 The difference between the exponential distribution mean and median
-should also be kept in mind (see \sref{app.math.dur.exp}).
+should also be kept in mind (see \sref{app.model.math.exp}).
 %---------------------------------------------------------------------------------------------------
 \paragraph{Main/Spousal Partnerships}
 Detailed data on marriage in Eswatini was only captured in 2006 \cite[Table~6.1]{SDHS2006}.
