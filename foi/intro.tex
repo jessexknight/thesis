@@ -29,17 +29,16 @@ contact rate and mixing by infection status/stage is random.
 The force of infection equation is further complicated by
 repeated contacts with the same individuals, such as in sexual partnerships
 (also household contacts, and other social relationships),
-where each contact reflects a single ``sex act''.%
-\footnote{Sex involving vaginal \emph{and} anal intercourse would be modelled as two sex acts.}
-With repeated \vs random contacts, it is more likely that
-individuals who recently acquired or transmitted infection will continue to contact the same person,
-resulting in ``wasted contacts'' (in terms of transmission),%
-\footnote{Another conception of ``wasted contacts'' is ``within-partnership competing risks''.}
-and slower infection spread through the contact/partnership network.
+where each contact reflects a single ``sex act''.
+With repeated \vs random contacts, individuals who recently acquired or transmitted infection
+will continue to contact the same person, resulting in ``post-transmission contacts'' (PTC)
+--- sometimes called ``wasted contacts'' (in terms of transmission) ---
+and slower infection spread through the contact/partnership network.%
+\footnote{Other conceptions of ``post-transmission contacts'' include:
+  ``within-partnership competing risks'' and HIV seroconcordance.}
 \par
 This chapter explores different mathematical approaches to
-modelling HIV transmission within sexual partnerships in compartmental models,
-considering these ``wasted contacts''.
+modelling HIV transmission within sexual partnerships in compartmental models, considering these PTC.
 In particular, I review prior approaches (\sref{foi.prior}),
 develop a new approach (\sref{foi.prop}),
 and compare the influence of each approach on selected model outputs (\sref{foi.exp}).

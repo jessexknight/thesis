@@ -1,8 +1,12 @@
-\begin{longtable}{crl}
-  {\label{tab:par.defs}Definitions of calibrated parameters}
-  {* & Parameter & Definition}{%
-    * relational sampling constraints (see \sref{app.model.cal.constr});
-    FSW: female sex worker;
+\begin{landscape}
+\setlength{\tabcolsep}{3pt}
+\def\unsep{\null\hspace{-3pt}\null}
+\begin{longtable}[\small]{rlrrlrrl}
+  {\label{tab:par.defs}\small Definitions and distributions of calibrated parameters}
+  { & & \multicolumn{3}{c}{Prior} & \multicolumn{3}{c}{Posterior} \\
+    \cmidrule(rl){3-5}\cmidrule(rl){6-8}
+    Parameter & Definition & Mean & \multicolumn{2}{c}{(95\%~CI)} & Mean & \multicolumn{2}{c}{(95\%~CI)}}
+   {FSW: female sex worker;
     p12m: past 12 months;
     $\beta$: per-act probability of HIV transmission;
     GUD: any genital ulcer disease in p12m;
@@ -13,6 +17,8 @@
     all rates in per-year;
     all durations in years;
     all parameters reflect stratum averages.}
-  \csvreader[head to column names]{model/app/par.defs.csv}{}
-    {\small\constr & \texttt{\parameter} & \footnotesize\definition\\}
+  \csvreader[head to column names]{model/app/pars.full.csv}{}
+    {\texttt{\parameter} & \definition
+    & \imu & \unsep(\ilo, & \unsep\ihi) & \omu & \unsep(\olo, & \unsep\ohi)\\}
 \end{longtable}
+\end{landscape}

@@ -1,20 +1,20 @@
 \section{Model Calibration}\label{app.model.cal}
-Table~\ref{tab:par.defs} gives the short names (used in code and results figures) and definitions
+Table~\ref{tab:par.defs} gives the short names (used in code and some results figures),
+definitions, and distributions (prior and posterior mean and 95\%~CI)
 of the calibrated model parameters ($N = 73$).
-The precise sampling distributions, constraints, and application of each parameter to define
+The exact sampling distributions, constraints, and application of each parameter to define
 the complete set of model inputs is available online:\\
 \hreftt{github.com/mishra-lab/hiv-fsw-art/blob/master/code/model/params.py}
-\input{model/app/tab.par.defs}
+% \input{model/app/tab.par.defs} (*) moved below for landscape pagebreak
 %===================================================================================================
 \subsection{Relational Sampling Constraints}\label{app.model.cal.constr}
 Several relational constraints were imposed on calibrated parameter values during sampling.
 Incorporating constraints within Latin hypercube sampling is challenging \cite{Petelet2010}.
 Thus, for each set of constraints below, the selected parameters
 were sampled randomly (not via Latin hypercube) and repeated until all constraints were satisfied;
-as noted in \sref{app.math.distr.jsam},
+as noted in \sref{app.model.math.jsam},
 this sampling strategy effectively changes the prior distribution
 to reflect both the original prior and the specified constraints.
-\clearpage % TEMP
 \begin{itemize}\singlespacing
   \item[a.] \texttt{K_swo_fsw_l * RC_swo_fsw_h:l * F_swo + K_swr_fsw_l * RC_swr_fsw_h:l * F_swr < 2*365}\\
             where: \texttt{K_swx_fsw_l = C1m_swx_fsw_l * dur_swx / (dur_swx + 1/12)}
@@ -32,6 +32,7 @@ to reflect both the original prior and the specified constraints.
   \item[d.] \texttt{P_gud_fsw_l > .07}\\
             \texttt{(P_gud_fsw_l * RP_gud_fsw_h:l) < 1}
 \end{itemize}
+\input{model/app/tab.par.defs} % (*)
 %===================================================================================================
 \subsection{Results}\label{app.model.cal.res}
 This section provides additional results to supplement \sref{model.res.cal}.
@@ -52,14 +53,14 @@ Figure~\ref{fig:fit.condom} illustrates condom use within each partnership type.
   \caption{Modelled HIV prevalence ratios between selected risk groups
     and associated calibration targets}
   \label{fig:fit.prevalence1v2}
-  \floatfoot{\fffit; \ffribbon; \fftargets.}
+  \floatfoot{\fffit; \ffribbon; \ffpbar.}
 \end{figure}
 \begin{figure}[h]
   \centering\includegraphics[scale=.5]{fit.incidence1v2.base.all.pdf}
   \caption{Modelled HIV incidence ratios between selected risk groups
     and associated calibration targets}
   \label{fig:fit.incidence1v2}
-  \floatfoot{\fffit; \ffribbon; \fftargets.}
+  \floatfoot{\fffit; \ffribbon; \ffpbar.}
 \end{figure}
 \begin{figure}[h]
   \begin{minipage}[t]{.54\linewidth}
@@ -73,7 +74,7 @@ Figure~\ref{fig:fit.condom} illustrates condom use within each partnership type.
     and associated calibration targets}
     \label{fig:fit.pop}
   \end{minipage}
-  \floatfoot{\fffit; \ffribbon; \fftargets.}
+  \floatfoot{\fffit; \ffribbon; \ffpbar.}
 \end{figure}
 \begin{figure}[h]
   \includegraphics[scale=.5]{fit.condom.base.all.pdf}

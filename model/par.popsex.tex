@@ -4,7 +4,7 @@
 \subsubsection{Population Sizes}\label{model.par.sw.size}
 Population sizes of all activity groups are modelled as proportions of the total population,
 which are assumed to remain roughly constant,
-although individuals can move between groups (see \sref{model.par.turnover.act}),
+although individuals can move between groups (see \sref{model.par.turn.act}),
 and disproportionate mortality due to HIV between groups
 may cause higher risk groups to shrink over time.
 %---------------------------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ unique object method, service multiplier method, prior survey participation,
 and network scale-up method (NSUM) \cite{UNAIDS2010kps}.
 In 2011 \cite{EswKP2014}, regional FSW population size estimates
 ranged from 0.7\% to 6.5\% of all women,
-with overall population-weightedd mean across regions of 2.9\%;
+with overall population-weighted mean across regions of 2.9\%;
 in 2021 \cite{EswIBBS2022}, the mean (95\%~CI) estimates were 2.43~(1.17,~5.02)\%.
 To reflect this uncertainty in the model, a BAB distribution was fitted
 such that 95\% of the probability fell between 0.7\% and 6.5\%,
@@ -64,7 +64,7 @@ stratified by higher \vs lower risk per the analysis in \sref{model.par.fsw.fac}
 In general, the numbers of partners ``$C$'' reported
 for a given recall period $\gamma$ (\eg 1 month)
 do not directly inform a partnership formation rate $Q$ nor a number of concurrent partners $K$
-(see \sref{app.math.dur.qp});
+(see \sref{app.model.math.qp});
 rather, under certain assumptions, $Q$ and $K$ can be defined as:
 \begin{alignat}{1}
   Q &= \frac{C}{\gamma+\delta} \label{eq:C2Q}\\
@@ -142,6 +142,7 @@ among FSW and clients.
 \subsection{Non-Sex Work: Group Sizes \& Partner Numbers}\label{model.par.nsw}
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Reported Partner Numbers}\label{model.par.nsw.report}
+% TODO: Cockcroft2010 (!)
 The 2006-07 DHS \cite{SDHS2006}, 2011 SHIMS \cite{SHIMS1}, and 2016-17 SHIMS2 \cite{SHIMS2} surveys
 provide the numbers of respondents who reported 2+ partners in the past 12 months (p12m):
 13.5, 18.2, 14.5\% among men, and 1.6, 3.8, 4.1\% among women, respectively.%
@@ -183,7 +184,7 @@ The assumptions were:
 \end{itemize}
 Figure~\ref{fig:Cwp} illustrates the resulting
 proportions of women and men in each union/partners in p12m stratum
-in 2006-07 (\subref{fig:Cwp.2006}) and 2016-17 (\subref{fig:Cwp.2016}).
+in 2006-07 \sfref{fig:Cwp.2006} and 2016-17 \sfref{fig:Cwp.2016}.
 \begin{figure}
   \centering
   \begin{subfigure}{0.7\linewidth}
@@ -270,7 +271,7 @@ but the sum squared error from all equations can be minimized.
 The odds ratios $\varphi$ were then defined as follows, including sampling distributions.
 \begin{figure}
   \centering
-  \includegraphics[scale=.8]{model.wp.adj}
+  \includegraphics[scale=.8]{diag.nsw.adj}
   \caption{Illustration of how women (and equivalently men)
     are reallocated between union/partners in p12m strata
     based on odds ratios $\varphi$}
@@ -330,7 +331,7 @@ yielding 7.00~(3.20,~12.67) and 2.00~(1.03,~4.69).
 The mean resulting adjusted proportions $W'$ and $M'$
 from solving the system with the assumed odds ratios $\varphi$
 are illustrated in Figure~\ref{fig:Cwp.adj}, which can be compared to
-the reported proportions in \subref{fig:Cwp.2006}~and~\subref{fig:Cwp.2016}.
+the reported proportions in \sfref{fig:Cwp.2006}~and~\sfref{fig:Cwp.2016}.
 Figure~\ref{fig:Cwp.adj.dens} also illustrates the empiric density distributions
 for each element $W'_{i}$ and $M'_{i}$.
 Numerically, the mean (95\%~CI) estimates were:
@@ -416,9 +417,9 @@ $C_{p_{1}s_{2}i_{34}} = 0.5\,C_{p_{1}s_{2}i_{1}}$, and
 25--100\% the numbers of casual partnerships compared to medium activity women (uniform prior).
 As before, I computed $Q$ and $K$ via \eqrefs{eq:C2Q}{eq:C2K}.
 %===================================================================================================
-\subsection{Turnover}\label{model.par.turnover}
+\subsection{Turnover}\label{model.par.turn}
 %---------------------------------------------------------------------------------------------------
-\subsubsection{Births \& Deaths}\label{model.par.turnover.bd}
+\subsubsection{Births \& Deaths}\label{model.par.turn.bd}
 The modelled population considers ages 15--49,
 reflecting commonly reported data and the majority of sexual activity.
 In the absence of mortality, individuals would therefore
@@ -445,9 +446,9 @@ These parameter values were informally validated by comparison of model outputs 
 Swati population sizes for ages 15--49 from \cite{WorldBank}.
 The distribution of activity groups among individuals \emph{entering} the model, denoted $E_{si}$,
 is different from the distribution among individuals \emph{currently} in the model $P_{si}$,
-but $E_{si}$ is computed automatically as described below in \sref{model.par.turnover.act}.
+but $E_{si}$ is computed automatically as described below in \sref{model.par.turn.act}.
 %---------------------------------------------------------------------------------------------------
-\subsubsection{Activity Group Turnover}\label{model.par.turnover.act}
+\subsubsection{Activity Group Turnover}\label{model.par.turn.act}
 In addition to overall population turnover (entry/exit from the open population),
 I model movement of individuals between activity groups within the model.
 Activity group turnover reflects the fact that risk is not constant over sexual life course,
@@ -460,7 +461,7 @@ exponentially distributed with mean $D_{si}$ \cite{Roberts2015}:
 \begin{equation}\label{eq:model.par.dur}
   D_{si} = \frac{1}{\mu + \sum_{i'}\theta_{sii'}}
 \end{equation}
-where $\mu$ is the overall exit rate from \sref{model.par.turnover.bd}.
+where $\mu$ is the overall exit rate from \sref{model.par.turn.bd}.
 As shown previously \cite{Knight2020}, the relative sizes of each sex-activity group $P_{si}$
 can be maintained at fixed values by satisfying the following ``mass-balance'' equation:
 \begin{equation}
@@ -494,7 +495,7 @@ However, the reported years selling sex in a cross sectional survey
 will underestimate the eventual duration in sex work among respondents by a factor $f \le 2$,
 because respondents continue selling sex after the survey
 --- \ie the observed duration is right censored
-(see \sref{app.math.dur.xs} for derivation and further discussion).
+(see \sref{app.model.math.xdur} for derivation and further discussion).
 Thus, the overall mean duration in sex work would be given by $\bar{D} = f\,\lambda^{-1}$.
 Yet, additionally, the current definition of duration selling sex
 includes a hidden assumption that FSW sell sex continuously after starting.
@@ -565,9 +566,9 @@ then $f < 1$ for the lowest activity women and men is computed automatically.
 Finally, since exiting sex work is unlikely to be
 an abrupt transition to monogamous or zero sexual activity \cite{Scorgie2012,Learmonth2015},
 I further assumed that (50,~90)\% of women exiting sex work
-transition to the medium activity group (BAB prior) (+2~constraints).
-In the absence of relevant data, I made a similar assumption regarding clients,
-with (25,~90)\% former clients transitioning to the medium activity group.
+transition to the medium activity group (BAB prior) (+1~constraint);
+in the absence of relevant data, I made a similar assumption regarding clients,
+with (25,~90)\% former clients transitioning to the medium activity group (+1~constraint).
 These $10 < 12$ total constraints then allow two degrees of freedom to resolve
 the values of $\theta_{sii'}$ and $E_{si}$.
 A non-negative solution to the system of constraints is solved as described in \cite{Knight2020},%
@@ -591,7 +592,7 @@ approximately 20 acts with the ``less frequent'' \cite{Morris2010}.
 Considering these data,
 I sampled the number of sex acts per year in main/spousal partnerships
 $F_{p_{1}}$ from a gamma prior distribution with 95\%~CI (13,~156),
-and a relative rate for casual partnerships $F_{p_{2}}/F_{p_{1}} \sim \opname{Unif}(0.25,1)$.
+and a relative rate for casual partnerships $F_{p_{2}}/F_{p_{1}} \sim \opname{Unif}(0.5,1)$.
 As described in \sref{model.par.sw.part},
 I defined $F_{p_{3}} = 12$ for occasional sex work partnerships,
 and $F_{p_{4}} \sim \opname{Unif}(12,36)$ for regular sex work partnerships.
@@ -607,24 +608,20 @@ However, a previous coital diary study in neighbouring KwaZulu-Natal suggested
 much higher proportions were anal \cite{Ramjee1999},
 and face-to-face interview survey design may result in under-reporting \cite{Owen2020}.
 Owen et al. review studies of anal sex in South Africa, and estimate that
-0.6--16.5\% of sex acts among the general population are anal \cite{Owen2017}, vs
+0.6--16.5\% of sex acts among the general population are anal \cite{Owen2017}, \vs
 2.4--15.9\% among FSW \cite{Owen2020}.
 To reflect this greater uncertainty, the proportions of sex acts which are anal
-in main/spousal and casual partnerships are sampled
-from a gamma prior distribution with 95\%~CI (0.6,~16.5)\%,
-and likewise for occasional and regular sex work partnerships with 95\%~CI (2.4,~15.9)\%.
-Finally, I ensure a greater proportion of anal sex
-in sex work \vs main/spousal and casual partnerships per \sref{app.math.distr.jsam}.
+in all partnerships were sampled from a gamma prior distribution with 95\%~CI (0.6,~16.5)\%.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Partnership Duration}\label{model.par.sex.dur}
 As explored in Chapter~\ref{foi}, the durations of sexual partnerships
 can be key determinants of epidemic dynamics and intervention impact.%
 \footnote{Chapter~\ref{foi} also discusses the related phenomenon of partnership concurrency,
-  and how concurrency is represented in compartmental models.}
+  including how concurrency is represented in compartmental models.}
 Eswatini-specific data on partnership duration are lacking.
 Moreover, accurate estimation of partnership duration remains challenging even when data exist,
 due to censoring, truncation, and sampling biases \cite{Burington2010}.
-Similar to challenges in estimating sex work duration (\sref{app.math.dur}),
+Similar to challenges in estimating sex work duration (\sref{app.model.math.xdur}),
 we must distinguish the definition of an ``average partnership'' as
 (a) among all partnerships in a population over a given \emph{time period}, \vs
 (b) among all partnerships in a population \emph{cross-section}.
@@ -635,7 +632,7 @@ while case (a) reflects an unbiased estimate.%
   the durations in case (b) will be gamma-distributed with $\alpha = 2, \beta = \lambda$;
   thus the mean duration in case (b) will be $\alpha/\beta = 2\lambda$ (twice as long).}
 The difference between the exponential distribution mean and median
-should also be kept in mind (see \sref{app.math.dur.exp}).
+should also be kept in mind (see \sref{app.model.math.exp}).
 %---------------------------------------------------------------------------------------------------
 \paragraph{Main/Spousal Partnerships}
 Detailed data on marriage in Eswatini was only captured in 2006 \cite[Table~6.1]{SDHS2006}.
@@ -648,31 +645,22 @@ median age of first marriage and proportions ever remarried were
 33 years old and 6.6\% in South Africa,
 20.9 and 3.7\% in Lesotho, and 18.7 and 28.4\% in Mozambique \cite{John2022};
 such data may not capture non-marital secondary unions.
-Thus, I assumed 5--20\% of unions among EmaSwati aged 50--54 were secondary.
-Further assuming an exponential distribution for
-the proportion of enduring partnerships $\rho$ \vs time $T$ per \eqref{eq:exp.decay},
-I defined $\rho \in (0.56, 0.71), t = 52 - 26 = 26$ years, yielding
-an effective partnership termination rate of $\lambda \in (1.32, 2.23)\%$ per year, and
-an effective partnership duration of $\delta_{p_{1}} = \lambda^{-1} \in (45, 76)$ years.
+Thus, I assumed $\rho = {}$5--20\% of unions among EmaSwati aged 50--54 were secondary.
+Considering that the modelled population only includes ages 15--49,
+I then defined the mean durations of main/spousal partnerships as
+$\delta_{p_{1}} =  (0.76 - \rho)\,(49 - 26) \in (14.5, 18.5)$ years.
 \par
-Classically, partnership duration is used to define
-the total numbers of sex acts per modelled partnership (see \sref{foi.prior});
-with this approach, we should therefore use $\delta_{p_{1}} = \rho\,(49 - 26) \in (14.5, 18.5)$ years,
-since the modelled population only includes ages 15--49.
-However, the proposed approach to modelling partnerships introduced in \sref{foi.prop}
-can make use of the effective termination rate.
-In fact, the proposed approach uses a partnership \emph{change} rate,
-which would be even slower than the partnership termination rate,
-as the change rate would also consider whether and when
+In some models, partnership duration is used to define both
+the total numbers of sex acts per partnership and the partnership change rate (see \sref{foi.prior}).
+This change rate might be overestimated by the above definition,
+since the rate should also consider whether and when
 divorced/separated individuals form \emph{new} main/spousal partnerships.
 The change rate could even be tied to the modelled baseline and HIV-attributable mortality,
-given that the majority of unions ended via spousal death
+given that the majority of Swati unions ended via spousal death
 (83\% of unions among women and 56\% among men by age 50--54) \cite{SDHS2006}.
-% TODO: consider adding exit from "k=1" state, rate proportional to HIV-attrib-mort of opposite sex
-For simplicity, I assumed an effective main/spousal partnership change rate of 1--2\% per year
-with the proposed approach (regardless of mortality),
-and effective duration of 14.5--18.5 years with the classic approach (both uniform priors).
-% TODO: implement this fully (!)
+% TODO: (?) add exit from "k=1" state, rate proportional to HIV-attrib-mort of opposite sex
+For simplicity and consistency with prior approaches,
+I used the effective duration of 14.5--18.5 years throughout (uniform prior).
 %---------------------------------------------------------------------------------------------------
 \paragraph{Casual Partnerships}
 No data is available regarding durations of non-marital sexual partnerships in Eswatini,
@@ -770,8 +758,8 @@ can resolve an estimate $M_{pii'}^{\,(n)}$ that maintains the total numbers of p
 \begin{equation}\label{eq:mix.iter}
   M_{pii'}^{\,(n+1)} = M_{pii'}^{\,(n)} \frac{\Pi_{pf}}{M_{pf}^{\,(n)}}
   \qquad f = \begin{cases}
-    ~i  & \textnormal{if $n$ is even} \\
-    ~i' & \textnormal{if $n$ is odd}
+    ~i  & \txn{if $n$ is even} \\
+    ~i' & \txn{if $n$ is odd}
   \end{cases}
 \end{equation}
 Each step of this procedure can be understood as
@@ -785,7 +773,8 @@ In practice, \eqref{eq:mix.iter} adds approximately
 one decimal of precision per $2n$ for the $4\times4$ case,
 thus 15--20 iterations is often sufficient to come within computational precision limits.
 Since the partnerships matrix $M_{pii'}$ should adapt to reflect changes in
-group sizes (\eg due to HIV mortality) or numbers of partnerships offered (\eg see \sref{foi.TODO}),
+group sizes (\eg due to HIV mortality) or
+numbers of partnerships offered (\eg see \sref{foi.prop}),
 the matrix must be re-computed at every time point.
 Thus, the procedure \eqref{eq:mix.iter} could be considered computationally expensive.
 However, this approach provides great flexibility and interpretability
