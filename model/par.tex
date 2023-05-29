@@ -7,24 +7,12 @@ Proportions and probabilities were generally modelled using
 a beta approximation of the binomial distribution (BAB, see \sref{app.model.math.bab}),
 while rates and ratios were generally modelled using
 a gamma, skewnormal, or inverse gaussian distribution.
-%---------------------------------------------------------------------------------------------------
-\paragraph{Notation}
-If $X$ is a parameter stratified by dimensions $a,b,c$,
-then $X_{ab_{1}c_{23}}$ denotes the values of $X$ for
-a particular but \emph{unspecified} stratum of $a$,
-the \emph{specific} stratum $b = 1$,
-and the \emph{aggregated} strata $c = 2,3$
-(the aggregating operation is context-dependent, \eg sum for probabilities).
-Additionally, the indices $sihc$ from Table~\ref{tab:model.dims} denote ``self'' strata,
-whereas $s'i'h'c'$ denote ``other'' strata --- \ie individuals' partners.%
-\footnote{\label{foot:code.note}%
-  In the code: R uses one-based indexing, which match the notation here directly,
-  while Python uses zero-based indexing, which therefore appear as $i \rightarrow i-1$ in the code.
-  Also, the model code reorders states in the ART Cascade dimension for computational efficiency,
-  with $c={}$1:~Undiagnosed; 2:~Diagnosed; 3:~Virally~Un-suppressed; 4:~On~ART; 5:~Virally~Suppressed.}
-Finally, I re-use several dummy variables throughout the chapter:
-$\rho$ for proportions, $\lambda$ for rates, $T$ for time periods, and $f$ for constants.
-\input{model/par.fsw}
+\input{model/par.init}
 \input{model/par.beta}
 \input{model/par.hiv}
+\input{model/par.fsw}
 \input{model/par.popsex}
+% \input{model/par.pops}
+% \input{model/par.turn}
+% \input{model/par.part}
+% \input{model/par.mix}
