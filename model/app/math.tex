@@ -1,6 +1,6 @@
 \section{Supporting Mathematics}\label{app.model.math}
 %===================================================================================================
-\subsection{Exponential Duration Assumption in Compartmental Modedls}\label{app.model.math.exp}
+\subsection{Exponential Duration Assumption in Compartmental Models}\label{app.model.math.exp}
 Let $\lambda$ be the fixed exit rate from compartment $A$, which is assumed to be homogeneous.
 Then $\delta \sim \lambda e^{-\lambda \delta}$ is % TODO: double check this
 the exponentially distributed duration time in the group.
@@ -89,7 +89,7 @@ Our objective is to estimate $\theta$, given a set of quantiles
 (\eg $q = \{q_{2.5},q_{97.5}\}$ for the 95\%~CI).
 For each estimation, I minimized%
 \footnote{Using \hreftt{docs.scipy.org/doc/scipy/reference/optimize.minimize-lbfgsb.html}}
-the the following error function:
+the following error function:
 \begin{equation}
   J\,(\theta) = \sum_i {\big|\,q_i - Q(p_i\mid\theta)\,\big|}^{\,\omega}
 \end{equation}
@@ -119,7 +119,7 @@ because respondents will continue selling sex after the survey \cite{Fazito2012}
   Thanks to Saulius Simcikas and Dr. Jarle Tufto
   for help identifying and discussing this bias:
   \hreftt{stats.stackexchange.com/questions/298828}.}
-% This bias parallels challenges to estimating sexual partnership duration \cite{Burington2010}.
+% TODO: (?) This bias parallels challenges to estimating sexual partnership duration \cite{Burington2010}.
 \par
 Figure~\ref{fig:diag.xdur} illustrates a steady-state population
 with 4 women selling sex at any given time.

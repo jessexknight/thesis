@@ -71,6 +71,7 @@
 \DeclareSourcemap{\maps[datatype=bibtex]{%
   \map{\step[typesource=techreport,typetarget=report]}}}
 \newcommand{\printchapterbibliography}[1][\clearpage]{\par#1%
+  \sectionmark{\refname}%
   \printbibliography[heading=subbibliography,resetnumbers=true]}
 \DeclareFieldFormat{url}{\url{#1}}
 \renewbibmacro{in:}{}

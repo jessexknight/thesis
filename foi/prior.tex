@@ -15,7 +15,7 @@ susceptibility (\eg due to genital ulcer disease, etc.)
 As this heterogeneity was quantified \cite{Gray2001}
 and incorporated into HIV transmission models \cite{Moghadas2003},
 the probability of transmission was increasingly parameterized per act \vs per partnership.
-% TODO: cite?
+% TODO: (?) cite
 \par
 The shift to per-act \vs per-partnership parameterization highlighted
 a fundamental limitation of compartmental models (see \sref{foi.prior.lims}):
@@ -92,7 +92,7 @@ also increases with the per-act probability of transmission $\beta$, according t
       between-partnership heterogeneity (right)}
     \label{fig:binom.xph}
   \end{subfigure}}
-  \caption{Per-partnership robability of transmission \vs number of acts}
+  \caption{Per-partnership probability of transmission \vs number of acts}
   \label{fig:binom}
   \floatfoot{
     $B$: probability of transmission per partnership;
@@ -117,8 +117,6 @@ reflecting different interpretations of $\alpha_f$:%
 \footnote{In most compartmental models without repeated contacts (partnerships),
   this distinction is not possible or necessary, because
   all contacts (sex acts) between two compartments (risk groups) are assumed to be independent.}
-\footnote{In fact, further variations on \eqrefs{eq:B.wph}{eq:B.bph} have also been used.}
-  % \sref{app.foi.prior} gives some examples.}
 \begin{itemize}
   \item \textbf{{Within}-Partnership Heterogeneity (WPH)}:
   modelled partnerships are identical, but comprise heterogeneous acts
@@ -176,7 +174,6 @@ should be aggregated as BPH,%
   a given partner has exactly one current infection stage or treatment status;
   of course, this stage/status could evolve over the course the partnership,
   but this future trajectory is not explicitly modelled
-  % TODO: exception = Thembisa?
   --- which only serves to highlight the limitations of
   either approach to aggregating heterogeneity in $\beta$.}
 with $\gamma_g$ as the conditional prevalence of each stage/status~$g$ among infected partners.
@@ -202,7 +199,7 @@ This time, the distinction may be more familiar:
 \begin{itemize}
   \item \textbf{Incidence Rate:}
   instantaneous rate of infection among susceptible individuals
-  --- transmission risks are addative; can have $\lambda_i > 1$.
+  --- transmission risks are additive; can have $\lambda_i > 1$.
   \begin{equation}\label{eq:foi.ir}
     \lambda_i^\ir = \sum_{pi'h'} Q_{pii'} B_{pii'h'} \frac{{I}_{i'h'}}{N_{i'}}
   \end{equation}
