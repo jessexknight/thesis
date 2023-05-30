@@ -10,7 +10,7 @@ All code and selected results are available on GitHub.%
 \footnote{\label{foot:github}\hreftt{github.com/mishra-lab/hiv-fsw-art}}
 \par
 The remainder of this chapter is organized as follows:
-\newcommand{\iref}[1]{\item[\sref{#1}]}
+\newcommand{\iref}[1]{\item \sref{#1}}
 \begin{itemize}
   \iref{model.str} outlines the model \emph{structure} and notation, including
   the population stratifications and sexual partnership types considered.
@@ -29,6 +29,21 @@ The remainder of this chapter is organized as follows:
   \iref{model.res} presents the \emph{results} of model calibration, including:
   posterior parameter distributions, comparison of model outputs \vs calibration targets, and
   a descriptive summary of modelled transmission dynamics over time.
-  \iref{model.disc} provides \emph{discussion} on the contributions of the chapter
+  \iref{model.disc} provides \emph{discussion} on the chapter methods and results,
   and notes the limitations of the model.
+\end{itemize}
+\clearpage % TEMP
+Notably, \sref{model.par} features several methodological contributions
+to support model parameterization, including:
+\begin{itemize}
+  \item\sref{model.par.fsw}:
+  original analysis of primary data to distinguish higher \vs lower risk FSW
+  \item\sref{model.par.nsw}:
+  an adjustment for reporting bias in partner numbers data using polling booth data
+  \item\sref{app.model.math.qp}:
+  an adjustment for bias due to partnership duration in partner numbers data
+  \item\sref{app.model.math.xdur}
+  an adjustment for censoring in risk group turnover/duration data
+  \item\sref{model.par.mix}
+  a balancing approach to support more flexible ``log-linear'' mixing patterns \cite{Morris1991}
 \end{itemize}

@@ -1,8 +1,20 @@
 \section{Parameterization}\label{model.par}
-Model parameterization involves
-specification of model parameter values, such as proportions, probabilities, rates, and ratios,
-including stratified values to reflect heterogeneity,
-and sampling distributions to reflect uncertainty.
+Model parameterization involves specification of parameter values (model inputs),
+such as proportions, probabilities, rates, and ratios.
+These parameters are used to define
+the initial conditions and rates of transition between modelled states.
+Some transition rates are fixed, such as rates of progression through HIV infection stages,
+while transition rates vary with time, such as rates of HIV diagnosis and ART initiation.
+The transition rate for susceptible-to-infected --- \ie \emph{transmission} ---
+is defined by a complex ``force of infection'' equation which mechanistically integrates
+biological, behavioural, and interventional determinants of transmission;
+Chapter~\ref{foi} develops this equation in detail,
+including modifications to overcome limitations of prior equations.
+\par
+The true values of many parameters are uncertain due to several potential sources of error.
+Thus, prior distributions are specified for 73 parameters (Table~\ref{tab:par.defs}),
+and the joint posterior distributions of these uncertain parameters are then inferred
+via model calibration, as described in \sref{model.cal}~and~\ref{model.res}.
 Proportions and probabilities were generally modelled using
 a beta approximation of the binomial distribution (BAB, see \sref{app.model.math.bab}),
 while rates and ratios were generally modelled using

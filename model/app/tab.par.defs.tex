@@ -1,12 +1,13 @@
 \begin{landscape}
 \setlength{\tabcolsep}{3pt}
 \def\unsep{\null\hspace{-3pt}\null}
-\begin{longtable}[\small]{rlrrlrrl}
+\begin{longtable}[\small]{crlrrlrrl}
   {\label{tab:par.defs}\small Definitions and distributions of calibrated parameters}
-  { & & \multicolumn{3}{c}{Prior} & \multicolumn{3}{c}{Posterior} \\
-    \cmidrule(rl){3-5}\cmidrule(rl){6-8}
-    Parameter & Definition & Mean & \multicolumn{2}{c}{(95\%~CI)} & Mean & \multicolumn{2}{c}{(95\%~CI)}}
-   {FSW: female sex worker;
+  { & & & \multicolumn{3}{c}{Prior} & \multicolumn{3}{c}{Posterior} \\
+    \cmidrule(rl){4-6}\cmidrule(rl){7-9}
+    * & Parameter & Definition & Mean & \multicolumn{2}{c}{(95\%~CI)} & Mean & \multicolumn{2}{c}{(95\%~CI)}}
+   {* relational sampling constraints (see \sref{app.model.cal.constr});
+    FSW: female sex worker;
     p12m: past 12 months;
     $\beta$: per-act probability of HIV transmission;
     GUD: any genital ulcer disease in p12m;
@@ -18,7 +19,7 @@
     all durations in years;
     all parameters reflect stratum averages.}
   \csvreader[head to column names]{model/app/pars.full.csv}{}
-    {\texttt{\parameter} & \definition
+    {\constr & \texttt{\parameter} & \definition
     & \imu & \unsep(\ilo, & \unsep\ihi) & \omu & \unsep(\olo, & \unsep\ohi)\\}
 \end{longtable}
 \end{landscape}
