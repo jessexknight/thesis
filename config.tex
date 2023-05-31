@@ -60,8 +60,6 @@
   isbn=false,
   natbib=true,
   backend=biber,
-  % defernumbers=true, % TODO (?)
-  refsection=chapter,
 ]{biblatex}
 \addbibresource{/home/jesse/refs/library.bib}
 \renewcommand{\bibfont}{\footnotesize}
@@ -70,11 +68,12 @@
   \map{\step[fieldset=abstract,null]}}}
 \DeclareSourcemap{\maps[datatype=bibtex]{%
   \map{\step[typesource=techreport,typetarget=report]}}}
-\newcommand{\printchapterbibliography}[1][\clearpage]{\par#1%
-  \sectionmark{\refname}%
-  \printbibliography[heading=subbibliography,resetnumbers=true]}
 \DeclareFieldFormat{url}{\url{#1}}
 \renewbibmacro{in:}{}
+\newcommand{\printchapterbibliography}[1][]{} % TODO: remove
+\defbibnote{bibhead}{\markboth{\refname}{\refname}}
+\newcommand{\printfullbibliography}{%
+  \printbibliography[prenote=bibhead,heading=bibintoc,title=\refname]}
 %---------------------------------------------------------------------------------------------------
 % colors
 \usepackage{xcolor}
@@ -210,8 +209,8 @@
 \newcommand{\srds}[1]{Dataset~\hyperref{}{sr.dataset}{#1}{#1}}
 \newcommand{\srt}[1]{{\ttfamily#1}}
 \newcommand{\srcite}[1]{\quad\tabitem
-    \parbox{2em}{\hfill\parencite{#1}}
-    \parbox{3em}{\centering\citeyear{#1}}
+    \parbox{3em}{\parencite{#1}}
+    \parbox{3em}{\citeyear{#1}}
     \citeauthor{#1}}
 \newenvironment{srcites}%
   {\begin{multicols}{2}\footnotesize\setlength\parskip{0pt}}%
