@@ -93,7 +93,7 @@ See \sref{model.par.sex} for sex act frequency within each partnership type.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Circumcision}\label{model.par.beta.circ}
 Relative risk in per-act HIV female-to-male transmission for circumcised \vs uncircumcised men
-via vaginal intercourse has consistently been estimated as
+via vaginal intercourse has been estimated as
 approximately 0.50, with 95\%~CI spanning (0.29,~0.96) \cite{Boily2009,Hughes2012,Patel2014}.
 Since circumcision status is unrelated to the research question,
 I fixed this effect at 50\% relative risk.
@@ -108,13 +108,14 @@ male-to-female/receptive transmission \cite{Weiss2009,Wiysonge2011}, so I assume
 See \sref{model.par.tm.circ} for prevalence of circumcision in Eswatini over time.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Condoms}\label{model.par.beta.condom}
-The most recent meta-analysis of condom effectiveness in heterosexual couples by \citet{Giannou2016}
-estimated a relative risk of approximately 0.26~(0.13,~0.43).
+The most recent meta-analysis of condom effectiveness (when used) in heterosexual couples
+by \citet{Giannou2016} estimated a relative risk of approximately 0.26~(0.13,~0.43).
 No significant differences were noted between female-to-male \vs male-to-female transmission.
 A recent study among men who have sex with men found
 a similar effect for anal sex \cite{Smith2015}.
 Thus, condom effectiveness was fixed at 74\%.
-See \sref{model.par.tm.condom} for levels of condom use in Eswatini over time.
+See \sref{model.par.tm.condom} for the proportions of sex acts where condoms are used
+in Eswatini over time (parameterized separately).
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Genital Ulcer Disease}\label{model.par.beta.gud}
 % TODO: Hughes2012: GUD only +sus not +inf
@@ -181,7 +182,8 @@ The direction of reporting bias may vary with social context, with
 \cite{Cordero-Coma2012} suggesting over-reporting of condom use, and
 \cite{Behanzin2013} suggesting under-reporting of condom use.
 As such, I made no systemic adjustments to the available condom use data.
-Table~\ref{tab:esw.condom.data} summarizes the available condom use data for Eswatini.
+Table~\ref{tab:esw.condom.data} summarizes the available condom use data for Eswatini,
+deriving from \cite{SFHS1988,EswBSS2002,SDHS2006,Baral2014,EswKP2014,SHIMS2}.
 \begin{table}
   \centering
   \caption{Estimates of condom use in Eswatini}

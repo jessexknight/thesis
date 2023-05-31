@@ -3,8 +3,9 @@
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Population Sizes}\label{model.par.sw.size}
 Population sizes of all activity groups are modelled as proportions of the total population,
-which are assumed to remain roughly constant,
-although individuals can move between groups (see \sref{model.par.turn.act}),
+which are assumed to remain roughly constant.
+Individuals can, however, move between groups (see \sref{model.par.turn.act})
+--- \ie groups are open populations ---
 and disproportionate mortality due to HIV between groups
 may cause higher risk groups to shrink over time.
 %---------------------------------------------------------------------------------------------------
@@ -116,7 +117,7 @@ For higher risk FSW, I sampled the \emph{relative} number/rate of regular client
 1.5~(1.3,~1.7) (Table~\ref{tab:fsw.ratios}) as before.
 %---------------------------------------------------------------------------------------------------
 \paragraph{Clients}
-For Sub-Saharan African clients of FSW, data on
+Across Sub-Saharan Africa, data for clients of FSW on
 the number of unique FSW visited and the frequency of sex is sparse.
 Among 64 clients in Kenya,
 the median number of sex work visits per week was 1.3 (68 per year);
@@ -131,7 +132,7 @@ To reflect these data, I specified clients overall to have
 mean (95\%~CI) 60~(35,~90) sex acts with FSW per year
 ($K_{p_{34}s_{2}i_{34}}\,F_{p_{34}}/12$, gamma prior).
 Then, the yearly sex acts among lower and higher risk clients are defined such that
-higher risk have 2.0~(1.6,~2.5) times the number risk.
+higher risk have 2.0~(1.6,~2.5) times the number among lower risk.
 Finally, since the distribution of sex acts between new \vs regular sex work partnerships
 must match that among FSW, the specific values of $K_{p_{34}s_{2}i_{34}}$
 were computed automatically.
@@ -183,7 +184,7 @@ The assumptions were:
   \item the remaining $W_{1}$ and $M_{1}$ formed only casual partnerships
 \end{itemize}
 Figure~\ref{fig:Cwp} illustrates the resulting
-proportions of women and men in each union/partners in p12m stratum
+proportions of women and men in each union / partners in p12m stratum
 in 2006-07 \sfref{fig:Cwp.2006} and 2016-17 \sfref{fig:Cwp.2016}.
 \begin{figure}
   \centering
@@ -232,24 +233,24 @@ such norms in Eswatini are explored in \cite{Ruark2014,Fielding-Miller2016,Ruark
 In fact, a review comparing computer-based tools \vs face-to-face interviews
 for surveying sexual behaviour \cite{Langhaug2010} found that
 \emph{both} women and men may under-report sexual partners, but women more so.
-A notable study in Benin \cite{Behanzin2013} found that
+A notable 2008 study in Benin \cite{Behanzin2013} found that
 7 times as many married women (21 \vs 3\%) and 3 times as many married men (53 \vs 18\%)
 reported any extramarital sex in p12m
-in a surveys via anonymous polling booth \vs face-to-face interview.
+in a survey via anonymous polling booth \vs face-to-face interview.
 Similarly, 5 times as many unmarried women (13.5 \vs 2.8\%) reported
 exchanging sex for money, gifts or favours in p12m, while
 4 times as many unmarried men (62 \vs 14\%) reported non-transactional sex with a women in p12m.
 Such findings were similar to those from Zimbabwe (1990s) \cite{Gregson2002}.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Bias Adjustment: Approach}\label{model.par.nsw.bias}
-Reflecting these potential reporting biases
+To account for the above potential reporting biases
 and qualitative insights from \cite{Ruark2014,Fielding-Miller2016,Ruark2019,Pulerwitz2021},
-I modelled the ``true'' proportions of Swati women and men
-in each union/partners in p12m stratum as follows.
+I modelled the adjusted proportions of Swati women and men
+in each union / partners in p12m stratum as follows.
 Let $W_{s1}$ and $W_{u1}$ denote sub-proportions of $W_{1}$ who are single and in a union, respectively,
 and likewise for $W_{s2+}$, $W_{u2+}$, $M_{s1}$, $M_{u1}$, $M_{s2+}$, and $M_{u2+}$.
 Further, let $W_{s1}$ denote the reported proportion of women (average of 2006-07 and 2016-17),
-\vs $W'_{s1}$ denoting the ``true'' (adjusted) proportion.
+\vs $W'_{s1}$ denoting the adjusted proportion.
 I assumed that a faction of $W_{0}$ belongs in $W'_{s1}$
 --- \ie a fraction of women reporting 0 partners in p12m truly had 1 casual (non-main/spousal) partner.
 I modelled this relationship through an odds ratio $\varphi_{W,s1:0}$,
@@ -261,8 +262,8 @@ the proportion ratios estimated by \citet{Behanzin2013}:%
 \end{equation}
 I defined similar odds ratios $\varphi_{Ws2+:s1}$, $\varphi_{Wu2+:u1}$,
 $\varphi_{Wu1:0}$, $\varphi_{Wu1:s1}$, and $\varphi_{Wu2+:s2+}$, and likewise for men.
-The corresponding transitions of women from reported to ``true'' strata
-are illustrated in Figure~\ref{fig:model.nsw.adj}.
+These strata and the corresponding adjustments / reallocations of women
+from reported to adjusted strata are illustrated in Figure~\ref{fig:model.nsw.adj}.
 To resolve the adjusted values $W'$ then requires
 solving the (nonlinear) system of 6 equations corresponding to the 6 odds ratios $\varphi$,
 subject to $\sum_i W'_i = 1$ and $0 \le W'_i < 1$.
@@ -272,15 +273,15 @@ The odds ratios $\varphi$ were then defined as follows, including sampling distr
 \begin{figure}
   \centering
   \includegraphics[scale=.8]{diag.nsw.adj}
-  \caption{Illustration of how women (and equivalently men)
-    are reallocated between union/partners in p12m strata
+  \caption{Illustration of how the proportions of women (and equivalently men)
+    are adjusted / reallocated between union / partners in p12m strata
     based on odds ratios $\varphi$}
   \label{fig:model.nsw.adj}
   \floatfoot{\raggedright
-    p12m: within the past 12 months
+    p12m: within the past 12 months;
     W0: 0 partners in p12m;
     Ws1: single (not married/cohabiting) and 1 partner in p12m;
-    Wu1: in a union (married/cohabiting) and 2+ partners in p12m;
+    Wu1: in a union (married/cohabiting) and 1 partner in p12m;
     Ws2+: single and 2+ partners in p12m;
     Wu2+: in a union and 2+ partners in p12m.
     $\varphi$: odds of truly being in the second (arrowhead) vs first (tail) group.}

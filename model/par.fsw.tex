@@ -1,8 +1,9 @@
 %===================================================================================================
 \subsection{Risk Heterogeneity Among FSW}\label{model.par.fsw}
-HIV transmission models which include FSW rarely sub-stratify this population, such as to reflect
+Existing HIV transmission models which include FSW
+have rarely sub-stratified this population, such as to reflect
 differential HIV risk or distinct typologies of sex work \cite{Blanchard2008,Scorgie2012};
-yet such heterogeneities likely influence transmission dynamics.
+yet such heterogeneities may influence transmission dynamics.
 Among the studies identified in Chapter~\ref{sr},
 only three sub-stratified FSW by risk-related factors:
 \citet{Cremin2017} defined three levels of risk via regression analysis,
@@ -31,7 +32,7 @@ However, serostatus reflects cumulative risk exposure,
 whereas sexual risk behaviour is dynamic \cite{Watts2010,vanWees2020},
 as is use of prevention resources \cite{Roberts2020}.
 For example, while HIV prevalence often increases with age,
-HIV incidence among women can peak shortly after sexual debut \cite{Dellar2015}.
+HIV incidence among women can peak before age 25 \cite{Dellar2015}.
 Thus, risk factors associated with HIV serostatus are not necessarily
 mechanistically related to HIV acquisition.
 Indeed, FSW may reduce risk behaviours in response to seroconversion \cite{McClelland2006}.
@@ -41,20 +42,23 @@ but large sample sizes are often required to accurately estimate overall inciden
 let alone risk factors \cite{Priddy2011}.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{FSW Survey Data}\label{model.par.fsw.data}
-Three surveys, in
+Three biobehavioural surveys, in
 2011 \cite{Baral2014} (N = 325),
 2014 \cite{EswKP2014} (N = 781), and
 2021 \cite{EswIBBS2022} (N = 676)
-provide HIV and biobehavioural data on FSW in Eswatini.
-The 2011 survey employed respondent driven sampling (RDS, details in \cite{Yam2013}),
-as did the 2021 survey.
-The 2014 survey employed venue-based snowball sampling, based on the
+provide HIV status and biobehavioural data on FSW in Eswatini.
+The 2011 and 2021 surveys featured serologic HIV testing,
+and employed respondent driven sampling (RDS, details in \cite{Yam2013}).
+The 2014 survey relied on self-reported HIV status,
+andd employed venue-based snowball sampling, based on the
 Priorities for Local AIDS Control Efforts (PLACE) methodology,
 which aims to identify areas of higher incidence \cite{Weir2005}.
+More details about each study are given in \sref{intro.esw.hiv.data} and Table~\ref{tab:esw.data}.
 I analyzed the individual-level data from 2011 and 2014 (data from 2021 not yet available)
 to explore the potential association of biobehavioural factors with HIV risk,
 so that such factors could then be used to distinguish between
 lower risk \vs higher risk FSW.
+% TODO: (*) add descriptive table
 %---------------------------------------------------------------------------------------------------
 \subsubsection{HIV Status}\label{model.par.fsw.hiv}
 Only the 2011 and 2021 studies included serologic testing for HIV.
@@ -83,7 +87,7 @@ which can account for confounding by age and censoring,
 as compared to logistic regression on HIV status,
 keeping in mind the limitations of self-reported HIV status.
 %---------------------------------------------------------------------------------------------------
-\subsubsection{Risk Factors}\label{model.par.fsw.fac}
+\subsubsection{Risk Factors for HIV}\label{model.par.fsw.fac}
 Next, I explored the potential association of risk factors with HIV
 via the following three models:%
 \footnote{Logistic regression models were implemented using \texttt{lrm} from:
@@ -148,7 +152,7 @@ are illustrated in Figure~\ref{fig:fsw.lr}.
     conditional probabilities shown for fixed covariates at arbitrary values.}
 \end{figure}
 \par
-Following variable selection, each multivariable model was used to predict
+Following variable selection, each multivariable model was used to estimate
 the total \hivp status odds ratio (logistic) or HIV incidence hazard ratio (Cox)
 for each respondent in the respective survey ---
 \ie $e^{X_i\,\beta}$ for respondent $i$ ---
