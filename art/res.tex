@@ -36,17 +36,19 @@ via casual partnerships in all scenarios (Figure~\ref{fig:art.1.wiw.part}). % MA
 The fitted regression models \eqref{eq:art.glm} indicated that
 population-overall viral unsuppression ($D$) and
 group-specific unsuppression among FSW and clients ($d_i$)
-were each strongly and positively associated with the CAI and AIR outcomes ($p < 10^{-5}$).
+were each strongly and positively associated with the 2030 CAI and AIR outcomes ($p < 10^{-5}$).
 These associations support the results of Objective~\ref{obj:art.1}.
 Figure~\ref{fig:art.2} plots the estimated effects of
 group-specific unsuppression $d_i$, and
 effect modification by epidemic conditions $C_j$.
-The effect of unsuppression among FSW on CAI increased with:
+The effect of unsuppression among FSW on CAI and AIR increased with:
 FSW and client population sizes, client turnover, and
 HIV incidence ratio among FSW \vs other women.
-The effect of unsuppression among clients on CAI increased with:
+The effect on AIR also decreased with: HIV incidence ratio among clients \vs other men.
+The effect of unsuppression among clients on CAI and AIR increased with:
 FSW and client population sizes and FSW turnover.
-Effect modification results for AIR were similar to CAI among both FSW and clients.
+The effect on AIR also modestly with:
+HIV incidence ratio among FSW \vs other women and client turnover.
 \begin{figure}[h]
   \subcapoverlap\centering
   \foreach \var in {cai,air}{\vskip1ex
@@ -55,10 +57,18 @@ Effect modification results for AIR were similar to CAI among both FSW and clien
       \caption{\raggedright}
       \label{fig:art.2.\var}
     \end{subfigure}}
-  \caption{}
-  % TODO: (!)
+  \caption{Estimated effects on relative additional infections
+    of disproportionate viral unsuppression ($d$) among FSW and clients \vs population overall,
+    plus effect modification by epidemic conditions}
   \label{fig:art.2}
-  \floatfoot[.75]{
-  \ffpbar{effect}.}
+  \floatfoot{
+    \sfref{fig:art.2.cai} cumulative additional infections,
+    \sfref{fig:art.2.air} additional incidence rate
+    by 2030 \vs base case;
+    FSW: female sex workers; Clients: of FSW;
+    IR: incidence ratio in 2000;
+    $d_i$: difference in group-$i$-specific viral unsuppression
+      \vs population overall within counterfactual scenario;
+  \ffpbar[effect estimated via \eqref{eq:art.glm}].}
 \end{figure}
 \pagebreak % TEMP
