@@ -1,5 +1,5 @@
 \section{Prior Approaches: Instantaneous Partnerships}\label{foi.prior}
-% TODO: \includegraphics[scale=1]{diag.inst} - where?
+% TODO: (?) \includegraphics[scale=1]{diag.inst}
 The earliest HIV transmission models \cite{Anderson1986}
 were adapted from models of other sexually transmitted diseases,
 especially gonorrhea \cite{Yorke1978,Nold1980,Hethcote1982}.
@@ -15,7 +15,6 @@ susceptibility (\eg due to genital ulcer disease, etc.)
 As this heterogeneity was quantified \cite{Gray2001}
 and incorporated into HIV transmission models \cite{Moghadas2003},
 the probability of transmission was increasingly parameterized per act \vs per partnership.
-% TODO: (?) cite
 \par
 The shift to per-act \vs per-partnership parameterization highlighted
 a fundamental limitation of compartmental models (see \sref{foi.prior.lims}):
@@ -201,7 +200,7 @@ As in \sref{foi.prior.xph}, there are two main approaches to aggregating partner
   \begin{equation}\label{eq:foi.ip}
     \lambda_i^\ip = 1 - \prod_{pi'h'} {\left(1 - B_{pii'h'} \frac{{I}_{i'h'}}{N_{i'}}\right)}^{Q_{pii'} \Delta_t}
   \end{equation}
-  % TODO: describe why this looks like ~ wph even though partnerships are 'distinct'
+  % TODO: (?) describe why this looks like ~ wph even though partnerships are 'distinct'
   % should *not* aggregate as if all partnerships are same i'h'
 \end{itemize} where:
 $Q_{pii'}$ is the rate of type-$p$ partnership formation between groups $i$ and $i'$,%

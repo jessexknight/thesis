@@ -77,7 +77,7 @@ If multiple types of partners are considered,
 then only the partnership type involved in the transmission should be reduced.
 This adjustment to ``effective partnerships'' can then be applied
 until these individuals change partners
-% TODO: but part of partnership has already passed, so delta_new < delta_total
+% TODO: (*) but part of partnership has already passed, so delta_new < delta_total
 --- at a rate inversely related to partnership duration: $\delta^{-1}$.
 However, during this period, these individuals should still be modelled
 to progress as usual through different stages of infection, activity group turnover, etc.
@@ -155,7 +155,7 @@ and likewise for individuals in infection stage $h$:
 the  numbers of ``effective type-$p$ partnerships'' among
 individuals in stratum $\p$ are reduced by 1.
 This reduction is then propagated through the mixing patterns when defining $M_{pii'}$.
-% TODO: double-check that this reduction should be propagated through the mixing patterns
+% TODO: (*) double-check that this reduction should be propagated through the mixing patterns
 Thus, we are now ready to construct the overall force of infection equation as follows.
 I define the total (population-level, not per-person) rate of transmission
 from group $i'$ and infection stage $h'$ to group $i$ via type-$p$ partnerships as:
@@ -221,7 +221,4 @@ This constraint should also be easy to guarantee for a small enough timestep,
 because $M_{I,pih}$ approaches zero as $I_{ih\p}$ approaches $I_{ih} K_{pi}$
 --- i.e. all type-$p$ partnerships become \hivp seroconcordant,
 and no more transmission can occur via these partnerships until partners change.
-% TODO: discuss the possibility of being in multiple seroconcordant partnerships following transmission
-% slightly more complicated modelling of transitions within "k" dimension,
-% with main risk if we don't being: run out of people in k=0 (fully discordant
-% serosorting refs: cross-sectional vs individual-cohort \cite{Wang2020,Kim2020}
+% TODO: (?) add serosorting refs: cross-sectional vs individual-cohort \cite{Wang2020,Kim2020}

@@ -70,7 +70,7 @@
   \map{\step[typesource=techreport,typetarget=report]}}}
 \DeclareFieldFormat{url}{\url{#1}}
 \renewbibmacro{in:}{}
-\newcommand{\printchapterbibliography}[1][]{} % TODO: remove
+\newcommand{\printchapterbibliography}[1][]{} % TODO: (~) remove
 \defbibnote{bibhead}{\markboth{\refname}{\refname}}
 \newcommand{\printfullbibliography}{%
   \printbibliography[prenote=bibhead,heading=bibintoc,title=\refname]}
@@ -216,5 +216,4 @@
   {\begin{multicols}{2}\footnotesize\setlength\parskip{0pt}}%
   {\end{multicols}}
 \usepackage{pdfpages}
-% \DeclareRobustCommand{\%}{\textnormal{\char`\%}} % TODO (?)
 % end
