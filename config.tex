@@ -127,7 +127,7 @@
   \setcaptiontype{figure}
   \foreach \var/\cap in #4{
     \parbox[t]{\dimexpr#3\linewidth-1em}{%
-      \includegraphics[width=\linewidth]{{#2.\var}.pdf}
+      \includegraphics[width=\linewidth]{#2.\var}
       \subcaption{\cap}\label{fig:#2.\var}}\ifx1#3\par\fi}
   \caption{#5}\label{fig:#2#1}\floatfoot{#6}}
 \def\fitscale{.475}
