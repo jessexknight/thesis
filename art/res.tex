@@ -4,6 +4,7 @@ are given in \sref{model.res}~and~\ref{app.model.cal.res}.
 This section focuses on results of scenarios and analyses outlined in \sref{art.meth.obj}.
 %===================================================================================================
 \subsection{Objective~1: Influence of cascade differences between risk groups}\label{art.res.1}
+% TODO: (*) add incidence figure per scenario like CROI
 Figure~\ref{fig:art.1.cascade} illustrates cascade attainment over time
 in each of the four counterfactual scenarios (\casmd overall by 2020),
 plus the base case (\cashi overall by 2020).
@@ -14,7 +15,7 @@ Leaving behind both FSW and clients resulted the most additional infections: med
 28.8~[17.5,~46.2]\,\% more than the base case by 2030. % MAN
 By contrast, leaving behind neither FSW nor clients resulted in the fewest additional infections:
 13.0~[6.1,~25.6]\,\% more than the base case by 2030 --- % MAN
-a 54.2~[30.3,~73.2]\,\% reduction. % MAN TODO
+a 54.2~[30.3,~73.2]\,\% reduction. % MAN
 Leaving behind either FSW or clients resulted in a similar number of additional infections:
 21.8~[12.5,~36.7]\,\% and 20.4~[11.8,~34.7]\,\%, respectively. % MAN
 Relative differences were similar for additional incidence rate.
@@ -31,31 +32,43 @@ via casual partnerships in all scenarios (Figure~\ref{fig:art.1.wiw.part}). % MA
   \floatfoot{\ffart; \ffbox.}
 \end{figure}
 %===================================================================================================
-\subsection{Objective~2: Conditions under which cascade differences matter most}\label{art.res.2}
+\subsection{Objective~2: Conditions that maximize the influence of cascade differences}\label{art.res.2}
 The fitted regression models \eqref{eq:art.glm} indicated that
 population-overall viral unsuppression ($D$) and
 group-specific unsuppression among FSW and clients ($d_i$)
-were each strongly and positively associated with the CAI and AIR outcomes ($p < 10^{-5}$).
+were each strongly and positively associated with the 2030 CAI and AIR outcomes ($p < 10^{-5}$).
 These associations support the results of Objective~\ref{obj:art.1}.
 Figure~\ref{fig:art.2} plots the estimated effects of
 group-specific unsuppression $d_i$, and
 effect modification by epidemic conditions $C_j$.
-The effect of unsuppression among FSW on CAI increased with:
+The effect of unsuppression among FSW on CAI and AIR increased with:
 FSW and client population sizes, client turnover, and
 HIV incidence ratio among FSW \vs other women.
-The effect of unsuppression among clients on CAI increased with:
+The effect on AIR also decreased with: HIV incidence ratio among clients \vs other men.
+The effect of unsuppression among clients on CAI and AIR increased with:
 FSW and client population sizes and FSW turnover.
-Effect modification results for AIR were similar to CAI among both FSW and clients.
+The effect on AIR also modestly with:
+HIV incidence ratio among FSW \vs other women and client turnover.
 \begin{figure}[h]
-  \subcaptionoverlap\centering
+  \subcapoverlap\centering
   \foreach \var in {cai,air}{\vskip1ex
     \begin{subfigure}{.75\linewidth}
       \includegraphics[width=\linewidth]{art.2.\var}
-      \caption{\raggedright}\label{fig:art.2.\var}
+      \caption{\raggedright}
+      \label{fig:art.2.\var}
     \end{subfigure}}
-  \caption{}
+  \caption{Estimated effects on relative additional infections
+    of disproportionate viral unsuppression ($d$) among FSW and clients \vs population overall,
+    plus effect modification by epidemic conditions}
   \label{fig:art.2}
-  \floatfoot[.75]{
-  \ffpbar{effect}.}
+  \floatfoot{
+    \sfref{fig:art.2.cai} cumulative additional infections,
+    \sfref{fig:art.2.air} additional incidence rate
+    by 2030 \vs base case;
+    FSW: female sex workers; Clients: of FSW;
+    IR: incidence ratio in 2000;
+    $d_i$: difference in group-$i$-specific viral unsuppression
+      \vs population overall within counterfactual scenario;
+  \ffpbar[effect estimated via \eqref{eq:art.glm}].}
 \end{figure}
 \pagebreak % TEMP

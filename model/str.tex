@@ -1,11 +1,14 @@
-\section{Model Structure}\label{model.str}
+\section{Model Structure \& Notation}\label{model.str}
 The model aims to capture heterosexual HIV transmission among the Swati population aged 15--49.
-The model stratifies the modelled population along four dimensions:
-two sexes~($s$), four activity groups~($i$), six HIV states~($h$), and five cascade states~($c$),
-summarized in Table~\ref{tab:model.dims} and Figure~\ref{fig:model}.
-In total, $2 \times 4 \times (1 + 5 \times 5) = 208$ states are modelled.
-Two additional ``dimensions'' help organize:
-four partnership types ($p$), and two types of sex acts ($a$).
+The model stratifies the modelled population along five dimensions, including:
+2 sexes~($s$), 4 activity groups~($i$), 6 HIV states~($h$), and 5 cascade states~($c$);
+the fifth dimension tracks seroconcordant \hivp partnerships
+and includes strata for each of 4 partnership types ($p$) plus 1 extra stratum
+--- see \sref{foi.prop} for full details.
+In total, $2 \times 4 \times (1 + 5 \times 5 \times 5) = 2016$ states are modelled,
+since the cascade and partnership dimensions are only applicable to PLHIV ($h>1$).
+These dimensions are summarized in Table~\ref{tab:model.dims} and Figure~\ref{fig:model}.
+Two types of sex acts ($a$) are also considered.
 \begin{table}
   \centering
   \caption{Overview of model dimensions and stratifications}
@@ -14,12 +17,10 @@ four partnership types ($p$), and two types of sex acts ($a$).
   \floatfoot{\centering See footnote \ref{foot:code.note} regarding indices in the code.}
 \end{table}
 \par
-Sexual activity groups were defined to reflect
-persistent differences in HIV incidence and prevalence
+Sexual activity groups were defined to reflect common stratifications in the available data,
+and persistent differences in HIV incidence and prevalence
 \cite{SDHS2006,Bicego2013,Justman2016,SHIMS2}
---- reflecting acquisition and/or onward transmission risk ---
-as well as common stratifications in the available data,
-and epidemiologically relevant sub-populations.
+--- reflecting acquisition and/or onward transmission risk.
 The lowest sexual activity group ($i=1$) comprises
 individuals who had 0-1 sexual partners in the past 12 months (p12m),
 but did not engage in sex work.
@@ -30,10 +31,13 @@ The highest two activity groups among women ($i=3,4$) comprise
 lower and higher risk FSW (see \sref{model.par.fsw} for more details), and
 the highest two activity groups among men ($i=3,4$) likewise comprise
 lower and higher risk clients of FSW.
-% TODO: Watts2010 re pimps, etc.?
+% TODO: (?) Watts2010 re pimps, etc.
 \par
 Four types of sexual partnerships are modelled,
-with different levels of condom use and expected durations:
+in order to capture different partnership durations relevant to Chapter~\ref{foi},
+and different trends in condom use relevant to inferred transmission dynamics across groups
+--- \ie all downstream analyses.
+The four partnership types are:
 long-term/spousal partnerships ($p=1$, lowest condom use, 14--19 years);
 short-term partnerships ($p=2$, medium condom use, 3--18 months);
 one-off new/occasional sex work partnerships ($p=3$, highest condom use, 1 sex act);
@@ -74,27 +78,21 @@ plus a generic ``virally un-suppressed'' state reflecting any combination of
 treatment failure, discontinuation, or loss to follow-up after achieving viral suppression.
 Loss to follow-up prior to viral suppression is not explicitly modelled,
 but subsumed into the rates of ART initiation and viral suppression.
-%===================================================================================================
-\subsection{Initialization \& Solving}\label{model.init}
-The first cases of HIV and AIDS in Eswatini
-were diagnosed in 1986 and 1987, respectively \cite{Whiteside2007},
-although HIV may have been present several years earlier \cite{Iliffe2005}.
-As such, I initialize the model in 1980 with no HIV,
-and simulate introduction of HIV at a random year between 1980 and 1985 (uniform prior).
-HIV introduction is modelled as
-exogenous infection of 0.01\% (\ttilde\,24) individuals in the model,%
-\footnote{No further import/export of HIV to/from Eswatini is considered thereafter in the model.
-  HIV transmission between Eswatini and neighbouring countries,
-  including South Africa and Mozambique,
-  has likely continued throughout the epidemic
-  due to labour migration and other factors \cite{Iliffe2005}.
-  However, I assume that such transmissions have low overall influence on epidemic dynamics.}
-  % TODO: discuss possible effects?
-distributed across activity groups in proportion to their size, comprising:
-% TODO: maybe among highest activity instead?
-5\% acute HIV ($h=2$), 65\% with \cdf{500}{} ($h=3$) and 30\% with \cdf{350}{500} ($h=4$),
-all undiagnosed ($c=1$).%
-\footnote{In compartmental models, the numbers of individuals in each state (compartment)
-  need not be whole numbers.}
-The population size of EmaSwati aged 15--49 in 1980
-was defined as 243,000 from \cite{WorldBank}.
+%---------------------------------------------------------------------------------------------------
+\paragraph{Notation}
+If $X$ is a variable (\eg population, parameter, calibration target)
+stratified by dimensions $a,b,c$,
+then $X_{ab_{1}c_{23}}$ denotes the values of $X$ for
+a particular but \emph{unspecified} stratum of $a$,
+the \emph{specific} stratum $b = 1$,
+and the \emph{aggregated} strata $c = 2,3$
+(the aggregating operation is context-dependent, \eg sum for probabilities).
+Additionally, the indices $sihc$ from Table~\ref{tab:model.dims} denote ``self'' strata,
+whereas $s'i'h'c'$ denote ``other'' strata --- \ie individuals' partners.%
+\footnote{\label{foot:code.note}%
+  In the code: R uses one-based indexing, which match the notation here directly,
+  while Python uses zero-based indexing, which therefore appear as $i \rightarrow i-1$ in the code.
+  Also, the model code reorders states in the ART Cascade dimension for computational efficiency,
+  with $c={}$1:~Undiagnosed; 2:~Diagnosed; 3:~Virally~Un-suppressed; 4:~On~ART; 5:~Virally~Suppressed.}
+Finally, I re-use several dummy variables throughout the chapter:
+$\rho$ for proportions, $\lambda$ for rates, $T$ for time periods, and $f$ for constants.

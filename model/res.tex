@@ -5,7 +5,7 @@ and the modelled patterns of transmission among risk groups in Eswatini over tim
 %===================================================================================================
 \subsection{Posterior Parameter Distributions}\label{model.res.par}
 Figure~\ref{fig:post.distr} illustrates the distributions of calibrated model parameters,
-stratified by top 1\% (posterior) vs bottom 99\% according to calibration likelihood.
+stratified by top 1\% (posterior) \vs bottom 99\% according to calibration likelihood.
 Many of the distributions do not significantly differ
 (Kolmogorov-Smirnov Test \cite{Murtagh2014}),
 indicating that calibration did not reduce uncertainty in these parameters.
@@ -47,7 +47,8 @@ has long been challenging to explain based on the available data \cite{Whiteside
 \begin{figure}
   \centering\includegraphics[width=\linewidth]{post.distr}
   \caption{Distributions of calibrated model parameters,
-    stratified by top 1\% (posterior) vs bottom 99\% according to calibration likelihood}
+    stratified by top 1\% (posterior) \vs bottom 99\% according to calibration likelihood}
+  % TODO: (~) change to 1\% (posterior) \vs all (prior)
   \label{fig:post.distr}
   \floatfoot{
     Asterisks denote significance of Kolmogorov-Smirnov (KS) Test \cite{Marsaglia2003}
@@ -98,9 +99,9 @@ and condom use within each partnership type (Figure~\ref{fig:fit.condom}).
 %---------------------------------------------------------------------------------------------------
 \subsubsection{HIV Prevalence \& Incidence}\label{model.res.cal.hiv}
 Figure~\ref{fig:fit.hiv} illustrates the modelled HIV
-prevalence \sfref{fig:fit.prevalence} and incidence \sfref{fig:fit.incidence}
+prevalence \sfref{fig:fit.prev} and incidence \sfref{fig:fit.inc}
 among selected risk groups.
-Figures \ref{fig:fit.prevalence1v2}~and~\ref{fig:fit.incidence1v2} similarly illustrate
+Figures \ref{fig:fit.prev1v2}~and~\ref{fig:fit.inc1v2} similarly illustrate
 HIV prevalence and incidence ratios, respectively.
 Overall, model estimates agree well with the available calibration targets,
 with the following shortcomings.
@@ -108,7 +109,7 @@ Relative to the calibration targets, the model tends to
 underestimate HIV prevalence among women overall,
 but overestimate HIV prevalence among men overall, and among FSW prior to 2020.
 HIV prevalence and incidence ratios also tend to be overestimated by the model \vs the targets,
-with the exception of the prevalence ratio among higher vs lower risk FSW,
+with the exception of the prevalence ratio among higher \vs lower risk FSW,
 which is reduced towards 1 as prevalence saturates in both groups.
 These shortcomings could be explained by
 omission of age in the model (see \sref{model.disc.lim.str}) or
@@ -121,11 +122,12 @@ without high incidence and thus prevalent among FSW and medium activity women.
 Indeed, previous work has shown that HIV prevalence among lower risk groups can be
 partially driven by turnover of infected individuals from higher risk groups \cite{Knight2020}.
 \begin{figure}
-  \subcaptionoverlap
-  \foreach \var in {prevalence,incidence}{
+  \subcapoverlap
+  \foreach \var in {prev,inc}{
     \begin{subfigure}{\linewidth}
-      \centering\includegraphics[scale=.5]{fit.\var.base.all.pdf}
-      \caption{\raggedright}\label{fig:fit.\var}
+      \centering\includegraphics[scale=\fitscale]{fit.\var.base.all}
+      \caption{\raggedright}
+      \label{fig:fit.\var}
     \end{subfigure}}
   \caption{Modelled HIV prevalence and incidence among selected risk groups
     and associated calibration targets}
@@ -135,14 +137,14 @@ partially driven by turnover of infected individuals from higher risk groups \ci
 \par
 Few data are available to validate the modelled early epidemic dynamics.
 Modelled incidence among women and men peaked rapidly after introduction of HIV
-(Figure~\ref{fig:fit.incidence}), corresponding to
+(Figure~\ref{fig:fit.inc}), corresponding to
 rapid acquisition and saturation among higher risk FSW and clients.
 Modelled incidence and prevalence continued to increase approximately linearly over 1990--2010,
 reflecting a balance of would-be exponential epidemic growth and build-up of mitigating factors,
 such as increasing condom use, male circumcision, ART coverage, and
 accumulation of seroconcordant partnerships (see \sref{foi.exp.model}).
 These trends can be compared with HIV prevalence from Eswatini antenatal care clinics
-over the same period (Figure~\ref{fig:fit.prevalence.anc}), which suggest similar trends.%
+over the same period (Figure~\ref{fig:fit.prev.anc}), which suggest similar trends.%
 \footnote{Antenatal care data were not used as calibration targets because
   such data are known to overestimate HIV prevalence among women overall
   due to non-representative sampling \cite{Gouws2008,Marsh2014}.}
@@ -164,17 +166,17 @@ reflect major changes in treatment eligibility (see \sref{model.par.cascade.tx})
 influxes of newly ART-eligible PLHIV to
 temporarily decrease the proportions virally suppressed among treated PLHIV.
 \begin{figure}
-  \subcaptionoverlap
-  \foreach \var in {diagnosed,treated.c,treated.u,vls.c,vls.u}{
+  \subcapoverlap
+  \foreach \var in {diag,treat.c,treat.u,vls.c,vls.u}{
   \begin{subfigure}{\linewidth}
-    \centering\includegraphics[scale=.5]{fit.\var.base.all.pdf}
-    \caption{\raggedright}\label{fig:fit.\var}
+    \centering\includegraphics[scale=\fitscale]{fit.\var.base.all}
+    \caption{\raggedright}
+    \label{fig:fit.\var}
   \end{subfigure}}
   \caption{Modelled ART cascade among selected risk groups
     and associated calibration targets}
   \label{fig:fit.cascade}
-  \floatfoot{\fffit; \ffribbon; \ffpbar;
-    PLHIV: people living with HIV.}
+  \floatfoot{\ffcas; \fffit; \ffribbon; \ffpbar.}
 \end{figure}
 %===================================================================================================
 \subsection{Who Infected Whom}\label{model.res.wiw}

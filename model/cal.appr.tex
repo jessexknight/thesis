@@ -1,8 +1,8 @@
 %===================================================================================================
 \subsection{Approach}\label{model.cal.appr}
 I used a Bayesian approach for model calibration \cite{Menzies2017}.
-Let $\theta$ denote the complete set of 74 calibrated model parameters (Table~\ref{tab:par.defs}),
-and $T$ the complete set of calibration targets.
+Let $\theta$ denote the complete set of 73 calibrated model parameters (Table~\ref{tab:par.defs}),
+and $T$ the complete set of 69 calibration targets.
 The goal of calibration is to obtain samples from
 the posterior distribution of parameters given the targets $p(\theta \mid T)$.
 This posterior distribution can be defined via Bayes' rule as:
@@ -30,8 +30,8 @@ to give the overall likelihood:
 Any individual log-likelihood which was beyond computational precision was replaced with
 an arbitrarily large negative number ($-{10}^6$).
 In order to obtain good coverage of the sampling space,
-most (57) calibrated parameters were sampled using Latin hypercube sampling \cite{Stein1987}.
-The remaining 17 calibrated parameters were sampled randomly and iteratively
+most (58) calibrated parameters were sampled using Latin hypercube sampling \cite{Stein1987}.
+The remaining 15 calibrated parameters were sampled randomly and iteratively
 until they satisfied a set of relational constraints (see \sref{app.model.cal.constr}).
 \par
 Although several iterative methods exist to

@@ -8,14 +8,14 @@ including substratification of lower \vs higher risk FSW.
 Figure~\ref{fig:fsw.f} illustrates the distributions of variable values
 across two FSW strata defined in \sref{model.par.fsw.fac} (lower \vs higher risk).
 \begin{figure}[h]
-  \subcaptionoverlap
+  \subcapoverlap
   \foreach \year/\var in {2011/f,2011/c,2014/f,2014/c}{%
   \begin{subfigure}[b]{.25\linewidth}
     \includegraphics[width=\linewidth]{fsw.\year.lr.groups.\var}
     \caption{\raggedright}
     \label{fig:fsw.f.\year.\var}
   \end{subfigure}}
-  \caption{HIV risk factor variables among higher \vs lower risk FSW in Eswatini,
+  \caption{Distributions of HIV risk factor variables among higher \vs lower risk FSW in Eswatini,
       as estimated by multivariable logistic regression model for HIV status}
   \label{fig:fsw.f}
   \floatfoot{\fffsw{fig:fsw.f}
@@ -31,14 +31,14 @@ Figure~\ref{fig:fsw.yss.adj} illustrates the \emph{cumulative} distribution of
 reported years since first selling sex after RDS adjustment,
 plus a fitted exponential distribution.
 \begin{figure}[h]
-  \includegraphics[width=\linewidth]{fsw.yss.hist.pdf}
+  \includegraphics[width=\linewidth]{fsw.yss.hist}
   \caption{Years since first sold sex among FSW in Eswatini (unadjusted)}
   \label{fig:fsw.yss.raw}
   \floatfoot{Data sources: 2011 \cite{Baral2014}, 2014 \cite{EswKP2014}.}
 \end{figure}
 \begin{figure}[h]
   \centering
-  \includegraphics[width=.7\linewidth]{fsw.yss.adj.pdf}
+  \includegraphics[width=.7\linewidth]{fsw.yss.adj}
   \caption{Cumulative distribution of years selling sex among FSW in Eswatini (RDS-adjusted)}
   \label{fig:fsw.yss.adj}
   \floatfoot{The line and shaded region illustrate

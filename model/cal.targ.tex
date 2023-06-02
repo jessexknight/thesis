@@ -47,13 +47,13 @@ Thus, HIV prevalence among the ``true'' lower risk (had 0--1, reported 0--1) can
 where $H$ denotes HIV prevalence,
 and $W'$ denotes the adjusted proportions calculated in \sref{model.par.nsw.res}.
 %---------------------------------------------------------------------------------------------------
-\paragraph{Respondent Ages}
-The 2006 and 2016 surveys provide data for ages 15--49
-(the age range intended to be captured by the model)
-while the 2011 survey was limted to ages 18--49.
+\paragraph{Age Range}
+The model aims to capture the Swati population aged 15--49.
+While the 2006 and 2016 surveys provide data for ages 15--49,
+the 2011 survey was limted to ages 18--49.
 Since HIV prevalence is much lower among ages 15--17,
-the 2011 estimates would be biased high;
-so, I adjusted all 2011 HIV prevalence estimates in as follows.
+the 2011 estimates would be biased high.
+I therefore adjusted all 2011 HIV prevalence estimates in as follows.
 Drawing on age-stratified data in 2006 \cite{SDHS2006} and 2011 \cite{Bicego2013},
 I assumed that HIV prevalence among ages 15--17 was
 5\% among girls/women, 2\% among boys/men, and 3.5\% overall.
@@ -77,7 +77,6 @@ it is important to capture HIV prevalence ratios across risk groups.
 For this objective, directly specifying prevalence ratio targets is more efficient than
 using independent prevalence targets for lower risk and non-lower risk.
 Based on the available data, I defined the prevalence ratio targets in Table~\ref{tab:targ.pr}.
-% TODO: W/M PR?
 \par
 The raw (unadjusted) estimates suggest that HIV prevalence strongly peaked between 2006 and 2016.
 After adjustment for respondent ages, 2011 estimates remained highest,
@@ -86,7 +85,6 @@ The largest reduction in HIV prevalence via adjustment
 was among lower risk women in 2011: from 38.2\% to 30.8\%, due to the modelled
 ``addition'' of women/girls aged 15--17 (lower HIV prevalence), and
 ``subtraction'' of women with 2+ partners p6m (higher HIV prevalence).
-% TODO: 2016 simpson's paradox?
 %---------------------------------------------------------------------------------------------------
 \subsubsection{HIV Incidence}\label{model.cal.targ.inc}
 Population-level incidence was first measured in the 2011
@@ -123,7 +121,6 @@ I computed an incidence rate of $\lambda = 11.7\%$ per year.
 I further estimated uncertainty for this rate by combining
 the 95\%~CI from $\rho \sim \opname{Binom}(p = 4.44\%, N = 676)$ and $T \in (118,~140)$,
 yielding 95\%~CI for $\lambda$ of (8.3,~16.9).
-% TODO: increase upper CI due to COVID?
 \begin{table}
   \centering
   \caption{Estimated HIV incidence ratios in Eswatini}
@@ -142,7 +139,7 @@ A recent meta-analysis \cite{Soni2021} suggested substantial under-reporting of 
 including 9~(4,~15)\% among the population overall (10~studies),
 and 32~(22,~44)\% among FSW specifically (2~studies).
 However, data from SHIMS2 \cite{SHIMS2} suggested much lower under-reporting (2.2\%) in Eswatini.
-% TODO: consider adjustments ...
+% TODO: (?) consider adjustments ...
 \begin{table}
   \centering
   \caption{Estimated HIV cascade of care in Eswatini}

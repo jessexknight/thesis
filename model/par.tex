@@ -1,30 +1,29 @@
 \section{Parameterization}\label{model.par}
-Model parameterization involves
-specification of model parameter values, such as proportions, probabilities, rates, and ratios,
-including stratified values to reflect heterogeneity,
-and sampling distributions to reflect uncertainty.
+Model parameterization involves specification of parameter values (model inputs),
+such as proportions, probabilities, rates, and ratios.
+These parameters are used to define
+the initial conditions and rates of transition between modelled states.
+Some transition rates are fixed, such as rates of progression through HIV infection stages,
+while transition rates vary with time, such as rates of HIV diagnosis and ART initiation.
+The transition rate for susceptible-to-infected --- \ie \emph{transmission} ---
+is defined by a complex ``force of infection'' equation which mechanistically integrates
+biological, behavioural, and interventional determinants of transmission;
+Chapter~\ref{foi} develops this equation in detail,
+including modifications to overcome limitations of prior equations.
+\par
+The true values of many parameters are uncertain due to several potential sources of error.
+Thus, prior distributions are specified for 73 parameters (Table~\ref{tab:par.defs}),
+and the joint posterior distributions of these uncertain parameters are then inferred
+via model calibration, as described in \sref{model.cal}~and~\ref{model.res}.
 Proportions and probabilities were generally modelled using
 a beta approximation of the binomial distribution (BAB, see \sref{app.model.math.bab}),
 while rates and ratios were generally modelled using
 a gamma, skewnormal, or inverse gaussian distribution.
-%---------------------------------------------------------------------------------------------------
-\paragraph{Notation}
-If $X$ is a parameter stratified by dimensions $a,b,c$,
-then $X_{ab_{1}c_{23}}$ denotes the values of $X$ for
-a particular but \emph{unspecified} stratum of $a$,
-the \emph{specific} stratum $b = 1$,
-and the \emph{aggregated} strata $c = 2,3$
-(the aggregating operation is context-dependent, \eg sum for probabilities).
-Additionally, the indices $sihc$ from Table~\ref{tab:model.dims} denote ``self'' strata,
-whereas $s'i'h'c'$ denote ``other'' strata --- \ie individuals' partners.%
-\footnote{\label{foot:code.note}%
-  In the code: R uses one-based indexing, which match the notation here directly,
-  while Python uses zero-based indexing, which therefore appear as $i \rightarrow i-1$ in the code.
-  Also, the model code reorders states in the ART Cascade dimension for computational efficiency,
-  with $c={}$1:~Undiagnosed; 2:~Diagnosed; 3:~Virally~Un-suppressed; 4:~On~ART; 5:~Virally~Suppressed.}
-Finally, I re-use several dummy variables throughout the chapter:
-$\rho$ for proportions, $\lambda$ for rates, $T$ for time periods, and $f$ for constants.
-\input{model/par.fsw}
+\input{model/par.init}
 \input{model/par.beta}
 \input{model/par.hiv}
-\input{model/par.popsex}
+\input{model/par.fsw}
+\input{model/par.pops}
+\input{model/par.turn}
+\input{model/par.part}
+\input{model/par.mix}

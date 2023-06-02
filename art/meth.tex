@@ -5,7 +5,7 @@ and outlines the analyses conducted to answer the research questions outlined ab
 \subsection{Model}\label{art.meth.model}
 The complete details of model structure, parameterization, and calibration
 are given in Chaper~\ref{model}.
-The proposed force of infection approach from in Chapter~\ref{foi} was used throughout.
+The proposed force of infection approach from Chapter~\ref{foi} was used throughout.
 Briefly, the deterministic compartmental model features
 8 risk groups, including higher and lower risk FSW and clients, and
 4 partnership types, including regular and occasional sex work (Figure~\ref{fig:model.risk}).
@@ -19,7 +19,7 @@ I obtained $N_f = 1000$ plausible model fits via calibration.
 %===================================================================================================
 \subsection{Scenarios \& Analyses}\label{art.meth.obj}
 %---------------------------------------------------------------------------------------------------
-\subsubsection{Objective 1: Influence of cascade differences between risk groups}\label{art.meth.obj.1}
+\subsubsection{Objective~1: Influence of cascade differences between risk groups}\label{art.meth.obj.1}
 For Objective~\ref{obj:art.1},
 I defined the \emph{base case} scenario to reflect
 observed cascade scale-up in Eswatini, reaching \cashi by 2020 \cite{AIDSinfo}.
@@ -53,6 +53,7 @@ diagnosis, treatment initiation, and treatment failure / discontinuation thereaf
   \label{tab:art.scenarios}
   \input{art/tab.scenarios}
 \end{table}
+% TODO: (~) create figure of these cascades like CROI poster
 \par
 I quantified ART prevention impacts via relative
 cumulative additional infections (CAI) and additional incidence rate (AIR)
@@ -71,7 +72,7 @@ $\lambda$ denotes incidence rate per susceptible per year.
 For each scenario, I computed these outcomes (CAI and AIR) for each model fit $j$,
 and reported median (95\% CI) values across model fits, reflecting uncertainty.
 %---------------------------------------------------------------------------------------------------
-\subsubsection{Objective 2: Conditions under which cascade differences matter most}\label{art.meth.obj.2}
+\subsubsection{Objective~2: Conditions that maximize the influence of cascade differences}\label{art.meth.obj.2}
 For Objective~\ref{obj:art.2}, I estimated via regression:
 the effects of lower cascade among certain risk groups on relative CAI and AIR,
 plus potential effect modification by epidemic conditions.
@@ -104,6 +105,7 @@ yielding $N_f N_k = {}$10,000 total counterfactual samples for the regression.
     $d_i$: difference in group-$i$-specific viral unsuppression
       \vs population overall within counterfactual scenario;
     $C_j$: epidemic conditions (effect modifiers of $d_i$).}
+    % TODO: (?) maybe $C$ notation overlaps with contacts too much
 \end{figure}
 \par
 For each of these 10,000 samples, I defined
@@ -132,7 +134,7 @@ I used HIV incidence ratios in 2000 to reflect
 summary measures of risk heterogeneity prior to ART,
 as compared to including all modelled risk factors
 for HIV acquisition (\eg Table~\ref{tab:sr.factors}),
-which could lead to overfitting and improper inference due to effect mediation. % TODO: collinearity?
+which could lead to overfitting and improper inference due to effect mediation.
 \par
 Finally, I defined a general linear model for each outcome (CAI, AIR) as:
 \begin{equation}\label{eq:art.glm}
