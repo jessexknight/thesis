@@ -54,6 +54,48 @@ can then be uniquely resolved by specifying
 $N_i\,(N_i-1) = 12$ non-redundant and compatible constraints,
 where specifying each $D_{si}$ is one such constraint.
 %---------------------------------------------------------------------------------------------------
+\paragraph{Censored Durations}
+Cross sectional sex work surveys will often ask respondents about their duration in sex work.
+These durations might then be taken to be the average durations in sex work;
+however, this will be an underestimate,
+because respondents will continue selling sex after the survey \cite{Fazito2012}.%
+\footnote{An alternate example would be
+  to take the mean age of a population as the life expectancy!
+  Thanks to Saulius Simcikas and Dr. Jarle Tufto
+  for help identifying and discussing this bias:
+  \hreftt{stats.stackexchange.com/questions/298828}.}
+\par
+Figure~\ref{fig:diag.xdur} illustrates a steady-state population
+with 5 women selling sex at any given time.
+The steady-state assumption implies that a women leaving sex work after $D$ years
+will be immediately replaced by a women entering sex work
+whose eventual duration will also be $D$ years.
+Let $D$ be this true duration, and $D_s$ be the duration reported in the survey.
+If we assume that the survey reaches women at a random time point during the duration $D$,
+then $D_s \sim \opname{Unif}(0,D)$,
+and the mean reported duration is $\E[D_s] = \frac{1}{2}\E[D]$.
+Thus, $\E[D] = 2\,\E[D_s]$ would be an estimate of the true mean duration from the sample.
+In reality, sex work surveys may be more likely to reach
+women who have already been selling sex for several months or years,
+due to delayed self-identification as sex worker \cite{Cheuk2020}.
+Thus, we would expect that $f = \E[D] / \E[D_s] \in (1,2)$,
+which we can use to compute the mean exit rate as described in \sref{app.model.math.exp}.
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=1]{diag.xdur}
+  \caption{Illustrative steady-state population of 5 FSW,
+    with varying true durations in sex work $D$,
+    \vs the observed durations in sex work $D_s$ via cross-sectional survey.}
+  \label{fig:diag.xdur}
+\end{figure}
+\par
+Another observation we can make from Figure~\ref{fig:diag.xdur} is that
+women who sell sex longer are more likely to be captured in the survey.
+That is, while the sampled durations are representative of women who \emph{currently} sell sex,
+these durations are biased high \vs the population of women who \emph{ever} sell sex.
+It's not clear whether this observation is widely understood
+and kept in mind when interpreting sex work survey data.
+%---------------------------------------------------------------------------------------------------
 \paragraph{Duration Selling Sex}
 The FSW survey data for 2011 \cite{Baral2014}, 2014 \cite{EswKP2014}, and 2021 \cite{EswIBBS2022}
 include questions on the respondent's current age, and age of first selling sex;
@@ -73,11 +115,8 @@ challenges in reaching women in the first year(s) of sex work \cite{Cheuk2020}.
 I fit an exponential distribution to the cumulative adjusted proportions
 (Figure~\ref{fig:fsw.yss.adj}), yielding an estimated distribution mean
 ${\lambda}^{-1}$ of 4.2~(3.5,~5.3) years.
-However, the reported years selling sex in a cross sectional survey
-will underestimate the eventual duration in sex work among respondents by a factor $f \le 2$,
-because respondents continue selling sex after the survey
---- \ie the observed duration is right censored
-(see \sref{app.model.math.xdur} for derivation and further discussion).
+However, as discussed above, these reported years are still right censored, and
+thereby underestimate the eventual duration in sex work among respondents by a factor $f \le 2$.
 Thus, the overall mean duration in sex work would be given by $\bar{D} = f\,\lambda^{-1}$.
 Yet, additionally, the current definition of duration selling sex
 includes a hidden assumption that FSW sell sex continuously after starting.

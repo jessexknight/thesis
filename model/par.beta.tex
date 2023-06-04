@@ -89,7 +89,7 @@ in anal intercourse \cite{Baggaley2018} (without ART): 1.67~(0.44,~3.67)\% \vs
 vaginal intercourse \cite{Boily2009} (without commercial sex exposure): 0.143~(0.088,~0.233)\%;
 thus I assumed a fixed 10-fold increase in male-to-female transmission probability
 for anal \vs vaginal intercourse.
-See \sref{model.par.sex} for sex act frequency within each partnership type.
+See \sref{model.par.fsex} for sex act frequency within each partnership type.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Circumcision}\label{model.par.beta.circ}
 Relative risk in per-act HIV female-to-male transmission for circumcised \vs uncircumcised men
@@ -168,7 +168,7 @@ so I assumed no differences.
 Similarly, while circumcision differed by union status in \cite{SHIMS2}
 (\eg 22.1\% circumcised among men in a union \vs 31.7\% among men not in a union),
 differences did not persist after re-stratifying these men
-into groups with 0-1 \vs 2+ partners per year, as described in \sref{model.par.nsw}.
+into groups with 0-1 \vs 2+ partners per year, as described in \sref{model.par.wp}.
 In Zambia, circumcision status was not associated with paying for sex \cite{Carrasco2020}.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Condom Use}\label{model.par.tm.condom}
@@ -200,7 +200,7 @@ was either reported overall or for casual partners only.%
     who was neither a spouse nor lived with the respondent},
   effectively matching the model definition of ``casual'' partnerships.}
 However, the proportions of individuals with various relationship statuses
-(\eg polygynous union, non-polygynous union, not in a union, see \sref{model.par.nsw})
+(\eg polygynous union, non-polygynous union, not in a union, see \sref{model.par.wp})
 can be used to back-calculate condom use in main/spousal partnerships
 for both 2006 \cite{SDHS2006} and 2016 \cite{SHIMS2}.
 To do so, I assumed whether ``last sex'' among individuals in unions with 2+ partners
@@ -263,7 +263,7 @@ Self-reported prevalence of GUD in p12m among sexually active women and men aged
 was approximately 7\% in 2006 \cite[Table~13.14]{SDHS2006}.
 This prevalence was not stratified by numbers of partners,
 so I modelled GUD prevalence among the lowest risk women and men as
-7\% times the proportion sexually active (see \sref{model.par.nsw}). % TODO: (~) see code
+7\% times the proportion sexually active (see \sref{model.par.wp}). % TODO: (~) see code
 Among the medium risk groups, I sampled GUD prevalence uniformly between
 7\% and the prevalence modelled among FSW (below).
 \par
