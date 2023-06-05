@@ -1,18 +1,20 @@
-\section{Discussion}\label{foi.disc}
-Compartmental models of sexual HIV transmission continue to support HIV epidemic response globally,
+\section{Discussion}\label{foi.disc} 
+%SM: good start and i have a few major comments that need to be addressed before this goes to examiners/IMS. And then we should revisit fully re: key points/messages for discussion for the paper - I'm not 100% sure about the discussion section as is for a paper (lots of good content, but I think we want to be more focused in some places and more general in others re: the "so what" and the "implications" - the "implications" part especially doesn't quite come through in the current version - but that's ok for the thesis)
+%SM: start with a summary statement (like a discussion section of a paper) - what were the key messages from this chapter re: findings? then go into what you have for the first para currently
+Compartmental models of sexual HIV transmission continue to support HIV epidemic response globally, % this is somewhat vague - and only refers to models that we know about (there could be others that have supported/informed responses in countries). try to be more specific and why calling out these specific models? I would recommend being more general here first, and then speak to examples of key models based on reports from UNAIDS for example?
 including the Spectrum suite of models \cite{Stover2021,Spectrum2022},
 the Optima HIV model \cite{Kerr2015,Optima2021},
 the Asian Epidemic Model \cite{Brown2004},
 the Thembisa model for South Africa \cite{Johnson2016cc,Johnson2022},
 and numerous others (\eg Chapter~\ref{sr}).
-Such models usually simulate sexual HIV transmission within risk- and/or age-stratified populations,
-possibly considering multiple partnership types and/or transmission modifiers.
-As I have shown in \sref{foi.prior},
-several existing approaches (model structures and equations)
-are used to define rates of HIV transmission via sexual partnerships in these models
+Most HIV models usually simulate sexual HIV transmission within risk- and/or age-stratified populations, %SM: "such" implies you are only talking about the models listed above, and that is not true - many of our models and others that are not listed above also did this...
+and sometimes considering multiple partnership types and/or transmission modifiers. %SM: why possibly?
+As shown in \sref{foi.prior},
+the existing approaches (model structures and equations)
+used to define rates of HIV transmission via sexual partnerships in the example models %SM: its not clear why you chose just a few models - so make sure clear to examiner/reviewer whey only these ones were chosen as examples to discuss.... be careful that we don't get asked to do a formal comparison as part of thesis corrections with an ask to go deeper :) - i.e. don't make the comparison with other models too much of the story in the discussions. but be more general...
 --- especially with respect to heterogeneous populations, partnerships, and sex acts ---
-each with implicit assumptions.
-In \sref{foi.exp}, I explored the potential influence of these approaches/assumptions on:
+come with implicit assumptions. %SM: i don't understand this sentence 
+In \sref{foi.exp}, I explored the potential influence of these approaches/assumptions on: %SM: repeats the introduction - say what was found rather than what you did. and move summary to the beginning of the discussion section.
 the computed probability of transmission per partnership,
 modelled epidemic dynamics, and on model-estimated prevention priorities.
 Yet, many of these assumptions can be avoided altogether
@@ -20,7 +22,7 @@ using a new approach I developed in \sref{foi.prop},
 representing an exciting opportunity to improve the quality of
 compartmental model-based evidence for HIV response going forward.
 %===================================================================================================
-\subsection{Heterogeneity in Per-Act Probability of Transmission}\label{foi.disc.xph}
+\subsection{Heterogeneity in Per-Act Probability of Transmission}\label{foi.disc.xph} %SM: here the use of acroynms gets a bit hard to follow. suggest using the full term rather than BPH, etc. - make it easier for examiners :) 
 In \sref{foi.prior.xph}~and~\ref{foi.exp.xph}, I introduced and explored the distinction between
 \emph{within}-partnership heterogeneity (WPH) \vs \emph{between}-partnership heterogeneity (BPH)
 in the per-act probability of transmission $\beta$. Whereas
@@ -49,11 +51,11 @@ but improved understanding of the assumptions and potential biases of each appro
 can help guide interpretation of existing results,
 and design of future models which do not adopt the proposed approach.
 \par
-In some cases, modellers have noted the discrepancies between equations between models,
-but dismissed the differences as inconsequential because $\beta$ is usually small
+In some cases, modellers have noted the discrepancies between equations between models, %SM: this sentence may be viewed as antagonistic...
+but dismissed the differences as inconsequential because $\beta$ is usually small  %SM: "dismissed" is strong here... what do we want to say in this paragraph re: key messages?
 \cite{Kerr2015}. % TODO: (*) more cite
-This justification is fair when $\beta$ is indeed small.
-However, several combinations of transmission modifiers
+This justification has been shown to hold when $\beta$ is small. %SM: reference? use language to highlight that others have found things, and statemetns not based on your/our opinion/hypothesis only?
+However, several combinations of transmission modifiers 
 (\eg condomless anal sex with GUD and acute HIV infection) \cite{Boily2009,Fox2011}
 can easily yield larger $\beta$, for which the discrepancies are \emph{not} inconsequential
 (\eg Figure~\ref{fig:B.xph.surf}).
@@ -119,11 +121,11 @@ and conclude that: \shortquote{the number of new partners per unit time
 is not sufficient to predict the course of the epidemic,
 but that partnership duration is a quantity that is equally influential.}
 I agree and regret that data to directly inform sexual partnership durations,
-especially for non-marital partnerships, remain lacking (see \sref{model.par.sex.dur}).
+especially for non-marital partnerships, remain lacking (see \sref{model.par.pdur}).
 Efforts to fill this data gap will likely benefit from careful consideration of
 different measurement approaches and sources of error \cite{Burington2010},
 perhaps in conjunction with efforts to better quantify partnership formation rates,
-as explored in \sref{app.model.math.qp}.
+as explored in \sref{model.par.pnum.adj}.
 \par
 \citet{Eames2002,Lloyd-Smith2004} both show that instantaneous partnerships
 can result in overestimation of the initial epidemic growth rate and equilibrium prevalence.
@@ -158,7 +160,7 @@ model outputs from frameworks with equal parameters, and then again with recalib
 With equal parameters, findings echoed those above \cite{Eames2002,Lloyd-Smith2004},
 although differences between frameworks were larger for
 curable STIs with faster transmission, and smaller for HIV.
-After recalibrating models to the same STI data from South Africa,
+After recalibrating models to the same STI data from South Africa,  %SM: I'm confused by this comparison in the discussion - what are you trying to get across here re: key points/messages?
 the best-fitting parameters differed significantly across modelling frameworks, as expected
 --- \eg lower transmission probabilities were inferred with instantaneous partnerships.
 More importantly, the relative impact (infections averted after 10 years)
@@ -167,6 +169,8 @@ These differences were summarized as:
 \shortquote{\emph{[instantaneous partnership models]} are likely to
 underestimate the importance of interventions that are targeted at high-risk groups, while
 overestimating the impact of interventions targeted at low-risk groups} \cite{Johnson2016mf}.
+
+%SM: this section below needs some revisiting - we can chat about it at office (no need to wait to send full thesis to PAC, but revise before sendign to IMS and examiners).
 Such findings are similar to those in \sref{foi.exp.model.tpaf}, where
 the TPAFs of lower risk populations and main/spousal partnerships were overestimated, while
 the TPAFs of casual partnerships were underestimated
@@ -175,33 +179,33 @@ However, while \cite{Johnson2016mf} observed that instantaneous partnerships
 \shortquote{may underestimate the contribution of commercial sex},
 the TPAFs of FSW, clients, and sex work partnerships
 were similar across approaches in \sref{foi.exp.model.tpaf}.
-These different findings could be explained by the fact that
-\cite{Johnson2016mf} only modelled one-off sex work partnerships,
+These different findings could be explained by the fact that  %SM: JK - can we discuss why this is needed for the discussion section? You are directly speaking about the examiner's paper - which is good - but I am confused about the point being made here. 
+\cite{Johnson2016mf} only modelled one-off sex work partnerships, %SM: why only compare with Johnson? why not also Stone who did tPAF for South Africa? 
 whereas transmission via sex work in the Eswatini model
 was dominated by regular partnerships (Figure~\ref{fig:foi.wiw.part}).
 Indeed, many HIV models have yet to incorporate longer partnerships between higher risk groups
 (see \sref{sr.res.f.net}).
-Thus, I would offer to rephrase the conclusions of \cite{Johnson2016mf} as:
+Thus, I would offer to rephrase the conclusions of \cite{Johnson2016mf} as: %Sm: why call out Johson paepr only? why not all our other TPAF papers (including ours, Peter's, etc.)? this seems targeted when your work would be much stronger if we were discussing ini general. lets talk about this ... 
 \shortquote{without complete adjustment for PTC,
   models with instantaneous partnerships may
   overestimate the contribution of longer partnerships, and
   underestimate the contribution of shorter partnerships.}
 %---------------------------------------------------------------------------------------------------
-\subsubsection{Implications for Existing Model-Based Evidence}\label{foi.disc.bip.evid}
+\subsubsection{Implications for Existing Model-Based Evidence}\label{foi.disc.bip.evid}  %SM: feels like a repeat of the start of the discussion. most of the discussion overall seems like a criticism of prior models rather than the added value of (a) what insights your work has generated and (b) what possible contributions this could mean for future modeling; and (c) what validation and questions remaiin to be answered around this and future work re: approximations, etc.? - i.e. still not clear from discussion why we can't just move to ABM for example :). This section on "what other models do re: FOI" seems like it would be better in the body of the chapter rather than discussion - (we can discuss what to do for paper later). since we are keeping in the discussion section for now (given time-crunch) - tell the reader/reviewer in the introduction and also at the start of the discussion, that you will do this with an examplar set of models. 
 The vast majority of existing compartmental HIV transmission models
 have used an instantaneous partnerships approach,
 with adjustments for PTC of 1-year or less.
 The results in \sref{foi.exp.model.tpaf} suggest that such models
-have likely \emph{systematically} and \emph{significantly} overestimated
+have the potential to  \emph{systematically} and potentially with large magnitute - overestimate - %SM: you haven't shown this yourself - but are hypothesisizing - so don't be emphatic. I think the discussion section here will benefit from us being more passive/humble and letting the work speak for itself rarther than tyriing to convince with words and emotion. 
 the relative contributions of longer \vs shorter partnerships to overall transmission.
 Such results are corroborated by \cite{Johnson2016mf},
 and have substantial implications for the existing body of model-based evidence.
 That is, models continue to help inform which interventions are prioritized and for whom,
-and existing evidence may overestimate the importance of prevention within longer partnerships
+and existing evidence may overestimate the importance of prevention within longer partnerships  %SM: what is meant by "existing evidence" here?
 for reducing overall transmission. For example:
 %---------------------------------------------------------------------------------------------------
-\paragraph{Anderson et al}\cite{Anderson2014,Anderson2017,Anderson2018}
-These works explore ``optimal'' combinations of PrEP, early ART, behaviour change, and VMMC
+\paragraph{Anderson et al}\cite{Anderson2014,Anderson2017,Anderson2018}  %SM: why didn't we compare to models from our group (me, peter, MMG, MC, etc.) as well? - i think this is a goign to be a hole that Leigh will call attention to and lead to minor corrections likely. that is ok, but just be prepared for that...
+These works explore ``optimal'' combinations of PrEP, early ART, behaviour change, and VMMC  
 for MSM, other men, FSW, and other women in Kenya, under various cost constraints.
 Their modelling analyses indicate that
 early ART for non-MSM men is usually more cost effective than PrEP for FSW.
@@ -223,8 +227,7 @@ an incidence proportion \cite{Kerr2020} --- \eqref{eq:foi.ip} ---
 wherein all sex acts over a given time period (default $\Delta_t = 0.2$~years)%
 \footnote{From: \hreftt{github.com/optimamodel/optima/blob/master/optima/parameters.py}}
 are modelled as competing risks, and so partnership durations are \emph{completely ignored}.
-Thus, the relative impact of prioritizing key populations
-has likely been underestimated via both:
+Thus, the relative impact of prioritizing key populations may have been underestimated via both: %SM: throughout change to "may" instead of likely  has -- we have not done the work to compare. let us be cautious and more humble in our intepretation and writing...
 overestimation of transmission via longer partnerships due to ignoring partnership durations,
 underestimation of transmission to higher risk groups due to the incidence proportion equation.
 %---------------------------------------------------------------------------------------------------
@@ -249,10 +252,10 @@ have likely been systematically underestimated by the Goals Model.
 In sum, decades of model-based HIV prevention evidence
 --- for multiple countries and resource allocation questions ---
 are built upon the instantaneous partnerships assumption and associated equations.
-I have shown that this assumption and these equations can significantly bias
+I have shown that this assumption and these equations can potentially bias
 model-estimated contributions of different populations and partnerships to overall transmission,
 and thus the model-estimated importance of different prevention strategies.
-Specifically, the common practice of only adjusting for up to 1-year of PTC
+Specifically, the common practice of only adjusting for up to 1-year of PTC  %SM: what does PTC stand for again? Try to limit use of acronyms as even I'm having a hard time followign any new ones :) 
 (or equivalently: assuming that all individuals change partners at least once per year)
 overestimates the importance of prevention in longer partnerships, and
 underestimates the importance of prevention in shorter partnerships.
@@ -264,7 +267,7 @@ in the context of a high prevalence HIV epidemic (Eswatini),
 but these biases and implications for prevention could be even greater elsewhere.
 % TODO: (?) comment on periods vs populations at higher risk i.e. sexual life course
 %===================================================================================================
-\subsection{Transmission-Driven Emergence of Serosorting Patterns}\label{foi.disc.ss}
+\subsection{Transmission-Driven Emergence of Serosorting Patterns}\label{foi.disc.ss} %SM: this reads very very out of place. Giving the tight timelines, I would just remove this paragraph...
 % TODO: (?) this feels out of place, but not sure where to put instead ...
 HIV serosorting is a controversial harm reduction strategy defined as
 preferential selection of sexual partners with matching (perceived) HIV serostatus;
@@ -286,26 +289,35 @@ Such biases in quantifying serosorting could be mitigated using longitudinal dat
 or consideration of only new partnerships \cite{Kim2020}.
 %===================================================================================================
 \subsection{Future Work}\label{foi.disc.fw}
-Hopefully I have made a convincing case for the value added by the proposed approach.
-Thus, an obvious area for future work would be to integrate this approach
-into new and existing compartmental HIV transmission models,
-including widely-used models like Spectrum Goals, Optima, Asian Epidemic Model, and Thembisa.
-To this end, the complete implementation of the proposed approach
-in the Eswatini model is available online,%
-\footnote{See: \hreftt{github.com/mishra-lab/hiv-fsw-art/blob/master/code/model/foi.py},
-  where \texttt{foi_mode='base'}.}
-although perhaps it would also be useful to develop a simpler example model
-with \vs without the proposed approach to illustrate the essential differences.
-It may also be useful to compare key model outputs
-before \vs after integrating the proposed approach in existing models
-and highlight notable differences, similar to the experiments in \sref{foi.exp.model}.
-Similar work could compare and indeed validate the proposed approach \vs individual-based models,
+There are several additional steps that would be important to consider as the effective partnership
+adjustment approach may be used by others. First, it would be important to identify which parameters adjust
+themselves diuring the model fitting process to account for differences in how the force of infection is modelled. 
+This would allow us to .... 
+Although I conducted this exercise in my chapter %SM: based on what we talked about on friday...
+conducting this exercise with a simpler model would provide a more clear picture of what part of the transmission term gets adjusted and thus,  %SM: could refer to Linwei's serorporting paper here as an example...
+more clearly tease apart what the consequences of different model structures might be. It would also lead to future work 
+on developing approximations at the data-input (parameterization) stage that could be used as an alternative option to implementing the 
+effective partnership adjustment approach. 
+A key future step would also be to compare and  validate the proposed approach \vs individual-based models, %SM: i find it interesting that we use more "may" here but definitive statements above. lets be more definitive re: future steps which should be taken and also signal that contributions are iterative and there are great next steps that woudl be important to take! for example, further exploration even of the comparison of posteriors even..
 similar to the experiments in \cite{Johnson2016mf}.
 \par
 Additionally, while I developed the proposed approach in the context of HIV,
-accurate simulation of partnership dynamics is also relevant for
-compartmental models of other sexually transmitted infections \cite{Rao2021}, including
-gonorrhea, chlamydia, syphilis, trichomoniasis, herpes, hepatitis, papillomavirus, and mpox.
-However, the approach should be carefully adapted for curable infections,
-as I have not considered how transitions \emph{out} of the newly proposed infected strata
-(stratification $\p$ in Figure~\ref{fig:model.hiv.p}) should be conceptualized and parameterized.
+variablity in partnership type and durations are relevant across the dynamics of other 
+sexually transmission infections, and our approaches to modeling them with compartmental models. 
+Future work includes examining and modifying effective partnership adjustment in the context of re-infections
+and comparisons with pair-formation models which are increasingly being used in compartmental models of 
+bacterial and curable sexually transmitted infections and re-infections.
+
+%SM: end with something about implications rather than about STIs. reads like we ran out of steam here when ending on STIs. so moved your summary to the end like this for consideration...
+%SM: subsection - Conclusion/Summary
+In summary, while I was developiing the mathematical model for HIV transmission in the context of Eswatini, 
+I identified some potential mechanisms - via how force of infection is set up and parameterized -  
+that could lead to underestimating the contribution of prevention gaps in the context of short-term 
+partnerships, and overestimating the contribution of prevention gaps in long-term partnerhips. 
+I conceived of a new potential approach that could solve the problem, and conducted a first set of experiments
+to examine the magntiude of potential biases using the HIV epidemic in Eswatini as the motivating example. 
+\footnote{See: \hreftt{github.com/mishra-lab/hiv-fsw-art/blob/master/code/model/foi.py},
+  where \texttt{foi_mode='base'}.}
+Based on my findings in this chapter, I used the effective partnership adjustment approach in the Eswatini 
+model to answer the research questions in chapter X. 
+

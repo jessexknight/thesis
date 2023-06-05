@@ -5,39 +5,20 @@ and the modelled patterns of transmission among risk groups in Eswatini over tim
 %===================================================================================================
 \subsection{Posterior Parameter Distributions}\label{model.res.par}
 Figure~\ref{fig:post.distr} illustrates the distributions of calibrated model parameters,
-stratified by top 1\% (posterior) \vs bottom 99\% according to calibration likelihood.
+stratified by prior (all samples) \vs posterior (top 1\% by calibration likelihood).
 Many of the distributions do not significantly differ
-(Kolmogorov-Smirnov Test \cite{Murtagh2014}),
+(Anderson-Darling Test \cite{Scholz1987}),
 indicating that calibration did not reduce uncertainty in these parameters.
 While more advanced model calibration techniques
 might improve parameter inference \cite{Menzies2017},
 the overall model fit was judged to be sufficient
-for the downstream research questions (\sref{intro.rqs}).
-A total of 19 parameters had highly significant differences ($p < 10^{-5}$)
+for the downstream research questions (\ie \sref{intro.rqs}).
+A total of 20 parameters had highly significant differences ($p < 10^{-5}$)
 between prior and posterior distributions:
 % MAN
 \begin{itemize}
-  \item \textbf{Mean increased:}
-    \texttt{aRbeta_gud_inf},
-    \texttt{aRbeta_gud_sus},
-    \texttt{beta_0},
-    \texttt{C12m_cas_wm},
-    \texttt{C1m_swr_fsw_l},
-    \texttt{dur_acute},
-    \texttt{dur_cas},
-    \texttt{F_msp},
-    \texttt{F_swr},
-    \texttt{PF_ai_mcx},
-    \texttt{PX_w_fsw},
-    \texttt{Rbeta_acute},
-    \texttt{RC_cas_cli.wm},
-    \texttt{RF_cas.msp}
-  \item \textbf{Mean decreased}:
-    \texttt{dur_cli},
-    \texttt{dur_fsw_l},
-    \texttt{dx_wq_2011},
-    \texttt{Rdx_global},
-    \texttt{Rdx_m.wq_2011}
+  \item \textbf{Mean increased:} \foreach \pp in \ppincr{\texttt{\pp}, }
+  \item \textbf{Mean decreased:} \foreach \pp in \ppdecr{\texttt{\pp}, }
 \end{itemize}
 Such differences overwhelmingly tended towards increasing overall HIV transmission,
 suggesting that the set of prior distributions tended to underestimate transmission risk,
@@ -47,11 +28,10 @@ has long been challenging to explain based on the available data \cite{Whiteside
 \begin{figure}
   \centering\includegraphics[width=\linewidth]{post.distr}
   \caption{Distributions of calibrated model parameters,
-    stratified by top 1\% (posterior) \vs bottom 99\% according to calibration likelihood}
-  % TODO: (~) change to 1\% (posterior) \vs all (prior)
+    stratified by prior (all samples) \vs posterior (top 1\% by calibration likelihood)}
   \label{fig:post.distr}
   \floatfoot{
-    Asterisks denote significance of Kolmogorov-Smirnov (KS) Test \cite{Marsaglia2003}
+    Asterisks denote significance of Anderson-Darling (AD) Test \cite{Scholz1987}
     for comparing distributions, where $p < 0.1$: *, $p < 0.01$: **, etc;
     see Table~\ref{tab:par.defs} for parameter definitions}
 \end{figure}
@@ -59,8 +39,8 @@ has long been challenging to explain based on the available data \cite{Whiteside
 % MAN
 Figure~\ref{fig:post.cor} further illustrates bivariate rank correlations among
 posterior parameter values (subset of parameters with at least one correlation $\pm 0.1$).
-Of these 19 parameters, 12 were subject to relational constraints (\sref{app.model.cal.constr})
-and 11 had highly significant differences between prior and posterior distributions.
+Of these 18 parameters, 10 were subject to relational constraints (\sref{app.model.cal.constr})
+and 10 had highly significant differences between prior and posterior distributions.
 For example, condom use levels were \emph{positively} correlated across
 regular and occasional sex work partnerships, including over time (\texttt{PF_condom_sw*}), as were
 the proportions of anal sex acts in sex work \vs non-sex work partnerships (\texttt{PF_ai_*}).
@@ -114,9 +94,9 @@ which is reduced towards 1 as prevalence saturates in both groups.
 These shortcomings could be explained by
 omission of age in the model (see \sref{model.disc.lim.str}) or
 insufficient reporting bias adjustment for women's partners ---
-despite substantial adjustment in \sref{model.par.nsw},
+despite substantial adjustment in \sref{model.par.wp},
 only 18\% of women were modelled to have 2+ partners in p12m, including FSW % MAN
-(Figures~\ref{fig:Cwp.adj}~and~\ref{fig:Cwp.adj.dens}).
+(Figures~\ref{fig:xwp.adj}~and~\ref{fig:xwp.adj.dens}).
 Thus, the model may struggle to reproduce high HIV prevalence among women overall,
 without high incidence and thus prevalent among FSW and medium activity women.
 Indeed, previous work has shown that HIV prevalence among lower risk groups can be

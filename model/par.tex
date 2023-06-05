@@ -4,7 +4,7 @@ such as proportions, probabilities, rates, and ratios.
 These parameters are used to define
 the initial conditions and rates of transition between modelled states.
 Some transition rates are fixed, such as rates of progression through HIV infection stages,
-while transition rates vary with time, such as rates of HIV diagnosis and ART initiation.
+while other transition rates vary with time, such as rates of HIV diagnosis and ART initiation.
 The transition rate for susceptible-to-infected --- \ie \emph{transmission} ---
 is defined by a complex ``force of infection'' equation which mechanistically integrates
 biological, behavioural, and interventional determinants of transmission;
@@ -18,12 +18,14 @@ via model calibration, as described in \sref{model.cal}~and~\ref{model.res}.
 Proportions and probabilities were generally modelled using
 a beta approximation of the binomial distribution (BAB, see \sref{app.model.math.bab}),
 while rates and ratios were generally modelled using
-a gamma, skewnormal, or inverse gaussian distribution.
+a gamma, skewnormal, or inverse gaussian distribution to guarantee positive values.
 \input{model/par.init}
 \input{model/par.beta}
 \input{model/par.hiv}
 \input{model/par.fsw}
-\input{model/par.pops}
+\input{model/par.wp}
+\input{model/par.size}
 \input{model/par.turn}
+\input{model/par.pnum}
 \input{model/par.part}
 \input{model/par.mix}
