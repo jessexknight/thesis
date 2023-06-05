@@ -1,16 +1,26 @@
 \section{Experiments}\label{foi.exp}
-In this section, I describe some simple experiments (methods and results) to
+In this section, I describe some experiments (methods and results) to
 highlight differences in the various equations and approaches
 to modelling HIV transmission in sexual partnerships.
+Specifically:
+\sref{foi.exp.xph}~and~\ref{foi.exp.dur} examine how
+the calculated per-partnership probability of transmission $B$ differs under assumptions of:
+within- \vs between-partnership heterogeneity in the per-act probability of transmission $\beta$,
+and 1-year \vs complete partnership durations $\delta$; then
+\sref{foi.exp.model} explores differences in key transmission model outputs
+among the force of infection equations from \sref{foi.prior}~and~\ref{foi.prop}.
+In many transmission models,
+a justification for chosing each specific approach is rarely given.
+Thus, this section aims to illustrate potential implications of these choices.
 %===================================================================================================
 \subsection{Within- \vs Between-Partnership Heterogeneity}\label{foi.exp.xph}
-For computing an average per-partnership probability of transmission ($B$),
+For computing an average per-partnership probability of transmission $B$,
 \sref{foi.prior.xph} clarified the interpretations of
 \eqref{eq:B.wph} \vs \eqref{eq:B.bph} as modelling
 within-partnership heterogeneity (WPH) \vs between-partnership heterogeneity (BPH), respectively.
 As shown in \sref{app.foi.proof} (proof), $B_{\wph} \ge B_{\bph}$.
 Here I explore under what conditions the ratio $B_{\wph}~/~B_{\bph}$ is maximized
---- \ie when does choosing the correct approach matter most.
+--- \ie when does the choice of approach matter most.
 For simplicity, I considered a single illustrative factor $f$
 affecting $\alpha_f \in [0,1]$ proportion of sex acts ($1-\alpha_f$ are unaffected),
 with relative probability of transmission $R_f \in [0.01,10]$.
@@ -103,11 +113,11 @@ to overall transmission.
     $\beta_1, \beta_\delta$: effective probability of transmission per sex act,
       for 1 year \vs total partnership duration, respectively.}
 \end{figure}
-\clearpage % TEMP
+\pagebreak % TEMP
 %===================================================================================================
 \subsection{Comparing Approaches in the Eswatini Model}\label{foi.exp.model}
 Next, I sought to explore how different approaches to
-modelling HIV transmission via sexual partnerships --- \ie the force of infection ---
+modelling and parameterizing the force of infection equation
 influence key outputs from a complete model.
 For this analysis, I focused on two aspects of prior approaches:
 whether or not partnership durations are effectively capped at 1 year (\sref{foi.prior.dur}), and
@@ -115,7 +125,8 @@ whether incidence is aggregated across partnerships as a rate \vs proportion (\s
 Thus, I considered 3 prior approaches,
 plus the \emph{Effective Partnerships Adjustment} approach from \sref{foi.prop}
 (Table~\ref{tab:foi.models}).
-I integrated each approach within the model from Chapter~\ref{model}.
+I integrated each approach within the model from Chapter~\ref{model}.%
+\footnote{See: \hreftt{github.com/mishra-lab/hiv-fsw-art/blob/master/code/model/foi.py}}
 \begin{table}[h]
   \centering
   \caption{Compared approaches to modelling HIV transmission via sexual partnerships}
@@ -133,21 +144,26 @@ with the aim of characterizing:
 \end{enumerate}
 For aim~\ref{obj:foi.dyn}, I compared HIV incidence (overall and group-specific)
 using \emph{equal} model parameters across approaches.
+While the specific parameters required by each approach are slightly different,
+I derived these parameters from a consistent set of ``upstream'' data
+as described below in \sref{foi.exp.model.par} and illustrated in Figure~\ref{fig:diag.foi.par}.
 For aim~\ref{obj:foi.tpaf}, I compared
 the transmission population attributable fraction (TPAF, details in \sref{foi.exp.model.tpaf})
 of several transmission pathways,
-using \emph{approach-specific} model parameters (recalibrated).
+using \emph{recalibrated} model parameters (\ie approach-specific).
 A transmission pathway could reflect a given partnership type,
 or infections acquired among and/or transmitted from a given risk group, etc.
 Since applied models are usually calibrated to a given context,
 aim~\ref{obj:foi.tpaf} thus provides a realistic comparison of
-how prevention priorities could differ when informed by models using each approach.
+how prevention priorities could differ when informed by distinct models using each approach.
 %---------------------------------------------------------------------------------------------------
-\paragraph{Equal \vs Approach-Specific Parameters}
+\subsubsection{Equal \& Recalibrated Parameters}\label{foi.exp.model.par}
 \begin{figure}
   \centering\includegraphics[scale=1]{diag.foi.par}
-  \caption{} % TODO: (!)
+  \caption{Flow chart for deriving model parameters for each force of infection approach
+    from a consistent set of upstream data}
   \label{fig:diag.foi.par}
+  \floatfoot{\fffoi.}
 \end{figure}
 The \emph{Effective Partnerships Adjustment} (\epa) approach uses the
 numbers of concurrent partnerships $K$,
@@ -160,10 +176,25 @@ For \emph{equal} model parameters,
 I used model fits (parameter sets) from \epa (see \sref{model.res.par}),
 and converted $A = F \delta$ and $Q = K/\delta$ for all 3 prior approaches (\ird,~\iry,~\ipy),
 with the additional adjustment $\delta_1 = \min{(\delta,1)}$ for the 1-year approaches (\iry,~\ipy).
-For \emph{approach-specific} parameters, I repeated the methods in \sref{model.cal},
+For \emph{recalibrated} parameters, I repeated the methods in \sref{model.cal},
 yielding 1000 unique model fits (parameter sets) for each prior approach.
-Model calibration figures for HIV prevalence and incidence are given in \sref{app.foi.cal}:
-Figures~\ref{fig:fit.prev.foi}--\ref{fig:fit.inc1v2.foi}.
+\par
+Figure~\ref{fig:post.distr.foi} illustrates
+the posterior distributions of calibrated parameters under each approach
+(subset of parameters with significant differences via Anderson-Darling Test \cite{Scholz1987}).
+Figures~\ref{fig:fit.prev.foi}--\ref{fig:fit.inc1v2.foi} illustrate
+model-estimated HIV prevalence, incidence, and ratios thereof
+\vs calibration targets under each approach.
+% TODO: (*) discuss these results
+\begin{figure}
+  \centering\includegraphics[width=\linewidth]{post.distr.foi}
+  \caption{Posterior distributions of model parameters
+    (top 1\% by likelihood among 100,000 sampled parameter sets)
+    under different force of infection approaches (colours)}
+  \label{fig:post.distr.foi}
+  \floatfoot{\ffast{Anderson-Darling Test \cite{Scholz1987} for comparing distributions};
+    subset of parameters with $p \le 0.1$; \ffpar; \fffoi.}
+\end{figure}
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Transmission Dynamics using Equal Parameters}\label{foi.exp.model.dyn}
 Figure~\ref{fig:foi.ep.incidence} illustrates HIV incidence under each approach among
@@ -173,7 +204,7 @@ Specifically, Figure~\ref{fig:foi.ep.incidence.raw} illustrates incidence per pe
 and Figure~\ref{fig:foi.ep.incidence.rel} illustrates relative differences \vs the \epa approach.%
 \footnote{Relative differences were ``paired'' according to each parameter set $k$,
   and computed as $(\textsc{ixx}_k - \epa_k) / \epa_k$.}
-I made the following observations --- and \emph{hypothesized} explanations, drawing on
+I made the following observations, drawing on
 the complete network of modelled transmission under \epa (Figure~\ref{fig:wiw.base.alluvial}):
 \begin{itemize}
   \item Incidence among lower risk was generally much higher under 1-year approaches (\iry,~\ipy)
@@ -222,7 +253,7 @@ Overall, \ird resulted in the most \emph{consistent} bias \vs \epa across groups
 \par
 Figure~\ref{fig:foi.wiw.part} further illustrates the proportions of modelled yearly HIV infections
 transmitted via different partnership types under each approach
-using equal parameters (top) and approach-specific parameters for comparison (bottom).
+using equal parameters (top) and recalibrated parameters for comparison (bottom).
 As hypothesized above, for equal parameters, the 1-year approaches (\iry,~\ipy) featured
 the greatest proportions of transmission via main/spousal partnerships, and the least via sex work.
 By contrast, the full-duration approach (\ird) featured
@@ -240,7 +271,7 @@ Interestingly, there were minimal differences in Figure~\ref{fig:foi.wiw.part} b
   \floatfoot{\fffoi; \ffwiw.}
 \end{figure}
 %---------------------------------------------------------------------------------------------------
-\subsubsection{Prevention Priorities using Approach-Specific Parameters}\label{foi.exp.model.tpaf}
+\subsubsection{Prevention Priorities using Recalibrated Parameters}\label{foi.exp.model.tpaf}
 Many models applied to assess HIV prevention priorities
 explicitly model specific intervention scenarios, often with a cost dimension
 \cite{Anderson2014,Kerr2015,Maheu-Giroux2019}.
@@ -251,6 +282,7 @@ By contrast, the TPAF reflects an ``intervention agnostic'' measure of
 how any given transmission pathway contributes to transmission overall.
 %---------------------------------------------------------------------------------------------------
 \paragraph{Transmission Population Attributable Fractions (TPAFs)}
+% TODO: (*) introduce this earlier, \eg intro.model
 Classic PAFs aim to quantify
 the relative contribution of a specific factor to a given outcome at the population level,
 by comparing the number of outcomes with \vs without the factor \cite{Rockhill2011,Poole2015}.
