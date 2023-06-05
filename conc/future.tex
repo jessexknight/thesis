@@ -1,0 +1,167 @@
+\section{Recommendations \& Future Work}\label{conc.future}
+This thesis contributes new insights about the influence of several common modelling assumptions,
+as well as methods to facilitate alternate assumptions which can be more plausible and/or flexible.
+These contributions can therefore support development of
+best practices for HIV transmission modelling, while also
+opening new avenues of research to validate and further explore the alternate assumptions.
+%===================================================================================================
+\subsection{Validation \& Model Comparison}\label{conc.future.val}
+Chapter~\ref{model} presents several
+incremental variations on existing methods for model design and parameterization,
+but does not explore the influence on model outputs of each variation \vs conventional methods.
+Similarly, Chapter~\ref{foi} includes
+preliminary comparison of different force of infection approaches,
+but the proposed \emph{Effective Partnerships Adjustment} approach should be further validated.
+This section offers hypotheses about
+the potential influence of these incremental model developments,
+and an outline potential analyses to test these hypotheses.
+%---------------------------------------------------------------------------------------------------
+\paragraph{Substratified Key Populations}
+The Eswatini model substratified FSW and clients into higher \vs lower risk,
+whereas FSW and clients are each typically modelled as a single risk group.
+This additional substratification is then expected to
+more fully capture effects of risk heterogeneity (see \sref{intro.model.het}).
+Future work could compare models with \vs without this substratification
+--- plus different definitions of substrata ---
+across different epidemic contexts and model applications,
+similar to analyses in \cite{Hontelez2013,Bernard2017,Suen2017}.
+These results could then guide the design of new models and model updates,
+especially for multi-context/multi-purpose models such as
+Goals \cite{Stover2014}, Optima \cite{Kerr2015}, and the like.
+%---------------------------------------------------------------------------------------------------
+\paragraph{Parntership Types}
+Similar work could explore the influence of defining partnership types
+by the risk groups involved \vs as overlapping types
+(\eg whether main/spousal partnerships can form between FSW and clients),
+and which partnership types are considered
+(\eg whether repeat \vs one-off sex work partnerships are distinguished).
+Failure to model main/spousal partnerships between FSW and clients
+could underestimate core group dynamics, while
+failure to distinguish repeat \vs one-off sex work partnerships could have varied effects,
+since repeat sex work partnerships are likely to have
+lower condom use but more post-transmission sex acts.
+Future work should also explore explicit representations of transactional sex
+--- and different typologies thereof \cite{Fielding-Miller2016} ---
+given the hypothesized importance of these partnerships
+for HIV transmission in SSA \cite{Wamoyi2016}.
+%---------------------------------------------------------------------------------------------------
+\paragraph{Force of Infection}
+% TODO: (?)
+%===================================================================================================
+\subsection{Data Considerations}\label{conc.future.data}
+Measuring sexual behaviour is notoriously difficult due to
+sampling, participation, recall, and reporting biases \cite{Fenton2001},
+as well as intricacies in the interpretation of responses.
+Yet, because sexual behaviour data are often
+mechanistically incorporated into HIV transmission models,
+accurate estimation and interpretation of these data remains a critical step in model development.
+%---------------------------------------------------------------------------------------------------
+\paragraph{Data Sources}
+In many contexts, household-based surveys, such as
+Demographic and Health Surveys (DHS) \cite{DHS} and
+Population-based HIV Impact Assessment (PHIA) surveys \cite{PHIA},
+are the main source of HIV epidemiological data to support transmission modelling.
+Such surveys are likely to underestimate
+the sizes of communities and prevalence of behaviours that are stigmatized and/or criminalized
+\cite{Fenton2001,Mishra2008,Lowndes2012,Behanzin2013}.
+While unique sampling methods have helped
+reach conventional key populations with tailored surveys \cite{UNAIDS2010kps,UNAIDSKPA},
+additional surveys are likely needed among other priority populations,
+including mobile populations and young women \cite{Akullian2017,Camlin2019,Cheuk2020}.
+Simultaneously, complementary general population surveys with alternate delivery modes
+--- \eg polling booth designs \cite{Lowndes2012,Behanzin2013} and others \cite{Langhaug2010} ---
+could help quantify potential biases associated with household-based survey data.
+% TODO: (?) something about programmatic data
+%---------------------------------------------------------------------------------------------------
+\paragraph{Dynamic Risk}
+Adding to previous work \cite{Henry2015,Knight2020},
+this thesis highlights the importance of modelling activity group ``turnover''
+--- \ie dynamic individual-level risk.
+However, the conceptualization of turnover in the Eswatini model
+is limited by the lack of age stratification, particularly considering
+the growing data on unique HIV vulnerabilities among young women \cite{Wamoyi2016,Cheuk2020,Ma2020}.
+Therefore, future models could explore age-related trajectories of sexual risk
+for key and priority populations, similar to modelling of MSM in \cite{Rozhnova2019,Basten2021}.
+Such models could also help quantify, for example,
+the proportions of prevalent infections among lower activity groups
+that were actually acquired during priods of higher activity.
+Data to support these models could be obtained from
+cohort studies and/or cross-sectional surveys with appropriate questions
+\cite{McKinnon2014,McKinnon2015,Olawore2018}.
+Such data could also allow improved analysis of HIV risk factors
+beyond associations with prevalent infection as in \sref{model.par.fsw}.
+%---------------------------------------------------------------------------------------------------
+\paragraph{Duration Data}
+This thesis also highlights the importance of quantifying ``durations''
+--- for both activity groups and sexual partnerships.
+As noted in \sref{model.par.turn.act}~and~\ref{model.par.pnum.adj},
+quantifying these durations requires
+careful design of survey questions and interpretation of responses, to account for:
+left censoring (\eg whether a partnership started before the recall period),
+right censoring (\eg whether a partnership is ongoing), and
+possible ``gaps'' within reported durations
+(\eg whether a respondent ever stopped selling sex, for how long, etc.).
+\citet{Burington2010} review considerations for estimating sexual partnership durations, while
+\citet{Fazito2012} review similar considerations for key populations.
+\clearpage % TEMP
+%===================================================================================================
+\subsection{Model Design \& Parameterization \vs Calibration}\label{conc.future.cal}
+% TODO: (?) something about data driven machine learing \vs mechanistic modelling, Baker2018
+It has been argued that model calibration can overcome
+suboptimal model structure and/or parameterization, implying that
+many of the considerations above may be inconsequential.
+A related argument is that modellers should avoid ``non-identifiability'' among parameters,
+whereby multiple parameters have similar roles, such that
+changes in one parameter can be compensated by opposite changes in another parameter, and
+inference on parameter values becomes difficult.%
+\footnote{An analogous problem in statistical models is collinearity \cite{Harrell2015}.}
+That is, a simple calibrated model with a few generic parameters is desirable.
+In the context of HIV transmission modelling,
+I respectfully dispute these arguments for the following three reasons.
+\par
+First, the number of available HIV calibration targets is typically small,
+and often similar to the number of uncertain model parameters
+--- \ie much smaller than the ``15:1'' rule for classic statistical inference \cite{Harrell2015}.
+Moreover, the majority of calibration targets, including HIV prevalence and cascade data,
+reflect cumulative measures for recent years,
+which could be reproduced by a wide range of simulations.
+Indeed, prior work has shown how diverse model structures can fit the same data similarly well,
+but yield varied model outputs \cite{Hontelez2013,Eaton2015,Bernard2017,Suen2017}.%
+\footnote{Although sensitivity analyses are often used to quantify the influence of
+  specific model parameters on model outputs \cite{Blower1994,Johnson2016cc},
+  it could be interesting to similarly quantify the influence of
+  specific calibration targets on inferred parameter values.}
+Thus, the ability of a model to reproduce these limited data
+is often a necessary but not sufficient condition for a plausible model.
+\par
+Second, uncertainty in model outputs due to non-identifiability of parameters
+can be desirable for transparency.
+Unless the goal of model calibration is to infer \emph{individual} parameter values,
+it is often sufficient to identify \emph{combinations} of parameter values
+which yield plausible epidemics.
+Selecting parameters to combine and/or fix may reduce the spread of model outputs,
+but this can imply a false degree of certainty.
+That is, simpler models may make ``fewer'' assumptions, but each assumption is often ``bigger''.
+For example, a model may include no risk stratification and a single partnership type,
+reflecting two (big) assumptions; whereas
+another model may include 8 risk groups and 4 partnership types, each with unique parameters,
+reflecting numerous (smaller) assumptions.
+Additional model complexity is often added based on the particular research question
+using new data or expert knowledge.
+Thus, I would argue that \emph{simplifying} assumptions
+should require stronger justification than \emph{complicating} assumptions.
+\par
+Third, I and others have shown how modelling assumptions can engender
+hidden biases in model outputs which may/not be addressed via model calibration
+\cite{Hontelez2013,Johnson2016mf,Bernard2017,Knight2020}.
+Such biases are most likely to affect
+the relative contributions of various transmission pathways,
+for which fewer calibration targets are often available.
+For example, there may be estimates of overall HIV prevalence,
+but not HIV prevalence ratios among groups.
+The risk of bias is amplified when a model designed for one research question
+is repurposed to answer other questions,
+without necessarily updating the model structure and parameterization.
+Thus, models exploring a range of intervention strategies
+should incorporate the best available knowledge about existing prevention gaps,
+while the potential harms of misjudging these gaps should be kept top-of-mind.
