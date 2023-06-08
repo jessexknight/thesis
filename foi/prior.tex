@@ -39,6 +39,7 @@ have been designed for compartmental models which
 explicitly aggregate the risk of transmission across different numbers and types of sex acts,
 and likewise across different numbers and types of sexual partners/partnerships.
 The remainder of this section reviews these equations and their assumptions in detail.
+\pagebreak % TEMP
 %===================================================================================================
 \subsection{Aggregating Sex Acts within a Partnership}\label{foi.prior.bhom}
 To account for PTC due to repeated sex acts with the same partner,
@@ -274,9 +275,9 @@ These dynamics are further explored in simulation experiments (\sref{foi.exp.mod
 \par
 Lastly, it is worth noting that partnership duration $\delta$ is further related to
 the average partnership formation rate $Q$ and
-the average number of concurrent partners $K$ by $Q = K/\delta$.%
-\footnote{Gaps between partnerships do not result in $Q < K/\delta$,
-  because the average $K$ would be reduced if some individuals are ``between partnerships''.}
+the average number of concurrent partners $K$ by $Q = K/\delta$.
+% \footnote{Gaps between partnerships do not result in $Q < K/\delta$,
+%   because the average $K$ would be reduced if some individuals are ``between partnerships''.}
 Thus, an alternate parameterization could specify
 the number of concurrent partners $K$ and the frequency of sex with each partner $F$.
 The overall rate of sex would be the same: $QA = KF$, since $A = F\delta$.
@@ -360,8 +361,7 @@ Recognizing the limitations of compartmental models in simulating
 infectious disease transmission via sexual partnerships,
 two main alternate modelling frameworks have been developed.
 These frameworks are illustrated in Figure~\ref{fig:fw}.
-A more detailed system for classifying modelling frameworks
-is also given in Appendix~1 of \cite{Johnson2016mf}.
+Modelling frameworks are further classified Appendix~1 of \cite{Johnson2016mf}.
 \begin{figure}
   \centering\foreach \var/\cap in
   {comp/Classic compartmental,pair/Pair-based,ibm/Individual-based}{%
@@ -433,4 +433,3 @@ these challenges still prevent universal adoption over classic compartmental mod
 It's worth noting that not all individual-based models are transmission models,
 as individual-based models can also be used for
 simulation and inference for non-infectious diseases \cite{Silverman2021}.
-\pagebreak % TEMP
