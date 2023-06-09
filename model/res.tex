@@ -30,10 +30,7 @@ has long been challenging to explain based on the available data \cite{Whiteside
   \caption{Distributions of calibrated model parameters,
     stratified by prior (all samples) \vs posterior (top 1\% by calibration likelihood)}
   \label{fig:post.distr}
-  \floatfoot{
-    Asterisks denote significance of Anderson-Darling (AD) Test \cite{Scholz1987}
-    for comparing distributions, where $p < 0.1$: *, $p < 0.01$: **, etc;
-    see Table~\ref{tab:par.defs} for parameter definitions}
+  \floatfoot{\ffast{Anderson-Darling Test \cite{Scholz1987} for comparing distributions}; \ffpar.}
 \end{figure}
 \par
 % MAN
@@ -65,12 +62,11 @@ the resulting epidemic simulations should remain plausible.
     Subset of parameters with at least one correlation $\pm 0.1$;
     layout computed via hierarchical clustering using the Ward-2 criterion \cite{Murtagh2014};
     gray squares denote computed clusters;
-    see Table~\ref{tab:par.defs} for parameter definitions}
+    \ffpar.}
 \end{figure}
 %===================================================================================================
 \subsection{Calibration}\label{model.res.cal}
-This section presents the estimates of key model outputs
-from the 1000 model fits (top 1\% by likelihood among 100,000 sampled parameter sets),
+This section presents the estimates of key model outputs from the \fffit,
 with comparison to the associated calibration targets.
 Additional results are given in \sref{app.model.cal.res}, including:
 distribution of log-likelihoods (Figure~\ref{fig:fit.ll})
@@ -249,5 +245,5 @@ new infections were modelled to become ``re-concentrated''
 within sex work populations and partnerships.
 This re-concentration of HIV incidence among higher risk sexual networks
 is indeed anticipated across multiple declining epidemics \cite{Brown2019,Ortblad2019},
-and likely threatens to undermine the anticipated prevention benefits of ART scale-up
+and may undermine the anticipated prevention benefits of ART scale-up
 (as explored in Chapter~\ref{art}) \cite{Baral2019}.

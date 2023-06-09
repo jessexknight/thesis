@@ -1,8 +1,23 @@
-A key equation in transmission models defines the force of infection $\lambda$:
-the instantaneous rate at which susceptible individuals acquire infection.
+While developing the Eswatini model in Chapter~\ref{model},
+and examining the models reviewed in Chapter~\ref{sr},
+I noticed that the ``force of infection'' equation
+--- the rate at which susceptible individuals acquire infection ---
+has previously been defined in several different ways.
+These differences were not due to differences in
+which risk groups, partnership types, and/or intervention were considered,
+but rather due to differences in
+which mathematical approximations of sexual partnership dynamics were used.
+It was not clear if or how such differences might influence overall model outputs.
+Thus, this chapter explores different mathematical approaches to
+modelling HIV transmission via sexual partnerships in compartmental models.
+Specifically, I review prior approaches (\sref{foi.prior}),
+develop a new approach (\sref{foi.prop}),
+and compare the influence of selected approaches on model outputs (\sref{foi.exp}).
+%---------------------------------------------------------------------------------------------------
+\paragraph{First Principles \& Post-Transmission Contacts}
 In the simplest compartmental transmission models
 --- \ie without any population stratification, repeated contacts, etc. ---
-this rate is defined as:%
+the force of infection $\lambda$ is defined as:%
 \footnote{\eqref{eq:foi.simple} also assumes
   frequency-dependent transmission \vs density-dependent transmission,
   which is almost always more appropriate for sexually-transmitted diseases \cite{Begon2002}.}
@@ -19,7 +34,8 @@ and contacts are stratified into multiple types $p$,
 then \eqref{eq:foi.simple} can be generalized to:
 \begin{equation}\label{eq:foi.strat}
   \lambda_i = \sum_{pi'h'} C_{pii'} \beta_{ph'} \frac{I_{i'h'}}{N_{i'}}
-\end{equation} where:
+\end{equation}
+where:
 $C_{pii'}$ is the average rate of type-$p$ contacts per-person among group $i$ with group $i'$,
 $\beta_{ph'}$ is the average probability of transmission per type-$p$ contact given infection stage $h'$,
 and $I_{i'h'}/N_{i'}$ is the prevalence of infection stage $h'$ among group $i'$.
@@ -36,10 +52,5 @@ will continue to contact the same person, resulting in ``post-transmission conta
 and slower infection spread through the contact/partnership network.%
 \footnote{Other conceptions of ``post-transmission contacts'' include:
   ``within-partnership competing risks'' and HIV seroconcordance.}
-\par
-This chapter explores different mathematical approaches to
-modelling HIV transmission within sexual partnerships in compartmental models, considering these PTC.
-In particular, I review prior approaches (\sref{foi.prior}),
-develop a new approach (\sref{foi.prop}),
-and compare the influence of each approach on selected model outputs (\sref{foi.exp}).
-A preliminary version of this approach was presented in \cite{Knight2022smdm}.
+A major concern when modelling HIV transmission via sexual partnerships
+is therefore to account for these PTC.

@@ -12,7 +12,7 @@
 %---------------------------------------------------------------------------------------------------
 % spacing
 \frenchspacing
-\setlength{\parskip}{1ex}
+\setlength{\parskip}{1ex plus .2ex minus .2ex}
 \setlength{\parindent}{0ex}
 \renewcommand{\topfraction}{.85}
 \renewcommand{\bottomfraction}{.7}
@@ -22,7 +22,7 @@
 \clubpenalty9999
 %---------------------------------------------------------------------------------------------------
 % footnotes + sections
-\usepackage[marginal,bottom]{footmisc}
+\usepackage[marginal,bottom,stable]{footmisc}
 \addtolength{\skip\footins}{2ex plus 1ex minus 1ex}
 \setcounter{secnumdepth}{4}
 \renewcommand{\paragraph}[1]{\par\textbf{#1.}\ }
@@ -97,6 +97,7 @@
 \newcommand{\ffpbar}[1][calibration target]{points and error bars: mean and 95\%~CI for each #1}
 \newcommand{\ffbox}[1][model fits]{whiskers, boxes, and midlines: 95\%~CI, 50\%~CI, median of #1}
 \newcommand{\ffribbon}[1][model fits]{ribbon and curve: range and median of #1}
+\newcommand{\ffast}[1]{Asterisks denote significance of #1, where $p < 0.1$: *, $p < 0.01$: **, etc.}
 \newcommand{\fffsw}[1]{%
   \foreach \year/\status in {2011/serologic,2014/self-reported}{
   \foreach \var/\lab in {f/factor,c/continuous}{
@@ -106,6 +107,7 @@
 \newcommand{\ffpopz}{Lower Risk: all women and men not involved in sex work;
   FSW: female sex workers; Clients: of FSW}
 \newcommand{\fffit}{1000 model fits (top 1\% by likelihood among 100,000 sampled parameter sets)}
+\newcommand{\ffpar}{Table~\ref{tab:par.defs} givs parameter definitions}
 \newcommand{\fffoi}{Table~\ref{tab:foi.models} gives approach definitions}
 \newcommand{\ffart}{Base case: \cashi by 2020;
   ``left behind'' counterfactual scenarios: \casmd overall by 2020,
