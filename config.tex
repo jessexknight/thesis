@@ -37,6 +37,12 @@
 \singlespaced{\tableofcontents}
 \singlespaced{\listoffigures}
 \singlespaced{\listoftables}
+\newenvironment{acknowlist}
+  {\begin{itemize}[leftmargin=2em,itemindent=-2em,parsep=0pt,label=]}{\end{itemize}}
+\newcommand{\ack}[2]{\item #1 --- #2}
+\let\contributions\acknowledgements
+\let\endcontributions\endacknowledgements
+\xpatchcmd{\contributions}{Acknowledgements}{Contributions}{}{}
 %---------------------------------------------------------------------------------------------------
 % headers
 \makeatletter
@@ -58,6 +64,7 @@
   doi=false,
   url=true,
   isbn=false,
+  eprint=false,
   natbib=true,
   backend=biber,
 ]{biblatex}
