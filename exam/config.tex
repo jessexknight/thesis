@@ -1,0 +1,38 @@
+\documentclass[10pt,
+  sectionslide=false,
+  logo=mishra,
+  color=002244,
+]{slides}
+\title[Reexamining Assumptionss in HIV Transmission Models]
+  {Reexamining Assumptions in Compartmental Models of Heterosexual HIV Transmission\\
+  applied to Eswatini\\[1ex]}
+\subtitle{Final PhD Defence}
+\author{Jesse Knight}
+\institute{Institute of Medical Science\\University of Toronto}
+\date{2023 August 30}
+\definecolor{ftb}{HTML}{eeeeee}
+\definecolor{tx}{HTML}{ff0066} % pink
+\definecolor{rd}{HTML}{00cc99} % green
+\definecolor{ry}{HTML}{0099cc} % blue
+\definecolor{py}{HTML}{cc00cc} % purple
+\definecolor{np}{HTML}{ff9900} % orange
+\setbeamercolor{frametitle}{fg=slides,bg=ftb}
+\graphicspath{{fig/}{fig/logo/}}
+\usepackage{xspace}
+\newcommand{\ifempty}[3]{\if\relax\detokenize{#1}\relax#2\else#3\fi}
+\renewcommand{\paragraph}[1]{\par\textbf{#1}}
+\newcommand{\pars}{\par}
+\newcommand{\coloremph}[2]{\textcolor{#1}{\emph{#2}}}
+\newcommand{\parpause}[2][\medskip]{#1\pause\paragraph{#2}}
+\newcommand{\rqstyle}{\color{gray}\itshape}
+\newcommand{\rarr}{\ensuremath{\rightarrow}\xspace}
+\newcommand{\vhskip}[2]{\par\vskip#1\baselineskip\hskip#2\textwidth}
+\let\osection\section
+\renewcommand{\section}[3][]{%
+  \ifempty{#1}{\osection[]{}}{\osection{#2\enspace#1}}
+  \begin{frame}\centering
+    \begin{beamercolorbox}[center,sep=8pt]{title}\usebeamerfont{title}
+      \ifempty{#1}{}{\textsc{chapter~#1:}}\\#2\\[2ex]{\normalsize\rqstyle#3}
+    \end{beamercolorbox}
+  \end{frame}}
+\usepackage{tikz}
