@@ -1,5 +1,5 @@
 # Title
-Re-examining Assumptions in
+Reexamining Assumptions in
 Compartmental Models of Heterosexual HIV Transmission
 applied to Eswatini
 
@@ -16,7 +16,7 @@ applied to Eswatini
   - experience disproportionate risk, acquisition + transmission
   - risks often stem from root conditions which also create barriers to care
     - for example:
-      - women enter sex work, patriarchy, economic vulnerability, sexual violence
+      - women enter sex work, economic vulnerability, patriarchy, sexual violence
       - then: criminalization, stigma, condom confiscation
   - KP need tailored programs
 
@@ -106,10 +106,10 @@ applied to Eswatini
     - approaches but never exceeds 1
   - *imagine* someone with multiple partnerships per year: only get infected once
     - some modellers have then adjusted for wasted sex acts *between* partnerships
-    - partnerships as "competing risks"
+    - "competing risks"
 
 # Instantaneous Partnerships: Problems
-1. *imagine* that 20-year partnership: under instant partnerships assumption ...
+1. under instant partnerships assumption ...
     - after transmission, newly infected can immediately transmit again via same partnership
     - "instant risk of onward transmission"
 2. adjusting for wasted sex acts *within* partnerships, forced trade off:
@@ -120,15 +120,14 @@ applied to Eswatini
     - *ignore* majority of wasted sex acts in long partnerships
       *overestimate* transmission via longer partnerships
 3. *between* partnerships: unnecessary
-  - models use instantaneous rate
-  - period of 1 year is arbitrary
-    - model accounts for infection -> no longer susceptible
+  - models use instantaneous rate (period of 1 year is arbitrary)
+  - model accounts for infection -> no longer susceptible
 - solutions: change modelling framework: IBM, pair-based models: own limitations
   - compartmental models remain popular: relative simplicity to parameterize + run
 
 # Effective Partnerships Adjustment
 - proposed solution in the thesis
-- cannot track partnerships, but can track people
+- cannot track *partnerships*, but can track *people*
   - people who recently acquired or transmitted
     - holding state -> remove from incidence equation
 - remove until they change partners
@@ -162,6 +161,7 @@ applied to Eswatini
   - opposite main/spousal
 - sex work [6 month - 2 years]
   - same as casual, smaller differences, swr slightly longer
+- even after recalibrating: differences remain
 
 # Conclusion
 
