@@ -150,8 +150,8 @@ I then define the total numbers of partnerships among susceptible individuals as
   M_{S,pi} = S_{i} K_{pi} \label{eq:M.S}
 \end{equation}
 and likewise for individuals in infection stage $h$:
-\begin{equation}
-  M_{I,pih} = I_{ih,\p=p} (K_{pi}-1) + \sum\nolimits_{\p \ne p} I_{ih\p}\,K_{pi} \label{eq:M.I}
+\begin{equation}\label{eq:M.I}
+  M_{I,pih} = I_{ih,\p=p} (K_{pi}-1) + \sum\nolimits_{\p \ne p} I_{ih\p}\,K_{pi}
 \end{equation}
 \eqref{eq:M.I} is the key equation whereby
 the  numbers of ``effective type-$p$ partnerships'' among
@@ -220,7 +220,7 @@ but we can show that \eqref{eq:M.I} still yields the correct value of $M_{I,pih}
 With this perspective, the constraint in \eqref{eq:I.constr} may be more intuitive:
 we cannot ``remove'' more than the total number of partnerships.
 This constraint should also be easy to guarantee for a small enough timestep,
-because $M_{I,pih}$ approaches zero as $I_{ih\p}$ approaches $I_{ih} K_{pi}$
+because in \eqref{eq:M.I}, $M_{I,pih}$ approaches zero as $I_{ih\p}$ approaches $I_{ih} K_{pi}$
 --- i.e. all type-$p$ partnerships become \hivp seroconcordant,
 and no more transmission can occur via these partnerships until partners change.
 % TODO: (?) add serosorting refs: cross-sectional vs individual-cohort \cite{Wang2020,Kim2020}

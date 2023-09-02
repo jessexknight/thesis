@@ -64,7 +64,7 @@ through constructing and solving a system of constrained, nonlinear equations.
 %---------------------------------------------------------------------------------------------------
 \paragraph{Recall Period Adjustment}
 A related issue concerns how to derive a partnership formation rate
-(or number of concurrent parthers) from survey data.
+(or number of concurrent partners) from survey data.
 Sexual health surveys will typically ask questions like
 \shortquote{How many different people have you had sex with in the past 12 months?} \cite{DHS}
 or \shortquote{past 1 month}, etc. \cite{Baral2014,EswKP2014,EswBSS2002}.
@@ -187,12 +187,12 @@ may render self-reported HIV status a reasonable proxy for serological HIV statu
 % longer & lower condom use
 %===================================================================================================
 \subsection{Limitations of the Model}\label{model.disc.lim}
-Despite the advacements in model parameterization described above,
+Despite the advancements in model parameterization described above,
 the model developed here still has several limitations.
 This section describes these limitation and their potential influence on model outputs.
 %---------------------------------------------------------------------------------------------------
 \subsubsection{Model Structure}\label{model.disc.lim.str}
-The model structure includes $2 \times 4 \times (1 + 5 \times 5) = 208$ compartments in total,
+The model structure includes $2 \times 4 \times (1 + 5 \times 5 \times 5) = 1008$ compartments in total,
 reflecting sex, activity level, and HIV / treatment dimensions,
 as well as four distinct partnership types, and vaginal \vs anal sex.
 Yet even these stratifications omit several important aspects of HIV epidemiology in Eswatini.
@@ -208,7 +208,7 @@ however, prevalence ratios are generally smaller in larger epidemics \cite{Hesso
 In fact, HIV prevalence among Swati MSM has been estimated to be
 similar to among men aged 15--49 overall (approximately 20\%) \cite{Hessou2019,EswIBBS2022,SHIMS2},
 likely because Swati MSM tend to skew younger, while HIV prevalence increases with age
-\cite{SHIMS2,EswIBBS2022}
+\cite{SHIMS2,EswIBBS2022}.
 The population size of MSM in Eswatini is estimated to be
 1--2\% of men aged 15--49 \cite{EswKP2014,EswIBBS2022,WorldBank}.
 Thus, although unmet needs of MSM in other SSA countries
@@ -277,7 +277,7 @@ The quality of parameter inference and model agreement with the calibration targ
 might be improved using more efficient calibration techniques \cite{Menzies2017}, such as
 Sampling Importance Resampling (SIR) \cite{Rubin1987} or
 Incremental Mixture Importance Sampling (IMIS) \cite{Raftery2010}.
-However, the quality of model-based evidence likely depends
+However, the quality of model-based evidence may depend
 more on appropriate specification of model structure and unbiased parameter priors,
 than on more efficient calibration techniques.
 %---------------------------------------------------------------------------------------------------

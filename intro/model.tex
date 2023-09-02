@@ -29,7 +29,7 @@ DCMs are specified as a set of first order ordinary differential equations of th
 \begin{equation}
   \frac{d}{dt}\,y_i = f_i(y,\theta,t)
 \end{equation} where:
-$y_i(y)$ is the number of individuals in state $i$ at time $t$;
+$y_i(t)$ is the number of individuals in state $i$ at time $t$;
 $\theta$ is a set of model parameters; and
 $f_i$ defines the rate of change in $y_i$ as a function of all other $y$, $\theta$, and $t$,
 reflecting mechanistic assumptions about infection transmission and other state transitions.
@@ -96,7 +96,7 @@ reflecting differences in acquisition and/or onward transmission risk within a g
 Such heterogeneity can be driven by
 biological factors such as co-infection,
 individual-level factors such as numbers of sexual partners, and
-network-level fractors such as patterns of sexual mixing,
+network-level factors such as patterns of sexual mixing,
 as well as upstream structural factors which influence all of the above. % TODO: (?) cite
 Indeed, risk heterogeneity is an important factor in all infectious diseases \cite{Suen2017},
 and can even be considered to comprise phenomena like superspreading events \cite{Lloyd-Smith2005}.
