@@ -30,6 +30,7 @@
 % frontmatter
 \usepackage{xpatch}
 \xpatchcmd{\maketitle}{\@title}%
+  % {\@title\vfill\vfill\vfill\vfill}{}{} % for ProQuest
   {\@title\vfill\vfill\includegraphics[height=.2\textheight]{ut-crest}\vfill}{}{}
 \newcommand{\singlespaced}[1]{%
   \pretocmd{#1}{\begingroup\singlespacing}{}{}%
